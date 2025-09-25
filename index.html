@@ -445,11 +445,14 @@
       color: #4ecdc4;
     }
     
-    /* RECUERDOS VIRTUALES - CORREGIDO A 2 ELEMENTOS */
+    /* RECUERDOS VIRTUALES - MEJORADO CON 4 ELEMENTOS */
     .memories-screen {
       background: linear-gradient(135deg, #8e2de2, #4a00e0);
       padding: 20px;
       color: var(--text-light);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
     
     .memories-container {
@@ -461,7 +464,7 @@
     .memories-title {
       text-align: center;
       font-size: clamp(1.8rem, 5vw, 3rem);
-      margin-bottom: 30px;
+      margin-bottom: 40px;
       color: var(--accent);
       font-family: 'Dancing Script', cursive;
     }
@@ -491,6 +494,12 @@
       background: rgba(255,255,255,0.1);
       border-radius: 15px;
       backdrop-filter: blur(10px);
+      transition: transform 0.3s ease;
+    }
+    
+    .memory-item:hover {
+      transform: translateY(-5px);
+      background: rgba(255,255,255,0.15);
     }
     
     .memory-item:nth-child(odd) {
@@ -510,6 +519,11 @@
       border-radius: 50%;
       background: var(--accent);
       box-shadow: 0 0 10px var(--accent);
+      transition: transform 0.3s ease;
+    }
+    
+    .memory-item:hover::before {
+      transform: scale(1.2);
     }
     
     .memory-item:nth-child(odd)::before {
@@ -524,6 +538,7 @@
       font-size: 1.2rem;
       color: var(--accent);
       margin-bottom: 10px;
+      font-weight: bold;
     }
     
     .memory-content {
@@ -716,10 +731,18 @@
       color: var(--accent);
     }
     
+    /* EFECTOS ESPECIALES */
+    @keyframes messageAppear {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    
     /* RESPONSIVE MEJORADO */
     @media (max-width: 768px) {
       .screen {
         padding: 15px;
+        justify-content: flex-start;
+        padding-top: 60px;
       }
       
       .memory-timeline::before {
@@ -729,6 +752,7 @@
       .memory-item {
         width: calc(100% - 50px);
         left: 50px !important;
+        margin-bottom: 30px;
       }
       
       .memory-item::before {
@@ -738,20 +762,29 @@
       .nav-buttons {
         flex-direction: row;
         bottom: 10px;
+        width: 95%;
+        justify-content: center;
       }
       
       .constellation-grid {
         grid-template-columns: 1fr;
+      }
+      
+      .photo-frame {
+        height: 300px;
+        max-width: 300px;
       }
     }
     
     @media (max-width: 480px) {
       .screen {
         padding: 10px;
+        padding-top: 50px;
       }
       
       .photo-frame {
-        height: 280px;
+        height: 250px;
+        max-width: 250px;
       }
       
       .memory-item {
@@ -771,6 +804,26 @@
         flex-wrap: wrap;
         justify-content: center;
         width: 90%;
+      }
+      
+      .nav-button {
+        padding: 6px 12px;
+        font-size: 0.7rem;
+      }
+    }
+    
+    /* MEJORAS ESPECÍFICAS PARA TABLETS */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .constellation-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .memory-item {
+        width: 43%;
+      }
+      
+      .memory-item:nth-child(even) {
+        left: 57%;
       }
     }
   </style>
@@ -970,20 +1023,30 @@ no solo llegar... sino quedarme aquí.</div>
     </div>
   </div>
 
-  <!-- RECUERDOS VIRTUALES - CORREGIDO A 2 ELEMENTOS -->
+  <!-- RECUERDOS VIRTUALES - MEJORADO CON 4 ELEMENTOS -->
   <div id="memoriesScreen" class="screen">
     <div class="memories-container">
       <h1 class="memories-title">🕰️ Línea del Tiempo Especial</h1>
       
       <div class="memory-timeline">
         <div class="memory-item">
-          <div class="memory-date">Primer Recuerdo</div>
+          <div class="memory-date">Primer Encuentro</div>
           <div class="memory-content">El momento en que el universo conspiró para que nuestros caminos se cruzaran, y supe que había encontrado a alguien extraordinario.</div>
         </div>
         
         <div class="memory-item">
-          <div class="memory-date">Descubrimiento</div>
+          <div class="memory-date">Descubrimiento Mutuo</div>
           <div class="memory-content">Cada conversación revelaba nuevas capas de tu ser, como deshojando una flor cósmica con pétalos infinitos.</div>
+        </div>
+        
+        <div class="memory-item">
+          <div class="memory-date">Momentos Compartidos</div>
+          <div class="memory-content">Risas, conversaciones profundas y esos instantes donde el tiempo parecía detenerse para celebrar nuestra amistad.</div>
+        </div>
+        
+        <div class="memory-item">
+          <div class="memory-date">Reconocimiento</div>
+          <div class="memory-content">El día que comprendí la profundidad de tu ser y la fortuna que tengo de conocerte.</div>
         </div>
       </div>
       
@@ -1226,9 +1289,9 @@ no solo llegar... sino quedarme aquí.</div>
       
       setTimeout(() => {
         display.innerHTML = `
-          <div style="font-size: 2.5rem; margin-bottom: 15px;">${message.icon}</div>
-          <h3 style="font-size: 1.5rem; color: #ffd700; margin-bottom: 15px;">${message.title}</h3>
-          <p style="font-size: 1.1rem; line-height: 1.5;">${message.content}</p>
+          <div style="font-size: 2.5rem; margin-bottom: 15px; animation: messageAppear 0.5s ease-out;">${message.icon}</div>
+          <h3 style="font-size: 1.5rem; color: #ffd700; margin-bottom: 15px; animation: messageAppear 0.5s ease-out 0.2s both;">${message.title}</h3>
+          <p style="font-size: 1.1rem; line-height: 1.5; animation: messageAppear 0.5s ease-out 0.4s both;">${message.content}</p>
         `;
         
         display.style.opacity = 1;
@@ -1261,6 +1324,16 @@ no solo llegar... sino quedarme aquí.</div>
       });
     }
     
+    // Efectos en la línea de tiempo
+    document.querySelectorAll('.memory-item').forEach(item => {
+      item.addEventListener('click', () => {
+        item.style.transform = 'translateY(-5px) scale(1.02)';
+        setTimeout(() => {
+          item.style.transform = '';
+        }, 300);
+      });
+    });
+    
     // Inicializar el primer mensaje
     window.addEventListener('load', () => {
       // Intentar reproducir música suavemente
@@ -1283,16 +1356,6 @@ no solo llegar... sino quedarme aquí.</div>
         toggleMusic();
       }
     });
-    
-    // Efectos CSS adicionales
-    const style = document.createElement('style');
-    style.textContent = `
-      @keyframes messageAppear {
-        0% { opacity: 0; transform: translateY(10px); }
-        100% { opacity: 1; transform: translateY(0); }
-      }
-    `;
-    document.head.appendChild(style);
   </script>
 </body>
 </html>
