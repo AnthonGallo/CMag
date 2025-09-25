@@ -75,20 +75,20 @@
       transform: translateY(20px);
       transition: opacity 0.8s ease, transform 0.8s ease;
       display: none;
+      overflow: hidden;
     }
     
     .screen.active {
       opacity: 1;
       transform: translateY(0);
-      display: block;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
     
     /* PANTALLA DE BIENVENIDA MEJORADA */
     .welcome-screen {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
       text-align: center;
       background: radial-gradient(circle, rgba(102,126,234,0.9), rgba(118,75,162,0.9));
       color: var(--text-light);
@@ -96,8 +96,8 @@
     }
     
     .welcome-title {
-      font-size: 5rem;
-      margin-bottom: 30px;
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      margin-bottom: 20px;
       text-shadow: 0 0 30px rgba(255,215,0,0.8);
       animation: titleGlow 3s ease-in-out infinite alternate;
       background: linear-gradient(45deg, #ffd700, #ff6b6b, #4ecdc4, #45b7d1);
@@ -113,8 +113,8 @@
     }
     
     .subtitle {
-      font-size: 2rem;
-      margin-bottom: 40px;
+      font-size: clamp(1.2rem, 4vw, 2rem);
+      margin-bottom: 30px;
       text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
       opacity: 0;
       animation: fadeInUp 2s ease forwards 1s;
@@ -130,8 +130,8 @@
       background: linear-gradient(145deg, #ff6b6b, #ffa500, #ffd700);
       color: var(--text-light);
       border: none;
-      padding: 20px 50px;
-      font-size: 1.5rem;
+      padding: 15px 40px;
+      font-size: clamp(1rem, 3vw, 1.5rem);
       font-weight: bold;
       border-radius: 50px;
       cursor: pointer;
@@ -145,42 +145,20 @@
     }
     
     .start-button:hover {
-      transform: translateY(-10px) scale(1.1);
-      box-shadow: 0 20px 50px rgba(255,107,107,0.6);
-    }
-    
-    .start-button::after {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: rgba(255,255,255,0.1);
-      transform: rotate(45deg);
-      transition: all 0.5s ease;
-    }
-    
-    .start-button:hover::after {
-      transform: rotate(45deg) translate(50%, 50%);
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 15px 40px rgba(255,107,107,0.6);
     }
     
     /* PANTALLA DEL UNIVERSO MAGY MEJORADA */
     .universe-screen {
       background: linear-gradient(180deg, #000428, #004e92);
       color: var(--text-light);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
       text-align: center;
-      position: relative;
-      overflow: hidden;
     }
     
     .universe-content {
       max-width: 900px;
-      width: 100%;
+      width: 90%;
       z-index: 10;
       position: relative;
     }
@@ -209,8 +187,8 @@
     }
     
     .cosmic-title {
-      font-size: 4rem;
-      margin-bottom: 40px;
+      font-size: clamp(2rem, 6vw, 4rem);
+      margin-bottom: 30px;
       text-shadow: 0 0 30px rgba(255,255,255,0.8);
       animation: cosmicPulse 4s ease-in-out infinite;
       font-family: 'Dancing Script', cursive;
@@ -227,11 +205,11 @@
       background: rgba(255,255,255,0.1);
       backdrop-filter: blur(15px);
       border-radius: 20px;
-      padding: 30px;
-      margin: 30px 0;
+      padding: 20px;
+      margin: 20px 0;
       border: 2px solid rgba(255,215,0,0.3);
-      font-size: 1.2rem;
-      line-height: 1.8;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      line-height: 1.6;
       text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
       font-family: 'Dancing Script', cursive;
     }
@@ -240,76 +218,64 @@
       background: linear-gradient(145deg, #4ecdc4, #44a08d);
       color: var(--text-light);
       border: none;
-      padding: 15px 40px;
-      font-size: 1.3rem;
+      padding: 12px 30px;
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
       font-weight: bold;
       border-radius: 30px;
       cursor: pointer;
-      margin-top: 30px;
+      margin-top: 20px;
       transition: all 0.3s ease;
       box-shadow: 0 8px 25px rgba(78,205,196,0.4);
-      position: relative;
-      overflow: hidden;
     }
     
     .next-button:hover {
-      transform: translateY(-5px) scale(1.05);
-      box-shadow: 0 15px 40px rgba(78,205,196,0.6);
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 12px 30px rgba(78,205,196,0.6);
     }
     
     /* GALERÍA DE CONSTELACIONES MEJORADA */
     .constellation-screen {
       background: radial-gradient(circle, #1a1a2e, #16213e, #0f4c75);
       color: var(--text-light);
-      padding: 40px 20px;
+      padding: 20px;
+    }
+    
+    .constellation-title {
+      text-align: center;
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      margin-bottom: 30px;
+      color: #ffd700;
     }
     
     .constellation-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
       max-width: 1200px;
-      margin: 0 auto 40px auto;
+      width: 90%;
+      margin: 0 auto 30px auto;
     }
     
     .constellation-card {
       background: rgba(255,255,255,0.1);
       backdrop-filter: blur(20px);
-      border-radius: 25px;
-      padding: 30px;
+      border-radius: 20px;
+      padding: 20px;
       border: 2px solid rgba(255,215,0,0.3);
-      transition: all 0.5s ease;
+      transition: all 0.3s ease;
       cursor: pointer;
-      transform-style: preserve-3d;
-      position: relative;
-      overflow: hidden;
     }
     
     .constellation-card:hover {
-      transform: rotateY(10deg) translateY(-10px);
-      box-shadow: 0 20px 50px rgba(255,215,0,0.3);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(255,215,0,0.3);
       border-color: rgba(255,215,0,0.8);
     }
     
-    .constellation-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-      transition: left 0.5s ease;
-    }
-    
-    .constellation-card:hover::before {
-      left: 100%;
-    }
-    
     .constellation-icon {
-      font-size: 4rem;
+      font-size: 3rem;
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       animation: starPulse 3s ease-in-out infinite;
     }
     
@@ -318,16 +284,16 @@
       50% { transform: scale(1.1); filter: brightness(1.3); }
     }
     
-    .constellation-title {
-      font-size: 1.5rem;
+    .constellation-card-title {
+      font-size: 1.3rem;
       color: #ffd700;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
       text-align: center;
     }
     
     .constellation-description {
-      font-size: 1rem;
-      line-height: 1.6;
+      font-size: 0.9rem;
+      line-height: 1.5;
       text-align: center;
       opacity: 0.9;
     }
@@ -335,25 +301,20 @@
     /* FOTO MÁGICA MEJORADA - PARTE CENTRAL */
     .photo-screen {
       background: linear-gradient(135deg, #667eea, #764ba2);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
       text-align: center;
       color: var(--text-light);
-      position: relative;
-      overflow: hidden;
     }
     
     .magic-photo-container {
       position: relative;
       max-width: 400px;
-      margin: 30px 0;
-      perspective: 1000px;
+      width: 90%;
+      margin: 20px 0;
     }
     
     .photo-frame {
-      width: 350px;
+      width: 100%;
+      max-width: 350px;
       height: 350px;
       border-radius: 50%;
       border: 5px solid var(--accent);
@@ -361,12 +322,12 @@
       position: relative;
       box-shadow: 0 0 50px rgba(255,215,0,0.6);
       animation: photoFloat 6s ease-in-out infinite;
-      transform-style: preserve-3d;
+      margin: 0 auto;
     }
     
     @keyframes photoFloat {
       0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-20px) rotate(5deg); }
+      50% { transform: translateY(-10px) rotate(3deg); }
     }
     
     .magic-photo {
@@ -374,38 +335,38 @@
       height: 100%;
       object-fit: cover;
       filter: brightness(1.1) contrast(1.1);
-      transition: all 0.5s ease;
+      transition: all 0.3s ease;
     }
     
     .photo-frame:hover .magic-photo {
-      filter: brightness(1.3) contrast(1.2) saturate(1.2);
-      transform: scale(1.05);
+      filter: brightness(1.2) contrast(1.1) saturate(1.1);
+      transform: scale(1.03);
     }
     
     .photo-sparkles {
       position: absolute;
-      top: -50px;
-      left: -50px;
-      width: 450px;
-      height: 450px;
+      top: -25px;
+      left: -25px;
+      width: calc(100% + 50px);
+      height: calc(100% + 50px);
       pointer-events: none;
     }
     
     .photo-sparkle {
       position: absolute;
       color: var(--accent);
-      font-size: 20px;
+      font-size: 16px;
       animation: sparkleOrbit 8s linear infinite;
     }
     
     @keyframes sparkleOrbit {
-      0% { transform: rotate(0deg) translateX(200px) rotate(0deg); }
-      100% { transform: rotate(360deg) translateX(200px) rotate(-360deg); }
+      0% { transform: rotate(0deg) translateX(150px) rotate(0deg); }
+      100% { transform: rotate(360deg) translateX(150px) rotate(-360deg); }
     }
     
     .photo-title {
-      font-size: 3rem;
-      margin-bottom: 20px;
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      margin-bottom: 15px;
       text-shadow: 0 0 20px rgba(255,215,0,0.8);
       animation: titleShimmer 3s ease-in-out infinite;
       font-family: 'Dancing Script', cursive;
@@ -417,142 +378,60 @@
     }
     
     .photo-description {
-      font-size: 1.3rem;
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
       max-width: 600px;
+      width: 90%;
       margin: 0 auto;
-      line-height: 1.6;
+      line-height: 1.5;
       text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    }
-    
-    /* GALERÍA INTERACTIVA NUEVA */
-    .gallery-screen {
-      background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
-      padding: 40px 20px;
-      color: var(--text-light);
-    }
-    
-    .gallery-container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    
-    .gallery-title {
-      text-align: center;
-      font-size: 3rem;
-      margin-bottom: 40px;
-      color: var(--accent);
-      font-family: 'Dancing Script', cursive;
-    }
-    
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 20px;
-      margin-bottom: 40px;
-    }
-    
-    .gallery-item {
-      position: relative;
-      border-radius: 15px;
-      overflow: hidden;
-      cursor: pointer;
-      height: 200px;
-      transition: all 0.3s ease;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    }
-    
-    .gallery-item:hover {
-      transform: translateY(-10px) scale(1.05);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.5);
-    }
-    
-    .gallery-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-    
-    .gallery-item:hover .gallery-image {
-      transform: scale(1.1);
-    }
-    
-    .gallery-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: rgba(0,0,0,0.7);
-      padding: 10px;
-      transform: translateY(100%);
-      transition: transform 0.3s ease;
-    }
-    
-    .gallery-item:hover .gallery-overlay {
-      transform: translateY(0);
-    }
-    
-    .gallery-caption {
-      color: var(--text-light);
-      font-size: 0.9rem;
-      text-align: center;
     }
     
     /* ESCRITOS ESPECIALES MEJORADOS */
     .writings-screen {
       background: linear-gradient(135deg, #ff9a9e, #fecfef, #fecfef, #fad0c4);
-      padding: 40px 20px;
+      padding: 20px;
       color: var(--text-dark);
     }
     
     .writings-container {
       max-width: 900px;
+      width: 90%;
       margin: 0 auto;
+    }
+    
+    .writings-title {
+      text-align: center;
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      margin-bottom: 30px;
+      color: #ff6b6b;
     }
     
     .writing-card {
       background: rgba(255,255,255,0.9);
-      border-radius: 25px;
-      padding: 40px;
-      margin: 30px 0;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+      border-radius: 20px;
+      padding: 25px;
+      margin: 20px 0;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
       border-left: 5px solid #ff6b6b;
       transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
     }
     
     .writing-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 25px 60px rgba(0,0,0,0.15);
-    }
-    
-    .writing-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 5px;
-      height: 100%;
-      background: linear-gradient(to bottom, #ff6b6b, #4ecdc4);
-      transition: width 0.3s ease;
-    }
-    
-    .writing-card:hover::before {
-      width: 10px;
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
     }
     
     .writing-title {
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       color: #ff6b6b;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       text-align: center;
       font-family: 'Dancing Script', cursive;
     }
     
     .writing-content {
-      font-size: 1.1rem;
-      line-height: 1.8;
+      font-size: 1rem;
+      line-height: 1.6;
       text-align: justify;
       white-space: pre-line;
     }
@@ -566,69 +445,23 @@
       color: #4ecdc4;
     }
     
-    /* MENSAJES INTERACTIVOS MEJORADOS */
-    .messages-screen {
-      background: linear-gradient(45deg, #667eea, #764ba2);
-      color: var(--text-light);
-      padding: 40px 20px;
-    }
-    
-    .message-selector {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-      margin-bottom: 40px;
-    }
-    
-    .message-button {
-      background: rgba(255,255,255,0.2);
-      border: 2px solid rgba(255,215,0,0.5);
-      color: var(--text-light);
-      padding: 15px 25px;
-      border-radius: 25px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-size: 1rem;
-      backdrop-filter: blur(10px);
-    }
-    
-    .message-button:hover, .message-button.active {
-      background: rgba(255,215,0,0.3);
-      border-color: var(--accent);
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(255,215,0,0.3);
-    }
-    
-    .message-display {
-      background: rgba(255,255,255,0.1);
-      backdrop-filter: blur(20px);
-      border-radius: 20px;
-      padding: 30px;
-      min-height: 200px;
-      text-align: center;
-      font-size: 1.2rem;
-      line-height: 1.6;
-      border: 2px solid rgba(255,215,0,0.3);
-      transition: all 0.5s ease;
-    }
-    
-    /* RECUERDOS VIRTUALES - NUEVA SECCIÓN */
+    /* RECUERDOS VIRTUALES - CORREGIDO A 2 ELEMENTOS */
     .memories-screen {
       background: linear-gradient(135deg, #8e2de2, #4a00e0);
-      padding: 40px 20px;
+      padding: 20px;
       color: var(--text-light);
     }
     
     .memories-container {
       max-width: 1000px;
+      width: 90%;
       margin: 0 auto;
     }
     
     .memories-title {
       text-align: center;
-      font-size: 3rem;
-      margin-bottom: 40px;
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      margin-bottom: 30px;
       color: var(--accent);
       font-family: 'Dancing Script', cursive;
     }
@@ -652,7 +485,7 @@
     
     .memory-item {
       position: relative;
-      margin-bottom: 50px;
+      margin-bottom: 40px;
       width: 45%;
       padding: 20px;
       background: rgba(255,255,255,0.1);
@@ -671,7 +504,7 @@
     .memory-item::before {
       content: '';
       position: absolute;
-      top: 20px;
+      top: 25px;
       width: 20px;
       height: 20px;
       border-radius: 50%;
@@ -680,11 +513,11 @@
     }
     
     .memory-item:nth-child(odd)::before {
-      right: -50px;
+      right: -52px;
     }
     
     .memory-item:nth-child(even)::before {
-      left: -50px;
+      left: -52px;
     }
     
     .memory-date {
@@ -695,7 +528,64 @@
     
     .memory-content {
       font-size: 1rem;
-      line-height: 1.6;
+      line-height: 1.5;
+    }
+    
+    /* MENSAJES INTERACTIVOS MEJORADOS - SIN OPCIÓN DE AMOR */
+    .messages-screen {
+      background: linear-gradient(45deg, #667eea, #764ba2);
+      color: var(--text-light);
+      padding: 20px;
+    }
+    
+    .messages-title {
+      text-align: center;
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      margin-bottom: 30px;
+      color: #ffd700;
+    }
+    
+    .message-selector {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+    
+    .message-button {
+      background: rgba(255,255,255,0.2);
+      border: 2px solid rgba(255,215,0,0.5);
+      color: var(--text-light);
+      padding: 12px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+      backdrop-filter: blur(10px);
+    }
+    
+    .message-button:hover, .message-button.active {
+      background: rgba(255,215,0,0.3);
+      border-color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(255,215,0,0.3);
+    }
+    
+    .message-display {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      padding: 25px;
+      min-height: 180px;
+      text-align: center;
+      font-size: 1.1rem;
+      line-height: 1.5;
+      border: 2px solid rgba(255,215,0,0.3);
+      transition: all 0.3s ease;
+      width: 90%;
+      max-width: 700px;
+      margin: 0 auto;
     }
     
     /* PANTALLA FINAL MEJORADA */
@@ -705,29 +595,22 @@
       animation: gradientShift 8s ease infinite;
       color: var(--text-light);
       text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
     }
     
     .final-content {
       background: rgba(255,255,255,0.1);
       backdrop-filter: blur(20px);
       border-radius: 25px;
-      padding: 40px;
+      padding: 30px;
       max-width: 800px;
-      margin: 20px;
+      width: 90%;
+      margin: 20px auto;
       border: 2px solid rgba(255,215,0,0.5);
-      position: relative;
-      z-index: 10;
     }
     
     .final-title {
-      font-size: 4rem;
-      margin-bottom: 30px;
+      font-size: clamp(2rem, 6vw, 4rem);
+      margin-bottom: 20px;
       text-shadow: 0 0 30px rgba(255,215,0,0.8);
       animation: finalGlow 3s ease-in-out infinite;
       font-family: 'Dancing Script', cursive;
@@ -745,23 +628,23 @@
     }
     
     .final-text {
-      font-size: 1.5rem;
-      line-height: 1.8;
+      font-size: clamp(1rem, 2.5vw, 1.5rem);
+      line-height: 1.6;
       text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
     
     .final-highlight {
-      font-size: 1.8rem;
-      margin: 30px 0;
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      margin: 20px 0;
       color: var(--accent);
       text-shadow: 0 0 20px rgba(255,215,0,0.8);
     }
     
     .final-signature {
       font-family: 'Dancing Script', cursive;
-      font-size: 2.5rem;
-      margin-top: 40px;
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      margin-top: 30px;
       animation: heartbeat 2s ease-in-out infinite;
     }
     
@@ -773,15 +656,15 @@
     /* NAVEGACIÓN MEJORADA */
     .nav-buttons {
       position: fixed;
-      bottom: 30px;
+      bottom: 20px;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
-      gap: 15px;
+      gap: 10px;
       z-index: 1000;
       background: rgba(0,0,0,0.5);
       backdrop-filter: blur(10px);
-      padding: 10px 20px;
+      padding: 10px 15px;
       border-radius: 30px;
       border: 1px solid rgba(255,255,255,0.2);
     }
@@ -791,30 +674,30 @@
       backdrop-filter: blur(10px);
       border: 2px solid rgba(255,215,0,0.5);
       color: var(--text-light);
-      padding: 10px 20px;
+      padding: 8px 15px;
       border-radius: 20px;
       cursor: pointer;
       transition: all 0.3s ease;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
     }
     
     .nav-button:hover {
       background: rgba(255,215,0,0.3);
       border-color: var(--accent);
-      transform: translateY(-3px);
+      transform: translateY(-2px);
     }
     
     /* CONTROL DE MÚSICA */
     .music-control {
       position: fixed;
-      top: 20px;
-      right: 20px;
+      top: 15px;
+      right: 15px;
       z-index: 1000;
       background: rgba(0,0,0,0.5);
       backdrop-filter: blur(10px);
       border-radius: 50%;
-      width: 50px;
-      height: 50px;
+      width: 45px;
+      height: 45px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -829,40 +712,14 @@
     }
     
     .music-icon {
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       color: var(--accent);
     }
     
     /* RESPONSIVE MEJORADO */
     @media (max-width: 768px) {
-      .welcome-title {
-        font-size: 3rem;
-      }
-      
-      .subtitle {
-        font-size: 1.5rem;
-      }
-      
-      .cosmic-title {
-        font-size: 2.5rem;
-      }
-      
-      .constellation-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .photo-frame {
-        width: 280px;
-        height: 280px;
-      }
-      
-      .nav-buttons {
-        flex-direction: column;
-        align-items: center;
-      }
-      
-      .writing-card {
-        padding: 25px;
+      .screen {
+        padding: 15px;
       }
       
       .memory-timeline::before {
@@ -878,32 +735,42 @@
         left: -40px !important;
       }
       
-      .final-title {
-        font-size: 2.5rem;
+      .nav-buttons {
+        flex-direction: row;
+        bottom: 10px;
+      }
+      
+      .constellation-grid {
+        grid-template-columns: 1fr;
       }
     }
     
     @media (max-width: 480px) {
-      .welcome-title {
-        font-size: 2.5rem;
-      }
-      
-      .start-button {
-        padding: 15px 30px;
-        font-size: 1.2rem;
+      .screen {
+        padding: 10px;
       }
       
       .photo-frame {
-        width: 250px;
-        height: 250px;
+        height: 280px;
       }
       
-      .final-title {
-        font-size: 2rem;
+      .memory-item {
+        padding: 15px;
       }
       
-      .final-text {
-        font-size: 1.2rem;
+      .message-selector {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .message-button {
+        width: 200px;
+      }
+      
+      .nav-buttons {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 90%;
       }
     }
   </style>
@@ -919,7 +786,7 @@
   </div>
 
   <!-- PANTALLA DE BIENVENIDA -->
-  <div id="welcomeScreen" class="screen welcome-screen active">
+  <div id="welcomeScreen" class="screen active">
     <h1 class="welcome-title">✨ Para Wilmagy ✨</h1>
     <p class="subtitle">Un universo completo contenido en una persona extraordinaria</p>
     <button class="start-button" onclick="showUniverse()">
@@ -928,7 +795,7 @@
   </div>
 
   <!-- PANTALLA DEL UNIVERSO MAGY -->
-  <div id="universeScreen" class="screen universe-screen">
+  <div id="universeScreen" class="screen">
     <div class="stars-background"></div>
     <div class="universe-content">
       <h1 class="cosmic-title">🌌 Génesis de Magy 🌌</h1>
@@ -955,15 +822,13 @@
   </div>
 
   <!-- PANTALLA DE CONSTELACIONES -->
-  <div id="constellationScreen" class="screen constellation-screen">
-    <h1 style="text-align: center; font-size: 3rem; margin-bottom: 40px; color: #ffd700;">
-      ✨ Las Constelaciones de Wilmagy ✨
-    </h1>
+  <div id="constellationScreen" class="screen">
+    <h1 class="constellation-title">✨ Las Constelaciones de Wilmagy ✨</h1>
     
     <div class="constellation-grid">
       <div class="constellation-card">
         <div class="constellation-icon">💪</div>
-        <div class="constellation-title">Constelación de la Fuerza</div>
+        <div class="constellation-card-title">Constelación de la Fuerza</div>
         <div class="constellation-description">
           Como el roble inquebrantable, anclada en tierra que ha sido azotada por el viento. 
           Te paras frente a la tormenta con una entereza que deslumbraría a muchos.
@@ -972,7 +837,7 @@
       
       <div class="constellation-card">
         <div class="constellation-icon">🌸</div>
-        <div class="constellation-title">Constelación de la Sensibilidad</div>
+        <div class="constellation-card-title">Constelación de la Sensibilidad</div>
         <div class="constellation-description">
           Un corazón como pétalo de cristal que capta cada susurro del mundo, 
           cada sombra, cada herida. Tu vulnerabilidad es tu humanidad más pura.
@@ -981,7 +846,7 @@
       
       <div class="constellation-card">
         <div class="constellation-icon">🔥</div>
-        <div class="constellation-title">Constelación de la Sinceridad</div>
+        <div class="constellation-card-title">Constelación de la Sinceridad</div>
         <div class="constellation-description">
           Directa, clara como el mediodía. Tu sinceridad corta cualquier falsedad 
           con la elegancia de una guerrera que no cree portar armadura.
@@ -990,7 +855,7 @@
       
       <div class="constellation-card">
         <div class="constellation-icon">📚</div>
-        <div class="constellation-title">Constelación del Misterio</div>
+        <div class="constellation-card-title">Constelación del Misterio</div>
         <div class="constellation-description">
           Un libro escrito en idioma antiguo y sagrado, con capítulos que prefieres 
           mantener entre paréntesis. Tu silencio elocuente es música para el alma.
@@ -999,7 +864,7 @@
       
       <div class="constellation-card">
         <div class="constellation-icon">🌟</div>
-        <div class="constellation-title">Constelación de la Luz</div>
+        <div class="constellation-card-title">Constelación de la Luz</div>
         <div class="constellation-description">
           La luz que no teme a la oscuridad porque sabe que es en la noche 
           donde las estrellas brillan con más fuerza. Eres luz pura.
@@ -1008,7 +873,7 @@
       
       <div class="constellation-card">
         <div class="constellation-icon">🎨</div>
-        <div class="constellation-title">Constelación del Arte</div>
+        <div class="constellation-card-title">Constelación del Arte</div>
         <div class="constellation-description">
           Una obra de arte compuesta de contrastes. No a pesar de tus contradicciones, 
           sino precisamente por ellas. Eres especial, única, irrepetible.
@@ -1016,15 +881,13 @@
       </div>
     </div>
     
-    <div style="text-align: center;">
-      <button class="next-button" onclick="showPhoto()">
-        📸 Revelar la Esencia Visual 📸
-      </button>
-    </div>
+    <button class="next-button" onclick="showPhoto()">
+      📸 Revelar la Esencia Visual 📸
+    </button>
   </div>
 
   <!-- PANTALLA DE FOTO MÁGICA - PARTE CENTRAL -->
-  <div id="photoScreen" class="screen photo-screen">
+  <div id="photoScreen" class="screen">
     <h1 class="photo-title">✨ La Esencia del Universo ✨</h1>
     
     <div class="magic-photo-container">
@@ -1052,62 +915,15 @@
       </p>
     </div>
     
-    <button class="next-button" onclick="showGallery()">
-      🖼️ Galería de Momentos 🖼️
+    <button class="next-button" onclick="showWritings()">
+      📝 Escritos del Corazón 📝
     </button>
   </div>
 
-  <!-- GALERÍA INTERACTIVA NUEVA -->
-  <div id="galleryScreen" class="screen gallery-screen">
-    <div class="gallery-container">
-      <h1 class="gallery-title">🎨 Galería de Wilmagy 🎨</h1>
-      
-      <div class="gallery-grid">
-        <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
-               alt="Fuerza Interior" class="gallery-image">
-          <div class="gallery-overlay">
-            <div class="gallery-caption">Fuerza que inspira</div>
-          </div>
-        </div>
-        
-        <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1534751516642-a1af1ef26a56?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
-               alt="Sensibilidad Única" class="gallery-image">
-          <div class="gallery-overlay">
-            <div class="gallery-caption">Sensibilidad que conmueve</div>
-          </div>
-        </div>
-        
-        <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
-               alt="Luz Propia" class="gallery-image">
-          <div class="gallery-overlay">
-            <div class="gallery-caption">Luz que guía</div>
-          </div>
-        </div>
-        
-        <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
-               alt="Misterio y Profundidad" class="gallery-image">
-          <div class="gallery-overlay">
-            <div class="gallery-caption">Misterio que atrae</div>
-          </div>
-        </div>
-      </div>
-      
-      <button class="next-button" onclick="showWritings()" style="display: block; margin: 0 auto;">
-        📝 Escritos del Corazón 📝
-      </button>
-    </div>
-  </div>
-
   <!-- PANTALLA DE ESCRITOS -->
-  <div id="writingsScreen" class="screen writings-screen">
+  <div id="writingsScreen" class="screen">
     <div class="writings-container">
-      <h1 style="text-align: center; font-size: 3rem; margin-bottom: 40px; color: #ff6b6b;">
-        📜 Escritos del Alma 📜
-      </h1>
+      <h1 class="writings-title">📜 Escritos del Alma 📜</h1>
       
       <div class="writing-card">
         <div class="writing-title">💝 Mapa del Alma</div>
@@ -1148,14 +964,14 @@ El viaje verdadero, un buen plan:
 no solo llegar... sino quedarme aquí.</div>
       </div>
       
-      <button class="next-button" onclick="showMemories()" style="display: block; margin: 40px auto;">
+      <button class="next-button" onclick="showMemories()">
         🕰️ Línea del Tiempo 🕰️
       </button>
     </div>
   </div>
 
-  <!-- RECUERDOS VIRTUALES - NUEVA SECCIÓN -->
-  <div id="memoriesScreen" class="screen memories-screen">
+  <!-- RECUERDOS VIRTUALES - CORREGIDO A 2 ELEMENTOS -->
+  <div id="memoriesScreen" class="screen">
     <div class="memories-container">
       <h1 class="memories-title">🕰️ Línea del Tiempo Especial</h1>
       
@@ -1169,50 +985,37 @@ no solo llegar... sino quedarme aquí.</div>
           <div class="memory-date">Descubrimiento</div>
           <div class="memory-content">Cada conversación revelaba nuevas capas de tu ser, como deshojando una flor cósmica con pétalos infinitos.</div>
         </div>
-        
-        <div class="memory-item">
-          <div class="memory-date">Admiración</div>
-          <div class="memory-content">Ver tu fuerza frente a la adversidad y tu ternura en los pequeños gestos confirmó lo especial que eres.</div>
-        </div>
-        
-        <div class="memory-item">
-          <div class="memory-date">Gratitud</div>
-          <div class="memory-content">Por cada risa compartida, cada consejo valioso, cada momento que ha enriquecido mi existencia.</div>
-        </div>
       </div>
       
-      <button class="next-button" onclick="showMessages()" style="display: block; margin: 40px auto;">
+      <button class="next-button" onclick="showMessages()">
         💌 Mensajes del Corazón 💌
       </button>
     </div>
   </div>
 
-  <!-- PANTALLA DE MENSAJES INTERACTIVOS -->
-  <div id="messagesScreen" class="screen messages-screen">
-    <h1 style="text-align: center; font-size: 3rem; margin-bottom: 40px; color: #ffd700;">
-      💌 Mensajes Especiales para Ti 💌
-    </h1>
+  <!-- PANTALLA DE MENSAJES INTERACTIVOS - SIN OPCIÓN DE AMOR -->
+  <div id="messagesScreen" class="screen">
+    <h1 class="messages-title">💌 Mensajes Especiales para Ti 💌</h1>
     
     <div class="message-selector">
-      <button class="message-button" onclick="showMessage(1, this)">💪 Fortaleza</button>
-      <button class="message-button" onclick="showMessage(2, this)">🌸 Ternura</button>
-      <button class="message-button" onclick="showMessage(3, this)">🎯 Propósito</button>
-      <button class="message-button" onclick="showMessage(4, this)">✨ Magia</button>
-      <button class="message-button" onclick="showMessage(5, this)">💖 Amor</button>
+      <button class="message-button" onclick="showMessage(0, this)">💪 Fortaleza</button>
+      <button class="message-button" onclick="showMessage(1, this)">🌸 Ternura</button>
+      <button class="message-button" onclick="showMessage(2, this)">🎯 Propósito</button>
+      <button class="message-button" onclick="showMessage(3, this)">✨ Magia</button>
     </div>
     
     <div class="message-display" id="messageDisplay">
-      <div style="font-size: 2rem; margin-bottom: 20px;">🌟</div>
+      <div style="font-size: 2rem; margin-bottom: 15px;">🌟</div>
       <p>Selecciona un mensaje arriba para descubrir algo especial...</p>
     </div>
     
-    <button class="next-button" onclick="showFinal()" style="display: block; margin: 40px auto;">
+    <button class="next-button" onclick="showFinal()">
       🎉 Conclusión Mágica 🎉
     </button>
   </div>
 
   <!-- PANTALLA FINAL -->
-  <div id="finalScreen" class="screen final-screen">
+  <div id="finalScreen" class="screen">
     <div class="final-content">
       <h1 class="final-title">✨ Para Wilmagy ✨</h1>
       
@@ -1237,11 +1040,9 @@ no solo llegar... sino quedarme aquí.</div>
       </div>
     </div>
     
-    <div style="margin-top: 40px;">
-      <button class="start-button" onclick="restartJourney()">
-        🔄 Comenzar de Nuevo 🔄
-      </button>
-    </div>
+    <button class="next-button" onclick="restartJourney()">
+      🔄 Comenzar de Nuevo 🔄
+    </button>
   </div>
 
   <!-- NAVEGACIÓN -->
@@ -1261,8 +1062,8 @@ no solo llegar... sino quedarme aquí.</div>
     // Sistema de navegación mejorado
     const screens = [
       'welcomeScreen', 'universeScreen', 'constellationScreen', 
-      'photoScreen', 'galleryScreen', 'writingsScreen', 
-      'memoriesScreen', 'messagesScreen', 'finalScreen'
+      'photoScreen', 'writingsScreen', 'memoriesScreen', 
+      'messagesScreen', 'finalScreen'
     ];
     let currentScreen = 0;
     let musicPlaying = false;
@@ -1274,20 +1075,14 @@ no solo llegar... sino quedarme aquí.</div>
       setInterval(() => {
         const particle = document.createElement('div');
         particle.classList.add('particle');
-        const particles = ['✨', '🌟', '💫', '⭐', '🌠', '✨', '🔹', '🔸', '💖', '🌸'];
+        const particles = ['✨', '🌟', '💫', '⭐', '🌠'];
         particle.textContent = particles[Math.floor(Math.random() * particles.length)];
         particle.style.left = Math.random() * 100 + 'vw';
         particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
         particle.style.fontSize = (Math.random() * 8 + 8) + 'px';
-        particle.style.color = getRandomColor();
         container.appendChild(particle);
         setTimeout(() => particle.remove(), 6000);
       }, 300);
-    }
-    
-    function getRandomColor() {
-      const colors = ['#ffd700', '#ff6b6b', '#4ecdc4', '#45b7d1', '#f093fb', '#ff9a9e'];
-      return colors[Math.floor(Math.random() * colors.length)];
     }
     
     createCosmicParticles();
@@ -1295,17 +1090,17 @@ no solo llegar... sino quedarme aquí.</div>
     // Crear estrellas en el fondo del universo
     function createStars() {
       const starsContainer = document.querySelector('.stars-background');
-      starsContainer.innerHTML = '';
-      for (let i = 0; i < 150; i++) {
-        const star = document.createElement('div');
-        star.classList.add('star');
-        star.style.left = Math.random() * 100 + '%';
-        star.style.top = Math.random() * 100 + '%';
-        star.style.animationDelay = Math.random() * 4 + 's';
-        star.style.animationDuration = (Math.random() * 3 + 2) + 's';
-        star.style.width = (Math.random() * 3 + 1) + 'px';
-        star.style.height = star.style.width;
-        starsContainer.appendChild(star);
+      if (starsContainer) {
+        starsContainer.innerHTML = '';
+        for (let i = 0; i < 100; i++) {
+          const star = document.createElement('div');
+          star.classList.add('star');
+          star.style.left = Math.random() * 100 + '%';
+          star.style.top = Math.random() * 100 + '%';
+          star.style.animationDelay = Math.random() * 4 + 's';
+          star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+          starsContainer.appendChild(star);
+        }
       }
     }
     
@@ -1336,17 +1131,10 @@ no solo llegar... sino quedarme aquí.</div>
         // Efectos especiales según la pantalla
         if (screenId === 'universeScreen') {
           setTimeout(createStars, 100);
-          createSpecialEffect('🌟');
-        } else if (screenId === 'photoScreen') {
-          createSpecialEffect('💖');
-        } else if (screenId === 'finalScreen') {
-          createSpecialEffect('✨');
-          setTimeout(() => {
-            for (let i = 0; i < 5; i++) {
-              setTimeout(() => createSpecialEffect('🎉'), i * 200);
-            }
-          }, 1000);
         }
+        
+        // Scroll suave hacia la parte superior
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }, 300);
     }
     
@@ -1360,10 +1148,6 @@ no solo llegar... sino quedarme aquí.</div>
     
     function showPhoto() {
       showScreen('photoScreen');
-    }
-    
-    function showGallery() {
-      showScreen('galleryScreen');
     }
     
     function showWritings() {
@@ -1405,7 +1189,7 @@ no solo llegar... sino quedarme aquí.</div>
       goHome();
     }
     
-    // Sistema de mensajes interactivos mejorado
+    // Sistema de mensajes interactivos - SIN OPCIÓN DE AMOR
     const messages = [
       {
         icon: "💪",
@@ -1426,11 +1210,6 @@ no solo llegar... sino quedarme aquí.</div>
         icon: "✨",
         title: "La Magia que Eres",
         content: "Eres la cosmología, el origen del sueño, el universo entero late en tu pequeño centro. La creadora y el mapa, la primera causa, la más bella de todas las constelaciones."
-      },
-      {
-        icon: "💖",
-        title: "Amor y Gratitud",
-        content: "Por cada risa compartida, cada consejo valioso, cada momento que ha enriquecido mi existencia. Eres un regalo del universo que atesoro profundamente."
       }
     ];
     
@@ -1444,43 +1223,22 @@ no solo llegar... sino quedarme aquí.</div>
       const display = document.getElementById('messageDisplay');
       
       display.style.opacity = 0;
-      display.style.transform = 'translateY(20px)';
       
       setTimeout(() => {
         display.innerHTML = `
-          <div style="font-size: 3rem; margin-bottom: 20px; animation: messageAppear 0.8s ease-out;">${message.icon}</div>
-          <h3 style="font-size: 1.8rem; color: #ffd700; margin-bottom: 20px; animation: messageAppear 0.8s ease-out 0.2s both;">${message.title}</h3>
-          <p style="font-size: 1.2rem; line-height: 1.6; animation: messageAppear 0.8s ease-out 0.4s both;">${message.content}</p>
+          <div style="font-size: 2.5rem; margin-bottom: 15px;">${message.icon}</div>
+          <h3 style="font-size: 1.5rem; color: #ffd700; margin-bottom: 15px;">${message.title}</h3>
+          <p style="font-size: 1.1rem; line-height: 1.5;">${message.content}</p>
         `;
         
         display.style.opacity = 1;
-        display.style.transform = 'translateY(0)';
       }, 300);
-    }
-    
-    // Efectos especiales mejorados
-    function createSpecialEffect(emoji) {
-      const container = document.querySelector('.cosmic-particles');
-      for (let i = 0; i < 15; i++) {
-        setTimeout(() => {
-          const particle = document.createElement('div');
-          particle.classList.add('particle');
-          particle.textContent = emoji;
-          particle.style.left = Math.random() * 100 + 'vw';
-          particle.style.fontSize = (Math.random() * 15 + 15) + 'px';
-          particle.style.color = getRandomColor();
-          particle.style.animationDuration = (Math.random() * 2 + 2) + 's';
-          container.appendChild(particle);
-          setTimeout(() => particle.remove(), 5000);
-        }, i * 100);
-      }
     }
     
     // Efectos de interacción adicionales
     document.querySelectorAll('.constellation-card').forEach(card => {
       card.addEventListener('click', () => {
-        card.style.transform = 'rotateY(15deg) translateY(-15px) scale(1.05)';
-        createSpecialEffect('🌟');
+        card.style.transform = 'translateY(-5px) scale(1.02)';
         setTimeout(() => {
           card.style.transform = '';
         }, 300);
@@ -1488,30 +1246,20 @@ no solo llegar... sino quedarme aquí.</div>
     });
     
     // Efecto especial en la foto
-    document.querySelector('.photo-frame')?.addEventListener('click', () => {
-      const frame = document.querySelector('.photo-frame');
-      frame.style.animation = 'none';
-      frame.style.transform = 'scale(1.1) rotate(10deg)';
-      frame.style.boxShadow = '0 0 80px rgba(255,215,0,1)';
-      createSpecialEffect('💫');
-      
-      setTimeout(() => {
-        frame.style.transform = '';
-        frame.style.boxShadow = '0 0 50px rgba(255,215,0,0.6)';
-        frame.style.animation = 'photoFloat 6s ease-in-out infinite';
-      }, 1000);
-    });
-    
-    // Efectos en la galería
-    document.querySelectorAll('.gallery-item').forEach(item => {
-      item.addEventListener('click', () => {
-        item.style.transform = 'scale(1.1)';
-        createSpecialEffect('🌸');
+    const photoFrame = document.querySelector('.photo-frame');
+    if (photoFrame) {
+      photoFrame.addEventListener('click', () => {
+        photoFrame.style.animation = 'none';
+        photoFrame.style.transform = 'scale(1.05) rotate(5deg)';
+        photoFrame.style.boxShadow = '0 0 60px rgba(255,215,0,0.8)';
+        
         setTimeout(() => {
-          item.style.transform = '';
-        }, 500);
+          photoFrame.style.transform = '';
+          photoFrame.style.boxShadow = '0 0 50px rgba(255,215,0,0.6)';
+          photoFrame.style.animation = 'photoFloat 6s ease-in-out infinite';
+        }, 1000);
       });
-    });
+    }
     
     // Inicializar el primer mensaje
     window.addEventListener('load', () => {
@@ -1521,12 +1269,6 @@ no solo llegar... sino quedarme aquí.</div>
           toggleMusic();
         }
       }, 2000);
-      
-      setTimeout(() => {
-        if (document.getElementById('messagesScreen').classList.contains('active')) {
-          showMessage(0, document.querySelector('.message-button'));
-        }
-      }, 100);
     });
     
     // Eventos de teclado para navegación
@@ -1546,13 +1288,8 @@ no solo llegar... sino quedarme aquí.</div>
     const style = document.createElement('style');
     style.textContent = `
       @keyframes messageAppear {
-        0% { opacity: 0; transform: translateY(20px) scale(0.9); }
-        100% { opacity: 1; transform: translateY(0) scale(1); }
-      }
-      
-      @keyframes photoReveal {
-        0% { transform: scale(0) rotate(-180deg); opacity: 0; }
-        100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        0% { opacity: 0; transform: translateY(10px); }
+        100% { opacity: 1; transform: translateY(0); }
       }
     `;
     document.head.appendChild(style);
