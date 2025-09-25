@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>🎂 Sorpresa Especial para Mamá Patricia 🎂</title>
+  <title>✨ Un Universo Llamado Wilmagy ✨</title>
   <style>
     * {
       box-sizing: border-box;
@@ -11,16 +11,34 @@
       padding: 0;
     }
     
+    :root {
+      --primary: #667eea;
+      --secondary: #764ba2;
+      --accent: #ffd700;
+      --text-light: #ffffff;
+      --text-dark: #333333;
+    }
+    
     body {
       font-family: 'Arial', sans-serif;
       margin: 0;
       padding: 0;
-      background: linear-gradient(135deg, #ff9a9e, #fecfef, #fecfef, #fecfef);
+      background: linear-gradient(45deg, var(--primary), var(--secondary), #f093fb, #ff9a9e);
+      background-size: 400% 400%;
+      animation: gradientShift 8s ease infinite;
       min-height: 100vh;
       overflow-x: hidden;
+      scroll-behavior: smooth;
     }
     
-    .sparkles {
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    /* PARTÍCULAS CÓSMICAS MEJORADAS */
+    .cosmic-particles {
       position: fixed;
       top: 0;
       left: 0;
@@ -28,368 +46,199 @@
       height: 100%;
       pointer-events: none;
       z-index: 1;
+      overflow: hidden;
     }
     
-    .sparkle {
+    .particle {
       position: absolute;
-      color: #ffd700;
-      font-size: 16px;
-      animation: twinkle 2s ease-in-out infinite;
+      color: var(--accent);
+      font-size: 12px;
+      animation: float 6s ease-in-out infinite;
+      opacity: 0.8;
+      z-index: 1;
     }
     
-    @keyframes twinkle {
-      0%, 100% { opacity: 0; transform: scale(0); }
-      50% { opacity: 1; transform: scale(1) rotate(180deg); }
+    @keyframes float {
+      0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
     }
     
+    /* SISTEMA DE PANTALLAS MEJORADO */
     .screen {
-      display: none;
       min-height: 100vh;
       padding: 20px;
       position: relative;
       z-index: 2;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+      display: none;
     }
     
-    .active {
+    .screen.active {
+      opacity: 1;
+      transform: translateY(0);
       display: block;
     }
     
-    /* PANTALLA DE INGREDIENTES MÁGICOS */
-    .ingredients-screen {
+    /* PANTALLA DE BIENVENIDA MEJORADA */
+    .welcome-screen {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      background: radial-gradient(circle, #ff6b6b, #4ecdc4, #45b7d1);
-      color: white;
-    }
-    
-    .magic-title {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
-      animation: bounce 2s ease-in-out infinite;
-    }
-    
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-      40% { transform: translateY(-15px); }
-      60% { transform: translateY(-8px); }
-    }
-    
-    .ingredients-instruction {
-      font-size: 1.3rem;
-      margin-bottom: 30px;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-      max-width: 600px;
-    }
-    
-    .ingredients-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 20px;
-      max-width: 600px;
-      width: 100%;
-      margin-bottom: 30px;
-    }
-    
-    .ingredient {
-      background: rgba(255, 255, 255, 0.2);
-      border: 3px solid transparent;
-      border-radius: 20px;
-      padding: 20px 10px;
-      cursor: pointer;
-      transition: all 0.3s ease;
+      background: radial-gradient(circle, rgba(102,126,234,0.9), rgba(118,75,162,0.9));
+      color: var(--text-light);
       backdrop-filter: blur(10px);
-      text-align: center;
     }
     
-    .ingredient:hover {
-      transform: translateY(-10px) scale(1.05);
-      background: rgba(255, 255, 255, 0.3);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    .welcome-title {
+      font-size: 5rem;
+      margin-bottom: 30px;
+      text-shadow: 0 0 30px rgba(255,215,0,0.8);
+      animation: titleGlow 3s ease-in-out infinite alternate;
+      background: linear-gradient(45deg, #ffd700, #ff6b6b, #4ecdc4, #45b7d1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-family: 'Dancing Script', cursive;
     }
     
-    .ingredient.selected {
-      border-color: #ffd700;
-      background: rgba(255, 215, 0, 0.3);
-      transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
+    @keyframes titleGlow {
+      0% { transform: scale(1); text-shadow: 0 0 20px rgba(255,215,0,0.5); }
+      100% { transform: scale(1.05); text-shadow: 0 0 40px rgba(255,215,0,1); }
     }
     
-    .ingredient-icon {
-      font-size: 3rem;
-      display: block;
-      margin-bottom: 10px;
+    .subtitle {
+      font-size: 2rem;
+      margin-bottom: 40px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      opacity: 0;
+      animation: fadeInUp 2s ease forwards 1s;
+      font-family: 'Dancing Script', cursive;
     }
     
-    .ingredient-name {
-      font-size: 1rem;
-      font-weight: bold;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
     
-    .magic-button {
-      background: linear-gradient(145deg, #ffd700, #ffed4e);
-      color: #8b4513;
+    .start-button {
+      background: linear-gradient(145deg, #ff6b6b, #ffa500, #ffd700);
+      color: var(--text-light);
       border: none;
-      padding: 15px 40px;
+      padding: 20px 50px;
       font-size: 1.5rem;
       font-weight: bold;
       border-radius: 50px;
       cursor: pointer;
       transition: all 0.3s ease;
-      box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
-      margin-top: 20px;
+      box-shadow: 0 10px 30px rgba(255,107,107,0.4);
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      opacity: 0;
+      animation: fadeInUp 2s ease forwards 2s;
+      position: relative;
+      overflow: hidden;
     }
     
-    .magic-button:hover {
-      transform: translateY(-5px) scale(1.1);
-      box-shadow: 0 15px 35px rgba(255, 215, 0, 0.6);
+    .start-button:hover {
+      transform: translateY(-10px) scale(1.1);
+      box-shadow: 0 20px 50px rgba(255,107,107,0.6);
     }
     
-    .magic-button:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-      transform: none;
+    .start-button::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: rgba(255,255,255,0.1);
+      transform: rotate(45deg);
+      transition: all 0.5s ease;
     }
     
-    /* PANTALLA DE EXPERIENCIA INTERACTIVA */
-    .experience-screen {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      color: white;
-      text-align: center;
-      padding: 30px 20px;
+    .start-button:hover::after {
+      transform: rotate(45deg) translate(50%, 50%);
     }
     
-    .experience-container {
-      max-width: 800px;
-      width: 100%;
-    }
-    
-    .celebration-title {
-      font-size: 3rem;
-      margin-bottom: 30px;
-      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
-      animation: rainbow 3s ease-in-out infinite;
-    }
-    
-    @keyframes rainbow {
-      0% { color: #ff6b6b; }
-      16% { color: #ffa500; }
-      32% { color: #ffd700; }
-      48% { color: #32cd32; }
-      64% { color: #00bfff; }
-      80% { color: #8a2be2; }
-      100% { color: #ff6b6b; }
-    }
-    
-    .interactive-sections {
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-    }
-    
-    .section {
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 25px;
-      padding: 30px;
-      backdrop-filter: blur(15px);
-      border: 2px solid rgba(255, 255, 255, 0.2);
-    }
-    
-    .section-title {
-      font-size: 1.8rem;
-      margin-bottom: 20px;
-      color: #ffd700;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    }
-    
-    .memory-card {
-      background: linear-gradient(145deg, #ff6b6b, #ff8e8e);
-      color: white;
-      padding: 25px;
-      border-radius: 20px;
-      margin: 15px 0;
-      box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
-    
-    .memory-card:hover {
-      transform: translateY(-5px) scale(1.02);
-      box-shadow: 0 15px 35px rgba(255, 107, 107, 0.5);
-    }
-    
-    .photo-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 15px;
-      margin: 20px 0;
-    }
-    
-    .memory-box {
-      aspect-ratio: 1;
-      background: linear-gradient(145deg, #4ecdc4, #44a08d);
-      border-radius: 15px;
+    /* PANTALLA DEL UNIVERSO MAGY MEJORADA */
+    .universe-screen {
+      background: linear-gradient(180deg, #000428, #004e92);
+      color: var(--text-light);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 6px 20px rgba(78, 205, 196, 0.3);
+      text-align: center;
+      position: relative;
       overflow: hidden;
-      border: 3px solid #fff;
-      padding: 10px;
     }
     
-    .memory-box:hover {
-      transform: rotateY(10deg) translateY(-10px);
-      box-shadow: 0 15px 35px rgba(78, 205, 196, 0.5);
-    }
-    
-    .box-icon {
-      font-size: 3rem;
-      margin-bottom: 10px;
-    }
-    
-    .box-label {
-      font-size: 0.9rem;
-      text-align: center;
-      font-weight: bold;
-    }
-    
-    .memory-photo {
+    .universe-content {
+      max-width: 900px;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 12px;
+      z-index: 10;
+      position: relative;
     }
     
-    .photo-placeholder {
-      font-size: 3rem;
-      color: white;
-    }
-    
-    .wishes-section {
-      background: linear-gradient(145deg, #ff9a9e, #fad0c4);
-    }
-    
-    .wish-card {
-      background: rgba(255, 255, 255, 0.9);
-      color: #333;
-      padding: 20px;
-      border-radius: 15px;
-      margin: 10px 0;
-      font-size: 1.1rem;
-      line-height: 1.6;
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-      border-left: 5px solid #ff6b6b;
-    }
-    
-    .final-message {
-      background: linear-gradient(145deg, #667eea, #764ba2);
-      text-align: center;
-      font-size: 1.2rem;
-      line-height: 1.8;
-      margin-top: 30px;
-    }
-    
-    .signature {
-      font-family: 'Dancing Script', cursive;
-      font-size: 2rem;
-      margin-top: 30px;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    }
-    
-    .restart-btn {
-      background: linear-gradient(145deg, #ff6b6b, #ff5722);
-      color: white;
-      border: none;
-      padding: 15px 30px;
-      font-size: 1.2rem;
-      font-weight: bold;
-      border-radius: 25px;
-      cursor: pointer;
-      margin-top: 40px;
-      transition: all 0.3s ease;
-      box-shadow: 0 8px 20px rgba(255, 107, 107, 0.4);
-    }
-    
-    .restart-btn:hover {
-      transform: translateY(-5px) scale(1.05);
-      box-shadow: 0 15px 30px rgba(255, 107, 107, 0.6);
-    }
-    
-    .cake-animation {
-      position: fixed;
+    .stars-background {
+      position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.9);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-      flex-direction: column;
+      z-index: 1;
     }
     
-    .cake-container {
-      text-align: center;
-      animation: cakeGrow 2s ease-out;
+    .star {
+      position: absolute;
+      background: white;
+      width: 2px;
+      height: 2px;
+      border-radius: 50%;
+      animation: twinkle 4s ease-in-out infinite;
     }
     
-    @keyframes cakeGrow {
-      0% { transform: scale(0); opacity: 0; }
-      50% { transform: scale(1.1); opacity: 0.8; }
-      100% { transform: scale(1); opacity: 1; }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.3; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.5); }
     }
     
-    .cake {
-      font-size: 8rem;
-      margin-bottom: 30px;
-      animation: cakeBounce 1s ease-in-out infinite alternate;
+    .cosmic-title {
+      font-size: 4rem;
+      margin-bottom: 40px;
+      text-shadow: 0 0 30px rgba(255,255,255,0.8);
+      animation: cosmicPulse 4s ease-in-out infinite;
+      font-family: 'Dancing Script', cursive;
     }
     
-    @keyframes cakeBounce {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(-10px); }
+    @keyframes cosmicPulse {
+      0%, 100% { color: #ffffff; }
+      25% { color: #ffd700; }
+      50% { color: #ff6b6b; }
+      75% { color: #4ecdc4; }
     }
     
-    .cake-message {
-      color: #ffd700;
-      font-size: 2.5rem;
-      font-weight: bold;
-      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
-      margin-bottom: 20px;
-      animation: textGlow 2s ease-in-out infinite alternate;
+    .universe-poem {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(15px);
+      border-radius: 20px;
+      padding: 30px;
+      margin: 30px 0;
+      border: 2px solid rgba(255,215,0,0.3);
+      font-size: 1.2rem;
+      line-height: 1.8;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+      font-family: 'Dancing Script', cursive;
     }
     
-    @keyframes textGlow {
-      0% { text-shadow: 0 0 20px #ffd700, 0 0 30px #ffd700, 0 0 40px #ffd700; }
-      100% { text-shadow: 0 0 30px #ffd700, 0 0 40px #ffd700, 0 0 50px #ffd700; }
-    }
-    
-    .candles {
-      font-size: 3rem;
-      margin: 20px 0;
-      animation: candleFlicker 1.5s ease-in-out infinite;
-    }
-    
-    @keyframes candleFlicker {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.7; }
-    }
-    
-    .continue-btn {
-      background: linear-gradient(145deg, #ff6b6b, #ff5722);
-      color: white;
+    .next-button {
+      background: linear-gradient(145deg, #4ecdc4, #44a08d);
+      color: var(--text-light);
       border: none;
       padding: 15px 40px;
       font-size: 1.3rem;
@@ -398,725 +247,1315 @@
       cursor: pointer;
       margin-top: 30px;
       transition: all 0.3s ease;
-      box-shadow: 0 8px 20px rgba(255, 107, 107, 0.4);
-      animation: buttonPulse 2s ease-in-out infinite;
-    }
-    
-    @keyframes buttonPulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-    }
-    
-    .live-cake-title {
-      color: #ffd700;
-      font-size: 2rem;
-      font-weight: bold;
-      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
-      margin-bottom: 30px;
-      animation: titlePulse 1.5s ease-in-out infinite;
-    }
-    
-    @keyframes titlePulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-    }
-    
-    .cake-build-step {
-      margin: 20px 0;
-      text-align: center;
-      animation: stepAppear 0.8s ease-out;
-    }
-    
-    @keyframes stepAppear {
-      0% { transform: translateY(30px) scale(0.5); opacity: 0; }
-      50% { transform: translateY(-5px) scale(1.1); opacity: 0.8; }
-      100% { transform: translateY(0) scale(1); opacity: 1; }
-    }
-    
-    .step-cake {
-      font-size: 4rem;
-      margin-bottom: 15px;
-      animation: stepBounce 0.6s ease-in-out;
-    }
-    
-    @keyframes stepBounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-15px); }
-    }
-    
-    .step-text {
-      color: #fff;
-      font-size: 1.3rem;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-      font-weight: bold;
-    }
-    
-    .cake-builder {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 20px;
-      padding: 20px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-      backdrop-filter: blur(10px);
-      border: 2px solid #ffd700;
-      text-align: center;
-      min-width: 200px;
-      z-index: 100;
-    }
-    
-    .cake-builder h4 {
-      color: #8b4513;
-      margin-bottom: 15px;
-      font-size: 1.1rem;
-    }
-    
-    .cake-layers {
-      display: flex;
-      flex-direction: column-reverse;
-      align-items: center;
-      gap: 5px;
-      margin: 15px 0;
-    }
-    
-    .cake-layer {
-      opacity: 0.3;
-      transition: all 0.5s ease;
-      font-size: 1.5rem;
-    }
-    
-    .cake-layer.active {
-      opacity: 1;
-      animation: layerAppear 0.8s ease-out;
-    }
-    
-    @keyframes layerAppear {
-      0% { transform: translateY(20px) scale(0.8); opacity: 0; }
-      50% { transform: translateY(-5px) scale(1.1); opacity: 0.8; }
-      100% { transform: translateY(0) scale(1); opacity: 1; }
-    }
-    
-    .progress-bar {
-      width: 100%;
-      height: 8px;
-      background: #e0e0e0;
-      border-radius: 4px;
+      box-shadow: 0 8px 25px rgba(78,205,196,0.4);
+      position: relative;
       overflow: hidden;
-      margin-top: 10px;
     }
     
-    .progress-fill {
+    .next-button:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 15px 40px rgba(78,205,196,0.6);
+    }
+    
+    /* GALERÍA DE CONSTELACIONES MEJORADA */
+    .constellation-screen {
+      background: radial-gradient(circle, #1a1a2e, #16213e, #0f4c75);
+      color: var(--text-light);
+      padding: 40px 20px;
+    }
+    
+    .constellation-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto 40px auto;
+    }
+    
+    .constellation-card {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(20px);
+      border-radius: 25px;
+      padding: 30px;
+      border: 2px solid rgba(255,215,0,0.3);
+      transition: all 0.5s ease;
+      cursor: pointer;
+      transform-style: preserve-3d;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .constellation-card:hover {
+      transform: rotateY(10deg) translateY(-10px);
+      box-shadow: 0 20px 50px rgba(255,215,0,0.3);
+      border-color: rgba(255,215,0,0.8);
+    }
+    
+    .constellation-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, #ff6b6b, #ffd700, #4ecdc4);
-      width: 0%;
-      transition: width 0.5s ease;
-      border-radius: 4px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s ease;
     }
     
-    /* Responsive Design Improvements */
-    @media (max-width: 1200px) {
-      .celebration-title {
-        font-size: 2.8rem;
+    .constellation-card:hover::before {
+      left: 100%;
+    }
+    
+    .constellation-icon {
+      font-size: 4rem;
+      text-align: center;
+      margin-bottom: 20px;
+      animation: starPulse 3s ease-in-out infinite;
+    }
+    
+    @keyframes starPulse {
+      0%, 100% { transform: scale(1); filter: brightness(1); }
+      50% { transform: scale(1.1); filter: brightness(1.3); }
+    }
+    
+    .constellation-title {
+      font-size: 1.5rem;
+      color: #ffd700;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    
+    .constellation-description {
+      font-size: 1rem;
+      line-height: 1.6;
+      text-align: center;
+      opacity: 0.9;
+    }
+    
+    /* FOTO MÁGICA MEJORADA - PARTE CENTRAL */
+    .photo-screen {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--text-light);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .magic-photo-container {
+      position: relative;
+      max-width: 400px;
+      margin: 30px 0;
+      perspective: 1000px;
+    }
+    
+    .photo-frame {
+      width: 350px;
+      height: 350px;
+      border-radius: 50%;
+      border: 5px solid var(--accent);
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 0 50px rgba(255,215,0,0.6);
+      animation: photoFloat 6s ease-in-out infinite;
+      transform-style: preserve-3d;
+    }
+    
+    @keyframes photoFloat {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+    }
+    
+    .magic-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(1.1) contrast(1.1);
+      transition: all 0.5s ease;
+    }
+    
+    .photo-frame:hover .magic-photo {
+      filter: brightness(1.3) contrast(1.2) saturate(1.2);
+      transform: scale(1.05);
+    }
+    
+    .photo-sparkles {
+      position: absolute;
+      top: -50px;
+      left: -50px;
+      width: 450px;
+      height: 450px;
+      pointer-events: none;
+    }
+    
+    .photo-sparkle {
+      position: absolute;
+      color: var(--accent);
+      font-size: 20px;
+      animation: sparkleOrbit 8s linear infinite;
+    }
+    
+    @keyframes sparkleOrbit {
+      0% { transform: rotate(0deg) translateX(200px) rotate(0deg); }
+      100% { transform: rotate(360deg) translateX(200px) rotate(-360deg); }
+    }
+    
+    .photo-title {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      text-shadow: 0 0 20px rgba(255,215,0,0.8);
+      animation: titleShimmer 3s ease-in-out infinite;
+      font-family: 'Dancing Script', cursive;
+    }
+    
+    @keyframes titleShimmer {
+      0%, 100% { color: #ffffff; }
+      50% { color: #ffd700; }
+    }
+    
+    .photo-description {
+      font-size: 1.3rem;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+    
+    /* GALERÍA INTERACTIVA NUEVA */
+    .gallery-screen {
+      background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+      padding: 40px 20px;
+      color: var(--text-light);
+    }
+    
+    .gallery-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .gallery-title {
+      text-align: center;
+      font-size: 3rem;
+      margin-bottom: 40px;
+      color: var(--accent);
+      font-family: 'Dancing Script', cursive;
+    }
+    
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+    
+    .gallery-item {
+      position: relative;
+      border-radius: 15px;
+      overflow: hidden;
+      cursor: pointer;
+      height: 200px;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+    
+    .gallery-item:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+    }
+    
+    .gallery-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .gallery-item:hover .gallery-image {
+      transform: scale(1.1);
+    }
+    
+    .gallery-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0,0,0,0.7);
+      padding: 10px;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+    
+    .gallery-item:hover .gallery-overlay {
+      transform: translateY(0);
+    }
+    
+    .gallery-caption {
+      color: var(--text-light);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+    
+    /* ESCRITOS ESPECIALES MEJORADOS */
+    .writings-screen {
+      background: linear-gradient(135deg, #ff9a9e, #fecfef, #fecfef, #fad0c4);
+      padding: 40px 20px;
+      color: var(--text-dark);
+    }
+    
+    .writings-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .writing-card {
+      background: rgba(255,255,255,0.9);
+      border-radius: 25px;
+      padding: 40px;
+      margin: 30px 0;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+      border-left: 5px solid #ff6b6b;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .writing-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+    }
+    
+    .writing-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: linear-gradient(to bottom, #ff6b6b, #4ecdc4);
+      transition: width 0.3s ease;
+    }
+    
+    .writing-card:hover::before {
+      width: 10px;
+    }
+    
+    .writing-title {
+      font-size: 1.8rem;
+      color: #ff6b6b;
+      margin-bottom: 20px;
+      text-align: center;
+      font-family: 'Dancing Script', cursive;
+    }
+    
+    .writing-content {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      text-align: justify;
+      white-space: pre-line;
+    }
+    
+    .poem-card {
+      background: linear-gradient(145deg, rgba(255,107,107,0.1), rgba(78,205,196,0.1));
+      border-left: 5px solid #4ecdc4;
+    }
+    
+    .poem-card .writing-title {
+      color: #4ecdc4;
+    }
+    
+    /* MENSAJES INTERACTIVOS MEJORADOS */
+    .messages-screen {
+      background: linear-gradient(45deg, #667eea, #764ba2);
+      color: var(--text-light);
+      padding: 40px 20px;
+    }
+    
+    .message-selector {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+    
+    .message-button {
+      background: rgba(255,255,255,0.2);
+      border: 2px solid rgba(255,215,0,0.5);
+      color: var(--text-light);
+      padding: 15px 25px;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+      backdrop-filter: blur(10px);
+    }
+    
+    .message-button:hover, .message-button.active {
+      background: rgba(255,215,0,0.3);
+      border-color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(255,215,0,0.3);
+    }
+    
+    .message-display {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      padding: 30px;
+      min-height: 200px;
+      text-align: center;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      border: 2px solid rgba(255,215,0,0.3);
+      transition: all 0.5s ease;
+    }
+    
+    /* RECUERDOS VIRTUALES - NUEVA SECCIÓN */
+    .memories-screen {
+      background: linear-gradient(135deg, #8e2de2, #4a00e0);
+      padding: 40px 20px;
+      color: var(--text-light);
+    }
+    
+    .memories-container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    .memories-title {
+      text-align: center;
+      font-size: 3rem;
+      margin-bottom: 40px;
+      color: var(--accent);
+      font-family: 'Dancing Script', cursive;
+    }
+    
+    .memory-timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .memory-timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: var(--accent);
+      transform: translateX(-50%);
+    }
+    
+    .memory-item {
+      position: relative;
+      margin-bottom: 50px;
+      width: 45%;
+      padding: 20px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+    }
+    
+    .memory-item:nth-child(odd) {
+      left: 0;
+    }
+    
+    .memory-item:nth-child(even) {
+      left: 55%;
+    }
+    
+    .memory-item::before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 10px var(--accent);
+    }
+    
+    .memory-item:nth-child(odd)::before {
+      right: -50px;
+    }
+    
+    .memory-item:nth-child(even)::before {
+      left: -50px;
+    }
+    
+    .memory-date {
+      font-size: 1.2rem;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    
+    .memory-content {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    
+    /* PANTALLA FINAL MEJORADA */
+    .final-screen {
+      background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #ff9a9e);
+      background-size: 400% 400%;
+      animation: gradientShift 8s ease infinite;
+      color: var(--text-light);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .final-content {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(20px);
+      border-radius: 25px;
+      padding: 40px;
+      max-width: 800px;
+      margin: 20px;
+      border: 2px solid rgba(255,215,0,0.5);
+      position: relative;
+      z-index: 10;
+    }
+    
+    .final-title {
+      font-size: 4rem;
+      margin-bottom: 30px;
+      text-shadow: 0 0 30px rgba(255,215,0,0.8);
+      animation: finalGlow 3s ease-in-out infinite;
+      font-family: 'Dancing Script', cursive;
+    }
+    
+    @keyframes finalGlow {
+      0%, 100% { 
+        transform: scale(1); 
+        text-shadow: 0 0 30px rgba(255,215,0,0.8), 0 0 60px rgba(255,107,107,0.4); 
+      }
+      50% { 
+        transform: scale(1.05); 
+        text-shadow: 0 0 50px rgba(255,215,0,1), 0 0 80px rgba(255,107,107,0.6), 0 0 100px rgba(78,205,196,0.4); 
       }
     }
     
-    @media (max-width: 992px) {
-      .celebration-title {
-        font-size: 2.5rem;
-      }
-      
-      .magic-title {
-        font-size: 2.2rem;
-      }
-      
-      .ingredients-instruction {
-        font-size: 1.2rem;
-        padding: 0 15px;
-      }
+    .final-text {
+      font-size: 1.5rem;
+      line-height: 1.8;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      margin-bottom: 20px;
     }
     
+    .final-highlight {
+      font-size: 1.8rem;
+      margin: 30px 0;
+      color: var(--accent);
+      text-shadow: 0 0 20px rgba(255,215,0,0.8);
+    }
+    
+    .final-signature {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.5rem;
+      margin-top: 40px;
+      animation: heartbeat 2s ease-in-out infinite;
+    }
+    
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    
+    /* NAVEGACIÓN MEJORADA */
+    .nav-buttons {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 15px;
+      z-index: 1000;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(10px);
+      padding: 10px 20px;
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    
+    .nav-button {
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255,215,0,0.5);
+      color: var(--text-light);
+      padding: 10px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+    
+    .nav-button:hover {
+      background: rgba(255,215,0,0.3);
+      border-color: var(--accent);
+      transform: translateY(-3px);
+    }
+    
+    /* CONTROL DE MÚSICA */
+    .music-control {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(10px);
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: 2px solid rgba(255,215,0,0.5);
+      transition: all 0.3s ease;
+    }
+    
+    .music-control:hover {
+      transform: scale(1.1);
+      border-color: var(--accent);
+    }
+    
+    .music-icon {
+      font-size: 1.5rem;
+      color: var(--accent);
+    }
+    
+    /* RESPONSIVE MEJORADO */
     @media (max-width: 768px) {
-      .magic-title {
-        font-size: 2rem;
+      .welcome-title {
+        font-size: 3rem;
       }
       
-      .celebration-title {
-        font-size: 2.2rem;
+      .subtitle {
+        font-size: 1.5rem;
       }
       
-      .ingredients-grid {
-        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-        gap: 15px;
-      }
-      
-      .ingredient {
-        padding: 15px 8px;
-      }
-      
-      .ingredient-icon {
+      .cosmic-title {
         font-size: 2.5rem;
       }
       
-      .section {
-        padding: 20px;
-      }
-      
-      .experience-screen {
-        padding: 20px 15px;
-      }
-      
-      .cake {
-        font-size: 5rem;
-      }
-      
-      .cake-message {
-        font-size: 1.8rem;
-      }
-      
-      .candles {
-        font-size: 2rem;
-      }
-      
-      .cake-builder {
-        bottom: 10px;
-        right: 10px;
-        padding: 15px;
-        min-width: 170px;
-      }
-      
-      .memory-card {
-        padding: 20px;
-      }
-      
-      .photo-gallery {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    
-    @media (max-width: 576px) {
-      .magic-title {
-        font-size: 1.8rem;
-      }
-      
-      .celebration-title {
-        font-size: 1.8rem;
-      }
-      
-      .ingredients-instruction {
-        font-size: 1.1rem;
-      }
-      
-      .ingredients-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      
-      .section-title {
-        font-size: 1.5rem;
-      }
-      
-      .wish-card {
-        font-size: 1rem;
-        padding: 15px;
-      }
-      
-      .signature {
-        font-size: 1.5rem;
-      }
-      
-      .cake {
-        font-size: 4rem;
-      }
-      
-      .cake-message {
-        font-size: 1.5rem;
-      }
-      
-      .cake-builder {
-        position: relative;
-        bottom: unset;
-        right: unset;
-        margin: 20px auto;
-        width: 100%;
-        max-width: 300px;
-      }
-      
-      .magic-button {
-        padding: 12px 30px;
-        font-size: 1.3rem;
-      }
-      
-      .photo-gallery {
+      .constellation-grid {
         grid-template-columns: 1fr;
       }
       
-      .memory-box {
-        max-width: 200px;
-        margin: 0 auto;
+      .photo-frame {
+        width: 280px;
+        height: 280px;
+      }
+      
+      .nav-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .writing-card {
+        padding: 25px;
+      }
+      
+      .memory-timeline::before {
+        left: 20px;
+      }
+      
+      .memory-item {
+        width: calc(100% - 50px);
+        left: 50px !important;
+      }
+      
+      .memory-item::before {
+        left: -40px !important;
+      }
+      
+      .final-title {
+        font-size: 2.5rem;
       }
     }
     
-    @media (max-width: 400px) {
-      .magic-title {
-        font-size: 1.6rem;
+    @media (max-width: 480px) {
+      .welcome-title {
+        font-size: 2.5rem;
       }
       
-      .celebration-title {
-        font-size: 1.6rem;
+      .start-button {
+        padding: 15px 30px;
+        font-size: 1.2rem;
       }
       
-      .ingredients-instruction {
-        font-size: 1rem;
+      .photo-frame {
+        width: 250px;
+        height: 250px;
       }
       
-      .ingredient {
-        padding: 12px 5px;
-      }
-      
-      .ingredient-icon {
+      .final-title {
         font-size: 2rem;
       }
       
-      .ingredient-name {
-        font-size: 0.9rem;
-      }
-      
-      .magic-button {
-        padding: 10px 25px;
+      .final-text {
         font-size: 1.2rem;
       }
     }
   </style>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="sparkles"></div>
+  <!-- PARTÍCULAS CÓSMICAS -->
+  <div class="cosmic-particles"></div>
 
-<!-- CONSTRUCTOR DEL PASTEL -->
-<div id="cakeBuilder" class="cake-builder" style="display: none;">
-  <h4>🍰 Construyendo tu pastel</h4>
-  <div class="cake-layers">
-    <div class="cake-layer" id="layer8">🕯️ Velas</div>
-    <div class="cake-layer" id="layer7">🌟 Bendiciones</div>
-    <div class="cake-layer" id="layer6">✨ Magia</div>
-    <div class="cake-layer" id="layer5">🦉 Sabiduría</div>
-    <div class="cake-layer" id="layer4">🙏 Gratitud</div>
-    <div class="cake-layer" id="layer3">💪 Fuerza</div>
-    <div class="cake-layer" id="layer2">😊 Alegría</div>
-    <div class="cake-layer" id="layer1">🍯 Dulzura</div>
-    <div class="cake-layer active" id="layer0">❤️ Base de Amor</div>
+  <!-- CONTROL DE MÚSICA -->
+  <div class="music-control" id="musicControl">
+    <div class="music-icon">🎵</div>
   </div>
-  <div class="progress-bar">
-    <div class="progress-fill" id="progressFill"></div>
-  </div>
-</div>
 
-<!-- ANIMACIÓN DEL PASTEL -->
-<div id="cakeAnimation" class="cake-animation">
-  <div class="cake-container">
-    <div class="cake">🎂</div>
-    <div class="candles">🕯️ 🕯️ 🕯️ 🕯️ 🕯️</div>
-    <div class="cake-message">¡Feliz Cumpleaños<br>Mamá Patricia!</div>
-    <button class="continue-btn" onclick="showExperience()">
-      ✨ ¡Ver la Sorpresa! ✨
+  <!-- PANTALLA DE BIENVENIDA -->
+  <div id="welcomeScreen" class="screen welcome-screen active">
+    <h1 class="welcome-title">✨ Para Wilmagy ✨</h1>
+    <p class="subtitle">Un universo completo contenido en una persona extraordinaria</p>
+    <button class="start-button" onclick="showUniverse()">
+      🌟 Comenzar el Viaje Cósmico 🌟
     </button>
   </div>
-</div>
 
-<!-- PANTALLA 1: INGREDIENTES MÁGICOS -->
-<div id="ingredientsScreen" class="screen ingredients-screen active">
-  <h1 class="magic-title">🧙‍♀️ ¡INGREDIENTES MÁGICOS! ✨</h1>
-  <p class="ingredients-instruction">
-    Para preparar el pastel perfecto para Mamá Patricia, necesitas recolectar TODOS los ingredientes mágicos. 
-    ¡No olvides ninguno! 🎯
-  </p>
-  
-  <div class="ingredients-grid">
-    <div class="ingredient" data-ingredient="amor" onclick="selectIngredient(this)">
-      <span class="ingredient-icon">❤️</span>
-      <span class="ingredient-name">Amor</span>
-    </div>
-    <div class="ingredient" data-ingredient="dulzura" onclick="selectIngredient(this)">
-      <span class="ingredient-icon">🍯</span>
-      <span class="ingredient-name">Dulzura</span>
-    </div>
-    <div class="ingredient" data-ingredient="alegria" onclick="selectIngredient(this)">
-      <span class="ingredient-icon">😊</span>
-      <span class="ingredient-name">Alegría</span>
-    </div>
-    <div class="ingredient" data-ingredient="fuerza" onclick="selectIngredient(this)">
-      <span class="ingredient-icon">💪</span>
-      <span class="ingredient-name">Fuerza</span>
-    </div>
-    <div class="ingredient" data-ingredient="gratitud" onclick="selectIngredient(this)">
-      <span class="ingredient-icon">🙏</span>
-      <span class="ingredient-name">Gratitud</span>
-    </div>
-    <div class="ingredient" data-ingredient="sabiduria" onclick="selectIngredient(this)">
-      <span class="ingredient-icon">🦉</span>
-      <span class="ingredient-name">Sabiduría</span>
-    </div>
-    <div class="ingredient" data-ingredient="magia" onclick="selectIngredient(this)">
-      <span class="ingredient-icon">✨</span>
-      <span class="ingredient-name">Magia</span>
-    </div>
-    <div class="ingredient" data-ingredient="bendiciones" onclick="selectIngredient(this)">
-      <span class="ingredient-icon">🌟</span>
-      <span class="ingredient-name">Bendiciones</span>
+  <!-- PANTALLA DEL UNIVERSO MAGY -->
+  <div id="universeScreen" class="screen universe-screen">
+    <div class="stars-background"></div>
+    <div class="universe-content">
+      <h1 class="cosmic-title">🌌 Génesis de Magy 🌌</h1>
+      <div class="universe-poem">
+        Antes del tiempo, antes del verbo primero,<br>
+        solo existía el eco de tu nombre verdadero.<br>
+        "Wilmagy", susurró la nada, y al pronunciar su hechizo,<br>
+        un big bang de pecas doradas inició un destello.<br><br>
+        
+        Cada peca, una chispa, un sol recién nacido,<br>
+        en la piel morena del cosmos, su fuego ha encendido.<br>
+        Tu cabello rojizo se expandió en la distancia,<br>
+        formando nebulosas de ardiente elegancia.<br><br>
+        
+        Tu risa fue la fuerza que juntó los planetas,<br>
+        y el ritmo de tu paso ordenó los cometas.<br>
+        Las constelaciones, que los astrónomos admiran,<br>
+        son solo el reflejo de las estrellas que en tus ojos miran.
+      </div>
+      <button class="next-button" onclick="showConstellation()">
+        🌟 Explorar las Constelaciones 🌟
+      </button>
     </div>
   </div>
-  
-  <button id="magicButton" class="magic-button" onclick="createMagic()" disabled>
-    🎂 ¡HORNEAR EL PASTEL! 🎂
-  </button>
-  
-  <p style="margin-top: 15px; font-size: 1rem; opacity: 0.8;">
-    <span id="selectedCount">0</span>/8 ingredientes recolectados
-  </p>
-</div>
 
-<!-- PANTALLA 2: EXPERIENCIA INTERACTIVA -->
-<div id="experienceScreen" class="screen experience-screen">
-  <div class="experience-container">
-    <h1 class="celebration-title">🎉 ¡FELIZ CUMPLEAÑOS MAMÁ PATRICIA! 🎂</h1>
+  <!-- PANTALLA DE CONSTELACIONES -->
+  <div id="constellationScreen" class="screen constellation-screen">
+    <h1 style="text-align: center; font-size: 3rem; margin-bottom: 40px; color: #ffd700;">
+      ✨ Las Constelaciones de Wilmagy ✨
+    </h1>
     
-    <div class="interactive-sections">
-      <!-- Sección de Recuerdos Especiales -->
-      <div class="section">
-        <h2 class="section-title">📸 Recuerdos Especiales</h2>
-        <div class="memory-card">
-          <h3>💝 Tu Fortaleza Increíble</h3>
-          <p>Solo pasaba a recordarte en tu día lo increíblemente fuerte que eres. La vida tiene sus momentos, pero tú tienes el temple para reinar el mundo. Nunca lo olvides.</p>
+    <div class="constellation-grid">
+      <div class="constellation-card">
+        <div class="constellation-icon">💪</div>
+        <div class="constellation-title">Constelación de la Fuerza</div>
+        <div class="constellation-description">
+          Como el roble inquebrantable, anclada en tierra que ha sido azotada por el viento. 
+          Te paras frente a la tormenta con una entereza que deslumbraría a muchos.
+        </div>
+      </div>
+      
+      <div class="constellation-card">
+        <div class="constellation-icon">🌸</div>
+        <div class="constellation-title">Constelación de la Sensibilidad</div>
+        <div class="constellation-description">
+          Un corazón como pétalo de cristal que capta cada susurro del mundo, 
+          cada sombra, cada herida. Tu vulnerabilidad es tu humanidad más pura.
+        </div>
+      </div>
+      
+      <div class="constellation-card">
+        <div class="constellation-icon">🔥</div>
+        <div class="constellation-title">Constelación de la Sinceridad</div>
+        <div class="constellation-description">
+          Directa, clara como el mediodía. Tu sinceridad corta cualquier falsedad 
+          con la elegancia de una guerrera que no cree portar armadura.
+        </div>
+      </div>
+      
+      <div class="constellation-card">
+        <div class="constellation-icon">📚</div>
+        <div class="constellation-title">Constelación del Misterio</div>
+        <div class="constellation-description">
+          Un libro escrito en idioma antiguo y sagrado, con capítulos que prefieres 
+          mantener entre paréntesis. Tu silencio elocuente es música para el alma.
+        </div>
+      </div>
+      
+      <div class="constellation-card">
+        <div class="constellation-icon">🌟</div>
+        <div class="constellation-title">Constelación de la Luz</div>
+        <div class="constellation-description">
+          La luz que no teme a la oscuridad porque sabe que es en la noche 
+          donde las estrellas brillan con más fuerza. Eres luz pura.
+        </div>
+      </div>
+      
+      <div class="constellation-card">
+        <div class="constellation-icon">🎨</div>
+        <div class="constellation-title">Constelación del Arte</div>
+        <div class="constellation-description">
+          Una obra de arte compuesta de contrastes. No a pesar de tus contradicciones, 
+          sino precisamente por ellas. Eres especial, única, irrepetible.
+        </div>
+      </div>
+    </div>
+    
+    <div style="text-align: center;">
+      <button class="next-button" onclick="showPhoto()">
+        📸 Revelar la Esencia Visual 📸
+      </button>
+    </div>
+  </div>
+
+  <!-- PANTALLA DE FOTO MÁGICA - PARTE CENTRAL -->
+  <div id="photoScreen" class="screen photo-screen">
+    <h1 class="photo-title">✨ La Esencia del Universo ✨</h1>
+    
+    <div class="magic-photo-container">
+      <div class="photo-frame">
+        <!-- REEMPLAZA ESTA URL CON LA FOTO REAL DE WILMAGY -->
+        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
+             alt="Wilmagy - La Esencia del Universo" 
+             class="magic-photo">
+        <div class="photo-sparkles">
+          <div class="photo-sparkle" style="animation-delay: 0s;">✨</div>
+          <div class="photo-sparkle" style="animation-delay: 1s;">🌟</div>
+          <div class="photo-sparkle" style="animation-delay: 2s;">💫</div>
+          <div class="photo-sparkle" style="animation-delay: 3s;">⭐</div>
+          <div class="photo-sparkle" style="animation-delay: 4s;">🌠</div>
+          <div class="photo-sparkle" style="animation-delay: 5s;">✨</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="photo-description">
+      <p>
+        En cada rasgo, en cada expresión, se revela la complejidad y belleza del cosmos. 
+        Eres la creadora y el mapa, la primera causa, la más bella de todas las constelaciones.
+        En tu rostro, el universo encuentra su razón de ser.
+      </p>
+    </div>
+    
+    <button class="next-button" onclick="showGallery()">
+      🖼️ Galería de Momentos 🖼️
+    </button>
+  </div>
+
+  <!-- GALERÍA INTERACTIVA NUEVA -->
+  <div id="galleryScreen" class="screen gallery-screen">
+    <div class="gallery-container">
+      <h1 class="gallery-title">🎨 Galería de Wilmagy 🎨</h1>
+      
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
+               alt="Fuerza Interior" class="gallery-image">
+          <div class="gallery-overlay">
+            <div class="gallery-caption">Fuerza que inspira</div>
+          </div>
         </div>
         
-        <div class="photo-gallery">
-          <div class="memory-box" onclick="showPhotoInBox(1, this)">
-            <div class="box-icon">👩</div>
-            <div class="box-label">Foto de Mamá</div>
-            <div class="box-content" style="display: none;">
-              <img src="https://lh3.googleusercontent.com/pw/AP1GczPhZzV51Q2dUHZT-0mpOGu-6WvwTP5Jo_F7a5ns77KbrYBJn02IbAhz83D0uPKe4G4gB_ZUwVl2g-znNziq4kQNV7bV34wqoHOHm68IG_r8sgykolnzKwL8G5yy9P_N9Oi1HHFzXrnG5dDG4m2AqpzMMA=w476-h928-s-no-gm" alt="Foto de Mamá Patricia" class="memory-photo">
-            </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1534751516642-a1af1ef26a56?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
+               alt="Sensibilidad Única" class="gallery-image">
+          <div class="gallery-overlay">
+            <div class="gallery-caption">Sensibilidad que conmueve</div>
           </div>
-          <div class="memory-box" onclick="showPhotoInBox(2, this)">
-            <div class="box-icon">🎮</div>
-            <div class="box-label">Recuerdos de Juego</div>
-            <div class="box-content" style="display: none;">
-              <img src="https://lh3.googleusercontent.com/pw/AP1GczM2OGm4cgKsPNnUwET7tITQdRwDSYU79OCcPSi17PHQElFnwu0hILGD6XEoXkFb0bmk0KjY35XozoQTnJnBufdavbgxdpZv148WNTLVNAKVa5fqwk_iUix40Sb8Zro7hAUxOkdfIYytB4sFuWMod9pwVg=w928-h928-s-no-gm" alt="Recuerdos de juego" class="memory-photo">
-            </div>
+        </div>
+        
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
+               alt="Luz Propia" class="gallery-image">
+          <div class="gallery-overlay">
+            <div class="gallery-caption">Luz que guía</div>
           </div>
-          <div class="memory-box" onclick="showPhotoInBox(3, this)">
-            <div class="box-icon">🌸</div>
-            <div class="box-label">Especial</div>
-            <div class="box-content" style="display: none;">
-              <img src="https://i.pinimg.com/originals/cf/ea/5c/cfea5c3e7c914b2bd3d392a3df0bac00.jpg" alt="Flores hermosas" class="memory-photo">
-            </div>
+        </div>
+        
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
+               alt="Misterio y Profundidad" class="gallery-image">
+          <div class="gallery-overlay">
+            <div class="gallery-caption">Misterio que atrae</div>
           </div>
         </div>
       </div>
       
-      <!-- Sección de Buenos Deseos -->
-      <div class="section wishes-section">
-        <h2 class="section-title">🌈 Buenos Deseos para Ti</h2>
-        <div class="wish-card">
-          <strong>🙏 Para tu nuevo año:</strong><br>
-          Espero que hoy estés rodeada de mucho amor y alegría. Te deseo un año lleno de salud, estabilidad y bendiciones. Que Dios te cuide siempre.
+      <button class="next-button" onclick="showWritings()" style="display: block; margin: 0 auto;">
+        📝 Escritos del Corazón 📝
+      </button>
+    </div>
+  </div>
+
+  <!-- PANTALLA DE ESCRITOS -->
+  <div id="writingsScreen" class="screen writings-screen">
+    <div class="writings-container">
+      <h1 style="text-align: center; font-size: 3rem; margin-bottom: 40px; color: #ff6b6b;">
+        📜 Escritos del Alma 📜
+      </h1>
+      
+      <div class="writing-card">
+        <div class="writing-title">💝 Mapa del Alma</div>
+        <div class="writing-content">Magy, si las palabras tuvieran la textura del alma, tejería para ti un mapa de todo lo que eres. No es un halago, es una verdad que resuena en mi pecho cada vez que cruzas mi pensamiento.
+
+Hay una fuerza en ti que es como el roble, fuerte e inquebrantable, anclada en una tierra que ha sido azotada por el viento. Te paras frente a la tormenta con una entereza que a muchos deslumbraría, pero que tú, en tu humildad, no logras ver. Esa es la primera de tus muchas paradojas: la de una guerrera que no cree portar armadura.
+
+Y sin embargo, bajo esa fortaleza, late el corazón más sensible y delicado que he conocido. Es como un pétalo de cristal que capta cada susurro del mundo, cada sombra, cada herida pasada que se niega a cerrar. Esa debilidad que a veces maldices, esa vulnerabilidad que intentas ocultar tras un silencio elocuente o una sonrisa pronta, es precisamente lo que te hace valiosa.
+
+Por eso te digo, con la certeza que da el haber mirado más allá de la superficie: eres increíble. Una obra de arte compuesta de contrastes. La luz que no teme a la oscuridad porque sabe que es en la noche donde las estrellas brillan con más fuerza.</div>
+      </div>
+      
+      <div class="writing-card poem-card">
+        <div class="writing-title">🚀 Huella en el Mar de la Tranquilidad</div>
+        <div class="writing-content">Al igual que Armstrong llegó a la luna,
+y pisó su polvo gris con paso firme,
+un nuevo viaje planea mi fortuna:
+llegar al mar de ti, que late y gira.
+
+No busco conquistarte, ni dejar bandera,
+mi ambición no es de gloria o de historia fría;
+mi nave es de suspiros, y mi carrera
+un impulso constante de poesía hoy día.
+
+Él halló un desolado Mar de la Tranquilidad,
+yo busco el océano de tu corazón,
+donde la vida estalla en su totalidad
+y el amor no es un frío fragmento de canción.
+
+Porque tu corazón no es un simple astro, es un sistema completo,
+con mareas de risa y tormentas de alegría sincera.
+Pisar su orilla es un noble reto,
+y habitarlo, la gloria eterna.
+
+Así como aquel paso fue "un pequeño paso para un hombre",
+llegar a Wilmagy, es el universo para mí.
+El viaje verdadero, un buen plan:
+no solo llegar... sino quedarme aquí.</div>
+      </div>
+      
+      <button class="next-button" onclick="showMemories()" style="display: block; margin: 40px auto;">
+        🕰️ Línea del Tiempo 🕰️
+      </button>
+    </div>
+  </div>
+
+  <!-- RECUERDOS VIRTUALES - NUEVA SECCIÓN -->
+  <div id="memoriesScreen" class="screen memories-screen">
+    <div class="memories-container">
+      <h1 class="memories-title">🕰️ Línea del Tiempo Especial</h1>
+      
+      <div class="memory-timeline">
+        <div class="memory-item">
+          <div class="memory-date">Primer Recuerdo</div>
+          <div class="memory-content">El momento en que el universo conspiró para que nuestros caminos se cruzaran, y supe que había encontrado a alguien extraordinario.</div>
         </div>
         
-        <div class="wish-card">
-          <strong>💖 Mi Gratitud Infinita:</strong><br>
-          Y sobre todo, quería darte las gracias. Gracias por tus consejos, por tu apoyo y por ser esa figura tan especial en mi vida. Eres como una mamá para mí y te aprecio más de lo que las palabras pueden expresar.
+        <div class="memory-item">
+          <div class="memory-date">Descubrimiento</div>
+          <div class="memory-content">Cada conversación revelaba nuevas capas de tu ser, como deshojando una flor cósmica con pétalos infinitos.</div>
+        </div>
+        
+        <div class="memory-item">
+          <div class="memory-date">Admiración</div>
+          <div class="memory-content">Ver tu fuerza frente a la adversidad y tu ternura en los pequeños gestos confirmó lo especial que eres.</div>
+        </div>
+        
+        <div class="memory-item">
+          <div class="memory-date">Gratitud</div>
+          <div class="memory-content">Por cada risa compartida, cada consejo valioso, cada momento que ha enriquecido mi existencia.</div>
         </div>
       </div>
       
-      <!-- Mensaje Final -->
-      <div class="section final-message">
-        <h2 class="section-title">💌 Mensaje del Corazón</h2>
-        <p>
-          ¡Feliz cumpleaños!<br><br>
-          Te quiero, disfruta mucho tu día mami Martha. 🥳
-        </p>
-        
-        <div class="signature">
-          Con todo mi cariño,<br>
-          Tu hijito Anthon ❤️
-        </div>
+      <button class="next-button" onclick="showMessages()" style="display: block; margin: 40px auto;">
+        💌 Mensajes del Corazón 💌
+      </button>
+    </div>
+  </div>
+
+  <!-- PANTALLA DE MENSAJES INTERACTIVOS -->
+  <div id="messagesScreen" class="screen messages-screen">
+    <h1 style="text-align: center; font-size: 3rem; margin-bottom: 40px; color: #ffd700;">
+      💌 Mensajes Especiales para Ti 💌
+    </h1>
+    
+    <div class="message-selector">
+      <button class="message-button" onclick="showMessage(1, this)">💪 Fortaleza</button>
+      <button class="message-button" onclick="showMessage(2, this)">🌸 Ternura</button>
+      <button class="message-button" onclick="showMessage(3, this)">🎯 Propósito</button>
+      <button class="message-button" onclick="showMessage(4, this)">✨ Magia</button>
+      <button class="message-button" onclick="showMessage(5, this)">💖 Amor</button>
+    </div>
+    
+    <div class="message-display" id="messageDisplay">
+      <div style="font-size: 2rem; margin-bottom: 20px;">🌟</div>
+      <p>Selecciona un mensaje arriba para descubrir algo especial...</p>
+    </div>
+    
+    <button class="next-button" onclick="showFinal()" style="display: block; margin: 40px auto;">
+      🎉 Conclusión Mágica 🎉
+    </button>
+  </div>
+
+  <!-- PANTALLA FINAL -->
+  <div id="finalScreen" class="screen final-screen">
+    <div class="final-content">
+      <h1 class="final-title">✨ Para Wilmagy ✨</h1>
+      
+      <p class="final-text">
+        No permitas que los fantasmas de ayer nublen el sol de tu hoy. 
+        Llora si es necesario, pero deja que tus lágrimas rieguen la semilla de tu propia resiliencia. 
+        Ríe con todo tu cuerpo, que tu alegría sea un himno que derrumbe cualquier muralla.
+      </p>
+      
+      <p class="final-highlight">
+        <strong>Espera todo, exige todo, mereces el universo y sus constelaciones.</strong>
+      </p>
+      
+      <p class="final-text">
+        Porque al final, todo esto se resume en una verdad simple y profunda que repito no por costumbre, sino por convicción:
+        Eres especial. No a pesar de tus contradicciones, sino precisamente por ellas.
+      </p>
+      
+      <div class="final-signature">
+        Con amor infinito 💖<br>
+        <span style="color: #ff6b6b;">Tu amigo del alma</span>
       </div>
     </div>
     
-    <button class="restart-btn" onclick="goBack()">
-      🔄 Volver a Crear Magia
-    </button>
+    <div style="margin-top: 40px;">
+      <button class="start-button" onclick="restartJourney()">
+        🔄 Comenzar de Nuevo 🔄
+      </button>
+    </div>
   </div>
-</div>
 
-<script>
-  // Crear efecto de brillos
-  function crearBrillos() {
-    const sparklesContainer = document.querySelector('.sparkles');
-    setInterval(() => {
-      const sparkle = document.createElement('div');
-      sparkle.classList.add('sparkle');
-      sparkle.textContent = '✨';
-      sparkle.style.left = Math.random() * 100 + 'vw';
-      sparkle.style.top = Math.random() * 100 + 'vh';
-      sparkle.style.animationDelay = Math.random() * 2 + 's';
-      sparklesContainer.appendChild(sparkle);
-      setTimeout(() => { sparkle.remove(); }, 2000);
-    }, 800);
-  }
-  
-  crearBrillos();
-  
-  // Sistema de ingredientes mágicos
-  let selectedIngredients = [];
-  const totalIngredients = 8;
-  const ingredientLayers = ['amor', 'dulzura', 'alegria', 'fuerza', 'gratitud', 'sabiduria', 'magia', 'bendiciones'];
-  
-  function selectIngredient(element) {
-    const ingredient = element.dataset.ingredient;
+  <!-- NAVEGACIÓN -->
+  <div class="nav-buttons">
+    <button class="nav-button" onclick="previousScreen()">← Anterior</button>
+    <button class="nav-button" onclick="nextScreen()">Siguiente →</button>
+    <button class="nav-button" onclick="goHome()">🏠 Inicio</button>
+  </div>
+
+  <!-- AUDIO PARA MÚSICA DE FONDO -->
+  <audio id="backgroundMusic" loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    Tu navegador no soporta el elemento de audio.
+  </audio>
+
+  <script>
+    // Sistema de navegación mejorado
+    const screens = [
+      'welcomeScreen', 'universeScreen', 'constellationScreen', 
+      'photoScreen', 'galleryScreen', 'writingsScreen', 
+      'memoriesScreen', 'messagesScreen', 'finalScreen'
+    ];
+    let currentScreen = 0;
+    let musicPlaying = false;
+    const backgroundMusic = document.getElementById('backgroundMusic');
     
-    if (element.classList.contains('selected')) {
-      // Deseleccionar
-      element.classList.remove('selected');
-      selectedIngredients = selectedIngredients.filter(i => i !== ingredient);
-      hideLayerInCake(ingredient);
-    } else {
-      // Seleccionar
-      element.classList.add('selected');
-      selectedIngredients.push(ingredient);
-      showLayerInCake(ingredient);
+    // Crear partículas cósmicas mejoradas
+    function createCosmicParticles() {
+      const container = document.querySelector('.cosmic-particles');
+      setInterval(() => {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        const particles = ['✨', '🌟', '💫', '⭐', '🌠', '✨', '🔹', '🔸', '💖', '🌸'];
+        particle.textContent = particles[Math.floor(Math.random() * particles.length)];
+        particle.style.left = Math.random() * 100 + 'vw';
+        particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+        particle.style.fontSize = (Math.random() * 8 + 8) + 'px';
+        particle.style.color = getRandomColor();
+        container.appendChild(particle);
+        setTimeout(() => particle.remove(), 6000);
+      }, 300);
     }
     
-    updateUI();
-  }
-  
-  function showLayerInCake(ingredient) {
-    const cakeBuilder = document.getElementById('cakeBuilder');
-    if (selectedIngredients.length === 1) {
-      cakeBuilder.style.display = 'block';
+    function getRandomColor() {
+      const colors = ['#ffd700', '#ff6b6b', '#4ecdc4', '#45b7d1', '#f093fb', '#ff9a9e'];
+      return colors[Math.floor(Math.random() * colors.length)];
     }
     
-    const layerIndex = ingredientLayers.indexOf(ingredient);
-    if (layerIndex !== -1) {
-      const layer = document.getElementById(`layer${layerIndex + 1}`);
-      if (layer) {
-        layer.classList.add('active');
+    createCosmicParticles();
+    
+    // Crear estrellas en el fondo del universo
+    function createStars() {
+      const starsContainer = document.querySelector('.stars-background');
+      starsContainer.innerHTML = '';
+      for (let i = 0; i < 150; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.animationDelay = Math.random() * 4 + 's';
+        star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        star.style.width = (Math.random() * 3 + 1) + 'px';
+        star.style.height = star.style.width;
+        starsContainer.appendChild(star);
       }
     }
     
-    // Actualizar barra de progreso
-    const progressFill = document.getElementById('progressFill');
-    const progress = (selectedIngredients.length / totalIngredients) * 100;
-    progressFill.style.width = progress + '%';
-  }
-  
-  function hideLayerInCake(ingredient) {
-    const layerIndex = ingredientLayers.indexOf(ingredient);
-    if (layerIndex !== -1) {
-      const layer = document.getElementById(`layer${layerIndex + 1}`);
-      if (layer) {
-        layer.classList.remove('active');
+    // Control de música
+    document.getElementById('musicControl').addEventListener('click', toggleMusic);
+    
+    function toggleMusic() {
+      if (musicPlaying) {
+        backgroundMusic.pause();
+        document.querySelector('.music-icon').textContent = '🎵';
+      } else {
+        backgroundMusic.play().catch(e => console.log("Error reproduciendo música: ", e));
+        document.querySelector('.music-icon').textContent = '🔊';
+      }
+      musicPlaying = !musicPlaying;
+    }
+    
+    // Funciones de navegación mejoradas
+    function showScreen(screenId) {
+      document.querySelectorAll('.screen').forEach(s => {
+        s.classList.remove('active');
+      });
+      
+      setTimeout(() => {
+        document.getElementById(screenId).classList.add('active');
+        currentScreen = screens.indexOf(screenId);
+        
+        // Efectos especiales según la pantalla
+        if (screenId === 'universeScreen') {
+          setTimeout(createStars, 100);
+          createSpecialEffect('🌟');
+        } else if (screenId === 'photoScreen') {
+          createSpecialEffect('💖');
+        } else if (screenId === 'finalScreen') {
+          createSpecialEffect('✨');
+          setTimeout(() => {
+            for (let i = 0; i < 5; i++) {
+              setTimeout(() => createSpecialEffect('🎉'), i * 200);
+            }
+          }, 1000);
+        }
+      }, 300);
+    }
+    
+    function showUniverse() {
+      showScreen('universeScreen');
+    }
+    
+    function showConstellation() {
+      showScreen('constellationScreen');
+    }
+    
+    function showPhoto() {
+      showScreen('photoScreen');
+    }
+    
+    function showGallery() {
+      showScreen('galleryScreen');
+    }
+    
+    function showWritings() {
+      showScreen('writingsScreen');
+    }
+    
+    function showMemories() {
+      showScreen('memoriesScreen');
+    }
+    
+    function showMessages() {
+      showScreen('messagesScreen');
+    }
+    
+    function showFinal() {
+      showScreen('finalScreen');
+    }
+    
+    function nextScreen() {
+      if (currentScreen < screens.length - 1) {
+        currentScreen++;
+        showScreen(screens[currentScreen]);
       }
     }
     
-    // Actualizar barra de progreso
-    const progressFill = document.getElementById('progressFill');
-    const progress = (selectedIngredients.length / totalIngredients) * 100;
-    progressFill.style.width = progress + '%';
-    
-    // Ocultar constructor si no hay ingredientes
-    if (selectedIngredients.length === 0) {
-      document.getElementById('cakeBuilder').style.display = 'none';
+    function previousScreen() {
+      if (currentScreen > 0) {
+        currentScreen--;
+        showScreen(screens[currentScreen]);
+      }
     }
-  }
-  
-  function updateUI() {
-    const countElement = document.getElementById('selectedCount');
-    const magicButton = document.getElementById('magicButton');
     
-    countElement.textContent = selectedIngredients.length;
-    
-    if (selectedIngredients.length === totalIngredients) {
-      magicButton.disabled = false;
-      magicButton.style.animation = 'bounce 1s ease-in-out infinite';
-    } else {
-      magicButton.disabled = true;
-      magicButton.style.animation = 'none';
+    function goHome() {
+      showScreen('welcomeScreen');
+      currentScreen = 0;
     }
-  }
-  
-  function createMagic() {
-    // Mostrar animación de construcción del pastel en vivo
-    showLiveCakeAnimation();
-  }
-  
-  function showLiveCakeAnimation() {
-    const cakeAnimation = document.getElementById('cakeAnimation');
-    const cakeContainer = cakeAnimation.querySelector('.cake-container');
     
-    // Limpiar contenido anterior
-    cakeContainer.innerHTML = '<div class="live-cake-title">🎂 ¡Creando tu pastel mágico! ✨</div>';
+    function restartJourney() {
+      goHome();
+    }
     
-    // Mostrar la pantalla de animación
-    cakeAnimation.style.display = 'flex';
-    
-    // Ocultar el constructor del lado
-    document.getElementById('cakeBuilder').style.display = 'none';
-    
-    // Construir el pastel paso a paso
-    buildCakeStep(0, cakeContainer);
-  }
-  
-  function buildCakeStep(step, container) {
-    const cakeSteps = [
-      { emoji: '🥧', text: 'Preparando la base con amor...', delay: 1000 },
-      { emoji: '🍰', text: 'Agregando dulzura...', delay: 1000 },
-      { emoji: '🎂', text: 'Mezclando alegría y fuerza...', delay: 1000 },
-      { emoji: '🧁', text: 'Espolvoreando gratitud...', delay: 1000 },
-      { emoji: '🍮', text: 'Añadiendo sabiduría...', delay: 1000 },
-      { emoji: '✨', text: 'Aplicando magia especial...', delay: 1000 },
-      { emoji: '🌟', text: 'Cubriendo con bendiciones...', delay: 1000 },
-      { emoji: '🕯️', text: 'Encendiendo las velas...', delay: 1500 }
+    // Sistema de mensajes interactivos mejorado
+    const messages = [
+      {
+        icon: "💪",
+        title: "Tu Fuerza Interior",
+        content: "Hay una fuerza en ti que es como el roble, fuerte e inquebrantable. Te paras frente a la tormenta con una entereza que deslumbraría a muchos. Eres una guerrera, aunque no creas portar armadura."
+      },
+      {
+        icon: "🌸",
+        title: "Tu Sensibilidad Única",
+        content: "Bajo tu fortaleza late el corazón más sensible y delicado. Como un pétalo de cristal que capta cada susurro del mundo. Esa vulnerabilidad es precisamente lo que te hace valiosa y humana."
+      },
+      {
+        icon: "🎯",
+        title: "Tu Propósito",
+        content: "Eres directa, clara como el mediodía. Tu sinceridad corta cualquier falsedad. Eres un libro escrito en idioma sagrado, con capítulos enteros de sabiduría que el mundo necesita descubrir."
+      },
+      {
+        icon: "✨",
+        title: "La Magia que Eres",
+        content: "Eres la cosmología, el origen del sueño, el universo entero late en tu pequeño centro. La creadora y el mapa, la primera causa, la más bella de todas las constelaciones."
+      },
+      {
+        icon: "💖",
+        title: "Amor y Gratitud",
+        content: "Por cada risa compartida, cada consejo valioso, cada momento que ha enriquecido mi existencia. Eres un regalo del universo que atesoro profundamente."
+      }
     ];
     
-    if (step < cakeSteps.length) {
-      const currentStep = cakeSteps[step];
+    function showMessage(index, button) {
+      // Remover active de todos los botones
+      document.querySelectorAll('.message-button').forEach(btn => btn.classList.remove('active'));
+      // Agregar active al botón seleccionado
+      button.classList.add('active');
       
-      // Crear elemento de paso
-      const stepDiv = document.createElement('div');
-      stepDiv.className = 'cake-build-step';
-      stepDiv.innerHTML = `
-        <div class="step-cake">${currentStep.emoji}</div>
-        <div class="step-text">${currentStep.text}</div>
-      `;
+      const message = messages[index];
+      const display = document.getElementById('messageDisplay');
       
-      container.appendChild(stepDiv);
+      display.style.opacity = 0;
+      display.style.transform = 'translateY(20px)';
       
-      // Crear efecto de brillo
-      createBuildingSparkles();
-      
-      // Continuar con el siguiente paso
       setTimeout(() => {
-        buildCakeStep(step + 1, container);
-      }, currentStep.delay);
-      
-    } else {
-      // Animación final del pastel completado
-      setTimeout(() => {
-        showCompletedCake(container);
-      }, 500);
+        display.innerHTML = `
+          <div style="font-size: 3rem; margin-bottom: 20px; animation: messageAppear 0.8s ease-out;">${message.icon}</div>
+          <h3 style="font-size: 1.8rem; color: #ffd700; margin-bottom: 20px; animation: messageAppear 0.8s ease-out 0.2s both;">${message.title}</h3>
+          <p style="font-size: 1.2rem; line-height: 1.6; animation: messageAppear 0.8s ease-out 0.4s both;">${message.content}</p>
+        `;
+        
+        display.style.opacity = 1;
+        display.style.transform = 'translateY(0)';
+      }, 300);
     }
-  }
-  
-  function createBuildingSparkles() {
-    const sparklesContainer = document.querySelector('.sparkles');
-    for(let i = 0; i < 10; i++) {
-      setTimeout(() => {
-        const sparkle = document.createElement('div');
-        sparkle.classList.add('sparkle');
-        sparkle.textContent = '✨';
-        sparkle.style.left = Math.random() * 100 + 'vw';
-        sparkle.style.top = Math.random() * 100 + 'vh';
-        sparkle.style.fontSize = (Math.random() * 15 + 10) + 'px';
-        sparklesContainer.appendChild(sparkle);
-        setTimeout(() => { sparkle.remove(); }, 2000);
-      }, i * 100);
+    
+    // Efectos especiales mejorados
+    function createSpecialEffect(emoji) {
+      const container = document.querySelector('.cosmic-particles');
+      for (let i = 0; i < 15; i++) {
+        setTimeout(() => {
+          const particle = document.createElement('div');
+          particle.classList.add('particle');
+          particle.textContent = emoji;
+          particle.style.left = Math.random() * 100 + 'vw';
+          particle.style.fontSize = (Math.random() * 15 + 15) + 'px';
+          particle.style.color = getRandomColor();
+          particle.style.animationDuration = (Math.random() * 2 + 2) + 's';
+          container.appendChild(particle);
+          setTimeout(() => particle.remove(), 5000);
+        }, i * 100);
+      }
     }
-  }
-  
-  function showCompletedCake(container) {
-    // Limpiar pasos anteriores
-    container.innerHTML = '';
     
-    // Mostrar pastel final con gran explosión
-    container.innerHTML = `
-      <div class="cake">🎂</div>
-      <div class="candles">🕯️ 🕯️ 🕯️ 🕯️ 🕯️</div>
-      <div class="cake-message">¡Feliz Cumpleaños<br>Mamá Patricia!</div>
-      <button class="continue-btn" onclick="showExperience()">
-        ✨ ¡Ver la Sorpresa! ✨
-      </button>
-    `;
-    
-    // Gran explosión de confetti
-    createCakeConfetti();
-  }
-  
-  function createCakeConfetti() {
-    const sparklesContainer = document.querySelector('.sparkles');
-    for(let i = 0; i < 50; i++) {
-      setTimeout(() => {
-        const sparkle = document.createElement('div');
-        sparkle.classList.add('sparkle');
-        const confettiTypes = ['🎉', '🎊', '✨', '🌟', '🎂', '🎈'];
-        sparkle.textContent = confettiTypes[Math.floor(Math.random() * confettiTypes.length)];
-        sparkle.style.left = Math.random() * 100 + 'vw';
-        sparkle.style.top = Math.random() * 100 + 'vh';
-        sparkle.style.fontSize = (Math.random() * 25 + 20) + 'px';
-        sparklesContainer.appendChild(sparkle);
-        setTimeout(() => { sparkle.remove(); }, 3000);
-      }, i * 100);
-    }
-  }
-  
-  function showExperience() {
-    // Ocultar animación del pastel
-    document.getElementById('cakeAnimation').style.display = 'none';
-    
-    // Mostrar pantalla de experiencia
-    document.getElementById('experienceScreen').classList.add('active');
-    window.scrollTo(0, 0);
-  }
-  
-  function showPhotoInBox(photoId, boxElement) {
-    const contentDiv = boxElement.querySelector('.box-content');
-    const iconDiv = boxElement.querySelector('.box-icon');
-    const labelDiv = boxElement.querySelector('.box-label');
-    
-    if (contentDiv.style.display === 'none') {
-      // Mostrar la foto
-      contentDiv.style.display = 'block';
-      iconDiv.style.display = 'none';
-      labelDiv.style.display = 'none';
-      
-      // Agregar efecto especial
-      boxElement.style.transform = 'scale(1.05)';
-      boxElement.style.background = 'linear-gradient(145deg, #ff6b6b, #ffa500)';
-      
-    } else {
-      // Ocultar la foto y volver al estado original
-      contentDiv.style.display = 'none';
-      iconDiv.style.display = 'block';
-      labelDiv.style.display = 'block';
-      
-      boxElement.style.transform = 'scale(1)';
-      boxElement.style.background = 'linear-gradient(145deg, #4ecdc4, #44a08d)';
-    }
-  }
-  
-  function goBack() {
-    selectedIngredients = [];
-    document.querySelectorAll('.ingredient').forEach(ing => {
-      ing.classList.remove('selected');
+    // Efectos de interacción adicionales
+    document.querySelectorAll('.constellation-card').forEach(card => {
+      card.addEventListener('click', () => {
+        card.style.transform = 'rotateY(15deg) translateY(-15px) scale(1.05)';
+        createSpecialEffect('🌟');
+        setTimeout(() => {
+          card.style.transform = '';
+        }, 300);
+      });
     });
     
-    // Resetear constructor del pastel
-    document.getElementById('cakeBuilder').style.display = 'none';
-    document.querySelectorAll('.cake-layer').forEach((layer, index) => {
-      if (index === 0) {
-        layer.classList.add('active'); // Base de amor siempre visible
-      } else {
-        layer.classList.remove('active');
+    // Efecto especial en la foto
+    document.querySelector('.photo-frame')?.addEventListener('click', () => {
+      const frame = document.querySelector('.photo-frame');
+      frame.style.animation = 'none';
+      frame.style.transform = 'scale(1.1) rotate(10deg)';
+      frame.style.boxShadow = '0 0 80px rgba(255,215,0,1)';
+      createSpecialEffect('💫');
+      
+      setTimeout(() => {
+        frame.style.transform = '';
+        frame.style.boxShadow = '0 0 50px rgba(255,215,0,0.6)';
+        frame.style.animation = 'photoFloat 6s ease-in-out infinite';
+      }, 1000);
+    });
+    
+    // Efectos en la galería
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      item.addEventListener('click', () => {
+        item.style.transform = 'scale(1.1)';
+        createSpecialEffect('🌸');
+        setTimeout(() => {
+          item.style.transform = '';
+        }, 500);
+      });
+    });
+    
+    // Inicializar el primer mensaje
+    window.addEventListener('load', () => {
+      // Intentar reproducir música suavemente
+      setTimeout(() => {
+        if (!musicPlaying) {
+          toggleMusic();
+        }
+      }, 2000);
+      
+      setTimeout(() => {
+        if (document.getElementById('messagesScreen').classList.contains('active')) {
+          showMessage(0, document.querySelector('.message-button'));
+        }
+      }, 100);
+    });
+    
+    // Eventos de teclado para navegación
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') {
+        previousScreen();
+      } else if (e.key === 'ArrowRight') {
+        nextScreen();
+      } else if (e.key === 'Home' || e.key === 'Escape') {
+        goHome();
+      } else if (e.key === ' ') {
+        toggleMusic();
       }
     });
-    document.getElementById('progressFill').style.width = '0%';
     
-    updateUI();
-    
-    document.getElementById('experienceScreen').classList.remove('active');
-    document.getElementById('ingredientsScreen').classList.add('active');
-    window.scrollTo(0, 0);
-  }
-</script>
+    // Efectos CSS adicionales
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes messageAppear {
+        0% { opacity: 0; transform: translateY(20px) scale(0.9); }
+        100% { opacity: 1; transform: translateY(0) scale(1); }
+      }
+      
+      @keyframes photoReveal {
+        0% { transform: scale(0) rotate(-180deg); opacity: 0; }
+        100% { transform: scale(1) rotate(0deg); opacity: 1; }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
 </body>
 </html>
