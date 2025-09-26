@@ -13,14 +13,14 @@
     }
     
     :root {
-      --primary: #667eea;
-      --secondary: #764ba2;
-      --accent: #ffd700;
-      --accent2: #ff6b6b;
-      --accent3: #4ecdc4;
-      --accent4: #f093fb;
+      --primary: #6a5acd; /* Cambiado a un violeta más suave */
+      --secondary: #9370db; /* Lavanda */
+      --accent: #ffd700; /* Dorado */
+      --accent2: #ff69b4; /* Rosa fuerte */
+      --accent3: #20b2aa; /* Verde mar claro */
+      --accent4: #ba55d3; /* Orquídea media */
       --text-light: #ffffff;
-      --text-dark: #333333;
+      --text-dark: #2c2c54; /* Azul oscuro en lugar de gris */
       --shadow: 0 10px 30px rgba(0,0,0,0.2);
       --shadow-light: 0 5px 15px rgba(0,0,0,0.1);
       --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -32,7 +32,7 @@
       font-family: 'Arial', sans-serif;
       margin: 0;
       padding: 0;
-      background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent4), #ff9a9e);
+      background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent4), #ffb6c1);
       background-size: 400% 400%;
       animation: gradientShift 8s ease infinite;
       min-height: 100vh;
@@ -107,7 +107,7 @@
     /* PANTALLA DE BIENVENIDA MEJORADA */
     .welcome-screen {
       text-align: center;
-      background: radial-gradient(circle, rgba(102,126,234,0.9), rgba(118,75,162,0.9));
+      background: radial-gradient(circle, rgba(106,90,205,0.9), rgba(147,112,219,0.9));
       color: var(--text-light);
       backdrop-filter: blur(10px);
     }
@@ -117,7 +117,7 @@
       margin-bottom: 20px;
       text-shadow: 0 0 30px rgba(255,215,0,0.8);
       animation: titleGlow 3s ease-in-out infinite alternate;
-      background: linear-gradient(45deg, #ffd700, #ff6b6b, #4ecdc4, #45b7d1);
+      background: linear-gradient(45deg, #ffd700, #ff69b4, #20b2aa, #ba55d3);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -164,7 +164,7 @@
     }
     
     .start-button {
-      background: linear-gradient(145deg, #ff6b6b, #ffa500, #ffd700);
+      background: linear-gradient(145deg, #ff69b4, #ffa500, #ffd700);
       color: var(--text-light);
       border: none;
       padding: 15px 40px;
@@ -196,7 +196,7 @@
     
     .start-button:hover {
       transform: translateY(-5px) scale(1.05);
-      box-shadow: 0 15px 40px rgba(255,107,107,0.6);
+      box-shadow: 0 15px 40px rgba(255,105,180,0.6);
     }
     
     .start-button:hover::before {
@@ -252,8 +252,8 @@
     @keyframes cosmicPulse {
       0%, 100% { color: #ffffff; }
       25% { color: #ffd700; }
-      50% { color: #ff6b6b; }
-      75% { color: #4ecdc4; }
+      50% { color: #ff69b4; }
+      75% { color: #20b2aa; }
     }
     
     .universe-poem {
@@ -288,7 +288,7 @@
     }
     
     .next-button {
-      background: linear-gradient(145deg, #4ecdc4, #44a08d);
+      background: linear-gradient(145deg, #20b2aa, #2e8b57);
       color: var(--text-light);
       border: none;
       padding: 12px 30px;
@@ -298,7 +298,7 @@
       cursor: pointer;
       margin-top: 20px;
       transition: var(--transition);
-      box-shadow: 0 8px 25px rgba(78,205,196,0.4);
+      box-shadow: 0 8px 25px rgba(32,178,170,0.4);
       position: relative;
       overflow: hidden;
       font-family: 'Dancing Script', cursive;
@@ -317,7 +317,7 @@
     
     .next-button:hover {
       transform: translateY(-3px) scale(1.05);
-      box-shadow: 0 12px 30px rgba(78,205,196,0.6);
+      box-shadow: 0 12px 30px rgba(32,178,170,0.6);
     }
     
     .next-button:hover::before {
@@ -412,7 +412,7 @@
     
     /* FOTO MÁGICA MEJORADA - PARTE CENTRAL */
     .photo-screen {
-      background: linear-gradient(135deg, #667eea, #764ba2);
+      background: linear-gradient(135deg, #6a5acd, #9370db);
       text-align: center;
       color: var(--text-light);
     }
@@ -501,7 +501,7 @@
     
     /* ESCRITOS ESPECIALES MEJORADOS */
     .writings-screen {
-      background: linear-gradient(135deg, #ff9a9e, #fecfef, #fecfef, #fad0c4);
+      background: linear-gradient(135deg, #ffb6c1, #ffd1dc, #e6e6fa, #d8bfd8);
       padding: 20px;
       color: var(--text-dark);
     }
@@ -516,7 +516,7 @@
       text-align: center;
       font-size: clamp(1.8rem, 5vw, 3rem);
       margin-bottom: 30px;
-      color: #ff6b6b;
+      color: #ff69b4;
       font-family: 'Dancing Script', cursive;
     }
     
@@ -526,7 +526,7 @@
       padding: 25px;
       margin: 20px 0;
       box-shadow: var(--shadow);
-      border-left: 5px solid #ff6b6b;
+      border-left: 5px solid #ff69b4;
       transition: var(--transition);
       position: relative;
       overflow: hidden;
@@ -554,7 +554,7 @@
     
     .writing-title {
       font-size: 1.5rem;
-      color: #ff6b6b;
+      color: #ff69b4;
       margin-bottom: 15px;
       text-align: center;
       font-family: 'Dancing Script', cursive;
@@ -568,15 +568,82 @@
     }
     
     .poem-card {
-      background: linear-gradient(145deg, rgba(255,107,107,0.1), rgba(78,205,196,0.1));
-      border-left: 5px solid #4ecdc4;
+      background: linear-gradient(145deg, rgba(255,105,180,0.1), rgba(32,178,170,0.1));
+      border-left: 5px solid #20b2aa;
     }
     
     .poem-card .writing-title {
-      color: #4ecdc4;
+      color: #20b2aa;
     }
     
-    /* RECUERDOS VIRTUALES - MEJORADO CON 4 ELEMENTOS */
+    /* NUEVA PANTALLA: GALERÍA DE FOTOS */
+    .gallery-screen {
+      background: linear-gradient(135deg, #ff69b4, #ba55d3, #9370db);
+      padding: 20px;
+      color: var(--text-light);
+    }
+    
+    .gallery-title {
+      text-align: center;
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      margin-bottom: 30px;
+      color: #ffd700;
+      font-family: 'Dancing Script', cursive;
+      text-shadow: 0 0 20px rgba(255,215,0,0.5);
+    }
+    
+    .gallery-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      width: 90%;
+      margin: 0 auto 30px auto;
+    }
+    
+    .gallery-item {
+      position: relative;
+      border-radius: 15px;
+      overflow: hidden;
+      height: 200px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      transition: var(--transition);
+      cursor: pointer;
+    }
+    
+    .gallery-item:hover {
+      transform: translateY(-5px) scale(1.03);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    }
+    
+    .gallery-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+    
+    .gallery-item:hover .gallery-img {
+      transform: scale(1.1);
+    }
+    
+    .gallery-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.7));
+      padding: 15px;
+      color: white;
+      transform: translateY(100%);
+      transition: var(--transition);
+    }
+    
+    .gallery-item:hover .gallery-overlay {
+      transform: translateY(0);
+    }
+    
+    /* RECUERDOS VIRTUALES - MEJORADO CON DISEÑO MÁS VISUAL */
     .memories-screen {
       background: linear-gradient(135deg, #8e2de2, #4a00e0);
       padding: 20px;
@@ -613,7 +680,7 @@
       top: 0;
       bottom: 0;
       width: 4px;
-      background: var(--accent);
+      background: linear-gradient(to bottom, var(--accent), var(--accent2), var(--accent3));
       transform: translateX(-50%);
       box-shadow: 0 0 10px var(--accent);
     }
@@ -628,12 +695,13 @@
       backdrop-filter: blur(10px);
       transition: var(--transition);
       cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
     
     .memory-item:hover {
       transform: translateY(-5px);
       background: rgba(255,255,255,0.15);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
     }
     
     .memory-item:nth-child(odd) {
@@ -684,7 +752,7 @@
     
     /* MENSAJES INTERACTIVOS MEJORADOS - SIN OPCIÓN DE AMOR */
     .messages-screen {
-      background: linear-gradient(45deg, #667eea, #764ba2);
+      background: linear-gradient(45deg, #6a5acd, #9370db);
       color: var(--text-light);
       padding: 20px;
     }
@@ -774,9 +842,65 @@
       left: 100%;
     }
     
+    /* NUEVA PANTALLA: REGALO ESPECIAL */
+    .gift-screen {
+      background: linear-gradient(135deg, #ff69b4, #ff1493, #dc143c);
+      padding: 20px;
+      color: var(--text-light);
+      text-align: center;
+    }
+    
+    .gift-title {
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      margin-bottom: 30px;
+      color: #ffd700;
+      font-family: 'Dancing Script', cursive;
+      text-shadow: 0 0 20px rgba(255,215,0,0.5);
+    }
+    
+    .gift-container {
+      max-width: 600px;
+      width: 90%;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(15px);
+      border-radius: 20px;
+      padding: 30px;
+      border: 2px solid rgba(255,215,0,0.5);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+    
+    .gift-icon {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      animation: bounce 2s infinite;
+    }
+    
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .gift-message {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    
+    .gift-code {
+      background: rgba(0,0,0,0.3);
+      padding: 15px;
+      border-radius: 10px;
+      font-family: monospace;
+      font-size: 1.5rem;
+      letter-spacing: 2px;
+      margin: 20px 0;
+      border: 1px dashed var(--accent);
+    }
+    
     /* PANTALLA FINAL MEJORADA */
     .final-screen {
-      background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #ff9a9e);
+      background: linear-gradient(45deg, #6a5acd, #9370db, #ba55d3, #ff69b4);
       background-size: 400% 400%;
       animation: gradientShift 8s ease infinite;
       color: var(--text-light);
@@ -822,11 +946,11 @@
     @keyframes finalGlow {
       0%, 100% { 
         transform: scale(1); 
-        text-shadow: 0 0 30px rgba(255,215,0,0.8), 0 0 60px rgba(255,107,107,0.4); 
+        text-shadow: 0 0 30px rgba(255,215,0,0.8), 0 0 60px rgba(255,105,180,0.4); 
       }
       50% { 
         transform: scale(1.05); 
-        text-shadow: 0 0 50px rgba(255,215,0,1), 0 0 80px rgba(255,107,107,0.6), 0 0 100px rgba(78,205,196,0.4); 
+        text-shadow: 0 0 50px rgba(255,215,0,1), 0 0 80px rgba(255,105,180,0.6), 0 0 100px rgba(32,178,170,0.4); 
       }
     }
     
@@ -970,55 +1094,6 @@
       color: var(--accent);
     }
     
-    /* PROGRESS BAR */
-    .progress-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 4px;
-      background: rgba(0,0,0,0.2);
-      z-index: 1001;
-    }
-    
-    .progress-bar {
-      height: 100%;
-      background: linear-gradient(90deg, var(--accent2), var(--accent), var(--accent3));
-      width: 0%;
-      transition: width 0.4s ease;
-      box-shadow: 0 0 10px var(--accent);
-    }
-    
-    /* INDICADOR DE PANTALLA ACTUAL */
-    .screen-indicator {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 8px;
-      z-index: 999;
-      background: rgba(0,0,0,0.5);
-      backdrop-filter: blur(10px);
-      padding: 8px 12px;
-      border-radius: 20px;
-      border: 1px solid rgba(255,255,255,0.2);
-    }
-    
-    .screen-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.3);
-      transition: var(--transition-fast);
-    }
-    
-    .screen-dot.active {
-      background: var(--accent);
-      box-shadow: 0 0 5px var(--accent);
-      transform: scale(1.2);
-    }
-    
     /* EFECTOS ESPECIALES */
     @keyframes messageAppear {
       0% { opacity: 0; transform: translateY(10px); }
@@ -1081,8 +1156,8 @@
         width: 200px;
       }
       
-      .screen-indicator {
-        bottom: 10px;
+      .gallery-container {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
       }
     }
     
@@ -1116,8 +1191,8 @@
         padding: 15px;
       }
       
-      .screen-indicator {
-        bottom: 5px;
+      .gallery-container {
+        grid-template-columns: 1fr;
       }
     }
     
@@ -1134,11 +1209,15 @@
       .memory-item:nth-child(even) {
         left: 57%;
       }
+      
+      .gallery-container {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
     
     /* EFECTO DE TEXTO MÁGICO */
     .magic-text {
-      background: linear-gradient(45deg, #ff6b6b, #ffa500, #ffd700, #4ecdc4, #45b7d1);
+      background: linear-gradient(45deg, #ff69b4, #ffa500, #ffd700, #20b2aa, #9370db);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -1155,11 +1234,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- BARRA DE PROGRESO -->
-  <div class="progress-container">
-    <div class="progress-bar" id="progressBar"></div>
-  </div>
-
   <!-- PARTÍCULAS CÓSMICAS -->
   <div class="cosmic-particles"></div>
 
@@ -1167,9 +1241,6 @@
   <div class="music-control" id="musicControl">
     <div class="music-icon">🎵</div>
   </div>
-
-  <!-- INDICADOR DE PANTALLA ACTUAL -->
-  <div class="screen-indicator" id="screenIndicator"></div>
 
   <!-- NAVEGACIÓN MEJORADA - BARRA LATERAL -->
   <div class="nav-sidebar">
@@ -1317,6 +1388,49 @@
       </p>
     </div>
     
+    <button class="next-button" onclick="showGallery()">
+      🖼️ Galería de Recuerdos 🖼️
+    </button>
+  </div>
+
+  <!-- NUEVA PANTALLA: GALERÍA DE FOTOS -->
+  <div id="galleryScreen" class="screen gallery-screen">
+    <h1 class="gallery-title">🖼️ Galería de Recuerdos Especiales 🖼️</h1>
+    
+    <div class="gallery-container">
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
+             alt="Recuerdo 1" class="gallery-img">
+        <div class="gallery-overlay">
+          <div>Momentos de Alegría</div>
+        </div>
+      </div>
+      
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
+             alt="Recuerdo 2" class="gallery-img">
+        <div class="gallery-overlay">
+          <div>Risas Compartidas</div>
+        </div>
+      </div>
+      
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
+             alt="Recuerdo 3" class="gallery-img">
+        <div class="gallery-overlay">
+          <div>Conversaciones Profundas</div>
+        </div>
+      </div>
+      
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
+             alt="Recuerdo 4" class="gallery-img">
+        <div class="gallery-overlay">
+          <div>Amistad Verdadera</div>
+        </div>
+      </div>
+    </div>
+    
     <button class="next-button" onclick="showWritings()">
       📝 Escritos del Corazón 📝
     </button>
@@ -1440,6 +1554,32 @@ la constelación más brillante, el mejor final.</div>
       <p>Selecciona un mensaje arriba para descubrir algo especial...</p>
     </div>
     
+    <button class="next-button" onclick="showGift()">
+      🎁 Regalo Especial 🎁
+    </button>
+  </div>
+
+  <!-- NUEVA PANTALLA: REGALO ESPECIAL -->
+  <div id="giftScreen" class="screen gift-screen">
+    <h1 class="gift-title">🎁 Un Regalo Especial para Ti 🎁</h1>
+    
+    <div class="gift-container">
+      <div class="gift-icon">🎁</div>
+      <p class="gift-message">
+        Como símbolo de nuestra amistad y de todo lo que significas, 
+        aquí tienes un código especial que puedes canjear por un regalo físico.
+      </p>
+      
+      <div class="gift-code">
+        WILMAGY-2024-ESTRELLA
+      </div>
+      
+      <p class="gift-message">
+        Este código representa la luz que eres en mi vida y en la de todos los que te conocen. 
+        ¡Feliz cumpleaños, Wilmagy!
+      </p>
+    </div>
+    
     <button class="next-button" onclick="showFinal()">
       🎉 Conclusión Mágica 🎉
     </button>
@@ -1467,7 +1607,7 @@ la constelación más brillante, el mejor final.</div>
       
       <div class="final-signature">
         Con amor infinito 💖<br>
-        <span style="color: #ff6b6b;">Tu amigo del alma</span>
+        <span style="color: #ff69b4;">Tu amigo del alma</span>
       </div>
     </div>
     
@@ -1495,8 +1635,8 @@ la constelación más brillante, el mejor final.</div>
     // Sistema de navegación mejorado
     const screens = [
       'welcomeScreen', 'universeScreen', 'constellationScreen', 
-      'photoScreen', 'writingsScreen', 'memoriesScreen', 
-      'messagesScreen', 'finalScreen'
+      'photoScreen', 'galleryScreen', 'writingsScreen', 'memoriesScreen', 
+      'messagesScreen', 'giftScreen', 'finalScreen'
     ];
     let currentScreen = 0;
     let musicPlaying = false;
@@ -1539,27 +1679,6 @@ la constelación más brillante, el mejor final.</div>
       }
     }
     
-    // Actualizar barra de progreso
-    function updateProgressBar() {
-      const progress = (currentScreen / (screens.length - 1)) * 100;
-      document.getElementById('progressBar').style.width = progress + '%';
-    }
-    
-    // Actualizar indicador de pantalla
-    function updateScreenIndicator() {
-      const indicator = document.getElementById('screenIndicator');
-      indicator.innerHTML = '';
-      
-      screens.forEach((_, index) => {
-        const dot = document.createElement('div');
-        dot.classList.add('screen-dot');
-        if (index === currentScreen) {
-          dot.classList.add('active');
-        }
-        indicator.appendChild(dot);
-      });
-    }
-    
     // Control de música
     document.getElementById('musicControl').addEventListener('click', toggleMusic);
     
@@ -1592,8 +1711,6 @@ la constelación más brillante, el mejor final.</div>
       setTimeout(() => {
         document.getElementById(screenId).classList.add('active');
         currentScreen = screens.indexOf(screenId);
-        updateProgressBar();
-        updateScreenIndicator();
         
         // Efectos especiales según la pantalla
         if (screenId === 'universeScreen') {
@@ -1621,6 +1738,10 @@ la constelación más brillante, el mejor final.</div>
       showScreen('photoScreen');
     }
     
+    function showGallery() {
+      showScreen('galleryScreen');
+    }
+    
     function showWritings() {
       showScreen('writingsScreen');
     }
@@ -1631,6 +1752,10 @@ la constelación más brillante, el mejor final.</div>
     
     function showMessages() {
       showScreen('messagesScreen');
+    }
+    
+    function showGift() {
+      showScreen('giftScreen');
     }
     
     function showFinal() {
@@ -1762,10 +1887,19 @@ la constelación más brillante, el mejor final.</div>
       });
     });
     
-    // Inicializar el primer mensaje
+    // Efectos en la galería
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      item.addEventListener('click', () => {
+        playSound(clickSound);
+        item.style.transform = 'translateY(-5px) scale(1.03)';
+        setTimeout(() => {
+          item.style.transform = '';
+        }, 300);
+      });
+    });
+    
+    // Inicializar
     window.addEventListener('load', () => {
-      updateProgressBar();
-      updateScreenIndicator();
       // Intentar reproducir música suavemente
       setTimeout(() => {
         if (!musicPlaying) {
@@ -1799,7 +1933,7 @@ la constelación más brillante, el mejor final.</div>
       confettiContainer.style.zIndex = '9999';
       document.body.appendChild(confettiContainer);
       
-      const confettiColors = ['#ff6b6b', '#ffd700', '#4ecdc4', '#45b7d1', '#ffa500'];
+      const confettiColors = ['#ff69b4', '#ffd700', '#20b2aa', '#9370db', '#ffa500'];
       const confettiShapes = ['■', '●', '▲', '♥', '♦', '♠', '♣', '★'];
       
       for (let i = 0; i < 100; i++) {
