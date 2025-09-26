@@ -18,10 +18,13 @@
       --accent: #ffd700;
       --accent2: #ff6b6b;
       --accent3: #4ecdc4;
+      --accent4: #f093fb;
       --text-light: #ffffff;
       --text-dark: #333333;
       --shadow: 0 10px 30px rgba(0,0,0,0.2);
+      --shadow-light: 0 5px 15px rgba(0,0,0,0.1);
       --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      --transition-fast: all 0.2s ease;
     }
     
     /* ESTILOS GENERALES */
@@ -29,7 +32,7 @@
       font-family: 'Arial', sans-serif;
       margin: 0;
       padding: 0;
-      background: linear-gradient(45deg, var(--primary), var(--secondary), #f093fb, #ff9a9e);
+      background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent4), #ff9a9e);
       background-size: 400% 400%;
       animation: gradientShift 8s ease infinite;
       min-height: 100vh;
@@ -93,6 +96,12 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      animation: screenFadeIn 0.8s ease-out;
+    }
+    
+    @keyframes screenFadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
     
     /* PANTALLA DE BIENVENIDA MEJORADA */
@@ -848,25 +857,27 @@
       50% { transform: scale(1.05); }
     }
     
-    /* NAVEGACIÓN MEJORADA */
-    .nav-buttons {
+    /* NAVEGACIÓN MEJORADA - BARRA LATERAL */
+    .nav-sidebar {
       position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 10px;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
       z-index: 1000;
       background: rgba(0,0,0,0.5);
       backdrop-filter: blur(10px);
-      padding: 10px 15px;
-      border-radius: 30px;
+      padding: 15px 10px;
+      border-radius: 20px;
       border: 1px solid rgba(255,255,255,0.2);
       transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
     
-    .nav-buttons:hover {
+    .nav-sidebar:hover {
       background: rgba(0,0,0,0.7);
+      transform: translateY(-50%) scale(1.05);
     }
     
     .nav-button {
@@ -874,13 +885,17 @@
       backdrop-filter: blur(10px);
       border: 2px solid rgba(255,215,0,0.5);
       color: var(--text-light);
-      padding: 8px 15px;
-      border-radius: 20px;
+      padding: 10px;
+      border-radius: 50%;
       cursor: pointer;
       transition: var(--transition);
-      font-size: 0.8rem;
+      font-size: 1rem;
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       position: relative;
-      overflow: hidden;
     }
     
     .nav-button::before {
@@ -901,7 +916,28 @@
     .nav-button:hover {
       background: rgba(255,215,0,0.3);
       border-color: var(--accent);
-      transform: translateY(-2px);
+      transform: scale(1.1);
+    }
+    
+    .nav-tooltip {
+      position: absolute;
+      right: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.8);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 0.8rem;
+      white-space: nowrap;
+      margin-right: 10px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    
+    .nav-button:hover .nav-tooltip {
+      opacity: 1;
     }
     
     /* CONTROL DE MÚSICA */
@@ -953,6 +989,36 @@
       box-shadow: 0 0 10px var(--accent);
     }
     
+    /* INDICADOR DE PANTALLA ACTUAL */
+    .screen-indicator {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 999;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(10px);
+      padding: 8px 12px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    
+    .screen-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      transition: var(--transition-fast);
+    }
+    
+    .screen-dot.active {
+      background: var(--accent);
+      box-shadow: 0 0 5px var(--accent);
+      transform: scale(1.2);
+    }
+    
     /* EFECTOS ESPECIALES */
     @keyframes messageAppear {
       0% { opacity: 0; transform: translateY(10px); }
@@ -986,11 +1052,15 @@
         left: -40px !important;
       }
       
-      .nav-buttons {
-        flex-direction: row;
-        bottom: 10px;
-        width: 95%;
-        justify-content: center;
+      .nav-sidebar {
+        right: 10px;
+        padding: 10px 5px;
+      }
+      
+      .nav-button {
+        width: 40px;
+        height: 40px;
+        font-size: 0.9rem;
       }
       
       .constellation-grid {
@@ -1010,6 +1080,10 @@
       .message-button {
         width: 200px;
       }
+      
+      .screen-indicator {
+        bottom: 10px;
+      }
     }
     
     @media (max-width: 480px) {
@@ -1027,19 +1101,23 @@
         padding: 15px;
       }
       
-      .nav-buttons {
-        flex-wrap: wrap;
-        justify-content: center;
-        width: 90%;
+      .nav-sidebar {
+        right: 5px;
+        padding: 8px 3px;
       }
       
       .nav-button {
-        padding: 6px 12px;
-        font-size: 0.7rem;
+        width: 35px;
+        height: 35px;
+        font-size: 0.8rem;
       }
       
       .writing-card {
         padding: 15px;
+      }
+      
+      .screen-indicator {
+        bottom: 5px;
       }
     }
     
@@ -1088,6 +1166,25 @@
   <!-- CONTROL DE MÚSICA -->
   <div class="music-control" id="musicControl">
     <div class="music-icon">🎵</div>
+  </div>
+
+  <!-- INDICADOR DE PANTALLA ACTUAL -->
+  <div class="screen-indicator" id="screenIndicator"></div>
+
+  <!-- NAVEGACIÓN MEJORADA - BARRA LATERAL -->
+  <div class="nav-sidebar">
+    <button class="nav-button" onclick="previousScreen()">
+      ←
+      <span class="nav-tooltip">Anterior</span>
+    </button>
+    <button class="nav-button" onclick="nextScreen()">
+      →
+      <span class="nav-tooltip">Siguiente</span>
+    </button>
+    <button class="nav-button" onclick="goHome()">
+      🏠
+      <span class="nav-tooltip">Inicio</span>
+    </button>
   </div>
 
   <!-- PANTALLA DE BIENVENIDA -->
@@ -1379,13 +1476,6 @@ la constelación más brillante, el mejor final.</div>
     </button>
   </div>
 
-  <!-- NAVEGACIÓN -->
-  <div class="nav-buttons">
-    <button class="nav-button" onclick="previousScreen()">← Anterior</button>
-    <button class="nav-button" onclick="nextScreen()">Siguiente →</button>
-    <button class="nav-button" onclick="goHome()">🏠 Inicio</button>
-  </div>
-
   <!-- AUDIO PARA MÚSICA DE FONDO -->
   <audio id="backgroundMusic" loop>
     <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
@@ -1455,6 +1545,21 @@ la constelación más brillante, el mejor final.</div>
       document.getElementById('progressBar').style.width = progress + '%';
     }
     
+    // Actualizar indicador de pantalla
+    function updateScreenIndicator() {
+      const indicator = document.getElementById('screenIndicator');
+      indicator.innerHTML = '';
+      
+      screens.forEach((_, index) => {
+        const dot = document.createElement('div');
+        dot.classList.add('screen-dot');
+        if (index === currentScreen) {
+          dot.classList.add('active');
+        }
+        indicator.appendChild(dot);
+      });
+    }
+    
     // Control de música
     document.getElementById('musicControl').addEventListener('click', toggleMusic);
     
@@ -1488,6 +1593,7 @@ la constelación más brillante, el mejor final.</div>
         document.getElementById(screenId).classList.add('active');
         currentScreen = screens.indexOf(screenId);
         updateProgressBar();
+        updateScreenIndicator();
         
         // Efectos especiales según la pantalla
         if (screenId === 'universeScreen') {
@@ -1659,6 +1765,7 @@ la constelación más brillante, el mejor final.</div>
     // Inicializar el primer mensaje
     window.addEventListener('load', () => {
       updateProgressBar();
+      updateScreenIndicator();
       // Intentar reproducir música suavemente
       setTimeout(() => {
         if (!musicPlaying) {
