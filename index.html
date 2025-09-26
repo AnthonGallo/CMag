@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>✨ Un Universo Llamado Wilmagy ✨</title>
   <style>
+    /* RESET Y VARIABLES */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -15,10 +16,15 @@
       --primary: #667eea;
       --secondary: #764ba2;
       --accent: #ffd700;
+      --accent2: #ff6b6b;
+      --accent3: #4ecdc4;
       --text-light: #ffffff;
       --text-dark: #333333;
+      --shadow: 0 10px 30px rgba(0,0,0,0.2);
+      --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
     
+    /* ESTILOS GENERALES */
     body {
       font-family: 'Arial', sans-serif;
       margin: 0;
@@ -29,6 +35,7 @@
       min-height: 100vh;
       overflow-x: hidden;
       scroll-behavior: smooth;
+      cursor: default;
     }
     
     @keyframes gradientShift {
@@ -56,6 +63,7 @@
       animation: float 6s ease-in-out infinite;
       opacity: 0.8;
       z-index: 1;
+      text-shadow: 0 0 10px currentColor;
     }
     
     @keyframes float {
@@ -105,11 +113,29 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
       font-family: 'Dancing Script', cursive;
+      position: relative;
+    }
+    
+    .welcome-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      animation: shimmer 2s infinite;
     }
     
     @keyframes titleGlow {
       0% { transform: scale(1); text-shadow: 0 0 20px rgba(255,215,0,0.5); }
       100% { transform: scale(1.05); text-shadow: 0 0 40px rgba(255,215,0,1); }
+    }
+    
+    @keyframes shimmer {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
     }
     
     .subtitle {
@@ -119,6 +145,8 @@
       opacity: 0;
       animation: fadeInUp 2s ease forwards 1s;
       font-family: 'Dancing Script', cursive;
+      max-width: 80%;
+      line-height: 1.4;
     }
     
     @keyframes fadeInUp {
@@ -135,18 +163,35 @@
       font-weight: bold;
       border-radius: 50px;
       cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 10px 30px rgba(255,107,107,0.4);
+      transition: var(--transition);
+      box-shadow: var(--shadow);
       text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
       opacity: 0;
       animation: fadeInUp 2s ease forwards 2s;
       position: relative;
       overflow: hidden;
+      font-family: 'Dancing Script', cursive;
+      z-index: 10;
+    }
+    
+    .start-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s;
     }
     
     .start-button:hover {
       transform: translateY(-5px) scale(1.05);
       box-shadow: 0 15px 40px rgba(255,107,107,0.6);
+    }
+    
+    .start-button:hover::before {
+      left: 100%;
     }
     
     /* PANTALLA DEL UNIVERSO MAGY MEJORADA */
@@ -192,6 +237,7 @@
       text-shadow: 0 0 30px rgba(255,255,255,0.8);
       animation: cosmicPulse 4s ease-in-out infinite;
       font-family: 'Dancing Script', cursive;
+      position: relative;
     }
     
     @keyframes cosmicPulse {
@@ -212,6 +258,24 @@
       line-height: 1.6;
       text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
       font-family: 'Dancing Script', cursive;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .universe-poem::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+      transition: left 0.6s;
+    }
+    
+    .universe-poem:hover::before {
+      left: 100%;
     }
     
     .next-button {
@@ -224,13 +288,31 @@
       border-radius: 30px;
       cursor: pointer;
       margin-top: 20px;
-      transition: all 0.3s ease;
+      transition: var(--transition);
       box-shadow: 0 8px 25px rgba(78,205,196,0.4);
+      position: relative;
+      overflow: hidden;
+      font-family: 'Dancing Script', cursive;
+    }
+    
+    .next-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s;
     }
     
     .next-button:hover {
       transform: translateY(-3px) scale(1.05);
       box-shadow: 0 12px 30px rgba(78,205,196,0.6);
+    }
+    
+    .next-button:hover::before {
+      left: 100%;
     }
     
     /* GALERÍA DE CONSTELACIONES MEJORADA */
@@ -245,6 +327,8 @@
       font-size: clamp(1.8rem, 5vw, 3rem);
       margin-bottom: 30px;
       color: #ffd700;
+      font-family: 'Dancing Script', cursive;
+      text-shadow: 0 0 20px rgba(255,215,0,0.5);
     }
     
     .constellation-grid {
@@ -262,14 +346,32 @@
       border-radius: 20px;
       padding: 20px;
       border: 2px solid rgba(255,215,0,0.3);
-      transition: all 0.3s ease;
+      transition: var(--transition);
       cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .constellation-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, rgba(255,215,0,0.1) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.3s;
     }
     
     .constellation-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 10px 25px rgba(255,215,0,0.3);
       border-color: rgba(255,215,0,0.8);
+    }
+    
+    .constellation-card:hover::before {
+      opacity: 1;
     }
     
     .constellation-icon {
@@ -289,6 +391,7 @@
       color: #ffd700;
       margin-bottom: 10px;
       text-align: center;
+      font-family: 'Dancing Script', cursive;
     }
     
     .constellation-description {
@@ -323,6 +426,7 @@
       box-shadow: 0 0 50px rgba(255,215,0,0.6);
       animation: photoFloat 6s ease-in-out infinite;
       margin: 0 auto;
+      transition: var(--transition);
     }
     
     @keyframes photoFloat {
@@ -335,7 +439,7 @@
       height: 100%;
       object-fit: cover;
       filter: brightness(1.1) contrast(1.1);
-      transition: all 0.3s ease;
+      transition: var(--transition);
     }
     
     .photo-frame:hover .magic-photo {
@@ -404,6 +508,7 @@
       font-size: clamp(1.8rem, 5vw, 3rem);
       margin-bottom: 30px;
       color: #ff6b6b;
+      font-family: 'Dancing Script', cursive;
     }
     
     .writing-card {
@@ -411,9 +516,26 @@
       border-radius: 20px;
       padding: 25px;
       margin: 20px 0;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      box-shadow: var(--shadow);
       border-left: 5px solid #ff6b6b;
-      transition: all 0.3s ease;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .writing-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+      transition: left 0.6s;
+    }
+    
+    .writing-card:hover::before {
+      left: 100%;
     }
     
     .writing-card:hover {
@@ -484,6 +606,7 @@
       width: 4px;
       background: var(--accent);
       transform: translateX(-50%);
+      box-shadow: 0 0 10px var(--accent);
     }
     
     .memory-item {
@@ -494,12 +617,14 @@
       background: rgba(255,255,255,0.1);
       border-radius: 15px;
       backdrop-filter: blur(10px);
-      transition: transform 0.3s ease;
+      transition: var(--transition);
+      cursor: pointer;
     }
     
     .memory-item:hover {
       transform: translateY(-5px);
       background: rgba(255,255,255,0.15);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     }
     
     .memory-item:nth-child(odd) {
@@ -519,11 +644,12 @@
       border-radius: 50%;
       background: var(--accent);
       box-shadow: 0 0 10px var(--accent);
-      transition: transform 0.3s ease;
+      transition: var(--transition);
     }
     
     .memory-item:hover::before {
       transform: scale(1.2);
+      box-shadow: 0 0 15px var(--accent);
     }
     
     .memory-item:nth-child(odd)::before {
@@ -539,6 +665,7 @@
       color: var(--accent);
       margin-bottom: 10px;
       font-weight: bold;
+      font-family: 'Dancing Script', cursive;
     }
     
     .memory-content {
@@ -558,6 +685,7 @@
       font-size: clamp(1.8rem, 5vw, 3rem);
       margin-bottom: 30px;
       color: #ffd700;
+      font-family: 'Dancing Script', cursive;
     }
     
     .message-selector {
@@ -575,9 +703,26 @@
       padding: 12px 20px;
       border-radius: 25px;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: var(--transition);
       font-size: 0.9rem;
       backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .message-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s;
+    }
+    
+    .message-button:hover::before, .message-button.active::before {
+      left: 100%;
     }
     
     .message-button:hover, .message-button.active {
@@ -597,10 +742,27 @@
       font-size: 1.1rem;
       line-height: 1.5;
       border: 2px solid rgba(255,215,0,0.3);
-      transition: all 0.3s ease;
+      transition: var(--transition);
       width: 90%;
       max-width: 700px;
       margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .message-display::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+      transition: left 0.6s;
+    }
+    
+    .message-display:hover::before {
+      left: 100%;
     }
     
     /* PANTALLA FINAL MEJORADA */
@@ -621,6 +783,23 @@
       width: 90%;
       margin: 20px auto;
       border: 2px solid rgba(255,215,0,0.5);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .final-content::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+      transition: left 0.6s;
+    }
+    
+    .final-content:hover::before {
+      left: 100%;
     }
     
     .final-title {
@@ -654,6 +833,7 @@
       margin: 20px 0;
       color: var(--accent);
       text-shadow: 0 0 20px rgba(255,215,0,0.8);
+      font-family: 'Dancing Script', cursive;
     }
     
     .final-signature {
@@ -682,6 +862,11 @@
       padding: 10px 15px;
       border-radius: 30px;
       border: 1px solid rgba(255,255,255,0.2);
+      transition: var(--transition);
+    }
+    
+    .nav-buttons:hover {
+      background: rgba(0,0,0,0.7);
     }
     
     .nav-button {
@@ -692,8 +877,25 @@
       padding: 8px 15px;
       border-radius: 20px;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: var(--transition);
       font-size: 0.8rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .nav-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s;
+    }
+    
+    .nav-button:hover::before {
+      left: 100%;
     }
     
     .nav-button:hover {
@@ -718,12 +920,13 @@
       justify-content: center;
       cursor: pointer;
       border: 2px solid rgba(255,215,0,0.5);
-      transition: all 0.3s ease;
+      transition: var(--transition);
     }
     
     .music-control:hover {
       transform: scale(1.1);
       border-color: var(--accent);
+      background: rgba(0,0,0,0.7);
     }
     
     .music-icon {
@@ -731,10 +934,34 @@
       color: var(--accent);
     }
     
+    /* PROGRESS BAR */
+    .progress-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: rgba(0,0,0,0.2);
+      z-index: 1001;
+    }
+    
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent2), var(--accent), var(--accent3));
+      width: 0%;
+      transition: width 0.4s ease;
+      box-shadow: 0 0 10px var(--accent);
+    }
+    
     /* EFECTOS ESPECIALES */
     @keyframes messageAppear {
       0% { opacity: 0; transform: translateY(10px); }
       100% { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
     }
     
     /* RESPONSIVE MEJORADO */
@@ -774,6 +1001,15 @@
         height: 300px;
         max-width: 300px;
       }
+      
+      .message-selector {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .message-button {
+        width: 200px;
+      }
     }
     
     @media (max-width: 480px) {
@@ -791,15 +1027,6 @@
         padding: 15px;
       }
       
-      .message-selector {
-        flex-direction: column;
-        align-items: center;
-      }
-      
-      .message-button {
-        width: 200px;
-      }
-      
       .nav-buttons {
         flex-wrap: wrap;
         justify-content: center;
@@ -809,6 +1036,10 @@
       .nav-button {
         padding: 6px 12px;
         font-size: 0.7rem;
+      }
+      
+      .writing-card {
+        padding: 15px;
       }
     }
     
@@ -826,10 +1057,31 @@
         left: 57%;
       }
     }
+    
+    /* EFECTO DE TEXTO MÁGICO */
+    .magic-text {
+      background: linear-gradient(45deg, #ff6b6b, #ffa500, #ffd700, #4ecdc4, #45b7d1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      background-size: 200% 200%;
+      animation: gradientText 5s ease infinite;
+    }
+    
+    @keyframes gradientText {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- BARRA DE PROGRESO -->
+  <div class="progress-container">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
   <!-- PARTÍCULAS CÓSMICAS -->
   <div class="cosmic-particles"></div>
 
@@ -1017,6 +1269,24 @@ El viaje verdadero, un buen plan:
 no solo llegar... sino quedarme aquí.</div>
       </div>
       
+      <div class="writing-card">
+        <div class="writing-title">🌠 Poema Cósmico para Wilmagy</div>
+        <div class="writing-content">Eres constelación de fortaleza y ternura,
+un mapa estelar de rara hermosura.
+Cada peca tuya es un sol recién nacido,
+en la piel morena del cosmos encendido.
+
+Tu risa ordena planetas y cometas,
+tu mirada ilumina nebulosas secretas.
+Eres el big bang de esperanza y valor,
+la creación más bella, el mejor favor.
+
+Que el universo te devuelva en kind,
+todo el amor y la luz que repartes sin fin.
+Eres especial, única, sin igual,
+la constelación más brillante, el mejor final.</div>
+      </div>
+      
       <button class="next-button" onclick="showMemories()">
         🕰️ Línea del Tiempo 🕰️
       </button>
@@ -1065,6 +1335,7 @@ no solo llegar... sino quedarme aquí.</div>
       <button class="message-button" onclick="showMessage(1, this)">🌸 Ternura</button>
       <button class="message-button" onclick="showMessage(2, this)">🎯 Propósito</button>
       <button class="message-button" onclick="showMessage(3, this)">✨ Magia</button>
+      <button class="message-button" onclick="showMessage(4, this)">🌌 Universo</button>
     </div>
     
     <div class="message-display" id="messageDisplay">
@@ -1121,6 +1392,15 @@ no solo llegar... sino quedarme aquí.</div>
     Tu navegador no soporta el elemento de audio.
   </audio>
 
+  <!-- EFECTOS DE SONIDO -->
+  <audio id="clickSound" preload="auto">
+    <source src="https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3" type="audio/mpeg">
+  </audio>
+  
+  <audio id="sparkleSound" preload="auto">
+    <source src="https://assets.mixkit.co/sfx/preview/mixkit-magic-sparkle-sound-3091.mp3" type="audio/mpeg">
+  </audio>
+
   <script>
     // Sistema de navegación mejorado
     const screens = [
@@ -1131,6 +1411,8 @@ no solo llegar... sino quedarme aquí.</div>
     let currentScreen = 0;
     let musicPlaying = false;
     const backgroundMusic = document.getElementById('backgroundMusic');
+    const clickSound = document.getElementById('clickSound');
+    const sparkleSound = document.getElementById('sparkleSound');
     
     // Crear partículas cósmicas mejoradas
     function createCosmicParticles() {
@@ -1167,10 +1449,17 @@ no solo llegar... sino quedarme aquí.</div>
       }
     }
     
+    // Actualizar barra de progreso
+    function updateProgressBar() {
+      const progress = (currentScreen / (screens.length - 1)) * 100;
+      document.getElementById('progressBar').style.width = progress + '%';
+    }
+    
     // Control de música
     document.getElementById('musicControl').addEventListener('click', toggleMusic);
     
     function toggleMusic() {
+      playSound(clickSound);
       if (musicPlaying) {
         backgroundMusic.pause();
         document.querySelector('.music-icon').textContent = '🎵';
@@ -1181,8 +1470,16 @@ no solo llegar... sino quedarme aquí.</div>
       musicPlaying = !musicPlaying;
     }
     
+    // Reproducir efectos de sonido
+    function playSound(sound) {
+      sound.currentTime = 0;
+      sound.play().catch(e => console.log("Error reproduciendo sonido: ", e));
+    }
+    
     // Funciones de navegación mejoradas
     function showScreen(screenId) {
+      playSound(clickSound);
+      
       document.querySelectorAll('.screen').forEach(s => {
         s.classList.remove('active');
       });
@@ -1190,10 +1487,15 @@ no solo llegar... sino quedarme aquí.</div>
       setTimeout(() => {
         document.getElementById(screenId).classList.add('active');
         currentScreen = screens.indexOf(screenId);
+        updateProgressBar();
         
         // Efectos especiales según la pantalla
         if (screenId === 'universeScreen') {
           setTimeout(createStars, 100);
+        }
+        
+        if (screenId === 'photoScreen') {
+          playSound(sparkleSound);
         }
         
         // Scroll suave hacia la parte superior
@@ -1273,10 +1575,16 @@ no solo llegar... sino quedarme aquí.</div>
         icon: "✨",
         title: "La Magia que Eres",
         content: "Eres la cosmología, el origen del sueño, el universo entero late en tu pequeño centro. La creadora y el mapa, la primera causa, la más bella de todas las constelaciones."
+      },
+      {
+        icon: "🌌",
+        title: "Tu Universo Interior",
+        content: "Cada parte de ti es una galaxia, cada pensamiento una estrella. Eres un cosmos completo, lleno de misterios y maravillas por descubrir. El universo se refleja en tu esencia."
       }
     ];
     
     function showMessage(index, button) {
+      playSound(clickSound);
       // Remover active de todos los botones
       document.querySelectorAll('.message-button').forEach(btn => btn.classList.remove('active'));
       // Agregar active al botón seleccionado
@@ -1301,6 +1609,7 @@ no solo llegar... sino quedarme aquí.</div>
     // Efectos de interacción adicionales
     document.querySelectorAll('.constellation-card').forEach(card => {
       card.addEventListener('click', () => {
+        playSound(clickSound);
         card.style.transform = 'translateY(-5px) scale(1.02)';
         setTimeout(() => {
           card.style.transform = '';
@@ -1312,6 +1621,7 @@ no solo llegar... sino quedarme aquí.</div>
     const photoFrame = document.querySelector('.photo-frame');
     if (photoFrame) {
       photoFrame.addEventListener('click', () => {
+        playSound(sparkleSound);
         photoFrame.style.animation = 'none';
         photoFrame.style.transform = 'scale(1.05) rotate(5deg)';
         photoFrame.style.boxShadow = '0 0 60px rgba(255,215,0,0.8)';
@@ -1327,6 +1637,7 @@ no solo llegar... sino quedarme aquí.</div>
     // Efectos en la línea de tiempo
     document.querySelectorAll('.memory-item').forEach(item => {
       item.addEventListener('click', () => {
+        playSound(clickSound);
         item.style.transform = 'translateY(-5px) scale(1.02)';
         setTimeout(() => {
           item.style.transform = '';
@@ -1334,8 +1645,20 @@ no solo llegar... sino quedarme aquí.</div>
       });
     });
     
+    // Efectos en las tarjetas de escritos
+    document.querySelectorAll('.writing-card').forEach(card => {
+      card.addEventListener('click', () => {
+        playSound(clickSound);
+        card.style.transform = 'translateY(-3px) scale(1.01)';
+        setTimeout(() => {
+          card.style.transform = '';
+        }, 300);
+      });
+    });
+    
     // Inicializar el primer mensaje
     window.addEventListener('load', () => {
+      updateProgressBar();
       // Intentar reproducir música suavemente
       setTimeout(() => {
         if (!musicPlaying) {
@@ -1354,6 +1677,67 @@ no solo llegar... sino quedarme aquí.</div>
         goHome();
       } else if (e.key === ' ') {
         toggleMusic();
+      }
+    });
+    
+    // Efecto de confeti en la pantalla final
+    function createConfetti() {
+      const confettiContainer = document.createElement('div');
+      confettiContainer.style.position = 'fixed';
+      confettiContainer.style.top = '0';
+      confettiContainer.style.left = '0';
+      confettiContainer.style.width = '100%';
+      confettiContainer.style.height = '100%';
+      confettiContainer.style.pointerEvents = 'none';
+      confettiContainer.style.zIndex = '9999';
+      document.body.appendChild(confettiContainer);
+      
+      const confettiColors = ['#ff6b6b', '#ffd700', '#4ecdc4', '#45b7d1', '#ffa500'];
+      const confettiShapes = ['■', '●', '▲', '♥', '♦', '♠', '♣', '★'];
+      
+      for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement('div');
+        confetti.textContent = confettiShapes[Math.floor(Math.random() * confettiShapes.length)];
+        confetti.style.position = 'absolute';
+        confetti.style.color = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+        confetti.style.fontSize = (Math.random() * 10 + 10) + 'px';
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.top = '-20px';
+        confetti.style.opacity = Math.random() * 0.7 + 0.3;
+        confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+        confetti.style.animation = `confettiFall ${Math.random() * 3 + 3}s linear forwards`;
+        confettiContainer.appendChild(confetti);
+        
+        // Crear keyframes para la animación de confeti
+        if (!document.getElementById('confettiAnimation')) {
+          const style = document.createElement('style');
+          style.id = 'confettiAnimation';
+          style.textContent = `
+            @keyframes confettiFall {
+              0% { transform: translateY(0) rotate(0deg); }
+              100% { transform: translateY(100vh) rotate(${Math.random() * 360}deg); }
+            }
+          `;
+          document.head.appendChild(style);
+        }
+        
+        // Remover el confeti después de que termine la animación
+        setTimeout(() => {
+          confetti.remove();
+        }, 5000);
+      }
+      
+      // Remover el contenedor después de que termine la animación
+      setTimeout(() => {
+        confettiContainer.remove();
+      }, 5000);
+    }
+    
+    // Activar confeti en la pantalla final
+    document.getElementById('finalScreen').addEventListener('click', function() {
+      if (Math.random() > 0.7) { // 30% de probabilidad al hacer clic
+        createConfetti();
+        playSound(sparkleSound);
       }
     });
   </script>
