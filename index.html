@@ -32,19 +32,22 @@
       font-family: 'Arial', sans-serif;
       margin: 0;
       padding: 0;
-      background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent4), #ffb6c1);
-      background-size: 400% 400%;
-      animation: gradientShift 8s ease infinite;
+      background: #000;
       min-height: 100vh;
       overflow-x: hidden;
       scroll-behavior: smooth;
       cursor: default;
     }
     
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    /* FONDO DEL UNIVERSO */
+    .universe-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: radial-gradient(ellipse at center, #0a0e2a 0%, #000000 70%);
     }
     
     /* PARTÍCULAS CÓSMICAS MEJORADAS */
@@ -107,7 +110,7 @@
     /* PANTALLA DE BIENVENIDA MEJORADA */
     .welcome-screen {
       text-align: center;
-      background: radial-gradient(circle, rgba(106,90,205,0.9), rgba(147,112,219,0.9));
+      background: rgba(0, 0, 0, 0.5);
       color: var(--text-light);
       backdrop-filter: blur(10px);
     }
@@ -205,7 +208,7 @@
     
     /* PANTALLA DEL UNIVERSO MAGY MEJORADA */
     .universe-screen {
-      background: linear-gradient(180deg, #000428, #004e92);
+      background: transparent;
       color: var(--text-light);
       text-align: center;
     }
@@ -215,6 +218,11 @@
       width: 90%;
       z-index: 10;
       position: relative;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 30px;
+      border: 2px solid rgba(255, 215, 0, 0.3);
     }
     
     .stars-background {
@@ -326,7 +334,7 @@
     
     /* GALERÍA DE CONSTELACIONES MEJORADA */
     .constellation-screen {
-      background: radial-gradient(circle, #1a1a2e, #16213e, #0f4c75);
+      background: transparent;
       color: var(--text-light);
       padding: 20px;
     }
@@ -412,7 +420,7 @@
     
     /* FOTO MÁGICA MEJORADA - PARTE CENTRAL */
     .photo-screen {
-      background: linear-gradient(135deg, #6a5acd, #9370db);
+      background: transparent;
       text-align: center;
       color: var(--text-light);
     }
@@ -501,9 +509,9 @@
     
     /* ESCRITOS ESPECIALES MEJORADOS */
     .writings-screen {
-      background: linear-gradient(135deg, #ffb6c1, #ffd1dc, #e6e6fa, #d8bfd8);
+      background: transparent;
       padding: 20px;
-      color: var(--text-dark);
+      color: var(--text-light);
     }
     
     .writings-container {
@@ -521,7 +529,7 @@
     }
     
     .writing-card {
-      background: rgba(255,255,255,0.9);
+      background: rgba(255,255,255,0.1);
       border-radius: 20px;
       padding: 25px;
       margin: 20px 0;
@@ -578,7 +586,7 @@
     
     /* RECUERDOS VIRTUALES - MEJORADO CON 4 ELEMENTOS */
     .memories-screen {
-      background: linear-gradient(135deg, #8e2de2, #4a00e0);
+      background: transparent;
       padding: 20px;
       color: var(--text-light);
       display: flex;
@@ -685,7 +693,7 @@
     
     /* MENSAJES INTERACTIVOS MEJORADOS - SIN OPCIÓN DE AMOR */
     .messages-screen {
-      background: linear-gradient(45deg, #6a5acd, #9370db);
+      background: transparent;
       color: var(--text-light);
       padding: 20px;
     }
@@ -777,9 +785,7 @@
     
     /* PANTALLA FINAL MEJORADA */
     .final-screen {
-      background: linear-gradient(45deg, #6a5acd, #9370db, #ba55d3, #ff69b4);
-      background-size: 400% 400%;
-      animation: gradientShift 8s ease infinite;
+      background: transparent;
       color: var(--text-light);
       text-align: center;
     }
@@ -860,7 +866,7 @@
     
     /* NUEVA PANTALLA: UNIVERSO PERSONALIZADO */
     .universe-custom-screen {
-      background: radial-gradient(circle at center, #000428, #000000);
+      background: transparent;
       color: var(--text-light);
       text-align: center;
       overflow: hidden;
@@ -1265,6 +1271,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- FONDO DEL UNIVERSO -->
+  <div class="universe-background"></div>
+
   <!-- PARTÍCULAS CÓSMICAS -->
   <div class="cosmic-particles"></div>
 
