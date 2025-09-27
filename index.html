@@ -879,6 +879,7 @@
     .universe-canvas {
       width: 100%;
       height: 100%;
+      display: block;
     }
     
     .universe-title {
@@ -1767,20 +1768,19 @@ la constelación más brillante, el mejor final.</div>
       });
     });
     
-    // SISTEMA DE UNIVERSO REALISTA MEJORADO
+    // SISTEMA DE UNIVERSO REALISTA MEJORADO - CORREGIDO
     let universeInitialized = false;
-    let canvas, ctx;
-    let stars = [];
-    let planets = [];
-    let constellations = [];
-    let supernovae = [];
-    let animationId;
+    let universeAnimationId = null;
+    let universeObjects = {};
     
     function initUniverse() {
-      if (universeInitialized) return;
+      if (universeAnimationId) {
+        cancelAnimationFrame(universeAnimationId);
+        universeAnimationId = null;
+      }
       
-      canvas = document.getElementById('universeCanvas');
-      ctx = canvas.getContext('2d');
+      const canvas = document.getElementById('universeCanvas');
+      const ctx = canvas.getContext('2d');
       
       // Ajustar tamaño del canvas
       function resizeCanvas() {
@@ -1792,16 +1792,24 @@ la constelación más brillante, el mejor final.</div>
       window.addEventListener('resize', resizeCanvas);
       
       // Crear universo inicial
-      createRealisticUniverse();
+      createRealisticUniverse(canvas, ctx);
       
       // Iniciar animación
-      animateUniverse();
+      animateUniverse(canvas, ctx);
       universeInitialized = true;
     }
     
-    function createRealisticUniverse() {
+    function createRealisticUniverse(canvas, ctx) {
+      // Limpiar objetos anteriores
+      universeObjects = {
+        stars: [],
+        planets: [],
+        constellations: [],
+        supernovae: []
+      };
+      
       // Crear sol (estrella central)
-      const sun = {
+      universeObjects.sun = {
         x: canvas.width / 2,
         y: canvas.height / 2,
         radius: 80,
@@ -1812,7 +1820,7 @@ la constelación más brillante, el mejor final.</div>
       };
       
       // Crear luna
-      const moon = {
+      universeObjects.moon = {
         x: canvas.width * 0.7,
         y: canvas.height * 0.3,
         radius: 30,
@@ -1820,19 +1828,19 @@ la constelación más brillante, el mejor final.</div>
         glow: true,
         glowColor: 'rgba(230, 230, 250, 0.2)',
         glowRadius: 60,
-        phase: 0.7 // Fase lunar (0 = luna nueva, 1 = luna llena)
+        phase: 0.7
       };
       
       // Crear estrellas de fondo
       for (let i = 0; i < 500; i++) {
-        stars.push({
+        universeObjects.stars.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
           size: Math.random() * 2 + 0.5,
           brightness: Math.random() * 0.7 + 0.3,
           twinkleSpeed: Math.random() * 0.05 + 0.01,
           twinkleOffset: Math.random() * Math.PI * 2,
-          color: Math.random() > 0.8 ? '#B0E0E6' : '#FFFFFF' // Algunas estrellas azules
+          color: Math.random() > 0.8 ? '#B0E0E6' : '#FFFFFF'
         });
       }
       
@@ -1842,15 +1850,15 @@ la constelación más brillante, el mejor final.</div>
         const distance = 150 + i * 80;
         const speed = 0.0005 + i * 0.0001;
         
-        planets.push({
-          x: sun.x + Math.cos(i * 1.2) * distance,
-          y: sun.y + Math.sin(i * 1.2) * distance,
+        universeObjects.planets.push({
+          x: universeObjects.sun.x + Math.cos(i * 1.2) * distance,
+          y: universeObjects.sun.y + Math.sin(i * 1.2) * distance,
           radius: 10 + i * 3,
           color: planetColors[i],
           orbitRadius: distance,
           angle: i * 1.2,
           speed: speed,
-          hasRings: i === 2 || i === 4, // Algunos planetas con anillos
+          hasRings: i === 2 || i === 4,
           ringColor: i === 2 ? '#C8A2C8' : '#D4AF37',
           ringRadius: 15 + i * 4
         });
@@ -1865,7 +1873,6 @@ la constelación más brillante, el mejor final.</div>
           lines: []
         };
         
-        // Crear estrellas de la constelación
         const baseX = Math.random() * canvas.width * 0.8 + canvas.width * 0.1;
         const baseY = Math.random() * canvas.height * 0.8 + canvas.height * 0.1;
         
@@ -1878,9 +1885,8 @@ la constelación más brillante, el mejor final.</div>
           });
         }
         
-        // Crear líneas entre estrellas
         for (let j = 0; j < constellation.stars.length - 1; j++) {
-          if (Math.random() > 0.3) { // 70% de probabilidad de conectar estrellas
+          if (Math.random() > 0.3) {
             constellation.lines.push({
               from: j,
               to: j + 1
@@ -1888,127 +1894,29 @@ la constelación más brillante, el mejor final.</div>
           }
         }
         
-        constellations.push(constellation);
-      }
-      
-      // Crear nebulosas
-      for (let i = 0; i < 3; i++) {
-        createNebula(
-          Math.random() * canvas.width,
-          Math.random() * canvas.height,
-          Math.random() * 100 + 50
-        );
-      }
-      
-      // Almacenar objetos centrales
-      window.universeObjects = {
-        sun: sun,
-        moon: moon,
-        stars: stars,
-        planets: planets,
-        constellations: constellations,
-        supernovae: supernovae
-      };
-    }
-    
-    function createNebula(x, y, radius) {
-      const nebula = {
-        x: x,
-        y: y,
-        radius: radius,
-        particles: [],
-        color: `hsla(${Math.random() * 60 + 200}, 70%, 60%, 0.05)`
-      };
-      
-      // Agregar partículas a la nebulosa
-      for (let j = 0; j < 50; j++) {
-        nebula.particles.push({
-          x: nebula.x + (Math.random() - 0.5) * nebula.radius * 2,
-          y: nebula.y + (Math.random() - 0.5) * nebula.radius * 2,
-          size: Math.random() * 3 + 1,
-          speed: Math.random() * 0.5 + 0.1,
-          angle: Math.random() * Math.PI * 2,
-          color: `hsla(${Math.random() * 60 + 200}, 70%, 60%, ${Math.random() * 0.2 + 0.1})`
-        });
-      }
-      
-      // Agregar a las estrellas para simplificar
-      stars.push(...nebula.particles);
-    }
-    
-    function createSupernova(x, y) {
-      const supernova = {
-        x: x,
-        y: y,
-        radius: 5,
-        maxRadius: 100,
-        growthSpeed: 2,
-        life: 1,
-        color: `hsla(${Math.random() * 60 + 30}, 100%, 70%, 0.8)`
-      };
-      
-      supernovae.push(supernova);
-      
-      // Crear estrellas alrededor de la supernova
-      for (let i = 0; i < 20; i++) {
-        stars.push({
-          x: x,
-          y: y,
-          size: Math.random() * 2 + 1,
-          brightness: 1,
-          speed: Math.random() * 5 + 2,
-          angle: Math.random() * Math.PI * 2,
-          isExplosion: true
-        });
+        universeObjects.constellations.push(constellation);
       }
     }
     
-    function animateUniverse() {
-      if (!universeInitialized) return;
-      
+    function animateUniverse(canvas, ctx) {
       // Limpiar canvas con un fondo espacial oscuro
       ctx.fillStyle = 'rgba(5, 10, 30, 0.2)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       
-      const { sun, moon, stars, planets, constellations, supernovae } = window.universeObjects;
-      
-      // Dibujar nebulosas de fondo
-      ctx.fillStyle = 'rgba(30, 30, 80, 0.1)';
-      ctx.beginPath();
-      ctx.arc(canvas.width * 0.3, canvas.height * 0.2, 150, 0, Math.PI * 2);
-      ctx.fill();
-      
-      ctx.beginPath();
-      ctx.arc(canvas.width * 0.8, canvas.height * 0.7, 120, 0, Math.PI * 2);
-      ctx.fill();
+      const { sun, moon, stars, planets, constellations, supernovae } = universeObjects;
       
       // Dibujar estrellas
       for (let i = stars.length - 1; i >= 0; i--) {
         const star = stars[i];
         
-        // Efecto de centelleo
         const twinkle = Math.sin(Date.now() * star.twinkleSpeed + star.twinkleOffset) * 0.3 + 0.7;
         const brightness = star.brightness * twinkle;
         
-        // Movimiento para estrellas de explosión
-        if (star.isExplosion) {
-          star.x += Math.cos(star.angle) * star.speed;
-          star.y += Math.sin(star.angle) * star.speed;
-          star.brightness -= 0.01;
-          
-          if (star.brightness <= 0) {
-            stars.splice(i, 1);
-            continue;
-          }
-        }
-        
-        // Dibujar estrella
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(255, 255, 255, ${brightness})`;
         ctx.fill();
         
-        // Efecto de brillo para estrellas grandes
         if (star.size > 1.5) {
           const gradient = ctx.createRadialGradient(
             star.x, star.y, 0,
@@ -2026,7 +1934,6 @@ la constelación más brillante, el mejor final.</div>
       
       // Dibujar constelaciones
       for (const constellation of constellations) {
-        // Dibujar líneas de la constelación
         ctx.strokeStyle = 'rgba(100, 150, 255, 0.3)';
         ctx.lineWidth = 1;
         
@@ -2040,7 +1947,6 @@ la constelación más brillante, el mejor final.</div>
           ctx.stroke();
         }
         
-        // Dibujar estrellas de la constelación (más brillantes)
         for (const star of constellation.stars) {
           ctx.beginPath();
           ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
@@ -2069,12 +1975,10 @@ la constelación más brillante, el mejor final.</div>
       
       // Actualizar y dibujar planetas
       for (const planet of planets) {
-        // Actualizar posición del planeta
         planet.angle += planet.speed;
         planet.x = sun.x + Math.cos(planet.angle) * planet.orbitRadius;
         planet.y = sun.y + Math.sin(planet.angle) * planet.orbitRadius;
         
-        // Dibujar planeta
         ctx.beginPath();
         ctx.arc(planet.x, planet.y, planet.radius, 0, Math.PI * 2);
         
@@ -2088,7 +1992,6 @@ la constelación más brillante, el mejor final.</div>
         ctx.fillStyle = gradient;
         ctx.fill();
         
-        // Dibujar anillos si el planeta los tiene
         if (planet.hasRings) {
           ctx.strokeStyle = planet.ringColor;
           ctx.lineWidth = 3;
@@ -2169,48 +2072,29 @@ la constelación más brillante, el mejor final.</div>
         ctx.fill();
       }
       
-      // Dibujar y actualizar supernovas
-      for (let i = supernovae.length - 1; i >= 0; i--) {
-        const supernova = supernovae[i];
-        
-        // Expandir supernova
-        supernova.radius += supernova.growthSpeed;
-        
-        // Dibujar supernova
-        const gradient = ctx.createRadialGradient(
-          supernova.x, supernova.y, 0,
-          supernova.x, supernova.y, supernova.radius
-        );
-        gradient.addColorStop(0, supernova.color);
-        gradient.addColorStop(0.7, `hsla(${Math.random() * 60 + 30}, 100%, 70%, 0.3)`);
-        gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
-        
-        ctx.beginPath();
-        ctx.arc(supernova.x, supernova.y, supernova.radius, 0, Math.PI * 2);
-        ctx.fillStyle = gradient;
-        ctx.fill();
-        
-        // Reducir vida de la supernova
-        supernova.life -= 0.005;
-        if (supernova.radius >= supernova.maxRadius || supernova.life <= 0) {
-          supernovae.splice(i, 1);
-        }
-      }
-      
-      // Ocasionalmente crear una nueva supernova
-      if (Math.random() < 0.001) {
-        createSupernova(
-          Math.random() * canvas.width,
-          Math.random() * canvas.height
-        );
-      }
-      
-      animationId = requestAnimationFrame(animateUniverse);
+      universeAnimationId = requestAnimationFrame(() => animateUniverse(canvas, ctx));
     }
+    
+    // Detener animación cuando se cambia de pantalla
+    function stopUniverseAnimation() {
+      if (universeAnimationId) {
+        cancelAnimationFrame(universeAnimationId);
+        universeAnimationId = null;
+      }
+    }
+    
+    // Modificar la función showScreen para detener la animación cuando se sale del universo
+    const originalShowScreen = showScreen;
+    showScreen = function(screenId) {
+      // Si estamos saliendo de la pantalla del universo, detener la animación
+      if (currentScreen === screens.indexOf('universeRealScreen') && screenId !== 'universeRealScreen') {
+        stopUniverseAnimation();
+      }
+      originalShowScreen(screenId);
+    };
     
     // Inicializar
     window.addEventListener('load', () => {
-      // Intentar reproducir música suavemente
       setTimeout(() => {
         if (!musicPlaying) {
           toggleMusic();
