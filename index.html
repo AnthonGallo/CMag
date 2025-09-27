@@ -936,7 +936,234 @@
       box-shadow: 0 8px 20px rgba(255,215,0,0.3);
     }
     
-    /* NAVEGACIÓN MEJORADA - BARRA LATERAL */
+    /* NAVEGACIÓN MEJORADA - BARRA INFERIOR PARA MÓVILES */
+    .nav-bottom {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(10px);
+      padding: 10px 15px;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      transition: var(--transition);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+    
+    .nav-bottom-button {
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255,215,0,0.5);
+      color: var(--text-light);
+      padding: 10px 15px;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 0.9rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-width: 70px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .nav-bottom-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s;
+    }
+    
+    .nav-bottom-button:hover::before {
+      left: 100%;
+    }
+    
+    .nav-bottom-button:hover {
+      background: rgba(255,215,0,0.3);
+      border-color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(255,215,0,0.3);
+    }
+    
+    .nav-bottom-icon {
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+    }
+    
+    .nav-bottom-text {
+      font-size: 0.7rem;
+    }
+    
+    /* CONTROL DE MÚSICA */
+    .music-control {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      z-index: 1000;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(10px);
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: 2px solid rgba(255,215,0,0.5);
+      transition: var(--transition);
+    }
+    
+    .music-control:hover {
+      transform: scale(1.1);
+      border-color: var(--accent);
+      background: rgba(0,0,0,0.7);
+    }
+    
+    .music-icon {
+      font-size: 1.3rem;
+      color: var(--accent);
+    }
+    
+    /* EFECTOS ESPECIALES */
+    @keyframes messageAppear {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    
+    /* RESPONSIVE MEJORADO */
+    @media (max-width: 768px) {
+      .screen {
+        padding: 15px;
+        justify-content: flex-start;
+        padding-top: 60px;
+        padding-bottom: 80px; /* Espacio para la barra inferior */
+      }
+      
+      .memory-timeline::before {
+        left: 20px;
+      }
+      
+      .memory-item {
+        width: calc(100% - 50px);
+        left: 50px !important;
+        margin-bottom: 30px;
+      }
+      
+      .memory-item::before {
+        left: -40px !important;
+      }
+      
+      .constellation-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .photo-frame {
+        height: 300px;
+        max-width: 300px;
+      }
+      
+      .message-selector {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .message-button {
+        width: 200px;
+      }
+      
+      .universe-controls {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      /* Ocultar barra lateral en móviles */
+      .nav-sidebar {
+        display: none;
+      }
+      
+      /* Mostrar barra inferior en móviles */
+      .nav-bottom {
+        display: flex;
+      }
+    }
+    
+    @media (min-width: 769px) {
+      /* Ocultar barra inferior en escritorio */
+      .nav-bottom {
+        display: none;
+      }
+      
+      /* Mostrar barra lateral en escritorio */
+      .nav-sidebar {
+        display: flex;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .screen {
+        padding: 10px;
+        padding-top: 50px;
+        padding-bottom: 70px;
+      }
+      
+      .photo-frame {
+        height: 250px;
+        max-width: 250px;
+      }
+      
+      .memory-item {
+        padding: 15px;
+      }
+      
+      .writing-card {
+        padding: 15px;
+      }
+      
+      .nav-bottom-button {
+        padding: 8px 12px;
+        min-width: 60px;
+        font-size: 0.8rem;
+      }
+      
+      .nav-bottom-icon {
+        font-size: 1rem;
+      }
+      
+      .nav-bottom-text {
+        font-size: 0.6rem;
+      }
+    }
+    
+    /* MEJORAS ESPECÍFICAS PARA TABLETS */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .constellation-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .memory-item {
+        width: 43%;
+      }
+      
+      .memory-item:nth-child(even) {
+        left: 57%;
+      }
+    }
+    
+    /* BARRA LATERAL PARA ESCRITORIO */
     .nav-sidebar {
       position: fixed;
       top: 50%;
@@ -1019,150 +1246,6 @@
       opacity: 1;
     }
     
-    /* CONTROL DE MÚSICA */
-    .music-control {
-      position: fixed;
-      top: 15px;
-      right: 15px;
-      z-index: 1000;
-      background: rgba(0,0,0,0.5);
-      backdrop-filter: blur(10px);
-      border-radius: 50%;
-      width: 45px;
-      height: 45px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      border: 2px solid rgba(255,215,0,0.5);
-      transition: var(--transition);
-    }
-    
-    .music-control:hover {
-      transform: scale(1.1);
-      border-color: var(--accent);
-      background: rgba(0,0,0,0.7);
-    }
-    
-    .music-icon {
-      font-size: 1.3rem;
-      color: var(--accent);
-    }
-    
-    /* EFECTOS ESPECIALES */
-    @keyframes messageAppear {
-      0% { opacity: 0; transform: translateY(10px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-    
-    @keyframes fadeIn {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
-    }
-    
-    /* RESPONSIVE MEJORADO */
-    @media (max-width: 768px) {
-      .screen {
-        padding: 15px;
-        justify-content: flex-start;
-        padding-top: 60px;
-      }
-      
-      .memory-timeline::before {
-        left: 20px;
-      }
-      
-      .memory-item {
-        width: calc(100% - 50px);
-        left: 50px !important;
-        margin-bottom: 30px;
-      }
-      
-      .memory-item::before {
-        left: -40px !important;
-      }
-      
-      .nav-sidebar {
-        right: 10px;
-        padding: 10px 5px;
-      }
-      
-      .nav-button {
-        width: 40px;
-        height: 40px;
-        font-size: 0.9rem;
-      }
-      
-      .constellation-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .photo-frame {
-        height: 300px;
-        max-width: 300px;
-      }
-      
-      .message-selector {
-        flex-direction: column;
-        align-items: center;
-      }
-      
-      .message-button {
-        width: 200px;
-      }
-      
-      .universe-controls {
-        flex-direction: column;
-        align-items: center;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .screen {
-        padding: 10px;
-        padding-top: 50px;
-      }
-      
-      .photo-frame {
-        height: 250px;
-        max-width: 250px;
-      }
-      
-      .memory-item {
-        padding: 15px;
-      }
-      
-      .nav-sidebar {
-        right: 5px;
-        padding: 8px 3px;
-      }
-      
-      .nav-button {
-        width: 35px;
-        height: 35px;
-        font-size: 0.8rem;
-      }
-      
-      .writing-card {
-        padding: 15px;
-      }
-    }
-    
-    /* MEJORAS ESPECÍFICAS PARA TABLETS */
-    @media (min-width: 769px) and (max-width: 1024px) {
-      .constellation-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      
-      .memory-item {
-        width: 43%;
-      }
-      
-      .memory-item:nth-child(even) {
-        left: 57%;
-      }
-    }
-    
     /* EFECTO DE TEXTO MÁGICO */
     .magic-text {
       background: linear-gradient(45deg, #ff69b4, #ffa500, #ffd700, #20b2aa, #9370db);
@@ -1190,7 +1273,7 @@
     <div class="music-icon">🎵</div>
   </div>
 
-  <!-- NAVEGACIÓN MEJORADA - BARRA LATERAL -->
+  <!-- NAVEGACIÓN MEJORADA - BARRA LATERAL PARA ESCRITORIO -->
   <div class="nav-sidebar">
     <button class="nav-button" onclick="previousScreen()">
       ←
@@ -1203,6 +1286,22 @@
     <button class="nav-button" onclick="goHome()">
       🏠
       <span class="nav-tooltip">Inicio</span>
+    </button>
+  </div>
+
+  <!-- NAVEGACIÓN MEJORADA - BARRA INFERIOR PARA MÓVILES -->
+  <div class="nav-bottom">
+    <button class="nav-bottom-button" onclick="previousScreen()">
+      <div class="nav-bottom-icon">←</div>
+      <div class="nav-bottom-text">Anterior</div>
+    </button>
+    <button class="nav-bottom-button" onclick="nextScreen()">
+      <div class="nav-bottom-icon">→</div>
+      <div class="nav-bottom-text">Siguiente</div>
+    </button>
+    <button class="nav-bottom-button" onclick="goHome()">
+      <div class="nav-bottom-icon">🏠</div>
+      <div class="nav-bottom-text">Inicio</div>
     </button>
   </div>
 
@@ -1471,7 +1570,7 @@ la constelación más brillante, el mejor final.</div>
       
       <p class="final-text">
         No permitas que los fantasmas de ayer nublen el sol de tu hoy. 
-        Llora si es necesario, pero deja que tus lágrimas rieguen la semilla de tu propia resiliencia. 
+        Llora si es necesario, pero deje que tus lágrimas rieguen la semilla de tu propia resiliencia. 
         Ríe con todo tu cuerpo, que tu alegría sea un himno que derrumbe cualquier muralla.
       </p>
       
@@ -1799,12 +1898,13 @@ la constelación más brillante, el mejor final.</div>
       });
     });
     
-    // SISTEMA DE UNIVERSO PERSONALIZADO
+    // SISTEMA DE UNIVERSO PERSONALIZADO MEJORADO
     let universeInitialized = false;
     let canvas, ctx;
     let stars = [];
     let nebulae = [];
     let supernovae = [];
+    let galaxies = [];
     let showOrbits = true;
     let mouseX = 0, mouseY = 0;
     let isMouseDown = false;
@@ -1843,54 +1943,59 @@ la constelación más brillante, el mejor final.</div>
         createStarAt(e.clientX, e.clientY);
       });
       
-      // Crear universo inicial
-      createInitialUniverse();
+      // Crear universo inicial más rico
+      createRichUniverse();
       
       // Iniciar animación
       animateUniverse();
       universeInitialized = true;
     }
     
-    function createInitialUniverse() {
-      // Crear estrellas iniciales
-      for (let i = 0; i < 200; i++) {
+    function createRichUniverse() {
+      // Crear galaxias espirales
+      for (let i = 0; i < 3; i++) {
+        galaxies.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          size: Math.random() * 100 + 150,
+          arms: 4,
+          stars: []
+        });
+        
+        // Crear estrellas en la galaxia
+        for (let j = 0; j < 200; j++) {
+          const angle = Math.random() * Math.PI * 2;
+          const distance = Math.random() * galaxies[i].size;
+          const arm = Math.floor(Math.random() * galaxies[i].arms);
+          const armAngle = angle + (arm * (Math.PI * 2 / galaxies[i].arms));
+          
+          galaxies[i].stars.push({
+            x: galaxies[i].x + Math.cos(armAngle) * distance,
+            y: galaxies[i].y + Math.sin(armAngle) * distance,
+            size: Math.random() * 2 + 0.5,
+            brightness: Math.random() * 0.5 + 0.5
+          });
+        }
+      }
+      
+      // Crear estrellas dispersas
+      for (let i = 0; i < 300; i++) {
         stars.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          size: Math.random() * 3 + 1,
-          speed: Math.random() * 0.5 + 0.1,
-          angle: Math.random() * Math.PI * 2,
-          color: `hsl(${Math.random() * 60 + 200}, 100%, ${Math.random() * 30 + 70}%)`,
-          orbitRadius: Math.random() * 100 + 50,
-          orbitSpeed: Math.random() * 0.02 + 0.01,
-          orbitAngle: Math.random() * Math.PI * 2,
-          orbitCenterX: canvas.width / 2,
-          orbitCenterY: canvas.height / 2
+          size: Math.random() * 3 + 0.5,
+          brightness: Math.random() * 0.7 + 0.3,
+          twinkleSpeed: Math.random() * 0.05 + 0.01,
+          twinkleOffset: Math.random() * Math.PI * 2
         });
       }
       
       // Crear nebulosas iniciales
-      for (let i = 0; i < 5; i++) {
-        nebulae.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          radius: Math.random() * 100 + 50,
-          particles: [],
-          color: `hsla(${Math.random() * 60 + 200}, 100%, 70%, 0.1)`,
-          life: 1
-        });
-        
-        // Agregar partículas a la nebulosa
-        for (let j = 0; j < 50; j++) {
-          nebulae[i].particles.push({
-            x: nebulae[i].x,
-            y: nebulae[i].y,
-            size: Math.random() * 3 + 1,
-            speed: Math.random() * 2 + 0.5,
-            angle: Math.random() * Math.PI * 2,
-            distance: Math.random() * nebulae[i].radius
-          });
-        }
+      for (let i = 0; i < 8; i++) {
+        createNebulaAt(
+          Math.random() * canvas.width,
+          Math.random() * canvas.height
+        );
       }
     }
     
@@ -1899,15 +2004,10 @@ la constelación más brillante, el mejor final.</div>
       stars.push({
         x: x,
         y: y,
-        size: Math.random() * 4 + 2,
-        speed: Math.random() * 0.8 + 0.2,
-        angle: Math.random() * Math.PI * 2,
-        color: `hsl(${Math.random() * 60 + 200}, 100%, ${Math.random() * 30 + 70}%)`,
-        orbitRadius: Math.random() * 150 + 50,
-        orbitSpeed: Math.random() * 0.03 + 0.01,
-        orbitAngle: Math.random() * Math.PI * 2,
-        orbitCenterX: x,
-        orbitCenterY: y
+        size: Math.random() * 4 + 1,
+        brightness: 1,
+        twinkleSpeed: Math.random() * 0.05 + 0.01,
+        twinkleOffset: Math.random() * Math.PI * 2
       });
     }
     
@@ -1917,19 +2017,20 @@ la constelación más brillante, el mejor final.</div>
         y: y,
         radius: Math.random() * 80 + 40,
         particles: [],
-        color: `hsla(${Math.random() * 60 + 200}, 100%, 70%, 0.1)`,
+        color: `hsla(${Math.random() * 60 + 200}, 70%, 60%, 0.05)`,
         life: 1
       };
       
       // Agregar partículas a la nebulosa
-      for (let j = 0; j < 30; j++) {
+      for (let j = 0; j < 40; j++) {
         nebula.particles.push({
           x: nebula.x,
           y: nebula.y,
-          size: Math.random() * 3 + 1,
-          speed: Math.random() * 2 + 0.5,
+          size: Math.random() * 4 + 1,
+          speed: Math.random() * 1 + 0.2,
           angle: Math.random() * Math.PI * 2,
-          distance: Math.random() * nebula.radius
+          distance: Math.random() * nebula.radius,
+          color: `hsla(${Math.random() * 60 + 200}, 70%, 60%, ${Math.random() * 0.3 + 0.1})`
         });
       }
       
@@ -1952,26 +2053,22 @@ la constelación más brillante, el mejor final.</div>
         x: x,
         y: y,
         radius: 5,
-        maxRadius: 100,
-        growthSpeed: 2,
+        maxRadius: 150,
+        growthSpeed: 3,
         life: 1,
         color: `hsla(${Math.random() * 60 + 30}, 100%, 70%, 0.8)`
       });
       
       // Crear estrellas alrededor de la supernova
-      for (let i = 0; i < 20; i++) {
+      for (let i = 0; i < 30; i++) {
         stars.push({
           x: x,
           y: y,
           size: Math.random() * 2 + 1,
-          speed: Math.random() * 5 + 2,
+          brightness: 1,
+          speed: Math.random() * 8 + 2,
           angle: Math.random() * Math.PI * 2,
-          color: `hsl(${Math.random() * 60 + 30}, 100%, 70%)`,
-          orbitRadius: 0,
-          orbitSpeed: 0,
-          orbitAngle: 0,
-          orbitCenterX: 0,
-          orbitCenterY: 0
+          isExplosion: true
         });
       }
     }
@@ -1980,7 +2077,8 @@ la constelación más brillante, el mejor final.</div>
       stars = [];
       nebulae = [];
       supernovae = [];
-      createInitialUniverse();
+      galaxies = [];
+      createRichUniverse();
     }
     
     function toggleOrbits() {
@@ -1990,9 +2088,33 @@ la constelación más brillante, el mejor final.</div>
     function animateUniverse() {
       if (!universeInitialized) return;
       
-      // Limpiar canvas con un fondo espacial
+      // Limpiar canvas con un fondo espacial oscuro
       ctx.fillStyle = 'rgba(0, 4, 40, 0.1)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      // Dibujar galaxias
+      for (const galaxy of galaxies) {
+        // Dibujar núcleo de la galaxia
+        const gradient = ctx.createRadialGradient(
+          galaxy.x, galaxy.y, 0,
+          galaxy.x, galaxy.y, galaxy.size * 0.3
+        );
+        gradient.addColorStop(0, 'rgba(255, 255, 200, 0.3)');
+        gradient.addColorStop(1, 'rgba(255, 255, 200, 0)');
+        
+        ctx.beginPath();
+        ctx.arc(galaxy.x, galaxy.y, galaxy.size * 0.3, 0, Math.PI * 2);
+        ctx.fillStyle = gradient;
+        ctx.fill();
+        
+        // Dibujar estrellas de la galaxia
+        for (const star of galaxy.stars) {
+          ctx.beginPath();
+          ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 255, 255, ${star.brightness})`;
+          ctx.fill();
+        }
+      }
       
       // Dibujar y actualizar nebulosas
       for (let i = nebulae.length - 1; i >= 0; i--) {
@@ -2006,12 +2128,12 @@ la constelación más brillante, el mejor final.</div>
           // Dibujar partícula
           ctx.beginPath();
           ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-          ctx.fillStyle = nebula.color;
+          ctx.fillStyle = particle.color;
           ctx.fill();
         }
         
         // Reducir vida de la nebulosa
-        nebula.life -= 0.002;
+        nebula.life -= 0.001;
         if (nebula.life <= 0) {
           nebulae.splice(i, 1);
         }
@@ -2030,6 +2152,7 @@ la constelación más brillante, el mejor final.</div>
           supernova.x, supernova.y, supernova.radius
         );
         gradient.addColorStop(0, supernova.color);
+        gradient.addColorStop(0.7, `hsla(${Math.random() * 60 + 30}, 100%, 70%, 0.3)`);
         gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
         
         ctx.beginPath();
@@ -2038,47 +2161,51 @@ la constelación más brillante, el mejor final.</div>
         ctx.fill();
         
         // Reducir vida de la supernova
-        supernova.life -= 0.01;
+        supernova.life -= 0.008;
         if (supernova.radius >= supernova.maxRadius || supernova.life <= 0) {
           supernovae.splice(i, 1);
         }
       }
       
       // Dibujar y actualizar estrellas
-      for (const star of stars) {
-        // Actualizar posición orbital
-        if (star.orbitRadius > 0) {
-          star.orbitAngle += star.orbitSpeed;
-          star.x = star.orbitCenterX + Math.cos(star.orbitAngle) * star.orbitRadius;
-          star.y = star.orbitCenterY + Math.sin(star.orbitAngle) * star.orbitRadius;
-        } else {
-          // Movimiento lineal
+      for (let i = stars.length - 1; i >= 0; i--) {
+        const star = stars[i];
+        
+        // Efecto de centelleo
+        const twinkle = Math.sin(Date.now() * star.twinkleSpeed + star.twinkleOffset) * 0.3 + 0.7;
+        const brightness = star.brightness * twinkle;
+        
+        // Movimiento para estrellas de explosión
+        if (star.isExplosion) {
           star.x += Math.cos(star.angle) * star.speed;
           star.y += Math.sin(star.angle) * star.speed;
+          star.brightness -= 0.02;
           
-          // Rebotar en los bordes
-          if (star.x < 0 || star.x > canvas.width) star.angle = Math.PI - star.angle;
-          if (star.y < 0 || star.y > canvas.height) star.angle = -star.angle;
+          if (star.brightness <= 0) {
+            stars.splice(i, 1);
+            continue;
+          }
         }
         
         // Dibujar estrella
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
-        ctx.fillStyle = star.color;
-        ctx.fill();
         
-        // Dibujar órbita si está habilitado
-        if (showOrbits && star.orbitRadius > 0) {
-          ctx.beginPath();
-          ctx.arc(star.orbitCenterX, star.orbitCenterY, star.orbitRadius, 0, Math.PI * 2);
-          ctx.strokeStyle = `hsla(200, 100%, 70%, 0.2)`;
-          ctx.stroke();
-        }
+        // Crear efecto de brillo
+        const gradient = ctx.createRadialGradient(
+          star.x, star.y, 0,
+          star.x, star.y, star.size * 2
+        );
+        gradient.addColorStop(0, `rgba(255, 255, 255, ${brightness})`);
+        gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+        
+        ctx.fillStyle = gradient;
+        ctx.fill();
       }
       
       // Crear nebulosa mientras el mouse está presionado
       if (isMouseDown) {
-        if (Math.random() < 0.3) {
+        if (Math.random() < 0.2) {
           createNebulaAt(mouseX, mouseY);
         }
       }
