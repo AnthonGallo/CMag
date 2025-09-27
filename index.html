@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>✨ El Universo de Wilmagy ✨</title>
   <style>
-    /* RESET Y VARIABLES MEJORADAS */
+    /* RESET Y VARIABLES */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -30,7 +30,7 @@
       --section-spacing: clamp(30px, 6vw, 60px);
     }
     
-    /* ESTILOS GENERALES MEJORADOS */
+    /* ESTILOS GENERALES */
     body {
       font-family: 'Arial', sans-serif;
       margin: 0;
@@ -44,7 +44,7 @@
       line-height: 1.6;
     }
     
-    /* FONDO DEL UNIVERSO MEJORADO */
+    /* FONDO DEL UNIVERSO */
     .universe-background {
       position: fixed;
       top: 0;
@@ -55,7 +55,7 @@
       background: radial-gradient(ellipse at center, #0a0e2a 0%, #000000 70%);
     }
     
-    /* PARTÍCULAS CÓSMICAS MEJORADAS */
+    /* PARTÍCULAS CÓSMICAS */
     .cosmic-particles {
       position: fixed;
       top: 0;
@@ -84,7 +84,7 @@
       100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
     }
     
-    /* SISTEMA DE PANTALLAS MEJORADO */
+    /* SISTEMA DE PANTALLAS */
     .screen {
       min-height: 100vh;
       padding: var(--container-padding);
@@ -114,7 +114,7 @@
       100% { opacity: 1; transform: translateY(0); }
     }
     
-    /* PANTALLA DE BIENVENIDA MEJORADA */
+    /* PANTALLA DE BIENVENIDA */
     .welcome-screen {
       text-align: center;
       background: rgba(0, 0, 0, 0.5);
@@ -216,7 +216,7 @@
       left: 100%;
     }
     
-    /* PANTALLA DEL UNIVERSO MAGY - MEJORADA SIGNIFICATIVAMENTE */
+    /* PANTALLA DEL UNIVERSO MAGY */
     .universe-screen {
       background: transparent;
       text-align: center;
@@ -351,7 +351,7 @@
       left: 100%;
     }
     
-    /* GALERÍA DE CONSTELACIONES MEJORADA */
+    /* GALERÍA DE CONSTELACIONES */
     .constellation-screen {
       background: transparent;
       padding: var(--section-spacing);
@@ -447,7 +447,7 @@
       opacity: 0.9;
     }
     
-    /* FOTO MÁGICA MEJORADA - PARTE CENTRAL */
+    /* FOTO - PARTE CENTRAL */
     .photo-screen {
       background: transparent;
       text-align: center;
@@ -540,7 +540,7 @@
       padding: 0 15px;
     }
     
-    /* ESCRITOS ESPECIALES MEJORADOS */
+    /* ESCRITOS ESPECIALES */
     .writings-screen {
       background: transparent;
       padding: var(--section-spacing);
@@ -621,7 +621,7 @@
       color: #20b2aa;
     }
     
-    /* RECUERDOS VIRTUALES - MEJORADO CON 4 ELEMENTOS */
+    /* RECUERDOS VIRTUALES - 4 ELEMENTOS */
     .memories-screen {
       background: transparent;
       padding: var(--section-spacing);
@@ -729,7 +729,7 @@
       line-height: 1.6;
     }
     
-    /* MENSAJES INTERACTIVOS MEJORADOS - SIN OPCIÓN DE AMOR */
+    /* MENSAJES INTERACTIVOS */
     .messages-screen {
       background: transparent;
       padding: var(--section-spacing);
@@ -828,7 +828,7 @@
       left: 100%;
     }
     
-    /* PANTALLA FINAL MEJORADA */
+    /* PANTALLA FINAL */
     .final-screen {
       background: transparent;
       text-align: center;
@@ -913,7 +913,7 @@
       50% { transform: scale(1.05); }
     }
     
-    /* NUEVA PANTALLA: UNIVERSO REALISTA */
+    /* PANTALLA: UNIVERSO */
     .universe-real-screen {
       background: transparent;
       text-align: center;
@@ -954,7 +954,7 @@
       backdrop-filter: none;
     }
     
-    /* NUEVA BARRA DE NAVEGACIÓN MEJORADA */
+    /* BARRA DE NAVEGACIÓN */
     .nav-toggle {
       position: fixed;
       top: clamp(15px, 3vw, 25px);
@@ -1084,7 +1084,7 @@
       100% { opacity: 1; }
     }
     
-    /* MEJORAS DE RESPONSIVIDAD ESPECÍFICAS */
+    /* RESPONSIVIDAD */
     
     /* MÓVILES PEQUEÑOS (hasta 480px) */
     @media (max-width: 480px) {
@@ -1240,7 +1240,7 @@
       }
     }
     
-    /* MEJORAS ESPECÍFICAS PARA ORIENTACIÓN */
+    /* ORIENTACIÓN */
     @media (max-height: 500px) and (orientation: landscape) {
       .screen {
         padding-top: 80px;
@@ -1280,7 +1280,7 @@
       100% { background-position: 0% 50%; }
     }
     
-    /* MEJORAS DE ACCESIBILIDAD */
+    /* ACCESIBILIDAD */
     @media (prefers-reduced-motion: reduce) {
       * {
         animation-duration: 0.01ms !important;
@@ -1303,7 +1303,7 @@
     <div class="music-icon">🎵</div>
   </div>
 
-  <!-- BARRA DE NAVEGACIÓN MEJORADA -->
+  <!-- BARRA DE NAVEGACIÓN -->
   <div class="nav-toggle" id="navToggle">
     <div class="nav-toggle-icon">☰</div>
   </div>
@@ -1323,7 +1323,7 @@
     <h1 class="welcome-title">✨ Para Wilmagy ✨</h1>
     <p class="subtitle">Un universo completo contenido en una persona extraordinaria</p>
     <button class="start-button" onclick="showUniverse()">
-      🌟 Comenzar el Viaje Cósmico 🌟
+      🌟 Comenzar el Viaje 🌟
     </button>
   </div>
 
@@ -1354,7 +1354,7 @@
     </div>
   </div>
 
-  <!-- PANTALLA DE CONSTELACIONES - MEJORADA -->
+  <!-- PANTALLA DE CONSTELACIONES -->
   <div id="constellationScreen" class="screen">
     <h1 class="constellation-title">✨ Las Constelaciones de Wilmagy ✨</h1>
     
@@ -1399,7 +1399,7 @@
         <div class="constellation-icon">🌟</div>
         <div class="constellation-card-title">Constelación de la Luz</div>
         <div class="constellation-description">
-          La luz que no teme a la oscuridad porque sabe que es en la noche 
+          La LUZ que no teme a la OSCURIDAD porque sabe que es en la noche 
           donde las estrellas brillan con más fuerza. Eres luz pura.
         </div>
       </div>
@@ -1419,14 +1419,14 @@
     </button>
   </div>
 
-  <!-- PANTALLA DE FOTO MÁGICA - MEJORADA -->
+  <!-- PANTALLA DE FOTO MÁGICA -->
   <div id="photoScreen" class="screen">
     <h1 class="photo-title">✨ La Esencia del Universo ✨</h1>
     
     <div class="magic-photo-container">
       <div class="photo-frame">
-        <!-- REEMPLAZA ESTA URL CON LA FOTO REAL DE WILMAGY -->
-        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
+        <!-- FOTO -->
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczMTfFFt2eteZxm7qXWkKN6dy901WEXaBTOe5IHjKAu_Z-bxTVWnDZNOtbKzuvIHMX-LtgeLHh_XaOD8zNuWQkbAcXpc20mYqeRbGnTAvysixGBtf7wKeAyE-kWLe1nRqcrdfBloCWevdZA4wK52R--25A=w904-h508-s-no-gm" 
              alt="Wilmagy - La Esencia del Universo" 
              class="magic-photo">
         <div class="photo-sparkles">
@@ -1449,14 +1449,14 @@
     </div>
     
     <button class="next-button" onclick="showWritings()">
-      📝 Escritos del Corazón 📝
+      📝 Mis escritos más secretos 📝
     </button>
   </div>
 
-  <!-- PANTALLA DE ESCRITOS - MEJORADA -->
+  <!-- PANTALLA DE ESCRITOS -->
   <div id="writingsScreen" class="screen">
     <div class="writings-container">
-      <h1 class="writings-title">📜 Escritos del Alma 📜</h1>
+      <h1 class="writings-title">📜 Desde lo que inspiras 📜</h1>
       
       <div class="writing-card">
         <div class="writing-title">💝 Mapa del Alma</div>
@@ -1470,7 +1470,7 @@ Por eso te digo, con la certeza que da el haber mirado más allá de la superfic
       </div>
       
       <div class="writing-card poem-card">
-        <div class="writing-title">🚀 Huella en el Mar de la Tranquilidad</div>
+        <div class="writing-title">🚀 Más allá del descubrimiento</div>
         <div class="writing-content">Al igual que Armstrong llegó a la luna,
 y pisó su polvo gris con paso firme,
 un nuevo viaje planea mi fortuna:
@@ -1498,7 +1498,7 @@ no solo llegar... sino quedarme aquí.</div>
       </div>
       
       <div class="writing-card">
-        <div class="writing-title">🌠 Poema Cósmico para Wilmagy</div>
+        <div class="writing-title">🌠 Al igual que el Bing Bang</div>
         <div class="writing-content">Eres constelación de fortaleza y ternura,
 un mapa estelar de rara hermosura.
 Cada peca tuya es un sol recién nacido,
@@ -1506,7 +1506,7 @@ en la piel morena del cosmos encendido.
 
 Tu risa ordena planetas y cometas,
 tu mirada ilumina nebulosas secretas.
-Eres el big bang de esperanza y valor,
+Eres un big bang de esperanza y valor,
 la creación más bella, el mejor favor.
 
 Que el universo te devuelva en kind,
@@ -1521,7 +1521,7 @@ la constelación más brillante, el mejor final.</div>
     </div>
   </div>
 
-  <!-- RECUERDOS VIRTUALES - MEJORADO -->
+  <!-- RECUERDOS -->
   <div id="memoriesScreen" class="screen">
     <div class="memories-container">
       <h1 class="memories-title">🕰️ Línea del Tiempo Especial</h1>
@@ -1529,7 +1529,7 @@ la constelación más brillante, el mejor final.</div>
       <div class="memory-timeline">
         <div class="memory-item">
           <div class="memory-date">Primer Encuentro</div>
-          <div class="memory-content">El momento en que el universo conspiró para que nuestros caminos se cruzaran, y supe que había encontrado a alguien extraordinario.</div>
+          <div class="memory-content">El momento en que el universo conspiró para que nuestros caminos se cruzaran, y supe que había encontrado a alguien extraordinaria.</div>
         </div>
         
         <div class="memory-item">
@@ -1539,7 +1539,7 @@ la constelación más brillante, el mejor final.</div>
         
         <div class="memory-item">
           <div class="memory-date">Momentos Compartidos</div>
-          <div class="memory-content">Risas, conversaciones profundas y esos instantes donde el tiempo parecía detenerse para celebrar nuestra amistad.</div>
+          <div class="memory-content">Risas, conversaciones profundas y esos instantes donde el tiempo parecía detenerse para celebrar cada día, cada noche, esta vida...</div>
         </div>
         
         <div class="memory-item">
@@ -1549,7 +1549,7 @@ la constelación más brillante, el mejor final.</div>
       </div>
       
       <button class="next-button" onclick="showMessages()">
-        💌 Mensajes del Corazón 💌
+        💌 Mensajes de mi Corazón 💌
       </button>
     </div>
   </div>
@@ -1579,7 +1579,7 @@ la constelación más brillante, el mejor final.</div>
   <!-- PANTALLA FINAL - MEJORADA -->
   <div id="finalScreen" class="screen">
     <div class="final-content">
-      <h1 class="final-title">✨ Para Wilmagy ✨</h1>
+      <h1 class="final-title">✨ Desde lo más profundo te digo.. ✨</h1>
       
       <p class="final-text">
         No permitas que los fantasmas de ayer nublen el sol de tu hoy. 
@@ -1588,7 +1588,7 @@ la constelación más brillante, el mejor final.</div>
       </p>
       
       <p class="final-highlight">
-        <strong>Espera todo, exige todo, mereces el universo y sus constelaciones.</strong>
+        <strong>Espera todo, exige todo, mereces el universo y como tú, sus constelaciones.</strong>
       </p>
       
       <p class="final-text">
@@ -1597,8 +1597,8 @@ la constelación más brillante, el mejor final.</div>
       </p>
       
       <div class="final-signature">
-        Con amor infinito 💖<br>
-        <span style="color: #ff69b4;">Tu amigo del alma</span>
+        Con cariño 💖<br>
+        <span style="color: #ff69b4;">Feeliz cumpleaños Magy</span>
       </div>
     </div>
     
@@ -1607,7 +1607,7 @@ la constelación más brillante, el mejor final.</div>
     </button>
   </div>
 
-  <!-- NUEVA PANTALLA: UNIVERSO REALISTA -->
+  <!-- NUEVA PANTALLA: UNIVERSO -->
   <div id="universeRealScreen" class="screen universe-real-screen">
     <div class="universe-canvas-container">
       <canvas id="universeCanvas" class="universe-canvas"></canvas>
@@ -1618,7 +1618,7 @@ la constelación más brillante, el mejor final.</div>
 
   <!-- AUDIO PARA MÚSICA DE FONDO -->
   <audio id="backgroundMusic" loop>
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    <source src="https://youtu.be/l3qd-3po3xU?si=BglpseUESQdQI-Ss" type="audio/mpeg">
     Tu navegador no soporta el elemento de audio.
   </audio>
 
@@ -1811,7 +1811,7 @@ la constelación más brillante, el mejor final.</div>
       goHome();
     }
     
-    // Sistema de mensajes interactivos - SIN OPCIÓN DE AMOR
+    // Sistema de mensajes interactivos
     const messages = [
       {
         icon: "💪",
@@ -1913,7 +1913,7 @@ la constelación más brillante, el mejor final.</div>
       });
     });
     
-    // SISTEMA DE UNIVERSO REALISTA MEJORADO - VERSIÓN ENCANTADORA
+    // SISTEMA DE UNIVERSO
     let universeAnimationId = null;
     let universeObjects = {};
     
@@ -1978,7 +1978,7 @@ la constelación más brillante, el mejor final.</div>
         pulseSpeed: 0.003
       };
       
-      // Crear estrellas de fondo - más cálidas y variadas
+      // Crear estrellas de fondo
       for (let i = 0; i < 600; i++) {
         universeObjects.stars.push({
           x: Math.random() * canvas.width,
@@ -1993,7 +1993,7 @@ la constelación más brillante, el mejor final.</div>
         });
       }
       
-      // Crear planetas - colores más cálidos y encantadores
+      // Crear planetas
       const planetColors = ['#FF6B6B', '#FFA07A', '#FFD700', '#98FB98', '#87CEEB', '#DDA0DD'];
       const planetNames = ['Corazón', 'Risa', 'Esperanza', 'Fuerza', 'Sueños', 'Magia'];
       
@@ -2409,3 +2409,4 @@ la constelación más brillante, el mejor final.</div>
   </script>
 </body>
 </html>
+
