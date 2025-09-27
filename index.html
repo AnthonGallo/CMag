@@ -13,14 +13,14 @@
     }
     
     :root {
-      --primary: #6a5acd; /* Cambiado a un violeta más suave */
+      --primary: #6a5acd; /* Violeta suave */
       --secondary: #9370db; /* Lavanda */
       --accent: #ffd700; /* Dorado */
       --accent2: #ff69b4; /* Rosa fuerte */
       --accent3: #20b2aa; /* Verde mar claro */
       --accent4: #ba55d3; /* Orquídea media */
       --text-light: #ffffff;
-      --text-dark: #2c2c54; /* Azul oscuro en lugar de gris */
+      --text-dark: #2c2c54; /* Azul oscuro */
       --shadow: 0 10px 30px rgba(0,0,0,0.2);
       --shadow-light: 0 5px 15px rgba(0,0,0,0.1);
       --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -576,74 +576,7 @@
       color: #20b2aa;
     }
     
-    /* NUEVA PANTALLA: GALERÍA DE FOTOS */
-    .gallery-screen {
-      background: linear-gradient(135deg, #ff69b4, #ba55d3, #9370db);
-      padding: 20px;
-      color: var(--text-light);
-    }
-    
-    .gallery-title {
-      text-align: center;
-      font-size: clamp(1.8rem, 5vw, 3rem);
-      margin-bottom: 30px;
-      color: #ffd700;
-      font-family: 'Dancing Script', cursive;
-      text-shadow: 0 0 20px rgba(255,215,0,0.5);
-    }
-    
-    .gallery-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 20px;
-      max-width: 1000px;
-      width: 90%;
-      margin: 0 auto 30px auto;
-    }
-    
-    .gallery-item {
-      position: relative;
-      border-radius: 15px;
-      overflow: hidden;
-      height: 200px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-      transition: var(--transition);
-      cursor: pointer;
-    }
-    
-    .gallery-item:hover {
-      transform: translateY(-5px) scale(1.03);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-    }
-    
-    .gallery-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: var(--transition);
-    }
-    
-    .gallery-item:hover .gallery-img {
-      transform: scale(1.1);
-    }
-    
-    .gallery-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(transparent, rgba(0,0,0,0.7));
-      padding: 15px;
-      color: white;
-      transform: translateY(100%);
-      transition: var(--transition);
-    }
-    
-    .gallery-item:hover .gallery-overlay {
-      transform: translateY(0);
-    }
-    
-    /* RECUERDOS VIRTUALES - MEJORADO CON DISEÑO MÁS VISUAL */
+    /* RECUERDOS VIRTUALES - MEJORADO CON 4 ELEMENTOS */
     .memories-screen {
       background: linear-gradient(135deg, #8e2de2, #4a00e0);
       padding: 20px;
@@ -842,62 +775,6 @@
       left: 100%;
     }
     
-    /* NUEVA PANTALLA: REGALO ESPECIAL */
-    .gift-screen {
-      background: linear-gradient(135deg, #ff69b4, #ff1493, #dc143c);
-      padding: 20px;
-      color: var(--text-light);
-      text-align: center;
-    }
-    
-    .gift-title {
-      font-size: clamp(1.8rem, 5vw, 3rem);
-      margin-bottom: 30px;
-      color: #ffd700;
-      font-family: 'Dancing Script', cursive;
-      text-shadow: 0 0 20px rgba(255,215,0,0.5);
-    }
-    
-    .gift-container {
-      max-width: 600px;
-      width: 90%;
-      margin: 0 auto;
-      background: rgba(255,255,255,0.1);
-      backdrop-filter: blur(15px);
-      border-radius: 20px;
-      padding: 30px;
-      border: 2px solid rgba(255,215,0,0.5);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    }
-    
-    .gift-icon {
-      font-size: 4rem;
-      margin-bottom: 20px;
-      animation: bounce 2s infinite;
-    }
-    
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-    
-    .gift-message {
-      font-size: 1.2rem;
-      line-height: 1.6;
-      margin-bottom: 20px;
-    }
-    
-    .gift-code {
-      background: rgba(0,0,0,0.3);
-      padding: 15px;
-      border-radius: 10px;
-      font-family: monospace;
-      font-size: 1.5rem;
-      letter-spacing: 2px;
-      margin: 20px 0;
-      border: 1px dashed var(--accent);
-    }
-    
     /* PANTALLA FINAL MEJORADA */
     .final-screen {
       background: linear-gradient(45deg, #6a5acd, #9370db, #ba55d3, #ff69b4);
@@ -979,6 +856,84 @@
     @keyframes heartbeat {
       0%, 100% { transform: scale(1); }
       50% { transform: scale(1.05); }
+    }
+    
+    /* NUEVA PANTALLA: UNIVERSO PERSONALIZADO */
+    .universe-custom-screen {
+      background: radial-gradient(circle at center, #000428, #000000);
+      color: var(--text-light);
+      text-align: center;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .universe-canvas-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+    
+    .universe-canvas {
+      width: 100%;
+      height: 100%;
+    }
+    
+    .universe-custom-content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      width: 90%;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 30px;
+      border: 2px solid rgba(255, 215, 0, 0.3);
+      margin: 20px auto;
+    }
+    
+    .universe-custom-title {
+      font-size: clamp(2rem, 6vw, 4rem);
+      margin-bottom: 20px;
+      text-shadow: 0 0 30px rgba(255,215,0,0.8);
+      animation: cosmicPulse 4s ease-in-out infinite;
+      font-family: 'Dancing Script', cursive;
+    }
+    
+    .universe-custom-text {
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      line-height: 1.6;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+    }
+    
+    .universe-controls {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+    
+    .universe-control-button {
+      background: rgba(255,255,255,0.2);
+      border: 2px solid rgba(255,215,0,0.5);
+      color: var(--text-light);
+      padding: 10px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 0.9rem;
+      backdrop-filter: blur(10px);
+    }
+    
+    .universe-control-button:hover {
+      background: rgba(255,215,0,0.3);
+      border-color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(255,215,0,0.3);
     }
     
     /* NAVEGACIÓN MEJORADA - BARRA LATERAL */
@@ -1156,8 +1111,9 @@
         width: 200px;
       }
       
-      .gallery-container {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      .universe-controls {
+        flex-direction: column;
+        align-items: center;
       }
     }
     
@@ -1190,10 +1146,6 @@
       .writing-card {
         padding: 15px;
       }
-      
-      .gallery-container {
-        grid-template-columns: 1fr;
-      }
     }
     
     /* MEJORAS ESPECÍFICAS PARA TABLETS */
@@ -1208,10 +1160,6 @@
       
       .memory-item:nth-child(even) {
         left: 57%;
-      }
-      
-      .gallery-container {
-        grid-template-columns: repeat(3, 1fr);
       }
     }
     
@@ -1388,49 +1336,6 @@
       </p>
     </div>
     
-    <button class="next-button" onclick="showGallery()">
-      🖼️ Galería de Recuerdos 🖼️
-    </button>
-  </div>
-
-  <!-- NUEVA PANTALLA: GALERÍA DE FOTOS -->
-  <div id="galleryScreen" class="screen gallery-screen">
-    <h1 class="gallery-title">🖼️ Galería de Recuerdos Especiales 🖼️</h1>
-    
-    <div class="gallery-container">
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
-             alt="Recuerdo 1" class="gallery-img">
-        <div class="gallery-overlay">
-          <div>Momentos de Alegría</div>
-        </div>
-      </div>
-      
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
-             alt="Recuerdo 2" class="gallery-img">
-        <div class="gallery-overlay">
-          <div>Risas Compartidas</div>
-        </div>
-      </div>
-      
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
-             alt="Recuerdo 3" class="gallery-img">
-        <div class="gallery-overlay">
-          <div>Conversaciones Profundas</div>
-        </div>
-      </div>
-      
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
-             alt="Recuerdo 4" class="gallery-img">
-        <div class="gallery-overlay">
-          <div>Amistad Verdadera</div>
-        </div>
-      </div>
-    </div>
-    
     <button class="next-button" onclick="showWritings()">
       📝 Escritos del Corazón 📝
     </button>
@@ -1554,32 +1459,6 @@ la constelación más brillante, el mejor final.</div>
       <p>Selecciona un mensaje arriba para descubrir algo especial...</p>
     </div>
     
-    <button class="next-button" onclick="showGift()">
-      🎁 Regalo Especial 🎁
-    </button>
-  </div>
-
-  <!-- NUEVA PANTALLA: REGALO ESPECIAL -->
-  <div id="giftScreen" class="screen gift-screen">
-    <h1 class="gift-title">🎁 Un Regalo Especial para Ti 🎁</h1>
-    
-    <div class="gift-container">
-      <div class="gift-icon">🎁</div>
-      <p class="gift-message">
-        Como símbolo de nuestra amistad y de todo lo que significas, 
-        aquí tienes un código especial que puedes canjear por un regalo físico.
-      </p>
-      
-      <div class="gift-code">
-        WILMAGY-2024-ESTRELLA
-      </div>
-      
-      <p class="gift-message">
-        Este código representa la luz que eres en mi vida y en la de todos los que te conocen. 
-        ¡Feliz cumpleaños, Wilmagy!
-      </p>
-    </div>
-    
     <button class="next-button" onclick="showFinal()">
       🎉 Conclusión Mágica 🎉
     </button>
@@ -1611,9 +1490,42 @@ la constelación más brillante, el mejor final.</div>
       </div>
     </div>
     
-    <button class="next-button" onclick="restartJourney()">
-      🔄 Comenzar de Nuevo 🔄
+    <button class="next-button" onclick="showUniverseCustom()">
+      🌌 Crear Tu Universo Personalizado 🌌
     </button>
+  </div>
+
+  <!-- NUEVA PANTALLA: UNIVERSO PERSONALIZADO -->
+  <div id="universeCustomScreen" class="screen universe-custom-screen">
+    <div class="universe-canvas-container">
+      <canvas id="universeCanvas" class="universe-canvas"></canvas>
+    </div>
+    
+    <div class="universe-custom-content">
+      <h1 class="universe-custom-title">🌌 Tu Universo Personalizado 🌌</h1>
+      
+      <p class="universe-custom-text">
+        Este universo fue creado especialmente para ti. Cada estrella, cada nebulosa y cada galaxia 
+        representa una cualidad única que te define. Eres el centro de este cosmos, la fuerza que 
+        mantiene todo en armonía.
+      </p>
+      
+      <p class="universe-custom-text">
+        <strong>Interactúa con tu universo:</strong> Haz clic para crear nuevas estrellas, mantén presionado 
+        para formar nebulosas, y desplázate para explorar las galaxias que representan tu esencia.
+      </p>
+      
+      <div class="universe-controls">
+        <button class="universe-control-button" onclick="resetUniverse()">🔄 Reiniciar Universo</button>
+        <button class="universe-control-button" onclick="addSupernova()">💥 Agregar Supernova</button>
+        <button class="universe-control-button" onclick="createNebula()">🌫️ Crear Nebulosa</button>
+        <button class="universe-control-button" onclick="toggleOrbits()">🌀 Alternar Órbitas</button>
+      </div>
+      
+      <button class="next-button" onclick="restartJourney()" style="margin-top: 30px;">
+        🔄 Comenzar de Nuevo 🔄
+      </button>
+    </div>
   </div>
 
   <!-- AUDIO PARA MÚSICA DE FONDO -->
@@ -1635,8 +1547,8 @@ la constelación más brillante, el mejor final.</div>
     // Sistema de navegación mejorado
     const screens = [
       'welcomeScreen', 'universeScreen', 'constellationScreen', 
-      'photoScreen', 'galleryScreen', 'writingsScreen', 'memoriesScreen', 
-      'messagesScreen', 'giftScreen', 'finalScreen'
+      'photoScreen', 'writingsScreen', 'memoriesScreen', 
+      'messagesScreen', 'finalScreen', 'universeCustomScreen'
     ];
     let currentScreen = 0;
     let musicPlaying = false;
@@ -1721,6 +1633,10 @@ la constelación más brillante, el mejor final.</div>
           playSound(sparkleSound);
         }
         
+        if (screenId === 'universeCustomScreen') {
+          initUniverse();
+        }
+        
         // Scroll suave hacia la parte superior
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }, 300);
@@ -1738,10 +1654,6 @@ la constelación más brillante, el mejor final.</div>
       showScreen('photoScreen');
     }
     
-    function showGallery() {
-      showScreen('galleryScreen');
-    }
-    
     function showWritings() {
       showScreen('writingsScreen');
     }
@@ -1754,12 +1666,12 @@ la constelación más brillante, el mejor final.</div>
       showScreen('messagesScreen');
     }
     
-    function showGift() {
-      showScreen('giftScreen');
-    }
-    
     function showFinal() {
       showScreen('finalScreen');
+    }
+    
+    function showUniverseCustom() {
+      showScreen('universeCustomScreen');
     }
     
     function nextScreen() {
@@ -1887,16 +1799,292 @@ la constelación más brillante, el mejor final.</div>
       });
     });
     
-    // Efectos en la galería
-    document.querySelectorAll('.gallery-item').forEach(item => {
-      item.addEventListener('click', () => {
-        playSound(clickSound);
-        item.style.transform = 'translateY(-5px) scale(1.03)';
-        setTimeout(() => {
-          item.style.transform = '';
-        }, 300);
+    // SISTEMA DE UNIVERSO PERSONALIZADO
+    let universeInitialized = false;
+    let canvas, ctx;
+    let stars = [];
+    let nebulae = [];
+    let supernovae = [];
+    let showOrbits = true;
+    let mouseX = 0, mouseY = 0;
+    let isMouseDown = false;
+    
+    function initUniverse() {
+      if (universeInitialized) return;
+      
+      canvas = document.getElementById('universeCanvas');
+      ctx = canvas.getContext('2d');
+      
+      // Ajustar tamaño del canvas
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas);
+      
+      // Eventos del mouse
+      canvas.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
       });
-    });
+      
+      canvas.addEventListener('mousedown', () => {
+        isMouseDown = true;
+        createNebulaAt(mouseX, mouseY);
+      });
+      
+      canvas.addEventListener('mouseup', () => {
+        isMouseDown = false;
+      });
+      
+      canvas.addEventListener('click', (e) => {
+        createStarAt(e.clientX, e.clientY);
+      });
+      
+      // Crear universo inicial
+      createInitialUniverse();
+      
+      // Iniciar animación
+      animateUniverse();
+      universeInitialized = true;
+    }
+    
+    function createInitialUniverse() {
+      // Crear estrellas iniciales
+      for (let i = 0; i < 200; i++) {
+        stars.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          size: Math.random() * 3 + 1,
+          speed: Math.random() * 0.5 + 0.1,
+          angle: Math.random() * Math.PI * 2,
+          color: `hsl(${Math.random() * 60 + 200}, 100%, ${Math.random() * 30 + 70}%)`,
+          orbitRadius: Math.random() * 100 + 50,
+          orbitSpeed: Math.random() * 0.02 + 0.01,
+          orbitAngle: Math.random() * Math.PI * 2,
+          orbitCenterX: canvas.width / 2,
+          orbitCenterY: canvas.height / 2
+        });
+      }
+      
+      // Crear nebulosas iniciales
+      for (let i = 0; i < 5; i++) {
+        nebulae.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          radius: Math.random() * 100 + 50,
+          particles: [],
+          color: `hsla(${Math.random() * 60 + 200}, 100%, 70%, 0.1)`,
+          life: 1
+        });
+        
+        // Agregar partículas a la nebulosa
+        for (let j = 0; j < 50; j++) {
+          nebulae[i].particles.push({
+            x: nebulae[i].x,
+            y: nebulae[i].y,
+            size: Math.random() * 3 + 1,
+            speed: Math.random() * 2 + 0.5,
+            angle: Math.random() * Math.PI * 2,
+            distance: Math.random() * nebulae[i].radius
+          });
+        }
+      }
+    }
+    
+    function createStarAt(x, y) {
+      playSound(sparkleSound);
+      stars.push({
+        x: x,
+        y: y,
+        size: Math.random() * 4 + 2,
+        speed: Math.random() * 0.8 + 0.2,
+        angle: Math.random() * Math.PI * 2,
+        color: `hsl(${Math.random() * 60 + 200}, 100%, ${Math.random() * 30 + 70}%)`,
+        orbitRadius: Math.random() * 150 + 50,
+        orbitSpeed: Math.random() * 0.03 + 0.01,
+        orbitAngle: Math.random() * Math.PI * 2,
+        orbitCenterX: x,
+        orbitCenterY: y
+      });
+    }
+    
+    function createNebulaAt(x, y) {
+      const nebula = {
+        x: x,
+        y: y,
+        radius: Math.random() * 80 + 40,
+        particles: [],
+        color: `hsla(${Math.random() * 60 + 200}, 100%, 70%, 0.1)`,
+        life: 1
+      };
+      
+      // Agregar partículas a la nebulosa
+      for (let j = 0; j < 30; j++) {
+        nebula.particles.push({
+          x: nebula.x,
+          y: nebula.y,
+          size: Math.random() * 3 + 1,
+          speed: Math.random() * 2 + 0.5,
+          angle: Math.random() * Math.PI * 2,
+          distance: Math.random() * nebula.radius
+        });
+      }
+      
+      nebulae.push(nebula);
+    }
+    
+    function createNebula() {
+      createNebulaAt(
+        Math.random() * canvas.width,
+        Math.random() * canvas.height
+      );
+    }
+    
+    function addSupernova() {
+      playSound(sparkleSound);
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * canvas.height;
+      
+      supernovae.push({
+        x: x,
+        y: y,
+        radius: 5,
+        maxRadius: 100,
+        growthSpeed: 2,
+        life: 1,
+        color: `hsla(${Math.random() * 60 + 30}, 100%, 70%, 0.8)`
+      });
+      
+      // Crear estrellas alrededor de la supernova
+      for (let i = 0; i < 20; i++) {
+        stars.push({
+          x: x,
+          y: y,
+          size: Math.random() * 2 + 1,
+          speed: Math.random() * 5 + 2,
+          angle: Math.random() * Math.PI * 2,
+          color: `hsl(${Math.random() * 60 + 30}, 100%, 70%)`,
+          orbitRadius: 0,
+          orbitSpeed: 0,
+          orbitAngle: 0,
+          orbitCenterX: 0,
+          orbitCenterY: 0
+        });
+      }
+    }
+    
+    function resetUniverse() {
+      stars = [];
+      nebulae = [];
+      supernovae = [];
+      createInitialUniverse();
+    }
+    
+    function toggleOrbits() {
+      showOrbits = !showOrbits;
+    }
+    
+    function animateUniverse() {
+      if (!universeInitialized) return;
+      
+      // Limpiar canvas con un fondo espacial
+      ctx.fillStyle = 'rgba(0, 4, 40, 0.1)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      // Dibujar y actualizar nebulosas
+      for (let i = nebulae.length - 1; i >= 0; i--) {
+        const nebula = nebulae[i];
+        
+        // Actualizar partículas de la nebulosa
+        for (const particle of nebula.particles) {
+          particle.x += Math.cos(particle.angle) * particle.speed;
+          particle.y += Math.sin(particle.angle) * particle.speed;
+          
+          // Dibujar partícula
+          ctx.beginPath();
+          ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+          ctx.fillStyle = nebula.color;
+          ctx.fill();
+        }
+        
+        // Reducir vida de la nebulosa
+        nebula.life -= 0.002;
+        if (nebula.life <= 0) {
+          nebulae.splice(i, 1);
+        }
+      }
+      
+      // Dibujar y actualizar supernovas
+      for (let i = supernovae.length - 1; i >= 0; i--) {
+        const supernova = supernovae[i];
+        
+        // Expandir supernova
+        supernova.radius += supernova.growthSpeed;
+        
+        // Dibujar supernova
+        const gradient = ctx.createRadialGradient(
+          supernova.x, supernova.y, 0,
+          supernova.x, supernova.y, supernova.radius
+        );
+        gradient.addColorStop(0, supernova.color);
+        gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+        
+        ctx.beginPath();
+        ctx.arc(supernova.x, supernova.y, supernova.radius, 0, Math.PI * 2);
+        ctx.fillStyle = gradient;
+        ctx.fill();
+        
+        // Reducir vida de la supernova
+        supernova.life -= 0.01;
+        if (supernova.radius >= supernova.maxRadius || supernova.life <= 0) {
+          supernovae.splice(i, 1);
+        }
+      }
+      
+      // Dibujar y actualizar estrellas
+      for (const star of stars) {
+        // Actualizar posición orbital
+        if (star.orbitRadius > 0) {
+          star.orbitAngle += star.orbitSpeed;
+          star.x = star.orbitCenterX + Math.cos(star.orbitAngle) * star.orbitRadius;
+          star.y = star.orbitCenterY + Math.sin(star.orbitAngle) * star.orbitRadius;
+        } else {
+          // Movimiento lineal
+          star.x += Math.cos(star.angle) * star.speed;
+          star.y += Math.sin(star.angle) * star.speed;
+          
+          // Rebotar en los bordes
+          if (star.x < 0 || star.x > canvas.width) star.angle = Math.PI - star.angle;
+          if (star.y < 0 || star.y > canvas.height) star.angle = -star.angle;
+        }
+        
+        // Dibujar estrella
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+        ctx.fillStyle = star.color;
+        ctx.fill();
+        
+        // Dibujar órbita si está habilitado
+        if (showOrbits && star.orbitRadius > 0) {
+          ctx.beginPath();
+          ctx.arc(star.orbitCenterX, star.orbitCenterY, star.orbitRadius, 0, Math.PI * 2);
+          ctx.strokeStyle = `hsla(200, 100%, 70%, 0.2)`;
+          ctx.stroke();
+        }
+      }
+      
+      // Crear nebulosa mientras el mouse está presionado
+      if (isMouseDown) {
+        if (Math.random() < 0.3) {
+          createNebulaAt(mouseX, mouseY);
+        }
+      }
+      
+      requestAnimationFrame(animateUniverse);
+    }
     
     // Inicializar
     window.addEventListener('load', () => {
