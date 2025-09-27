@@ -778,92 +778,13 @@
       left: 100%;
     }
     
-    /* PANTALLA FINAL MEJORADA */
-    .final-screen {
-      background: transparent;
-      text-align: center;
-    }
-    
-    .final-content {
-      background: rgba(255,255,255,0.1);
-      backdrop-filter: blur(20px);
-      border-radius: 25px;
-      padding: 30px;
-      max-width: 800px;
-      width: 90%;
-      margin: 20px auto;
-      border: 2px solid rgba(255,215,0,0.5);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .final-content::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-      transition: left 0.6s;
-    }
-    
-    .final-content:hover::before {
-      left: 100%;
-    }
-    
-    .final-title {
-      font-size: clamp(2rem, 6vw, 4rem);
-      margin-bottom: 20px;
-      text-shadow: 0 0 30px rgba(255,215,0,0.8);
-      animation: finalGlow 3s ease-in-out infinite;
-      font-family: 'Dancing Script', cursive;
-    }
-    
-    @keyframes finalGlow {
-      0%, 100% { 
-        transform: scale(1); 
-        text-shadow: 0 0 30px rgba(255,215,0,0.8), 0 0 60px rgba(255,105,180,0.4); 
-      }
-      50% { 
-        transform: scale(1.05); 
-        text-shadow: 0 0 50px rgba(255,215,0,1), 0 0 80px rgba(255,105,180,0.6), 0 0 100px rgba(32,178,170,0.4); 
-      }
-    }
-    
-    .final-text {
-      font-size: clamp(1rem, 2.5vw, 1.5rem);
-      line-height: 1.6;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-      margin-bottom: 15px;
-    }
-    
-    .final-highlight {
-      font-size: clamp(1.2rem, 3vw, 1.8rem);
-      margin: 20px 0;
-      color: var(--accent);
-      text-shadow: 0 0 20px rgba(255,215,0,0.8);
-      font-family: 'Dancing Script', cursive;
-    }
-    
-    .final-signature {
-      font-family: 'Dancing Script', cursive;
-      font-size: clamp(1.5rem, 4vw, 2.5rem);
-      margin-top: 30px;
-      animation: heartbeat 2s ease-in-out infinite;
-    }
-    
-    @keyframes heartbeat {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-    }
-    
-    /* NUEVA PANTALLA: UNIVERSO PERSONALIZADO */
-    .universe-custom-screen {
+    /* NUEVA PANTALLA: UNIVERSO INTERACTIVO MEJORADO */
+    .universe-final-screen {
       background: transparent;
       text-align: center;
       overflow: hidden;
       position: relative;
+      padding: 0;
     }
     
     .universe-canvas-container {
@@ -880,40 +801,37 @@
       height: 100%;
     }
     
-    .universe-custom-content {
-      position: relative;
-      z-index: 2;
-      max-width: 900px;
-      width: 90%;
-      background: rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(10px);
-      border-radius: 20px;
-      padding: 30px;
-      border: 2px solid rgba(255, 215, 0, 0.3);
-      margin: 20px auto;
-    }
-    
-    .universe-custom-title {
+    .universe-title {
+      position: absolute;
+      top: 20px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      z-index: 3;
       font-size: clamp(2rem, 6vw, 4rem);
-      margin-bottom: 20px;
-      text-shadow: 0 0 30px rgba(255,215,0,0.8);
-      animation: cosmicPulse 4s ease-in-out infinite;
+      color: #ffd700;
+      text-shadow: 0 0 20px rgba(255,215,0,0.8);
       font-family: 'Dancing Script', cursive;
-    }
-    
-    .universe-custom-text {
-      font-size: clamp(1rem, 2.5vw, 1.3rem);
-      line-height: 1.6;
-      margin-bottom: 20px;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+      padding: 10px 20px;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(10px);
     }
     
     .universe-controls {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
       display: flex;
-      justify-content: center;
       gap: 15px;
-      margin-top: 30px;
       flex-wrap: wrap;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+      padding: 15px;
+      border-radius: 20px;
+      border: 2px solid rgba(255, 215, 0, 0.3);
     }
     
     .universe-control-button {
@@ -935,71 +853,93 @@
       box-shadow: 0 8px 20px rgba(255,215,0,0.3);
     }
     
-    /* NAVEGACIÓN MEJORADA - BARRA INFERIOR PARA MÓVILES */
-    .nav-bottom {
+    /* NUEVA BARRA DE NAVEGACIÓN MEJORADA */
+    .nav-toggle {
       position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-      background: rgba(0,0,0,0.8);
+      top: 20px;
+      left: 20px;
+      z-index: 1001;
+      background: rgba(0,0,0,0.7);
       backdrop-filter: blur(10px);
-      padding: 10px 15px;
-      border-top: 1px solid rgba(255,255,255,0.2);
-      transition: var(--transition);
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
       display: flex;
-      justify-content: space-around;
-      align-items: center;
-    }
-    
-    .nav-bottom-button {
-      background: rgba(255,255,255,0.2);
-      backdrop-filter: blur(10px);
-      border: 2px solid rgba(255,215,0,0.5);
-      color: var(--text-light);
-      padding: 10px 15px;
-      border-radius: 25px;
-      cursor: pointer;
-      transition: var(--transition);
-      font-size: 0.9rem;
-      display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      min-width: 70px;
-      position: relative;
-      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid rgba(255,215,0,0.5);
+      transition: var(--transition);
     }
     
-    .nav-bottom-button::before {
-      content: '';
-      position: absolute;
+    .nav-toggle:hover {
+      transform: scale(1.1);
+      border-color: var(--accent);
+      background: rgba(0,0,0,0.9);
+    }
+    
+    .nav-toggle-icon {
+      font-size: 1.5rem;
+      color: var(--accent);
+      transition: var(--transition);
+    }
+    
+    .nav-menu {
+      position: fixed;
       top: 0;
-      left: -100%;
+      left: -300px;
+      width: 280px;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      backdrop-filter: blur(20px);
+      z-index: 1000;
+      transition: var(--transition);
+      padding: 80px 20px 20px 20px;
+      box-shadow: 5px 0 15px rgba(0,0,0,0.5);
+      border-right: 2px solid rgba(255,215,0,0.3);
+    }
+    
+    .nav-menu.active {
+      left: 0;
+    }
+    
+    .nav-menu-item {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      margin-bottom: 10px;
+      background: rgba(255,255,255,0.1);
+      border: 2px solid rgba(255,215,0,0.3);
+      border-radius: 10px;
+      color: var(--text-light);
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition);
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.2rem;
+    }
+    
+    .nav-menu-item:hover {
+      background: rgba(255,215,0,0.2);
+      transform: translateX(5px);
+    }
+    
+    .nav-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-      transition: left 0.5s;
+      background: rgba(0,0,0,0.5);
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
     }
     
-    .nav-bottom-button:hover::before {
-      left: 100%;
-    }
-    
-    .nav-bottom-button:hover {
-      background: rgba(255,215,0,0.3);
-      border-color: var(--accent);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(255,215,0,0.3);
-    }
-    
-    .nav-bottom-icon {
-      font-size: 1.2rem;
-      margin-bottom: 5px;
-    }
-    
-    .nav-bottom-text {
-      font-size: 0.7rem;
+    .nav-overlay.active {
+      opacity: 1;
+      visibility: visible;
     }
     
     /* CONTROL DE MÚSICA */
@@ -1087,28 +1027,35 @@
       .universe-controls {
         flex-direction: column;
         align-items: center;
+        bottom: 10px;
+        width: 90%;
       }
       
-      /* Ocultar barra lateral en móviles */
-      .nav-sidebar {
-        display: none;
+      .universe-title {
+        top: 10px;
+        font-size: clamp(1.5rem, 5vw, 3rem);
       }
       
-      /* Mostrar barra inferior en móviles */
-      .nav-bottom {
-        display: flex;
+      .nav-toggle {
+        top: 10px;
+        left: 10px;
+        width: 40px;
+        height: 40px;
+      }
+      
+      .nav-toggle-icon {
+        font-size: 1.2rem;
+      }
+      
+      .nav-menu {
+        width: 250px;
+        left: -250px;
       }
     }
     
     @media (min-width: 769px) {
-      /* Ocultar barra inferior en escritorio */
-      .nav-bottom {
-        display: none;
-      }
-      
-      /* Mostrar barra lateral en escritorio */
-      .nav-sidebar {
-        display: flex;
+      .universe-controls {
+        bottom: 30px;
       }
     }
     
@@ -1131,20 +1078,6 @@
       .writing-card {
         padding: 15px;
       }
-      
-      .nav-bottom-button {
-        padding: 8px 12px;
-        min-width: 60px;
-        font-size: 0.8rem;
-      }
-      
-      .nav-bottom-icon {
-        font-size: 1rem;
-      }
-      
-      .nav-bottom-text {
-        font-size: 0.6rem;
-      }
     }
     
     /* MEJORAS ESPECÍFICAS PARA TABLETS */
@@ -1160,89 +1093,6 @@
       .memory-item:nth-child(even) {
         left: 57%;
       }
-    }
-    
-    /* BARRA LATERAL PARA ESCRITORIO */
-    .nav-sidebar {
-      position: fixed;
-      top: 50%;
-      right: 20px;
-      transform: translateY(-50%);
-      z-index: 1000;
-      background: rgba(0,0,0,0.5);
-      backdrop-filter: blur(10px);
-      padding: 15px 10px;
-      border-radius: 20px;
-      border: 1px solid rgba(255,255,255,0.2);
-      transition: var(--transition);
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    
-    .nav-sidebar:hover {
-      background: rgba(0,0,0,0.7);
-      transform: translateY(-50%) scale(1.05);
-    }
-    
-    .nav-button {
-      background: rgba(255,255,255,0.2);
-      backdrop-filter: blur(10px);
-      border: 2px solid rgba(255,215,0,0.5);
-      color: var(--text-light);
-      padding: 10px;
-      border-radius: 50%;
-      cursor: pointer;
-      transition: var(--transition);
-      font-size: 1rem;
-      width: 45px;
-      height: 45px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-    
-    .nav-button::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-      transition: left 0.5s;
-    }
-    
-    .nav-button:hover::before {
-      left: 100%;
-    }
-    
-    .nav-button:hover {
-      background: rgba(255,215,0,0.3);
-      border-color: var(--accent);
-      transform: scale(1.1);
-    }
-    
-    .nav-tooltip {
-      position: absolute;
-      right: 100%;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0,0,0,0.8);
-      color: white;
-      padding: 5px 10px;
-      border-radius: 5px;
-      font-size: 0.8rem;
-      white-space: nowrap;
-      margin-right: 10px;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s;
-    }
-    
-    .nav-button:hover .nav-tooltip {
-      opacity: 1;
     }
     
     /* EFECTO DE TEXTO MÁGICO */
@@ -1275,37 +1125,20 @@
     <div class="music-icon">🎵</div>
   </div>
 
-  <!-- NAVEGACIÓN MEJORADA - BARRA LATERAL PARA ESCRITORIO -->
-  <div class="nav-sidebar">
-    <button class="nav-button" onclick="previousScreen()">
-      ←
-      <span class="nav-tooltip">Anterior</span>
-    </button>
-    <button class="nav-button" onclick="nextScreen()">
-      →
-      <span class="nav-tooltip">Siguiente</span>
-    </button>
-    <button class="nav-button" onclick="goHome()">
-      🏠
-      <span class="nav-tooltip">Inicio</span>
-    </button>
+  <!-- NUEVA BARRA DE NAVEGACIÓN MEJORADA -->
+  <div class="nav-toggle" id="navToggle">
+    <div class="nav-toggle-icon">☰</div>
   </div>
-
-  <!-- NAVEGACIÓN MEJORADA - BARRA INFERIOR PARA MÓVILES -->
-  <div class="nav-bottom">
-    <button class="nav-bottom-button" onclick="previousScreen()">
-      <div class="nav-bottom-icon">←</div>
-      <div class="nav-bottom-text">Anterior</div>
-    </button>
-    <button class="nav-bottom-button" onclick="nextScreen()">
-      <div class="nav-bottom-icon">→</div>
-      <div class="nav-bottom-text">Siguiente</div>
-    </button>
-    <button class="nav-bottom-button" onclick="goHome()">
-      <div class="nav-bottom-icon">🏠</div>
-      <div class="nav-bottom-text">Inicio</div>
-    </button>
+  
+  <div class="nav-menu" id="navMenu">
+    <button class="nav-menu-item" onclick="goHome()">🏠 Inicio</button>
+    <button class="nav-menu-item" onclick="previousScreen()">← Anterior</button>
+    <button class="nav-menu-item" onclick="nextScreen()">→ Siguiente</button>
+    <button class="nav-menu-item" onclick="showUniverseFinal()">🌌 Universo Final</button>
+    <button class="nav-menu-item" onclick="toggleMusic()">🎵 Música</button>
   </div>
+  
+  <div class="nav-overlay" id="navOverlay"></div>
 
   <!-- PANTALLA DE BIENVENIDA -->
   <div id="welcomeScreen" class="screen active">
@@ -1560,72 +1393,25 @@ la constelación más brillante, el mejor final.</div>
       <p>Selecciona un mensaje arriba para descubrir algo especial...</p>
     </div>
     
-    <button class="next-button" onclick="showFinal()">
-      🎉 Conclusión Mágica 🎉
+    <button class="next-button" onclick="showUniverseFinal()">
+      🌌 Explorar el Universo Final 🌌
     </button>
   </div>
 
-  <!-- PANTALLA FINAL -->
-  <div id="finalScreen" class="screen">
-    <div class="final-content">
-      <h1 class="final-title">✨ Para Wilmagy ✨</h1>
-      
-      <p class="final-text">
-        No permitas que los fantasmas de ayer nublen el sol de tu hoy. 
-        Llora si es necesario, pero deje que tus lágrimas rieguen la semilla de tu propia resiliencia. 
-        Ríe con todo tu cuerpo, que tu alegría sea un himno que derrumbe cualquier muralla.
-      </p>
-      
-      <p class="final-highlight">
-        <strong>Espera todo, exige todo, mereces el universo y sus constelaciones.</strong>
-      </p>
-      
-      <p class="final-text">
-        Porque al final, todo esto se resume en una verdad simple y profunda que repito no por costumbre, sino por convicción:
-        Eres especial. No a pesar de tus contradicciones, sino precisamente por ellas.
-      </p>
-      
-      <div class="final-signature">
-        Con amor infinito 💖<br>
-        <span style="color: #ff69b4;">Tu amigo del alma</span>
-      </div>
-    </div>
-    
-    <button class="next-button" onclick="showUniverseCustom()">
-      🌌 Crear Tu Universo Personalizado 🌌
-    </button>
-  </div>
-
-  <!-- NUEVA PANTALLA: UNIVERSO PERSONALIZADO -->
-  <div id="universeCustomScreen" class="screen universe-custom-screen">
+  <!-- NUEVA PANTALLA: UNIVERSO INTERACTIVO MEJORADO -->
+  <div id="universeFinalScreen" class="screen universe-final-screen">
     <div class="universe-canvas-container">
       <canvas id="universeCanvas" class="universe-canvas"></canvas>
     </div>
     
-    <div class="universe-custom-content">
-      <h1 class="universe-custom-title">🌌 Tu Universo Personalizado 🌌</h1>
-      
-      <p class="universe-custom-text">
-        Este universo fue creado especialmente para ti. Cada estrella, cada nebulosa y cada galaxia 
-        representa una cualidad única que te define. Eres el centro de este cosmos, la fuerza que 
-        mantiene todo en armonía.
-      </p>
-      
-      <p class="universe-custom-text">
-        <strong>Interactúa con tu universo:</strong> Haz clic para crear nuevas estrellas, mantén presionado 
-        para formar nebulosas, y desplázate para explorar las galaxias que representan tu esencia.
-      </p>
-      
-      <div class="universe-controls">
-        <button class="universe-control-button" onclick="resetUniverse()">🔄 Reiniciar Universo</button>
-        <button class="universe-control-button" onclick="addSupernova()">💥 Agregar Supernova</button>
-        <button class="universe-control-button" onclick="createNebula()">🌫️ Crear Nebulosa</button>
-        <button class="universe-control-button" onclick="toggleOrbits()">🌀 Alternar Órbitas</button>
-      </div>
-      
-      <button class="next-button" onclick="restartJourney()" style="margin-top: 30px;">
-        🔄 Comenzar de Nuevo 🔄
-      </button>
+    <h1 class="universe-title">✨ El Universo de Wilmagy ✨</h1>
+    
+    <div class="universe-controls">
+      <button class="universe-control-button" onclick="resetUniverse()">🔄 Reiniciar Universo</button>
+      <button class="universe-control-button" onclick="addSupernova()">💥 Agregar Supernova</button>
+      <button class="universe-control-button" onclick="createNebula()">🌫️ Crear Nebulosa</button>
+      <button class="universe-control-button" onclick="toggleOrbits()">🌀 Alternar Órbitas</button>
+      <button class="universe-control-button" onclick="restartJourney()">🔄 Comenzar de Nuevo</button>
     </div>
   </div>
 
@@ -1649,13 +1435,34 @@ la constelación más brillante, el mejor final.</div>
     const screens = [
       'welcomeScreen', 'universeScreen', 'constellationScreen', 
       'photoScreen', 'writingsScreen', 'memoriesScreen', 
-      'messagesScreen', 'finalScreen', 'universeCustomScreen'
+      'messagesScreen', 'universeFinalScreen'
     ];
     let currentScreen = 0;
     let musicPlaying = false;
     const backgroundMusic = document.getElementById('backgroundMusic');
     const clickSound = document.getElementById('clickSound');
     const sparkleSound = document.getElementById('sparkleSound');
+    
+    // Control de navegación
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+    const navOverlay = document.getElementById('navOverlay');
+    
+    navToggle.addEventListener('click', toggleNav);
+    navOverlay.addEventListener('click', toggleNav);
+    
+    function toggleNav() {
+      navMenu.classList.toggle('active');
+      navOverlay.classList.toggle('active');
+      
+      // Cambiar ícono del botón
+      const icon = navToggle.querySelector('.nav-toggle-icon');
+      if (navMenu.classList.contains('active')) {
+        icon.textContent = '✕';
+      } else {
+        icon.textContent = '☰';
+      }
+    }
     
     // Crear partículas cósmicas mejoradas
     function createCosmicParticles() {
@@ -1717,6 +1524,11 @@ la constelación más brillante, el mejor final.</div>
     function showScreen(screenId) {
       playSound(clickSound);
       
+      // Cerrar menú de navegación si está abierto
+      if (navMenu.classList.contains('active')) {
+        toggleNav();
+      }
+      
       document.querySelectorAll('.screen').forEach(s => {
         s.classList.remove('active');
       });
@@ -1734,7 +1546,7 @@ la constelación más brillante, el mejor final.</div>
           playSound(sparkleSound);
         }
         
-        if (screenId === 'universeCustomScreen') {
+        if (screenId === 'universeFinalScreen') {
           initUniverse();
         }
         
@@ -1767,12 +1579,8 @@ la constelación más brillante, el mejor final.</div>
       showScreen('messagesScreen');
     }
     
-    function showFinal() {
-      showScreen('finalScreen');
-    }
-    
-    function showUniverseCustom() {
-      showScreen('universeCustomScreen');
+    function showUniverseFinal() {
+      showScreen('universeFinalScreen');
     }
     
     function nextScreen() {
@@ -2292,8 +2100,8 @@ la constelación más brillante, el mejor final.</div>
     }
     
     // Activar confeti en la pantalla final
-    document.getElementById('finalScreen').addEventListener('click', function() {
-      if (Math.random() > 0.7) { // 30% de probabilidad al hacer clic
+    document.getElementById('universeFinalScreen').addEventListener('click', function(e) {
+      if (e.target.classList.contains('universe-canvas') && Math.random() > 0.7) { // 30% de probabilidad al hacer clic
         createConfetti();
         playSound(sparkleSound);
       }
