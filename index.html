@@ -371,7 +371,7 @@
     
     .constellation-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(300px, 90vw), 1fr));
       gap: clamp(20px, 4vw, 30px);
       max-width: 1200px;
       width: 95%;
@@ -1084,21 +1084,6 @@
       100% { opacity: 1; }
     }
     
-    /* FOOTER MEJORADO */
-    .page-footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(0,0,0,0.7);
-      backdrop-filter: blur(10px);
-      padding: 12px;
-      text-align: center;
-      font-size: 0.9rem;
-      z-index: 100;
-      border-top: 1px solid rgba(255,215,0,0.3);
-    }
-    
     /* MEJORAS DE RESPONSIVIDAD ESPECÍFICAS */
     
     /* MÓVILES PEQUEÑOS (hasta 480px) */
@@ -1629,11 +1614,6 @@ la constelación más brillante, el mejor final.</div>
     </div>
     
     <h1 class="universe-title">✨ El Universo de Wilmagy ✨</h1>
-  </div>
-
-  <!-- FOOTER MEJORADO -->
-  <div class="page-footer">
-    <p>✨ Creado con amor para Wilmagy ✨</p>
   </div>
 
   <!-- AUDIO PARA MÚSICA DE FONDO -->
