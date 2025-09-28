@@ -1145,45 +1145,6 @@
       box-shadow: 0 6px 15px rgba(0,0,0,0.4);
     }
     
-    /* Barra de progreso personalizada */
-    .spotify-progress-container {
-      position: relative;
-      width: 100%;
-      height: 5px;
-      background: rgba(255, 255, 255, 0.2);
-      cursor: pointer;
-      margin-top: 10px;
-      display: none; /* Ocultar por defecto */
-    }
-    
-    .spotify-player.minimized .spotify-progress-container {
-      display: none !important;
-    }
-    
-    .spotify-progress-bar {
-      position: absolute;
-      height: 100%;
-      background: linear-gradient(to right, #ff69b4, #ffd700);
-      width: 0%;
-      transition: width 0.1s linear;
-    }
-    
-    .spotify-progress-handle {
-      position: absolute;
-      width: 12px;
-      height: 12px;
-      background: #ffd700;
-      border-radius: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      box-shadow: 0 0 5px rgba(0,0,0,0.5);
-      display: none;
-    }
-    
-    .spotify-progress-container:hover .spotify-progress-handle {
-      display: block;
-    }
-    
     /* EFECTOS ESPECIALES */
     @keyframes messageAppear {
       0% { opacity: 0; transform: translateY(10px); }
@@ -1260,13 +1221,6 @@
         width: 30px;
         height: 30px;
         font-size: 14px;
-        top: -8px;
-        right: -8px;
-      }
-      
-      .spotify-player.minimized {
-        width: 50px;
-        height: 50px;
       }
     }
     
@@ -1343,11 +1297,6 @@
         width: 90vw;
         right: 5vw;
         bottom: 10px;
-      }
-      
-      .spotify-player.minimized {
-        width: 55px;
-        height: 55px;
       }
     }
     
@@ -1448,11 +1397,7 @@
   <!-- REPRODUCTOR DE SPOTIFY MEJORADO -->
   <div class="spotify-player" id="spotifyPlayer">
     <div class="spotify-toggle" id="spotifyToggle">−</div>
-    <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/6d8PFXIpVTRX3M0g7NIBuB?utm_source=generator&start=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-    <div class="spotify-progress-container" id="spotifyProgress">
-      <div class="spotify-progress-bar" id="spotifyProgressBar"></div>
-      <div class="spotify-progress-handle" id="spotifyProgressHandle"></div>
-    </div>
+    <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/6d8PFXIpVTRX3M0g7NIBuB?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
   </div>
 
   <!-- BARRA DE NAVEGACIÓN SIMPLIFICADA -->
@@ -1464,7 +1409,7 @@
     <button class="nav-menu-item" onclick="goHome()">🏠 Inicio</button>
     <button class="nav-menu-item" onclick="previousScreen()">← Anterior</button>
     <button class="nav-menu-item" onclick="nextScreen()">→ Siguiente</button>
-    <button class="nav-menu-item" onclick="showUniverseReal()">🌌 Este universo eres tú</button>
+    <button class="nav-menu-item" onclick="showUniverseReal()">🌌 Universo Real</button>
   </div>
   
   <div class="nav-overlay" id="navOverlay"></div>
@@ -1764,7 +1709,7 @@ la constelación más brillante, el mejor final.</div>
       <canvas id="universeCanvas" class="universe-canvas"></canvas>
     </div>
     
-    <h1 class="universe-title">✨ Este universo eres tú ✨</h1>
+    <h1 class="universe-title">✨ El Universo de Wilmagy ✨</h1>
     
     <div class="universe-controls">
       <button class="universe-control-button" onclick="toggleOrbits()">🌌 Mostrar/ocultar órbitas</button>
@@ -1849,42 +1794,14 @@ la constelación más brillante, el mejor final.</div>
       }
     }
     
-    // Control de Spotify mejorado
+    // Control de Spotify
     const spotifyPlayer = document.getElementById('spotifyPlayer');
     const spotifyToggle = document.getElementById('spotifyToggle');
-    const spotifyProgress = document.getElementById('spotifyProgress');
-    const spotifyProgressBar = document.getElementById('spotifyProgressBar');
     
     spotifyToggle.addEventListener('click', function(e) {
       e.stopPropagation();
       spotifyPlayer.classList.toggle('minimized');
       spotifyToggle.textContent = spotifyPlayer.classList.contains('minimized') ? '+' : '−';
-      
-      // Mostrar/ocultar barra de progreso según el estado
-      if (spotifyPlayer.classList.contains('minimized')) {
-        spotifyProgress.style.display = 'none';
-      } else {
-        spotifyProgress.style.display = 'block';
-      }
-    });
-    
-    // Simular barra de progreso (en un caso real, esto se conectaría con la API de Spotify)
-    let progress = 0;
-    const progressInterval = setInterval(() => {
-      if (progress < 100) {
-        progress += 0.5;
-        spotifyProgressBar.style.width = progress + '%';
-      } else {
-        progress = 0;
-      }
-    }, 1000);
-    
-    // Control de clic en la barra de progreso
-    spotifyProgress.addEventListener('click', function(e) {
-      const rect = this.getBoundingClientRect();
-      const clickPosition = (e.clientX - rect.left) / rect.width;
-      progress = clickPosition * 100;
-      spotifyProgressBar.style.width = progress + '%';
     });
     
     // Reproducir efectos de sonido
@@ -2222,8 +2139,8 @@ la constelación más brillante, el mejor final.</div>
         { name: 'Fuerza', color: '#87CEEB', radius: 18, distance: 330, speed: 0.00018, hasRings: false },
         { name: 'Sueños', color: '#DDA0DD', radius: 22, distance: 400, speed: 0.00015, hasRings: true, ringColor: '#E6E6FA' },
         { name: 'Magia', color: '#FFD700', radius: 15, distance: 470, speed: 0.00012, hasRings: false },
-        { name: 'Belleza', color: '#FF69B4', radius: 14, distance: 540, speed: 0.0001, hasRings: false },
-        { name: 'Inteligencia', color: '#20B2AA', radius: 17, distance: 610, speed: 0.00008, hasRings: true, ringColor: '#7FFFD4' }
+        { name: 'Sustino', color: '#FF69B4', radius: 14, distance: 540, speed: 0.0001, hasRings: false },
+        { name: 'Mespa', color: '#20B2AA', radius: 17, distance: 610, speed: 0.00008, hasRings: true, ringColor: '#7FFFD4' }
       ];
       
       for (let i = 0; i < planetData.length; i++) {
@@ -2249,7 +2166,7 @@ la constelación más brillante, el mejor final.</div>
         });
         
         // Agregar lunas a algunos planetas
-        if (i === 1 || i === 4 || i === 7) { // Risa, Sueños y Inteligencia tienen lunas
+        if (i === 1 || i === 4 || i === 7) { // Risa, Sueños y Mespa tienen lunas
           const moonCount = i === 1 ? 2 : (i === 4 ? 1 : 3);
           for (let j = 0; j < moonCount; j++) {
             universeObjects.planets[i].moons.push({
