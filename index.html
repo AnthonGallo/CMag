@@ -1115,6 +1115,54 @@
       color: var(--accent);
     }
     
+    /* REPRODUCTOR DE SPOTIFY */
+    .spotify-player {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      width: 300px;
+      max-width: 90vw;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      transition: var(--transition);
+      opacity: 0.9;
+    }
+    
+    .spotify-player:hover {
+      opacity: 1;
+      transform: translateY(-5px);
+    }
+    
+    .spotify-player.minimized {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+    }
+    
+    .spotify-player.minimized iframe {
+      display: none;
+    }
+    
+    .spotify-toggle {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      width: 30px;
+      height: 30px;
+      background: rgba(0,0,0,0.8);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: 2px solid rgba(255,215,0,0.5);
+      z-index: 1001;
+      font-size: 14px;
+      color: var(--accent);
+    }
+    
     /* EFECTOS ESPECIALES */
     @keyframes messageAppear {
       0% { opacity: 0; transform: translateY(10px); }
@@ -1179,6 +1227,12 @@
         flex-direction: column;
         align-items: center;
         gap: 10px;
+      }
+      
+      .spotify-player {
+        width: 90vw;
+        right: 5vw;
+        bottom: 10px;
       }
     }
     
@@ -1249,6 +1303,12 @@
       .writing-content {
         text-align: left;
         font-size: 1rem;
+      }
+      
+      .spotify-player {
+        width: 90vw;
+        right: 5vw;
+        bottom: 10px;
       }
     }
     
@@ -1349,6 +1409,12 @@
   <!-- CONTROL DE MÚSICA -->
   <div class="music-control" id="musicControl">
     <div class="music-icon">🎵</div>
+  </div>
+
+  <!-- REPRODUCTOR DE SPOTIFY -->
+  <div class="spotify-player" id="spotifyPlayer">
+    <div class="spotify-toggle" id="spotifyToggle">−</div>
+    <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/6d8PFXIpVTRX3M0g7NIBuB?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
   </div>
 
   <!-- BARRA DE NAVEGACIÓN -->
@@ -1670,11 +1736,6 @@ la constelación más brillante, el mejor final.</div>
     </div>
   </div>
 
-  <!-- REPRODUCTOR DE YOUTUBE OCULTO -->
-  <div id="youtubePlayer" style="display: none;">
-    <iframe id="youtubeIframe" width="0" height="0" src="https://www.youtube.com/embed/l3qd-3po3xU?autoplay=1&mute=1&enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-  </div>
-
   <!-- EFECTOS DE SONIDO -->
   <audio id="clickSound" preload="auto">
     <source src="https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3" type="audio/mpeg">
@@ -1695,7 +1756,6 @@ la constelación más brillante, el mejor final.</div>
     let musicPlaying = false;
     const clickSound = document.getElementById('clickSound');
     const sparkleSound = document.getElementById('sparkleSound');
-    let youtubePlayer;
     
     // Control de navegación
     const navToggle = document.getElementById('navToggle');
@@ -1753,20 +1813,27 @@ la constelación más brillante, el mejor final.</div>
       }
     }
     
-    // Control de música con YouTube
+    // Control de música con Spotify
+    const spotifyPlayer = document.getElementById('spotifyPlayer');
+    const spotifyToggle = document.getElementById('spotifyToggle');
+    
+    spotifyToggle.addEventListener('click', function(e) {
+      e.stopPropagation();
+      spotifyPlayer.classList.toggle('minimized');
+      spotifyToggle.textContent = spotifyPlayer.classList.contains('minimized') ? '+' : '−';
+    });
+    
     document.getElementById('musicControl').addEventListener('click', toggleMusic);
     
     function toggleMusic() {
       playSound(clickSound);
       if (musicPlaying) {
-        if (youtubePlayer && youtubePlayer.pauseVideo) {
-          youtubePlayer.pauseVideo();
-        }
+        // Pausar la música (Spotify no permite control directo desde JS)
+        spotifyPlayer.style.display = 'none';
         document.querySelector('.music-icon').textContent = '🎵';
       } else {
-        if (youtubePlayer && youtubePlayer.playVideo) {
-          youtubePlayer.playVideo();
-        }
+        // Reproducir música
+        spotifyPlayer.style.display = 'block';
         document.querySelector('.music-icon').textContent = '🔊';
       }
       musicPlaying = !musicPlaying;
@@ -2637,30 +2704,6 @@ la constelación más brillante, el mejor final.</div>
       }
       originalShowScreen(screenId);
     };
-    
-    // Inicializar YouTube Player API
-    function onYouTubeIframeAPIReady() {
-      youtubePlayer = new YT.Player('youtubeIframe', {
-        events: {
-          'onReady': onPlayerReady,
-          'onStateChange': onPlayerStateChange
-        }
-      });
-    }
-    
-    function onPlayerReady(event) {
-      // El reproductor está listo, pero no hacemos nada especial
-    }
-    
-    function onPlayerStateChange(event) {
-      // Manejar cambios de estado del reproductor si es necesario
-    }
-    
-    // Cargar YouTube API
-    const tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    const firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
     
     // Inicializar
     window.addEventListener('load', () => {
