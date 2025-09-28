@@ -976,6 +976,13 @@
       display: flex;
       justify-content: center;
       gap: 15px;
+      transition: transform 0.5s ease;
+    }
+    
+    .universe-controls.hidden {
+      transform: translateY(100px);
+      opacity: 0;
+      pointer-events: none;
     }
     
     .universe-control-button {
@@ -994,6 +1001,33 @@
     .universe-control-button:hover {
       background: rgba(255,215,0,0.3);
       transform: translateY(-3px);
+    }
+    
+    .toggle-controls-button {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      z-index: 4;
+      background: rgba(0,0,0,0.7);
+      border: 2px solid rgba(255,215,0,0.5);
+      color: var(--text-light);
+      padding: 8px 12px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: var(--transition);
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.1rem;
+      backdrop-filter: blur(10px);
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .toggle-controls-button:hover {
+      background: rgba(255,215,0,0.3);
+      transform: scale(1.1);
     }
     
     /* BARRA DE NAVEGACIÓN */
@@ -1266,6 +1300,14 @@
       .spotify-tab-icon {
         font-size: 20px;
       }
+      
+      .toggle-controls-button {
+        bottom: 5px;
+        right: 5px;
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+      }
     }
     
     /* MÓVILES (hasta 768px) */
@@ -1348,6 +1390,13 @@
         height: 55px;
         bottom: 15px;
         right: 15px;
+      }
+      
+      .toggle-controls-button {
+        bottom: 10px;
+        right: 10px;
+        width: 40px;
+        height: 40px;
       }
     }
     
@@ -1750,7 +1799,7 @@ la constelación más brillante, el mejor final.</div>
       
       <div class="final-signature">
         Con cariño 💖<br>
-        <span style="color: #ff69b4;">Feeliz cumpleaños Magy</span>
+        <span style="color: #ff69b4;">Feliz cumpleaños Magy</span>
       </div>
     </div>
     
@@ -1767,11 +1816,13 @@ la constelación más brillante, el mejor final.</div>
     
     <h1 class="universe-title">✨ Este universo eres tú ✨</h1>
     
-    <div class="universe-controls">
+    <div class="universe-controls" id="universeControls">
       <button class="universe-control-button" onclick="toggleOrbits()">🌌 Mostrar/ocultar órbitas</button>
       <button class="universe-control-button" onclick="toggleLabels()">🔤 Mostrar/ocultar nombres</button>
       <button class="universe-control-button" onclick="resetCamera()">📷 Reiniciar vista</button>
     </div>
+    
+    <button class="toggle-controls-button" id="toggleControlsButton" onclick="toggleControls()">⚙️</button>
   </div>
 
   <!-- EFECTOS DE SONIDO -->
@@ -2077,7 +2128,23 @@ la constelación más brillante, el mejor final.</div>
       });
     });
     
-    // SISTEMA DE UNIVERSO MEJORADO
+    // Control de opciones del universo
+    const universeControls = document.getElementById('universeControls');
+    const toggleControlsButton = document.getElementById('toggleControlsButton');
+    let controlsVisible = true;
+    
+    function toggleControls() {
+      controlsVisible = !controlsVisible;
+      if (controlsVisible) {
+        universeControls.classList.remove('hidden');
+        toggleControlsButton.textContent = '⚙️';
+      } else {
+        universeControls.classList.add('hidden');
+        toggleControlsButton.textContent = '⚙️';
+      }
+    }
+    
+    // SISTEMA DE UNIVERSO MEJORADO - OPTIMIZADO
     let universeAnimationId = null;
     let universeObjects = {};
     let showOrbits = true;
@@ -2087,6 +2154,8 @@ la constelación más brillante, el mejor final.</div>
     let cameraZ = 0;
     let isDragging = false;
     let lastMouseX, lastMouseY;
+    let lastRenderTime = 0;
+    const frameInterval = 1000 / 30; // 30 FPS para mejor rendimiento
     
     function initUniverse() {
       if (universeAnimationId) {
@@ -2266,8 +2335,8 @@ la constelación más brillante, el mejor final.</div>
         }
       }
       
-      // Crear estrellas de fondo más realistas
-      for (let i = 0; i < 1200; i++) {
+      // Crear estrellas de fondo más realistas - REDUCIDAS PARA MEJOR RENDIMIENTO
+      for (let i = 0; i < 950; i++) {
         const distance = 500 + Math.random() * 2000;
         const angle1 = Math.random() * Math.PI * 2;
         const angle2 = Math.random() * Math.PI * 2;
@@ -2286,8 +2355,8 @@ la constelación más brillante, el mejor final.</div>
         });
       }
       
-      // Crear nebulosas más realistas
-      for (let i = 0; i < 8; i++) {
+      // Crear nebulosas más realistas - REDUCIDAS PARA MEJOR RENDIMIENTO
+      for (let i = 0; i < 7; i++) {
         const nebula = {
           x: (Math.random() - 0.5) * 2500,
           y: (Math.random() - 0.5) * 2500,
@@ -2299,8 +2368,8 @@ la constelación más brillante, el mejor final.</div>
           shape: Math.random() > 0.5 ? 'spiral' : 'cloud'
         };
         
-        // Agregar partículas a la nebulosa
-        for (let j = 0; j < 70; j++) {
+        // Agregar partículas a la nebulosa - REDUCIDAS PARA MEJOR RENDIMIENTO
+        for (let j = 0; j < 60; j++) {
           nebula.particles.push({
             x: (Math.random() - 0.5) * nebula.radius * 2,
             y: (Math.random() - 0.5) * nebula.radius * 2,
@@ -2315,8 +2384,8 @@ la constelación más brillante, el mejor final.</div>
         universeObjects.nebulae.push(nebula);
       }
       
-      // Crear cinturón de asteroides
-      for (let i = 0; i < 300; i++) {
+      // Crear cinturón de asteroides - REDUCIDAS PARA MEJOR RENDIMIENTO
+      for (let i = 0; i < 250; i++) {
         const distance = 350 + Math.random() * 50;
         const angle = Math.random() * Math.PI * 2;
         const height = (Math.random() - 0.5) * 40;
@@ -2334,8 +2403,8 @@ la constelación más brillante, el mejor final.</div>
         });
       }
       
-      // Crear cometas más realistas
-      for (let i = 0; i < 6; i++) {
+      // Crear cometas más realistas - REDUCIDAS PARA MEJOR RENDIMIENTO
+      for (let i = 0; i < 5; i++) {
         universeObjects.comets.push({
           x: (Math.random() - 0.5) * 2500,
           y: (Math.random() - 0.5) * 2500,
@@ -2345,13 +2414,13 @@ la constelación más brillante, el mejor final.</div>
           speedZ: (Math.random() - 0.5) * 0.5,
           size: Math.random() * 4 + 2,
           trail: [],
-          maxTrail: 30,
+          maxTrail: 20,
           color: `hsl(${Math.random() * 60 + 30}, 100%, 70%)`
         });
       }
       
-      // Crear galaxias espirales
-      for (let i = 0; i < 4; i++) {
+      // Crear galaxias espirales - REDUCIDAS PARA MEJOR RENDIMIENTO
+      for (let i = 0; i < 5; i++) {
         const galaxy = {
           x: (Math.random() - 0.5) * 3000,
           y: (Math.random() - 0.5) * 3000,
@@ -2362,8 +2431,8 @@ la constelación más brillante, el mejor final.</div>
           rotationSpeed: (Math.random() - 0.5) * 0.0005
         };
         
-        // Agregar estrellas a la galaxia
-        for (let j = 0; j < 200; j++) {
+        // Agregar estrellas a la galaxia - REDUCIDAS PARA MEJOR RENDIMIENTO
+        for (let j = 0; j < 150; j++) {
           const distance = Math.random() * galaxy.radius;
           const angle = Math.random() * Math.PI * 2;
           const height = (Math.random() - 0.5) * 20;
@@ -2418,84 +2487,231 @@ la constelación más brillante, el mejor final.</div>
     }
     
     function animateUniverse(canvas, ctx) {
-      // Limpiar canvas con un fondo espacial más realista
-      ctx.fillStyle = 'rgba(5, 10, 20, 0.3)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      const currentTime = Date.now();
+      const elapsed = currentTime - lastRenderTime;
       
-      const { sun, stars, planets, nebulae, comets, asteroids, galaxies } = universeObjects;
-      
-      // Dibujar estrellas de fondo (ordenadas por profundidad)
-      const sortedStars = [...stars].sort((a, b) => {
-        const aPos = projectPoint(a.x, a.y, a.z, canvas);
-        const bPos = projectPoint(b.x, b.y, b.z, canvas);
-        return bPos.scale - aPos.scale; // Ordenar por escala (las más lejanas primero)
-      });
-      
-      for (const star of sortedStars) {
-        const pos = projectPoint(star.x, star.y, star.z, canvas);
-        if (!pos.visible) continue;
+      // Control de FPS para mejorar rendimiento
+      if (elapsed > frameInterval) {
+        lastRenderTime = currentTime - (elapsed % frameInterval);
         
-        const twinkle = Math.sin(Date.now() * star.twinkleSpeed + star.twinkleOffset) * 0.4 + 0.6;
-        const brightness = star.brightness * twinkle;
-        const size = star.size * pos.scale;
+        // Limpiar canvas con un fondo espacial más realista
+        ctx.fillStyle = 'rgba(5, 10, 20, 0.3)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
         
-        ctx.beginPath();
-        ctx.arc(pos.x, pos.y, size, 0, Math.PI * 2);
-        ctx.fillStyle = star.color.replace(')', `, ${brightness})`).replace('rgb', 'rgba');
-        ctx.fill();
+        const { sun, stars, planets, nebulae, comets, asteroids, galaxies } = universeObjects;
         
-        // Efecto de brillo para estrellas grandes
-        if (size > 2) {
-          const gradient = ctx.createRadialGradient(
-            pos.x, pos.y, 0,
-            pos.x, pos.y, size * 3
-          );
-          gradient.addColorStop(0, star.color.replace(')', `, ${brightness * 0.4})`).replace('rgb', 'rgba'));
-          gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+        // Dibujar estrellas de fondo (ordenadas por profundidad)
+        const sortedStars = [...stars].sort((a, b) => {
+          const aPos = projectPoint(a.x, a.y, a.z, canvas);
+          const bPos = projectPoint(b.x, b.y, b.z, canvas);
+          return bPos.scale - aPos.scale; // Ordenar por escala (las más lejanas primero)
+        });
+        
+        for (const star of sortedStars) {
+          const pos = projectPoint(star.x, star.y, star.z, canvas);
+          if (!pos.visible) continue;
+          
+          const twinkle = Math.sin(Date.now() * star.twinkleSpeed + star.twinkleOffset) * 0.4 + 0.6;
+          const brightness = star.brightness * twinkle;
+          const size = star.size * pos.scale;
           
           ctx.beginPath();
-          ctx.arc(pos.x, pos.y, size * 3, 0, Math.PI * 2);
-          ctx.fillStyle = gradient;
+          ctx.arc(pos.x, pos.y, size, 0, Math.PI * 2);
+          ctx.fillStyle = star.color.replace(')', `, ${brightness})`).replace('rgb', 'rgba');
           ctx.fill();
-        }
-      }
-      
-      // Dibujar galaxias
-      for (const galaxy of galaxies) {
-        galaxy.rotation += galaxy.rotationSpeed;
-        
-        for (const star of galaxy.stars) {
-          const rotatedX = star.x * Math.cos(galaxy.rotation) - star.z * Math.sin(galaxy.rotation);
-          const rotatedZ = star.x * Math.sin(galaxy.rotation) + star.z * Math.cos(galaxy.rotation);
           
-          const pos = projectPoint(
-            galaxy.x + rotatedX,
-            galaxy.y + star.y,
-            galaxy.z + rotatedZ,
-            canvas
-          );
-          
-          if (pos.visible) {
-            const size = star.size * pos.scale;
-            const brightness = star.brightness;
+          // Efecto de brillo para estrellas grandes
+          if (size > 2) {
+            const gradient = ctx.createRadialGradient(
+              pos.x, pos.y, 0,
+              pos.x, pos.y, size * 3
+            );
+            gradient.addColorStop(0, star.color.replace(')', `, ${brightness * 0.4})`).replace('rgb', 'rgba'));
+            gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
             
             ctx.beginPath();
-            ctx.arc(pos.x, pos.y, size, 0, Math.PI * 2);
-            ctx.fillStyle = star.color.replace(')', `, ${brightness})`).replace('rgb', 'rgba');
+            ctx.arc(pos.x, pos.y, size * 3, 0, Math.PI * 2);
+            ctx.fillStyle = gradient;
             ctx.fill();
           }
         }
-      }
-      
-      // Dibujar nebulosas
-      for (const nebula of nebulae) {
-        const pos = projectPoint(nebula.x, nebula.y, nebula.z, canvas);
-        if (!pos.visible) continue;
         
-        const pulse = Math.sin(Date.now() * nebula.pulseSpeed) * 0.2 + 0.8;
-        const radius = nebula.radius * pos.scale * pulse;
+        // Dibujar galaxias
+        for (const galaxy of galaxies) {
+          galaxy.rotation += galaxy.rotationSpeed;
+          
+          for (const star of galaxy.stars) {
+            const rotatedX = star.x * Math.cos(galaxy.rotation) - star.z * Math.sin(galaxy.rotation);
+            const rotatedZ = star.x * Math.sin(galaxy.rotation) + star.z * Math.cos(galaxy.rotation);
+            
+            const pos = projectPoint(
+              galaxy.x + rotatedX,
+              galaxy.y + star.y,
+              galaxy.z + rotatedZ,
+              canvas
+            );
+            
+            if (pos.visible) {
+              const size = star.size * pos.scale;
+              const brightness = star.brightness;
+              
+              ctx.beginPath();
+              ctx.arc(pos.x, pos.y, size, 0, Math.PI * 2);
+              ctx.fillStyle = star.color.replace(')', `, ${brightness})`).replace('rgb', 'rgba');
+              ctx.fill();
+            }
+          }
+        }
         
-        if (radius > 5) { // Solo dibujar nebulosas suficientemente grandes
+        // Dibujar nebulosas
+        for (const nebula of nebulae) {
+          const pos = projectPoint(nebula.x, nebula.y, nebula.z, canvas);
+          if (!pos.visible) continue;
+          
+          const pulse = Math.sin(Date.now() * nebula.pulseSpeed) * 0.2 + 0.8;
+          const radius = nebula.radius * pos.scale * pulse;
+          
+          if (radius > 5) { // Solo dibujar nebulosas suficientemente grandes
+            ctx.beginPath();
+            ctx.arc(pos.x, pos.y, radius, 0, Math.PI * 2);
+            
+            const gradient = ctx.createRadialGradient(
+              pos.x, pos.y, 0,
+              pos.x, pos.y, radius
+            );
+            gradient.addColorStop(0, nebula.color);
+            gradient.addColorStop(1, 'rgba(5, 10, 20, 0)');
+            
+            ctx.fillStyle = gradient;
+            ctx.fill();
+            
+            // Dibujar partículas de la nebulosa
+            for (const particle of nebula.particles) {
+              const particlePos = projectPoint(
+                nebula.x + particle.x, 
+                nebula.y + particle.y, 
+                nebula.z + particle.z, 
+                canvas
+              );
+              
+              if (particlePos.visible) {
+                ctx.beginPath();
+                ctx.arc(particlePos.x, particlePos.y, particle.size * particlePos.scale, 0, Math.PI * 2);
+                ctx.fillStyle = particle.color;
+                ctx.fill();
+              }
+            }
+          }
+        }
+        
+        // Actualizar y dibujar asteroides
+        for (const asteroid of asteroids) {
+          asteroid.angle += asteroid.speed;
+          asteroid.rotation += asteroid.rotationSpeed;
+          
+          asteroid.x = Math.cos(asteroid.angle) * asteroid.orbitRadius;
+          asteroid.z = Math.sin(asteroid.angle) * asteroid.orbitRadius;
+          
+          const pos = projectPoint(asteroid.x, asteroid.y, asteroid.z, canvas);
+          if (pos.visible) {
+            const size = asteroid.size * pos.scale;
+            
+            ctx.save();
+            ctx.translate(pos.x, pos.y);
+            ctx.rotate(asteroid.rotation);
+            
+            ctx.beginPath();
+            ctx.arc(0, 0, size, 0, Math.PI * 2);
+            ctx.fillStyle = asteroid.color;
+            ctx.fill();
+            
+            // Detalles de la superficie del asteroide
+            ctx.fillStyle = '#8B4513';
+            ctx.beginPath();
+            ctx.arc(-size/3, -size/3, size/3, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.restore();
+          }
+        }
+        
+        // Actualizar y dibujar cometas
+        for (const comet of comets) {
+          // Actualizar posición
+          comet.x += comet.speedX;
+          comet.y += comet.speedY;
+          comet.z += comet.speedZ;
+          
+          // Rebotar en los bordes del espacio visible
+          if (Math.abs(comet.x) > 2500 || Math.abs(comet.y) > 2500 || Math.abs(comet.z) > 2500) {
+            comet.x = (Math.random() - 0.5) * 1000;
+            comet.y = (Math.random() - 0.5) * 1000;
+            comet.z = (Math.random() - 0.5) * 1000;
+            comet.trail = [];
+          }
+          
+          // Actualizar estela
+          comet.trail.unshift({x: comet.x, y: comet.y, z: comet.z});
+          if (comet.trail.length > comet.maxTrail) comet.trail.pop();
+          
+          // Dibujar estela
+          if (comet.trail.length > 1) {
+            ctx.strokeStyle = comet.color;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            
+            const firstPos = projectPoint(comet.trail[0].x, comet.trail[0].y, comet.trail[0].z, canvas);
+            if (firstPos.visible) {
+              ctx.moveTo(firstPos.x, firstPos.y);
+              
+              for (let i = 1; i < comet.trail.length; i++) {
+                const pos = projectPoint(comet.trail[i].x, comet.trail[i].y, comet.trail[i].z, canvas);
+                if (pos.visible) {
+                  ctx.lineTo(pos.x, pos.y);
+                }
+              }
+              ctx.stroke();
+            }
+          }
+          
+          // Dibujar cabeza del cometa
+          const pos = projectPoint(comet.x, comet.y, comet.z, canvas);
+          if (pos.visible) {
+            const size = comet.size * pos.scale;
+            
+            ctx.beginPath();
+            ctx.arc(pos.x, pos.y, size, 0, Math.PI * 2);
+            
+            const gradient = ctx.createRadialGradient(
+              pos.x, pos.y, 0,
+              pos.x, pos.y, size * 2
+            );
+            gradient.addColorStop(0, '#FFFFFF');
+            gradient.addColorStop(0.7, comet.color);
+            gradient.addColorStop(1, 'rgba(0,0,0,0)');
+            
+            ctx.fillStyle = gradient;
+            ctx.fill();
+          }
+        }
+        
+        // Actualizar y dibujar planetas
+        for (const planet of planets) {
+          // Actualizar posición del planeta
+          planet.angle += planet.speed;
+          planet.x = Math.cos(planet.angle) * planet.orbitRadius;
+          planet.z = Math.sin(planet.angle) * planet.orbitRadius;
+          
+          // Efecto de pulsación suave
+          const pulse = Math.sin(Date.now() * 0.002) * 0.1 + 0.9;
+          
+          // Proyectar posición del planeta
+          const pos = projectPoint(planet.x, planet.y, planet.z, canvas);
+          if (!pos.visible) continue;
+          
+          const radius = planet.radius * pos.scale * pulse;
+          
+          // Dibujar planeta
           ctx.beginPath();
           ctx.arc(pos.x, pos.y, radius, 0, Math.PI * 2);
           
@@ -2503,270 +2719,131 @@ la constelación más brillante, el mejor final.</div>
             pos.x, pos.y, 0,
             pos.x, pos.y, radius
           );
-          gradient.addColorStop(0, nebula.color);
-          gradient.addColorStop(1, 'rgba(5, 10, 20, 0)');
+          gradient.addColorStop(0, planet.color);
+          gradient.addColorStop(0.7, planet.color);
+          gradient.addColorStop(1, '#2F2F2F');
           
           ctx.fillStyle = gradient;
           ctx.fill();
           
-          // Dibujar partículas de la nebulosa
-          for (const particle of nebula.particles) {
-            const particlePos = projectPoint(
-              nebula.x + particle.x, 
-              nebula.y + particle.y, 
-              nebula.z + particle.z, 
-              canvas
-            );
+          // Detalles de la superficie del planeta
+          for (const detail of planet.surfaceDetail) {
+            const detailX = pos.x + detail.x * radius * 0.8;
+            const detailY = pos.y + detail.y * radius * 0.8;
+            const detailSize = detail.size * radius * 0.3;
             
-            if (particlePos.visible) {
+            ctx.beginPath();
+            ctx.arc(detailX, detailY, detailSize, 0, Math.PI * 2);
+            ctx.fillStyle = detail.color.replace(')', `, ${detail.brightness})`).replace('rgb', 'rgba');
+            ctx.fill();
+          }
+          
+          // Brillo del planeta
+          if (planet.glow) {
+            const glowGradient = ctx.createRadialGradient(
+              pos.x, pos.y, 0,
+              pos.x, pos.y, radius * 2
+            );
+            glowGradient.addColorStop(0, planet.glowColor);
+            glowGradient.addColorStop(1, 'rgba(0,0,0,0)');
+            
+            ctx.beginPath();
+            ctx.arc(pos.x, pos.y, radius * 2, 0, Math.PI * 2);
+            ctx.fillStyle = glowGradient;
+            ctx.fill();
+          }
+          
+          // Dibujar anillos si el planeta los tiene
+          if (planet.hasRings && pos.scale > 0.1) {
+            ctx.strokeStyle = planet.ringColor;
+            ctx.lineWidth = 2 * pos.scale;
+            ctx.beginPath();
+            ctx.ellipse(pos.x, pos.y, planet.ringRadius * pos.scale, planet.ringRadius * pos.scale * 0.1, planet.angle, 0, Math.PI * 2);
+            ctx.stroke();
+          }
+          
+          // Dibujar órbitas si están activas
+          if (showOrbits) {
+            ctx.strokeStyle = `rgba(255, 255, 255, 0.2)`;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.arc(canvas.width/2, canvas.height/2, planet.orbitRadius * pos.scale, 0, Math.PI * 2);
+            ctx.stroke();
+          }
+          
+          // Dibujar lunas
+          for (const moon of planet.moons) {
+            moon.angle += moon.speed;
+            const moonX = planet.x + Math.cos(moon.angle) * moon.orbitRadius;
+            const moonZ = planet.z + Math.sin(moon.angle) * moon.orbitRadius;
+            
+            const moonPos = projectPoint(moonX, planet.y, moonZ, canvas);
+            if (moonPos.visible) {
+              const moonRadius = moon.radius * moonPos.scale;
+              
               ctx.beginPath();
-              ctx.arc(particlePos.x, particlePos.y, particle.size * particlePos.scale, 0, Math.PI * 2);
-              ctx.fillStyle = particle.color;
+              ctx.arc(moonPos.x, moonPos.y, moonRadius, 0, Math.PI * 2);
+              ctx.fillStyle = moon.color;
               ctx.fill();
             }
           }
-        }
-      }
-      
-      // Actualizar y dibujar asteroides
-      for (const asteroid of asteroids) {
-        asteroid.angle += asteroid.speed;
-        asteroid.rotation += asteroid.rotationSpeed;
-        
-        asteroid.x = Math.cos(asteroid.angle) * asteroid.orbitRadius;
-        asteroid.z = Math.sin(asteroid.angle) * asteroid.orbitRadius;
-        
-        const pos = projectPoint(asteroid.x, asteroid.y, asteroid.z, canvas);
-        if (pos.visible) {
-          const size = asteroid.size * pos.scale;
           
-          ctx.save();
-          ctx.translate(pos.x, pos.y);
-          ctx.rotate(asteroid.rotation);
-          
-          ctx.beginPath();
-          ctx.arc(0, 0, size, 0, Math.PI * 2);
-          ctx.fillStyle = asteroid.color;
-          ctx.fill();
-          
-          // Detalles de la superficie del asteroide
-          ctx.fillStyle = '#8B4513';
-          ctx.beginPath();
-          ctx.arc(-size/3, -size/3, size/3, 0, Math.PI * 2);
-          ctx.fill();
-          
-          ctx.restore();
-        }
-      }
-      
-      // Actualizar y dibujar cometas
-      for (const comet of comets) {
-        // Actualizar posición
-        comet.x += comet.speedX;
-        comet.y += comet.speedY;
-        comet.z += comet.speedZ;
-        
-        // Rebotar en los bordes del espacio visible
-        if (Math.abs(comet.x) > 2500 || Math.abs(comet.y) > 2500 || Math.abs(comet.z) > 2500) {
-          comet.x = (Math.random() - 0.5) * 1000;
-          comet.y = (Math.random() - 0.5) * 1000;
-          comet.z = (Math.random() - 0.5) * 1000;
-          comet.trail = [];
-        }
-        
-        // Actualizar estela
-        comet.trail.unshift({x: comet.x, y: comet.y, z: comet.z});
-        if (comet.trail.length > comet.maxTrail) comet.trail.pop();
-        
-        // Dibujar estela
-        if (comet.trail.length > 1) {
-          ctx.strokeStyle = comet.color;
-          ctx.lineWidth = 1;
-          ctx.beginPath();
-          
-          const firstPos = projectPoint(comet.trail[0].x, comet.trail[0].y, comet.trail[0].z, canvas);
-          if (firstPos.visible) {
-            ctx.moveTo(firstPos.x, firstPos.y);
-            
-            for (let i = 1; i < comet.trail.length; i++) {
-              const pos = projectPoint(comet.trail[i].x, comet.trail[i].y, comet.trail[i].z, canvas);
-              if (pos.visible) {
-                ctx.lineTo(pos.x, pos.y);
-              }
-            }
-            ctx.stroke();
+          // Nombre del planeta
+          if (showLabels && pos.scale > 0.3) {
+            ctx.font = `${12 * pos.scale}px Arial`;
+            ctx.fillStyle = 'rgba(255,255,255,0.7)';
+            ctx.textAlign = 'center';
+            ctx.fillText(planet.name, pos.x, pos.y + radius + 15 * pos.scale);
           }
         }
         
-        // Dibujar cabeza del cometa
-        const pos = projectPoint(comet.x, comet.y, comet.z, canvas);
-        if (pos.visible) {
-          const size = comet.size * pos.scale;
+        // Dibujar sol
+        const sunPos = projectPoint(sun.x, sun.y, sun.z, canvas);
+        if (sunPos.visible) {
+          const sunPulse = Math.sin(Date.now() * sun.pulseSpeed) * sun.pulseSize + 1;
+          const radius = sun.radius * sunPos.scale * sunPulse;
           
+          // Dibujar sol con efecto de pulsación
           ctx.beginPath();
-          ctx.arc(pos.x, pos.y, size, 0, Math.PI * 2);
+          ctx.arc(sunPos.x, sunPos.y, radius, 0, Math.PI * 2);
           
-          const gradient = ctx.createRadialGradient(
-            pos.x, pos.y, 0,
-            pos.x, pos.y, size * 2
+          const sunGradient = ctx.createRadialGradient(
+            sunPos.x, sunPos.y, 0,
+            sunPos.x, sunPos.y, radius
           );
-          gradient.addColorStop(0, '#FFFFFF');
-          gradient.addColorStop(0.7, comet.color);
-          gradient.addColorStop(1, 'rgba(0,0,0,0)');
+          sunGradient.addColorStop(0, '#FFFFFF');
+          sunGradient.addColorStop(0.6, sun.color);
+          sunGradient.addColorStop(1, '#FF8C00');
           
-          ctx.fillStyle = gradient;
+          ctx.fillStyle = sunGradient;
           ctx.fill();
-        }
-      }
-      
-      // Actualizar y dibujar planetas
-      for (const planet of planets) {
-        // Actualizar posición del planeta
-        planet.angle += planet.speed;
-        planet.x = Math.cos(planet.angle) * planet.orbitRadius;
-        planet.z = Math.sin(planet.angle) * planet.orbitRadius;
-        
-        // Efecto de pulsación suave
-        const pulse = Math.sin(Date.now() * 0.002) * 0.1 + 0.9;
-        
-        // Proyectar posición del planeta
-        const pos = projectPoint(planet.x, planet.y, planet.z, canvas);
-        if (!pos.visible) continue;
-        
-        const radius = planet.radius * pos.scale * pulse;
-        
-        // Dibujar planeta
-        ctx.beginPath();
-        ctx.arc(pos.x, pos.y, radius, 0, Math.PI * 2);
-        
-        const gradient = ctx.createRadialGradient(
-          pos.x, pos.y, 0,
-          pos.x, pos.y, radius
-        );
-        gradient.addColorStop(0, planet.color);
-        gradient.addColorStop(0.7, planet.color);
-        gradient.addColorStop(1, '#2F2F2F');
-        
-        ctx.fillStyle = gradient;
-        ctx.fill();
-        
-        // Detalles de la superficie del planeta
-        for (const detail of planet.surfaceDetail) {
-          const detailX = pos.x + detail.x * radius * 0.8;
-          const detailY = pos.y + detail.y * radius * 0.8;
-          const detailSize = detail.size * radius * 0.3;
           
-          ctx.beginPath();
-          ctx.arc(detailX, detailY, detailSize, 0, Math.PI * 2);
-          ctx.fillStyle = detail.color.replace(')', `, ${detail.brightness})`).replace('rgb', 'rgba');
-          ctx.fill();
-        }
-        
-        // Brillo del planeta
-        if (planet.glow) {
-          const glowGradient = ctx.createRadialGradient(
-            pos.x, pos.y, 0,
-            pos.x, pos.y, radius * 2
-          );
-          glowGradient.addColorStop(0, planet.glowColor);
-          glowGradient.addColorStop(1, 'rgba(0,0,0,0)');
-          
-          ctx.beginPath();
-          ctx.arc(pos.x, pos.y, radius * 2, 0, Math.PI * 2);
-          ctx.fillStyle = glowGradient;
-          ctx.fill();
-        }
-        
-        // Dibujar anillos si el planeta los tiene
-        if (planet.hasRings && pos.scale > 0.1) {
-          ctx.strokeStyle = planet.ringColor;
-          ctx.lineWidth = 2 * pos.scale;
-          ctx.beginPath();
-          ctx.ellipse(pos.x, pos.y, planet.ringRadius * pos.scale, planet.ringRadius * pos.scale * 0.1, planet.angle, 0, Math.PI * 2);
-          ctx.stroke();
-        }
-        
-        // Dibujar órbitas si están activas
-        if (showOrbits) {
-          ctx.strokeStyle = `rgba(255, 255, 255, 0.2)`;
-          ctx.lineWidth = 1;
-          ctx.beginPath();
-          ctx.arc(canvas.width/2, canvas.height/2, planet.orbitRadius * pos.scale, 0, Math.PI * 2);
-          ctx.stroke();
-        }
-        
-        // Dibujar lunas
-        for (const moon of planet.moons) {
-          moon.angle += moon.speed;
-          const moonX = planet.x + Math.cos(moon.angle) * moon.orbitRadius;
-          const moonZ = planet.z + Math.sin(moon.angle) * moon.orbitRadius;
-          
-          const moonPos = projectPoint(moonX, planet.y, moonZ, canvas);
-          if (moonPos.visible) {
-            const moonRadius = moon.radius * moonPos.scale;
+          // Detalles de la superficie del sol
+          for (const detail of sun.surfaceDetail) {
+            const detailX = sunPos.x + detail.x * radius * 0.9;
+            const detailY = sunPos.y + detail.y * radius * 0.9;
+            const detailSize = detail.size * radius * 0.2;
             
             ctx.beginPath();
-            ctx.arc(moonPos.x, moonPos.y, moonRadius, 0, Math.PI * 2);
-            ctx.fillStyle = moon.color;
+            ctx.arc(detailX, detailY, detailSize, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(255, 100, 0, ${detail.brightness})`;
             ctx.fill();
           }
-        }
-        
-        // Nombre del planeta
-        if (showLabels && pos.scale > 0.3) {
-          ctx.font = `${12 * pos.scale}px Arial`;
-          ctx.fillStyle = 'rgba(255,255,255,0.7)';
-          ctx.textAlign = 'center';
-          ctx.fillText(planet.name, pos.x, pos.y + radius + 15 * pos.scale);
-        }
-      }
-      
-      // Dibujar sol
-      const sunPos = projectPoint(sun.x, sun.y, sun.z, canvas);
-      if (sunPos.visible) {
-        const sunPulse = Math.sin(Date.now() * sun.pulseSpeed) * sun.pulseSize + 1;
-        const radius = sun.radius * sunPos.scale * sunPulse;
-        
-        // Dibujar sol con efecto de pulsación
-        ctx.beginPath();
-        ctx.arc(sunPos.x, sunPos.y, radius, 0, Math.PI * 2);
-        
-        const sunGradient = ctx.createRadialGradient(
-          sunPos.x, sunPos.y, 0,
-          sunPos.x, sunPos.y, radius
-        );
-        sunGradient.addColorStop(0, '#FFFFFF');
-        sunGradient.addColorStop(0.6, sun.color);
-        sunGradient.addColorStop(1, '#FF8C00');
-        
-        ctx.fillStyle = sunGradient;
-        ctx.fill();
-        
-        // Detalles de la superficie del sol
-        for (const detail of sun.surfaceDetail) {
-          const detailX = sunPos.x + detail.x * radius * 0.9;
-          const detailY = sunPos.y + detail.y * radius * 0.9;
-          const detailSize = detail.size * radius * 0.2;
           
-          ctx.beginPath();
-          ctx.arc(detailX, detailY, detailSize, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(255, 100, 0, ${detail.brightness})`;
-          ctx.fill();
-        }
-        
-        // Dibujar brillo del sol
-        if (sun.glow) {
-          const glowGradient = ctx.createRadialGradient(
-            sunPos.x, sunPos.y, 0,
-            sunPos.x, sunPos.y, sun.glowRadius * sunPos.scale * sunPulse
-          );
-          glowGradient.addColorStop(0, sun.glowColor);
-          glowGradient.addColorStop(1, 'rgba(255, 215, 0, 0)');
-          
-          ctx.beginPath();
-          ctx.arc(sunPos.x, sunPos.y, sun.glowRadius * sunPos.scale * sunPulse, 0, Math.PI * 2);
-          ctx.fillStyle = glowGradient;
-          ctx.fill();
+          // Dibujar brillo del sol
+          if (sun.glow) {
+            const glowGradient = ctx.createRadialGradient(
+              sunPos.x, sunPos.y, 0,
+              sunPos.x, sunPos.y, sun.glowRadius * sunPos.scale * sunPulse
+            );
+            glowGradient.addColorStop(0, sun.glowColor);
+            glowGradient.addColorStop(1, 'rgba(255, 215, 0, 0)');
+            
+            ctx.beginPath();
+            ctx.arc(sunPos.x, sunPos.y, sun.glowRadius * sunPos.scale * sunPulse, 0, Math.PI * 2);
+            ctx.fillStyle = glowGradient;
+            ctx.fill();
+          }
         }
       }
       
