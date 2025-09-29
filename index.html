@@ -882,20 +882,9 @@
       font-size: clamp(2rem, 6vw, 4rem);
       margin-bottom: clamp(20px, 4vw, 30px);
       text-shadow: 0 0 30px rgba(255,215,0,0.8);
-      animation: finalGlow 3s ease-in-out infinite;
       font-family: 'Dancing Script', cursive;
       line-height: 1.2;
-    }
-    
-    @keyframes finalGlow {
-      0%, 100% { 
-        transform: scale(1); 
-        text-shadow: 0 0 30px rgba(255,215,0,0.8), 0 0 60px rgba(255,105,180,0.4); 
-      }
-      50% { 
-        transform: scale(1.05); 
-        text-shadow: 0 0 50px rgba(255,215,0,1), 0 0 80px rgba(255,105,180,0.6), 0 0 100px rgba(32,178,170,0.4); 
-      }
+      /* Eliminada la animación de movimiento */
     }
     
     .final-text {
@@ -918,12 +907,7 @@
       font-family: 'Dancing Script', cursive;
       font-size: clamp(1.6rem, 4.5vw, 2.8rem);
       margin-top: clamp(25px, 5vw, 40px);
-      animation: heartbeat 2s ease-in-out infinite;
-    }
-    
-    @keyframes heartbeat {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
+      /* Eliminada la animación de movimiento */
     }
     
     /* PANTALLA: UNIVERSO REAL - MEJORADA */
@@ -1006,7 +990,7 @@
     /* BOTÓN PARA OCULTAR/MOSTRAR CONTROLES */
     .toggle-controls-button {
       position: absolute;
-      bottom: 20px;
+      bottom: 85px;
       right: 20px;
       width: 40px;
       height: 40px;
@@ -1311,7 +1295,7 @@
       .toggle-controls-button {
         width: 35px;
         height: 35px;
-        bottom: 15px;
+        bottom: 75px;
         right: 15px;
       }
       
@@ -1405,7 +1389,7 @@
       .toggle-controls-button {
         width: 40px;
         height: 40px;
-        bottom: 15px;
+        bottom: 80px;
         right: 15px;
       }
     }
@@ -2271,18 +2255,16 @@ la constelación más brillante, el mejor final.</div>
         galaxies: []
       };
       
-      // Crear sol (estrella central) - más realista
+      // Crear sol (estrella central) - MEJORADO: Sin efecto de pulsación
       universeObjects.sun = {
         x: 0,
         y: 0,
         z: 0,
-        radius: 70,
+        radius: window.innerWidth < 768 ? 50 : 70, // Más pequeño en móviles
         color: '#FFD700',
         glow: true,
         glowColor: 'rgba(255, 215, 0, 0.4)',
-        glowRadius: 180,
-        pulseSpeed: 0.005,
-        pulseSize: 0.1,
+        glowRadius: window.innerWidth < 768 ? 120 : 180, // Más pequeño en móviles
         surfaceDetail: []
       };
       
@@ -2716,14 +2698,11 @@ la constelación más brillante, el mejor final.</div>
         planet.x = Math.cos(planet.angle) * planet.orbitRadius;
         planet.z = Math.sin(planet.angle) * planet.orbitRadius;
         
-        // Efecto de pulsación suave
-        const pulse = Math.sin(Date.now() * 0.002) * 0.1 + 0.9;
-        
         // Proyectar posición del planeta
         const pos = projectPoint(planet.x, planet.y, planet.z, canvas);
         if (!pos.visible) continue;
         
-        const radius = planet.radius * pos.scale * pulse;
+        const radius = planet.radius * pos.scale;
         
         // Dibujar planeta
         ctx.beginPath();
@@ -2811,13 +2790,12 @@ la constelación más brillante, el mejor final.</div>
         }
       }
       
-      // Dibujar sol
+      // Dibujar sol - MEJORADO: Sin efecto de pulsación
       const sunPos = projectPoint(sun.x, sun.y, sun.z, canvas);
       if (sunPos.visible) {
-        const sunPulse = Math.sin(Date.now() * sun.pulseSpeed) * sun.pulseSize + 1;
-        const radius = sun.radius * sunPos.scale * sunPulse;
+        const radius = sun.radius * sunPos.scale;
         
-        // Dibujar sol con efecto de pulsación
+        // Dibujar sol
         ctx.beginPath();
         ctx.arc(sunPos.x, sunPos.y, radius, 0, Math.PI * 2);
         
@@ -2848,13 +2826,13 @@ la constelación más brillante, el mejor final.</div>
         if (sun.glow) {
           const glowGradient = ctx.createRadialGradient(
             sunPos.x, sunPos.y, 0,
-            sunPos.x, sunPos.y, sun.glowRadius * sunPos.scale * sunPulse
+            sunPos.x, sunPos.y, sun.glowRadius * sunPos.scale
           );
           glowGradient.addColorStop(0, sun.glowColor);
           glowGradient.addColorStop(1, 'rgba(255, 215, 0, 0)');
           
           ctx.beginPath();
-          ctx.arc(sunPos.x, sunPos.y, sun.glowRadius * sunPos.scale * sunPulse, 0, Math.PI * 2);
+          ctx.arc(sunPos.x, sunPos.y, sun.glowRadius * sunPos.scale, 0, Math.PI * 2);
           ctx.fillStyle = glowGradient;
           ctx.fill();
         }
