@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>✨ El Universo de Wilmagy ✨</title>
+  <title>✨ Este universo eres tú ✨</title>
   <style>
     /* RESET Y VARIABLES */
     * {
@@ -976,6 +976,13 @@
       display: flex;
       justify-content: center;
       gap: 15px;
+      transition: transform 0.5s ease;
+    }
+    
+    .universe-controls.hidden {
+      transform: translateY(100px);
+      opacity: 0;
+      pointer-events: none;
     }
     
     .universe-control-button {
@@ -994,6 +1001,40 @@
     .universe-control-button:hover {
       background: rgba(255,215,0,0.3);
       transform: translateY(-3px);
+    }
+    
+    /* BOTÓN PARA OCULTAR/MOSTRAR CONTROLES */
+    .toggle-controls-button {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      background: rgba(0,0,0,0.7);
+      border: 2px solid rgba(255,215,0,0.5);
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+      backdrop-filter: blur(10px);
+    }
+    
+    .toggle-controls-button:hover {
+      background: rgba(255,215,0,0.3);
+      transform: scale(1.1);
+    }
+    
+    .toggle-controls-icon {
+      color: var(--accent);
+      font-size: 1.2rem;
+      transition: transform 0.3s ease;
+    }
+    
+    .toggle-controls-button.hidden .toggle-controls-icon {
+      transform: rotate(180deg);
     }
     
     /* BARRA DE NAVEGACIÓN */
@@ -1085,7 +1126,7 @@
       visibility: visible;
     }
     
-    /* REPRODUCTOR DE SPOTIFY - MEJORADO */
+    /* REPRODUCTOR DE SPOTIFY - MEJORADO Y RESPONSIVO */
     .spotify-player {
       position: fixed;
       bottom: 20px;
@@ -1143,6 +1184,39 @@
     .spotify-toggle:hover {
       transform: scale(1.1);
       box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+    }
+    
+    /* NUEVA PESTAÑA PARA EL REPRODUCTOR */
+    .spotify-tab {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(145deg, #ff69b4, #ffa500, #ffd700);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      transition: var(--transition);
+      border: 2px solid rgba(255,215,0,0.8);
+    }
+    
+    .spotify-tab:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    }
+    
+    .spotify-tab-icon {
+      font-size: 24px;
+      color: white;
+    }
+    
+    .spotify-tab.hidden {
+      display: none;
     }
     
     /* EFECTOS ESPECIALES */
@@ -1222,6 +1296,28 @@
         height: 30px;
         font-size: 14px;
       }
+      
+      .spotify-tab {
+        width: 50px;
+        height: 50px;
+        bottom: 15px;
+        right: 15px;
+      }
+      
+      .spotify-tab-icon {
+        font-size: 20px;
+      }
+      
+      .toggle-controls-button {
+        width: 35px;
+        height: 35px;
+        bottom: 15px;
+        right: 15px;
+      }
+      
+      .toggle-controls-icon {
+        font-size: 1rem;
+      }
     }
     
     /* MÓVILES (hasta 768px) */
@@ -1297,6 +1393,20 @@
         width: 90vw;
         right: 5vw;
         bottom: 10px;
+      }
+      
+      .spotify-tab {
+        width: 55px;
+        height: 55px;
+        bottom: 15px;
+        right: 15px;
+      }
+      
+      .toggle-controls-button {
+        width: 40px;
+        height: 40px;
+        bottom: 15px;
+        right: 15px;
       }
     }
     
@@ -1394,10 +1504,15 @@
   <!-- PARTÍCULAS CÓSMICAS -->
   <div class="cosmic-particles"></div>
 
+  <!-- NUEVA PESTAÑA PARA EL REPRODUCTOR -->
+  <div class="spotify-tab" id="spotifyTab">
+    <div class="spotify-tab-icon">🎵</div>
+  </div>
+
   <!-- REPRODUCTOR DE SPOTIFY MEJORADO -->
-  <div class="spotify-player" id="spotifyPlayer">
-    <div class="spotify-toggle" id="spotifyToggle">−</div>
-    <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/6d8PFXIpVTRX3M0g7NIBuB?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+  <div class="spotify-player minimized" id="spotifyPlayer">
+    <div class="spotify-toggle" id="spotifyToggle">+</div>
+    <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/6d8PFXIpVTRX3M0g7NIBuB?utm_source=generator&start=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
   </div>
 
   <!-- BARRA DE NAVEGACIÓN SIMPLIFICADA -->
@@ -1417,7 +1532,7 @@
   <!-- PANTALLA DE BIENVENIDA -->
   <div id="welcomeScreen" class="screen active">
     <h1 class="welcome-title">✨ Para Wilmagy ✨</h1>
-    <p class="subtitle">Un universo completo contenido en una persona extraordinaria</p>
+    <p class="subtitle">Este universo completo contenido en una persona extraordinaria</p>
     <button class="start-button" onclick="showUniverse()">
       🌟 Comenzar el Viaje 🌟
     </button>
@@ -1709,9 +1824,14 @@ la constelación más brillante, el mejor final.</div>
       <canvas id="universeCanvas" class="universe-canvas"></canvas>
     </div>
     
-    <h1 class="universe-title">✨ El Universo de Wilmagy ✨</h1>
+    <h1 class="universe-title">✨ Este universo eres tú ✨</h1>
     
-    <div class="universe-controls">
+    <!-- BOTÓN PARA OCULTAR/MOSTRAR CONTROLES -->
+    <div class="toggle-controls-button" id="toggleControlsButton">
+      <div class="toggle-controls-icon">▼</div>
+    </div>
+    
+    <div class="universe-controls" id="universeControls">
       <button class="universe-control-button" onclick="toggleOrbits()">🌌 Mostrar/ocultar órbitas</button>
       <button class="universe-control-button" onclick="toggleLabels()">🔤 Mostrar/ocultar nombres</button>
       <button class="universe-control-button" onclick="resetCamera()">📷 Reiniciar vista</button>
@@ -1794,14 +1914,50 @@ la constelación más brillante, el mejor final.</div>
       }
     }
     
-    // Control de Spotify
+    // Control de Spotify - MEJORADO
     const spotifyPlayer = document.getElementById('spotifyPlayer');
     const spotifyToggle = document.getElementById('spotifyToggle');
+    const spotifyTab = document.getElementById('spotifyTab');
+    
+    // Inicialmente el reproductor está minimizado
+    spotifyPlayer.classList.add('minimized');
+    spotifyToggle.textContent = '+';
     
     spotifyToggle.addEventListener('click', function(e) {
       e.stopPropagation();
       spotifyPlayer.classList.toggle('minimized');
       spotifyToggle.textContent = spotifyPlayer.classList.contains('minimized') ? '+' : '−';
+      
+      // Ocultar/mostrar la pestaña
+      if (spotifyPlayer.classList.contains('minimized')) {
+        spotifyTab.classList.remove('hidden');
+      } else {
+        spotifyTab.classList.add('hidden');
+      }
+      
+      // En móviles, reproducir música cuando se abre el reproductor
+      if (!spotifyPlayer.classList.contains('minimized')) {
+        // Forzar la reproducción en móviles
+        const iframe = spotifyPlayer.querySelector('iframe');
+        if (iframe) {
+          // Esta es una solución para móviles - forzar la reproducción
+          iframe.src = iframe.src.replace(/(\?|&)start=\d+/, '') + '&start=0';
+        }
+      }
+    });
+    
+    // Control de la pestaña de Spotify
+    spotifyTab.addEventListener('click', function() {
+      spotifyPlayer.classList.remove('minimized');
+      spotifyToggle.textContent = '−';
+      spotifyTab.classList.add('hidden');
+      
+      // En móviles, reproducir música cuando se abre el reproductor
+      const iframe = spotifyPlayer.querySelector('iframe');
+      if (iframe) {
+        // Esta es una solución para móviles - forzar la reproducción
+        iframe.src = iframe.src.replace(/(\?|&)start=\d+/, '') + '&start=0';
+      }
     });
     
     // Reproducir efectos de sonido
@@ -2013,6 +2169,15 @@ la constelación más brillante, el mejor final.</div>
     let isDragging = false;
     let lastMouseX, lastMouseY;
     
+    // Control para ocultar/mostrar controles del universo
+    const toggleControlsButton = document.getElementById('toggleControlsButton');
+    const universeControls = document.getElementById('universeControls');
+    
+    toggleControlsButton.addEventListener('click', function() {
+      universeControls.classList.toggle('hidden');
+      toggleControlsButton.classList.toggle('hidden');
+    });
+    
     function initUniverse() {
       if (universeAnimationId) {
         cancelAnimationFrame(universeAnimationId);
@@ -2139,8 +2304,8 @@ la constelación más brillante, el mejor final.</div>
         { name: 'Fuerza', color: '#87CEEB', radius: 18, distance: 330, speed: 0.00018, hasRings: false },
         { name: 'Sueños', color: '#DDA0DD', radius: 22, distance: 400, speed: 0.00015, hasRings: true, ringColor: '#E6E6FA' },
         { name: 'Magia', color: '#FFD700', radius: 15, distance: 470, speed: 0.00012, hasRings: false },
-        { name: 'Sustino', color: '#FF69B4', radius: 14, distance: 540, speed: 0.0001, hasRings: false },
-        { name: 'Mespa', color: '#20B2AA', radius: 17, distance: 610, speed: 0.00008, hasRings: true, ringColor: '#7FFFD4' }
+        { name: 'Inteligencia', color: '#FF69B4', radius: 14, distance: 540, speed: 0.0001, hasRings: false },
+        { name: 'Belleza', color: '#20B2AA', radius: 17, distance: 610, speed: 0.00008, hasRings: true, ringColor: '#7FFFD4' }
       ];
       
       for (let i = 0; i < planetData.length; i++) {
@@ -2166,7 +2331,7 @@ la constelación más brillante, el mejor final.</div>
         });
         
         // Agregar lunas a algunos planetas
-        if (i === 1 || i === 4 || i === 7) { // Risa, Sueños y Mespa tienen lunas
+        if (i === 1 || i === 4 || i === 7) { // Risa, Sueños y Belleza tienen lunas
           const moonCount = i === 1 ? 2 : (i === 4 ? 1 : 3);
           for (let j = 0; j < moonCount; j++) {
             universeObjects.planets[i].moons.push({
