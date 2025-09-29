@@ -884,7 +884,6 @@
       text-shadow: 0 0 30px rgba(255,215,0,0.8);
       font-family: 'Dancing Script', cursive;
       line-height: 1.2;
-      /* Eliminada la animación de movimiento */
     }
     
     .final-text {
@@ -907,7 +906,6 @@
       font-family: 'Dancing Script', cursive;
       font-size: clamp(1.6rem, 4.5vw, 2.8rem);
       margin-top: clamp(25px, 5vw, 40px);
-      /* Eliminada la animación de movimiento */
     }
     
     /* PANTALLA: UNIVERSO REAL - MEJORADA */
@@ -946,7 +944,6 @@
       text-shadow: 0 0 20px rgba(255,215,0,0.8);
       font-family: 'Dancing Script', cursive;
       padding: 10px 20px;
-      /* Eliminada la animación de movimiento */
     }
     
     .universe-controls {
@@ -958,7 +955,8 @@
       display: flex;
       justify-content: center;
       gap: 15px;
-      transition: transform 0.5s ease;
+      transition: transform 0.5s ease, opacity 0.5s ease;
+      padding: 10px;
     }
     
     .universe-controls.hidden {
@@ -990,10 +988,10 @@
       position: absolute;
       bottom: 85px;
       right: 20px;
-      width: 40px;
-      height: 40px;
-      background: rgba(0,0,0,0.7);
-      border: 2px solid rgba(255,215,0,0.5);
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(145deg, #ff69b4, #ffa500);
+      border: 2px solid rgba(255,215,0,0.8);
       border-radius: 50%;
       cursor: pointer;
       z-index: 4;
@@ -1002,16 +1000,19 @@
       justify-content: center;
       transition: var(--transition);
       backdrop-filter: blur(10px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     }
     
     .toggle-controls-button:hover {
       background: rgba(255,215,0,0.3);
       transform: scale(1.1);
+      box-shadow: 0 8px 20px rgba(255,215,0,0.4);
     }
     
     .toggle-controls-icon {
-      color: var(--accent);
-      font-size: 1.2rem;
+      color: white;
+      font-size: 1.5rem;
+      font-weight: bold;
       transition: transform 0.3s ease;
     }
     
@@ -1133,8 +1134,8 @@
     }
     
     .spotify-player.minimized {
-      width: 50px;
-      height: 50px;
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
     }
     
@@ -1146,8 +1147,8 @@
       position: absolute;
       top: -10px;
       right: -10px;
-      width: 30px;
-      height: 30px;
+      width: 35px;
+      height: 35px;
       background: linear-gradient(145deg, #1DB954, #1ed760);
       border-radius: 50%;
       display: flex;
@@ -1156,7 +1157,7 @@
       cursor: pointer;
       border: 2px solid rgba(255,215,0,0.8);
       z-index: 1001;
-      font-size: 14px;
+      font-size: 16px;
       color: white;
       font-weight: bold;
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
@@ -1168,16 +1169,17 @@
       box-shadow: 0 6px 15px rgba(0,0,0,0.4);
     }
     
-    /* NUEVA PESTAÑA PARA EL REPRODUCTOR */
+    /* NUEVA PESTAÑA PARA EL REPRODUCTOR - MEJORADA */
     .spotify-tab {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      width: 50px;
-      height: 50px;
+      width: 60px;
+      height: 60px;
       background: linear-gradient(145deg, #1DB954, #1ed760);
       border-radius: 50%;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       cursor: pointer;
@@ -1185,6 +1187,7 @@
       box-shadow: 0 5px 15px rgba(0,0,0,0.3);
       transition: var(--transition);
       border: 2px solid rgba(255,215,0,0.8);
+      overflow: hidden;
     }
     
     .spotify-tab:hover {
@@ -1193,8 +1196,15 @@
     }
     
     .spotify-tab-icon {
-      font-size: 20px;
+      font-size: 24px;
       color: white;
+      margin-bottom: 2px;
+    }
+    
+    .spotify-tab-text {
+      font-size: 10px;
+      color: white;
+      font-weight: bold;
     }
     
     .spotify-tab.hidden {
@@ -1274,31 +1284,31 @@
       }
       
       .spotify-toggle {
-        width: 25px;
-        height: 25px;
-        font-size: 12px;
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
       }
       
       .spotify-tab {
-        width: 45px;
-        height: 45px;
+        width: 55px;
+        height: 55px;
         bottom: 15px;
         right: 15px;
       }
       
       .spotify-tab-icon {
-        font-size: 18px;
+        font-size: 20px;
       }
       
       .toggle-controls-button {
-        width: 35px;
-        height: 35px;
+        width: 45px;
+        height: 45px;
         bottom: 75px;
         right: 15px;
       }
       
       .toggle-controls-icon {
-        font-size: 1rem;
+        font-size: 1.2rem;
       }
     }
     
@@ -1378,15 +1388,15 @@
       }
       
       .spotify-tab {
-        width: 50px;
-        height: 50px;
+        width: 60px;
+        height: 60px;
         bottom: 15px;
         right: 15px;
       }
       
       .toggle-controls-button {
-        width: 40px;
-        height: 40px;
+        width: 50px;
+        height: 50px;
         bottom: 80px;
         right: 15px;
       }
@@ -1486,6 +1496,19 @@
       min-height: 100vh;
       overflow-y: auto;
     }
+    
+    /* CORRECCIÓN ESPACIO VACÍO EN PANTALLA COMPLETA */
+    body.fullscreen .universe-real-screen {
+      height: 100vh;
+    }
+    
+    body.fullscreen .universe-real-screen .universe-canvas-container {
+      height: 100vh;
+    }
+    
+    body.fullscreen .universe-real-screen .universe-controls.hidden + .toggle-controls-button {
+      bottom: 20px;
+    }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -1496,14 +1519,15 @@
   <!-- PARTÍCULAS CÓSMICAS -->
   <div class="cosmic-particles"></div>
 
-  <!-- NUEVA PESTAÑA PARA EL REPRODUCTOR -->
+  <!-- NUEVA PESTAÑA PARA EL REPRODUCTOR - MEJORADA -->
   <div class="spotify-tab" id="spotifyTab">
     <div class="spotify-tab-icon">🎵</div>
+    <div class="spotify-tab-text">Música</div>
   </div>
 
   <!-- REPRODUCTOR DE SPOTIFY MEJORADO -->
   <div class="spotify-player minimized" id="spotifyPlayer">
-    <div class="spotify-toggle" id="spotifyToggle">+</div>
+    <div class="spotify-toggle" id="spotifyToggle">−</div>
     <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/6d8PFXIpVTRX3M0g7NIBuB?utm_source=generator&start=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
   </div>
 
@@ -1819,7 +1843,7 @@ la constelación más brillante, el mejor final.</div>
     
     <h1 class="universe-title">✨ Este universo eres tú ✨</h1>
     
-    <!-- BOTÓN PARA OCULTAR/MOSTRAR CONTROLES -->
+    <!-- BOTÓN PARA OCULTAR/MOSTRAR CONTROLES - MEJORADO -->
     <div class="toggle-controls-button" id="toggleControlsButton">
       <div class="toggle-controls-icon">▼</div>
     </div>
@@ -1946,7 +1970,7 @@ la constelación más brillante, el mejor final.</div>
       }
     });
     
-    // Control de la pestaña de Spotify
+    // Control de la pestaña de Spotify - MEJORADO
     spotifyTab.addEventListener('click', function() {
       spotifyPlayer.classList.remove('minimized');
       spotifyToggle.textContent = '−';
@@ -2176,13 +2200,20 @@ la constelación más brillante, el mejor final.</div>
     let isDragging = false;
     let lastMouseX, lastMouseY;
     
-    // Control para ocultar/mostrar controles del universo
+    // Control para ocultar/mostrar controles del universo - MEJORADO
     const toggleControlsButton = document.getElementById('toggleControlsButton');
     const universeControls = document.getElementById('universeControls');
     
     toggleControlsButton.addEventListener('click', function() {
       universeControls.classList.toggle('hidden');
       toggleControlsButton.classList.toggle('hidden');
+      
+      // Ajustar la posición del botón cuando se ocultan los controles
+      if (universeControls.classList.contains('hidden')) {
+        toggleControlsButton.style.bottom = '20px';
+      } else {
+        toggleControlsButton.style.bottom = '85px';
+      }
     });
     
     function initUniverse() {
