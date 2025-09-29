@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>✨ Este universo eres tú ✨</title>
+  <title>✨ El Universo de Wilmagy ✨</title>
   <style>
     /* RESET Y VARIABLES */
     * {
@@ -976,13 +976,6 @@
       display: flex;
       justify-content: center;
       gap: 15px;
-      transition: transform 0.5s ease;
-    }
-    
-    .universe-controls.hidden {
-      transform: translateY(100px);
-      opacity: 0;
-      pointer-events: none;
     }
     
     .universe-control-button {
@@ -1001,40 +994,6 @@
     .universe-control-button:hover {
       background: rgba(255,215,0,0.3);
       transform: translateY(-3px);
-    }
-    
-    /* PESTAÑA PARA CONTROLES DEL UNIVERSO */
-    .universe-controls-tab {
-      position: absolute;
-      bottom: 20px;
-      right: 20px;
-      width: 60px;
-      height: 60px;
-      background: linear-gradient(145deg, #ff69b4, #ffa500, #ffd700);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 4;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-      transition: var(--transition);
-      border: 2px solid rgba(255,215,0,0.8);
-    }
-    
-    .universe-controls-tab:hover {
-      transform: scale(1.1);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-    }
-    
-    .universe-controls-tab-icon {
-      font-size: 24px;
-      color: white;
-      transition: transform 0.3s ease;
-    }
-    
-    .universe-controls-tab.rotated .universe-controls-tab-icon {
-      transform: rotate(180deg);
     }
     
     /* BARRA DE NAVEGACIÓN */
@@ -1126,7 +1085,7 @@
       visibility: visible;
     }
     
-    /* REPRODUCTOR DE SPOTIFY - MEJORADO Y RESPONSIVO */
+    /* REPRODUCTOR DE SPOTIFY - MEJORADO */
     .spotify-player {
       position: fixed;
       bottom: 20px;
@@ -1184,39 +1143,6 @@
     .spotify-toggle:hover {
       transform: scale(1.1);
       box-shadow: 0 6px 15px rgba(0,0,0,0.4);
-    }
-    
-    /* NUEVA PESTAÑA PARA EL REPRODUCTOR */
-    .spotify-tab {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 60px;
-      height: 60px;
-      background: linear-gradient(145deg, #ff69b4, #ffa500, #ffd700);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 1001;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-      transition: var(--transition);
-      border: 2px solid rgba(255,215,0,0.8);
-    }
-    
-    .spotify-tab:hover {
-      transform: scale(1.1);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-    }
-    
-    .spotify-tab-icon {
-      font-size: 24px;
-      color: white;
-    }
-    
-    .spotify-tab.hidden {
-      display: none;
     }
     
     /* EFECTOS ESPECIALES */
@@ -1296,28 +1222,6 @@
         height: 30px;
         font-size: 14px;
       }
-      
-      .spotify-tab {
-        width: 50px;
-        height: 50px;
-        bottom: 15px;
-        right: 15px;
-      }
-      
-      .spotify-tab-icon {
-        font-size: 20px;
-      }
-      
-      .universe-controls-tab {
-        width: 50px;
-        height: 50px;
-        bottom: 15px;
-        right: 15px;
-      }
-      
-      .universe-controls-tab-icon {
-        font-size: 20px;
-      }
     }
     
     /* MÓVILES (hasta 768px) */
@@ -1393,13 +1297,6 @@
         width: 90vw;
         right: 5vw;
         bottom: 10px;
-      }
-      
-      .spotify-tab {
-        width: 55px;
-        height: 55px;
-        bottom: 15px;
-        right: 15px;
       }
     }
     
@@ -1497,15 +1394,10 @@
   <!-- PARTÍCULAS CÓSMICAS -->
   <div class="cosmic-particles"></div>
 
-  <!-- NUEVA PESTAÑA PARA EL REPRODUCTOR -->
-  <div class="spotify-tab" id="spotifyTab">
-    <div class="spotify-tab-icon">🎵</div>
-  </div>
-
   <!-- REPRODUCTOR DE SPOTIFY MEJORADO -->
-  <div class="spotify-player minimized" id="spotifyPlayer">
-    <div class="spotify-toggle" id="spotifyToggle">+</div>
-    <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/6d8PFXIpVTRX3M0g7NIBuB?utm_source=generator&start=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+  <div class="spotify-player" id="spotifyPlayer">
+    <div class="spotify-toggle" id="spotifyToggle">−</div>
+    <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/6d8PFXIpVTRX3M0g7NIBuB?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
   </div>
 
   <!-- BARRA DE NAVEGACIÓN SIMPLIFICADA -->
@@ -1525,7 +1417,7 @@
   <!-- PANTALLA DE BIENVENIDA -->
   <div id="welcomeScreen" class="screen active">
     <h1 class="welcome-title">✨ Para Wilmagy ✨</h1>
-    <p class="subtitle">Este universo completo contenido en una persona extraordinaria</p>
+    <p class="subtitle">Un universo completo contenido en una persona extraordinaria</p>
     <button class="start-button" onclick="showUniverse()">
       🌟 Comenzar el Viaje 🌟
     </button>
@@ -1817,14 +1709,9 @@ la constelación más brillante, el mejor final.</div>
       <canvas id="universeCanvas" class="universe-canvas"></canvas>
     </div>
     
-    <h1 class="universe-title">✨ Este universo eres tú ✨</h1>
+    <h1 class="universe-title">✨ El Universo de Wilmagy ✨</h1>
     
-    <!-- PESTAÑA PARA CONTROLES DEL UNIVERSO -->
-    <div class="universe-controls-tab" id="universeControlsTab">
-      <div class="universe-controls-tab-icon">▼</div>
-    </div>
-    
-    <div class="universe-controls" id="universeControls">
+    <div class="universe-controls">
       <button class="universe-control-button" onclick="toggleOrbits()">🌌 Mostrar/ocultar órbitas</button>
       <button class="universe-control-button" onclick="toggleLabels()">🔤 Mostrar/ocultar nombres</button>
       <button class="universe-control-button" onclick="resetCamera()">📷 Reiniciar vista</button>
@@ -1907,33 +1794,14 @@ la constelación más brillante, el mejor final.</div>
       }
     }
     
-    // Control de Spotify - MEJORADO
+    // Control de Spotify
     const spotifyPlayer = document.getElementById('spotifyPlayer');
     const spotifyToggle = document.getElementById('spotifyToggle');
-    const spotifyTab = document.getElementById('spotifyTab');
-    
-    // Inicialmente el reproductor está minimizado
-    spotifyPlayer.classList.add('minimized');
-    spotifyToggle.textContent = '+';
     
     spotifyToggle.addEventListener('click', function(e) {
       e.stopPropagation();
       spotifyPlayer.classList.toggle('minimized');
       spotifyToggle.textContent = spotifyPlayer.classList.contains('minimized') ? '+' : '−';
-      
-      // Ocultar/mostrar la pestaña
-      if (spotifyPlayer.classList.contains('minimized')) {
-        spotifyTab.classList.remove('hidden');
-      } else {
-        spotifyTab.classList.add('hidden');
-      }
-    });
-    
-    // Control de la pestaña de Spotify
-    spotifyTab.addEventListener('click', function() {
-      spotifyPlayer.classList.remove('minimized');
-      spotifyToggle.textContent = '−';
-      spotifyTab.classList.add('hidden');
     });
     
     // Reproducir efectos de sonido
@@ -2145,15 +2013,6 @@ la constelación más brillante, el mejor final.</div>
     let isDragging = false;
     let lastMouseX, lastMouseY;
     
-    // Control de la pestaña de controles del universo
-    const universeControlsTab = document.getElementById('universeControlsTab');
-    const universeControls = document.getElementById('universeControls');
-    
-    universeControlsTab.addEventListener('click', function() {
-      universeControls.classList.toggle('hidden');
-      universeControlsTab.classList.toggle('rotated');
-    });
-    
     function initUniverse() {
       if (universeAnimationId) {
         cancelAnimationFrame(universeAnimationId);
@@ -2172,46 +2031,35 @@ la constelación más brillante, el mejor final.</div>
       resizeCanvas();
       window.addEventListener('resize', resizeCanvas);
       
-      // Eventos de ratón para rotar la cámara - OPTIMIZADO
-      let rafId = null;
-      
-      function handleMouseDown(e) {
+      // Eventos de ratón para rotar la cámara
+      canvas.addEventListener('mousedown', (e) => {
         isDragging = true;
         lastMouseX = e.clientX;
         lastMouseY = e.clientY;
-      }
+      });
       
-      function handleMouseMove(e) {
-        if (!isDragging) return;
-        
-        const deltaX = e.clientX - lastMouseX;
-        const deltaY = e.clientY - lastMouseY;
-        
-        cameraX += deltaX * 0.01;
-        cameraY += deltaY * 0.01;
-        
-        lastMouseX = e.clientX;
-        lastMouseY = e.clientY;
-        
-        // Cancelar animación anterior y solicitar nueva
-        if (rafId) cancelAnimationFrame(rafId);
-        rafId = requestAnimationFrame(() => animateUniverse(canvas, ctx));
-      }
-      
-      function handleMouseUp() {
-        isDragging = false;
-        if (rafId) {
-          cancelAnimationFrame(rafId);
-          rafId = null;
+      canvas.addEventListener('mousemove', (e) => {
+        if (isDragging) {
+          const deltaX = e.clientX - lastMouseX;
+          const deltaY = e.clientY - lastMouseY;
+          
+          cameraX += deltaX * 0.01;
+          cameraY += deltaY * 0.01;
+          
+          lastMouseX = e.clientX;
+          lastMouseY = e.clientY;
         }
-      }
+      });
       
-      canvas.addEventListener('mousedown', handleMouseDown);
-      canvas.addEventListener('mousemove', handleMouseMove);
-      canvas.addEventListener('mouseup', handleMouseUp);
-      canvas.addEventListener('mouseleave', handleMouseUp);
+      canvas.addEventListener('mouseup', () => {
+        isDragging = false;
+      });
       
-      // Eventos táctiles para dispositivos móviles - OPTIMIZADO
+      canvas.addEventListener('mouseleave', () => {
+        isDragging = false;
+      });
+      
+      // Eventos táctiles para dispositivos móviles
       canvas.addEventListener('touchstart', (e) => {
         if (e.touches.length === 1) {
           isDragging = true;
@@ -2231,16 +2079,13 @@ la constelación más brillante, el mejor final.</div>
           
           lastMouseX = e.touches[0].clientX;
           lastMouseY = e.touches[0].clientY;
-          
-          // Cancelar animación anterior y solicitar nueva
-          if (rafId) cancelAnimationFrame(rafId);
-          rafId = requestAnimationFrame(() => animateUniverse(canvas, ctx));
-          
           e.preventDefault();
         }
       });
       
-      canvas.addEventListener('touchend', handleMouseUp);
+      canvas.addEventListener('touchend', () => {
+        isDragging = false;
+      });
       
       // Crear universo inicial
       createEnchantedUniverse(canvas, ctx);
@@ -2294,8 +2139,8 @@ la constelación más brillante, el mejor final.</div>
         { name: 'Fuerza', color: '#87CEEB', radius: 18, distance: 330, speed: 0.00018, hasRings: false },
         { name: 'Sueños', color: '#DDA0DD', radius: 22, distance: 400, speed: 0.00015, hasRings: true, ringColor: '#E6E6FA' },
         { name: 'Magia', color: '#FFD700', radius: 15, distance: 470, speed: 0.00012, hasRings: false },
-        { name: 'Inteligencia', color: '#FF69B4', radius: 14, distance: 540, speed: 0.0001, hasRings: false },
-        { name: 'Belleza', color: '#20B2AA', radius: 17, distance: 610, speed: 0.00008, hasRings: true, ringColor: '#7FFFD4' }
+        { name: 'Sustino', color: '#FF69B4', radius: 14, distance: 540, speed: 0.0001, hasRings: false },
+        { name: 'Mespa', color: '#20B2AA', radius: 17, distance: 610, speed: 0.00008, hasRings: true, ringColor: '#7FFFD4' }
       ];
       
       for (let i = 0; i < planetData.length; i++) {
@@ -2321,7 +2166,7 @@ la constelación más brillante, el mejor final.</div>
         });
         
         // Agregar lunas a algunos planetas
-        if (i === 1 || i === 4 || i === 7) { // Risa, Sueños y Belleza tienen lunas
+        if (i === 1 || i === 4 || i === 7) { // Risa, Sueños y Mespa tienen lunas
           const moonCount = i === 1 ? 2 : (i === 4 ? 1 : 3);
           for (let j = 0; j < moonCount; j++) {
             universeObjects.planets[i].moons.push({
@@ -2346,8 +2191,8 @@ la constelación más brillante, el mejor final.</div>
         }
       }
       
-      // Crear estrellas de fondo más realistas - REDUCIDAS para mejor rendimiento
-      for (let i = 0; i < 900; i++) { // Reducido de 1200 a 800
+      // Crear estrellas de fondo más realistas
+      for (let i = 0; i < 1200; i++) {
         const distance = 500 + Math.random() * 2000;
         const angle1 = Math.random() * Math.PI * 2;
         const angle2 = Math.random() * Math.PI * 2;
@@ -2366,8 +2211,8 @@ la constelación más brillante, el mejor final.</div>
         });
       }
       
-      // Crear nebulosas más realistas - REDUCIDAS para mejor rendimiento
-      for (let i = 0; i < 6; i++) { // Reducido de 8 a 6
+      // Crear nebulosas más realistas
+      for (let i = 0; i < 8; i++) {
         const nebula = {
           x: (Math.random() - 0.5) * 2500,
           y: (Math.random() - 0.5) * 2500,
@@ -2379,8 +2224,8 @@ la constelación más brillante, el mejor final.</div>
           shape: Math.random() > 0.5 ? 'spiral' : 'cloud'
         };
         
-        // Agregar partículas a la nebulosa - REDUCIDAS para mejor rendimiento
-        for (let j = 0; j < 50; j++) { // Reducido de 70 a 50
+        // Agregar partículas a la nebulosa
+        for (let j = 0; j < 70; j++) {
           nebula.particles.push({
             x: (Math.random() - 0.5) * nebula.radius * 2,
             y: (Math.random() - 0.5) * nebula.radius * 2,
@@ -2395,8 +2240,8 @@ la constelación más brillante, el mejor final.</div>
         universeObjects.nebulae.push(nebula);
       }
       
-      // Crear cinturón de asteroides - REDUCIDOS para mejor rendimiento
-      for (let i = 0; i < 200; i++) { // Reducido de 300 a 200
+      // Crear cinturón de asteroides
+      for (let i = 0; i < 300; i++) {
         const distance = 350 + Math.random() * 50;
         const angle = Math.random() * Math.PI * 2;
         const height = (Math.random() - 0.5) * 40;
@@ -2414,8 +2259,8 @@ la constelación más brillante, el mejor final.</div>
         });
       }
       
-      // Crear cometas más realistas - REDUCIDOS para mejor rendimiento
-      for (let i = 0; i < 4; i++) { // Reducido de 6 a 4
+      // Crear cometas más realistas
+      for (let i = 0; i < 6; i++) {
         universeObjects.comets.push({
           x: (Math.random() - 0.5) * 2500,
           y: (Math.random() - 0.5) * 2500,
@@ -2430,8 +2275,8 @@ la constelación más brillante, el mejor final.</div>
         });
       }
       
-      // Crear galaxias espirales - REDUCIDAS para mejor rendimiento
-      for (let i = 0; i < 3; i++) { // Reducido de 4 a 3
+      // Crear galaxias espirales
+      for (let i = 0; i < 4; i++) {
         const galaxy = {
           x: (Math.random() - 0.5) * 3000,
           y: (Math.random() - 0.5) * 3000,
@@ -2442,8 +2287,8 @@ la constelación más brillante, el mejor final.</div>
           rotationSpeed: (Math.random() - 0.5) * 0.0005
         };
         
-        // Agregar estrellas a la galaxia - REDUCIDAS para mejor rendimiento
-        for (let j = 0; j < 150; j++) { // Reducido de 200 a 150
+        // Agregar estrellas a la galaxia
+        for (let j = 0; j < 200; j++) {
           const distance = Math.random() * galaxy.radius;
           const angle = Math.random() * Math.PI * 2;
           const height = (Math.random() - 0.5) * 20;
@@ -2850,34 +2695,22 @@ la constelación más brillante, el mejor final.</div>
         }
       }
       
-      // Solo continuar la animación si no estamos arrastrando (para optimizar)
-      if (!isDragging) {
-        universeAnimationId = requestAnimationFrame(() => animateUniverse(canvas, ctx));
-      }
+      universeAnimationId = requestAnimationFrame(() => animateUniverse(canvas, ctx));
     }
     
     // Funciones de control del universo
     function toggleOrbits() {
       showOrbits = !showOrbits;
-      const canvas = document.getElementById('universeCanvas');
-      const ctx = canvas.getContext('2d');
-      animateUniverse(canvas, ctx);
     }
     
     function toggleLabels() {
       showLabels = !showLabels;
-      const canvas = document.getElementById('universeCanvas');
-      const ctx = canvas.getContext('2d');
-      animateUniverse(canvas, ctx);
     }
     
     function resetCamera() {
       cameraX = 0;
       cameraY = 0;
       cameraZ = 0;
-      const canvas = document.getElementById('universeCanvas');
-      const ctx = canvas.getContext('2d');
-      animateUniverse(canvas, ctx);
     }
     
     // Detener animación cuando se cambia de pantalla
