@@ -1133,8 +1133,8 @@
     }
     
     .spotify-player.minimized {
-      width: 60px;
-      height: 60px;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
     }
     
@@ -1146,9 +1146,9 @@
       position: absolute;
       top: -10px;
       right: -10px;
-      width: 35px;
-      height: 35px;
-      background: linear-gradient(145deg, #ff69b4, #ffa500, #ffd700);
+      width: 30px;
+      height: 30px;
+      background: linear-gradient(145deg, #1DB954, #1ed760);
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -1156,7 +1156,7 @@
       cursor: pointer;
       border: 2px solid rgba(255,215,0,0.8);
       z-index: 1001;
-      font-size: 16px;
+      font-size: 14px;
       color: white;
       font-weight: bold;
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
@@ -1173,9 +1173,9 @@
       position: fixed;
       bottom: 20px;
       right: 20px;
-      width: 60px;
-      height: 60px;
-      background: linear-gradient(145deg, #ff69b4, #ffa500, #ffd700);
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(145deg, #1DB954, #1ed760);
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -1193,7 +1193,7 @@
     }
     
     .spotify-tab-icon {
-      font-size: 24px;
+      font-size: 20px;
       color: white;
     }
     
@@ -1274,20 +1274,20 @@
       }
       
       .spotify-toggle {
-        width: 30px;
-        height: 30px;
-        font-size: 14px;
+        width: 25px;
+        height: 25px;
+        font-size: 12px;
       }
       
       .spotify-tab {
-        width: 50px;
-        height: 50px;
+        width: 45px;
+        height: 45px;
         bottom: 15px;
         right: 15px;
       }
       
       .spotify-tab-icon {
-        font-size: 20px;
+        font-size: 18px;
       }
       
       .toggle-controls-button {
@@ -1378,8 +1378,8 @@
       }
       
       .spotify-tab {
-        width: 55px;
-        height: 55px;
+        width: 50px;
+        height: 50px;
         bottom: 15px;
         right: 15px;
       }
@@ -1479,37 +1479,12 @@
     
     /* MODO PANTALLA COMPLETA */
     body.fullscreen {
-      overflow: hidden;
+      overflow: auto;
     }
     
-    .fullscreen-toggle {
-      position: fixed;
-      top: clamp(15px, 3vw, 25px);
-      right: clamp(15px, 3vw, 25px);
-      z-index: 1001;
-      background: rgba(0,0,0,0.7);
-      backdrop-filter: blur(10px);
-      border-radius: 50%;
-      width: clamp(45px, 9vw, 60px);
-      height: clamp(45px, 9vw, 60px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      border: 2px solid rgba(255,215,0,0.5);
-      transition: var(--transition);
-    }
-    
-    .fullscreen-toggle:hover {
-      transform: scale(1.1);
-      border-color: var(--accent);
-      background: rgba(0,0,0,0.9);
-    }
-    
-    .fullscreen-toggle-icon {
-      font-size: clamp(1.3rem, 3.5vw, 1.8rem);
-      color: var(--accent);
-      transition: var(--transition);
+    body.fullscreen .screen {
+      min-height: 100vh;
+      overflow-y: auto;
     }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
@@ -1530,11 +1505,6 @@
   <div class="spotify-player minimized" id="spotifyPlayer">
     <div class="spotify-toggle" id="spotifyToggle">+</div>
     <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/6d8PFXIpVTRX3M0g7NIBuB?utm_source=generator&start=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-  </div>
-
-  <!-- BOTÓN PANTALLA COMPLETA -->
-  <div class="fullscreen-toggle" id="fullscreenToggle">
-    <div class="fullscreen-toggle-icon">⛶</div>
   </div>
 
   <!-- BARRA DE NAVEGACIÓN SIMPLIFICADA -->
@@ -1963,8 +1933,15 @@ la constelación más brillante, el mejor final.</div>
         // Forzar la reproducción en móviles
         const iframe = spotifyPlayer.querySelector('iframe');
         if (iframe) {
-          // Esta es una solución para móviles - forzar la reproducción
-          iframe.src = iframe.src.replace(/(\?|&)start=\d+/, '') + '&start=0';
+          // Esta es una solución para móviles - forzar la reproducción desde el inicio
+          const newSrc = iframe.src.replace(/(\?|&)start=\d+/, '') + '&start=0';
+          iframe.src = newSrc;
+          
+          // En dispositivos móviles, forzar la reproducción automática
+          setTimeout(() => {
+            // Intentar reproducir mediante un clic simulado
+            iframe.contentWindow.postMessage('{"command":"play"}', '*');
+          }, 1000);
         }
       }
     });
@@ -1978,8 +1955,15 @@ la constelación más brillante, el mejor final.</div>
       // En móviles, reproducir música cuando se abre el reproductor
       const iframe = spotifyPlayer.querySelector('iframe');
       if (iframe) {
-        // Esta es una solución para móviles - forzar la reproducción
-        iframe.src = iframe.src.replace(/(\?|&)start=\d+/, '') + '&start=0';
+        // Esta es una solución para móviles - forzar la reproducción desde el inicio
+        const newSrc = iframe.src.replace(/(\?|&)start=\d+/, '') + '&start=0';
+        iframe.src = newSrc;
+        
+        // En dispositivos móviles, forzar la reproducción automática
+        setTimeout(() => {
+          // Intentar reproducir mediante un clic simulado
+          iframe.contentWindow.postMessage('{"command":"play"}', '*');
+        }, 1000);
       }
     });
     
@@ -2914,11 +2898,11 @@ la constelación más brillante, el mejor final.</div>
     };
     
     // PANTALLA COMPLETA
-    const fullscreenToggle = document.getElementById('fullscreenToggle');
     const fullscreenMenuItem = document.getElementById('fullscreenMenuItem');
+    let isFullscreen = false;
     
     function toggleFullscreen() {
-      if (!document.fullscreenElement) {
+      if (!isFullscreen) {
         // Entrar en pantalla completa
         if (document.documentElement.requestFullscreen) {
           document.documentElement.requestFullscreen();
@@ -2928,8 +2912,8 @@ la constelación más brillante, el mejor final.</div>
           document.documentElement.msRequestFullscreen();
         }
         document.body.classList.add('fullscreen');
-        fullscreenToggle.querySelector('.fullscreen-toggle-icon').textContent = '⛶';
         fullscreenMenuItem.textContent = '⛶ Salir de Pantalla Completa';
+        isFullscreen = true;
       } else {
         // Salir de pantalla completa
         if (document.exitFullscreen) {
@@ -2940,12 +2924,29 @@ la constelación más brillante, el mejor final.</div>
           document.msExitFullscreen();
         }
         document.body.classList.remove('fullscreen');
-        fullscreenToggle.querySelector('.fullscreen-toggle-icon').textContent = '⛶';
         fullscreenMenuItem.textContent = '⛶ Pantalla Completa';
+        isFullscreen = false;
       }
     }
     
-    fullscreenToggle.addEventListener('click', toggleFullscreen);
+    // Detectar cambios en el modo pantalla completa
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+    document.addEventListener('msfullscreenchange', handleFullscreenChange);
+    
+    function handleFullscreenChange() {
+      isFullscreen = !!document.fullscreenElement || 
+                    !!document.webkitFullscreenElement || 
+                    !!document.msFullscreenElement;
+      
+      if (isFullscreen) {
+        document.body.classList.add('fullscreen');
+        fullscreenMenuItem.textContent = '⛶ Salir de Pantalla Completa';
+      } else {
+        document.body.classList.remove('fullscreen');
+        fullscreenMenuItem.textContent = '⛶ Pantalla Completa';
+      }
+    }
     
     // Eventos de teclado para navegación
     document.addEventListener('keydown', (e) => {
