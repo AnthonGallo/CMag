@@ -946,9 +946,7 @@
       text-shadow: 0 0 20px rgba(255,215,0,0.8);
       font-family: 'Dancing Script', cursive;
       padding: 10px 20px;
-      animation: titleGlow 3s ease-in-out infinite alternate;
-      background: transparent;
-      backdrop-filter: none;
+      /* Eliminada la animación de movimiento */
     }
     
     .universe-controls {
@@ -1478,6 +1476,41 @@
         transition-duration: 0.01ms !important;
       }
     }
+    
+    /* MODO PANTALLA COMPLETA */
+    body.fullscreen {
+      overflow: hidden;
+    }
+    
+    .fullscreen-toggle {
+      position: fixed;
+      top: clamp(15px, 3vw, 25px);
+      right: clamp(15px, 3vw, 25px);
+      z-index: 1001;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(10px);
+      border-radius: 50%;
+      width: clamp(45px, 9vw, 60px);
+      height: clamp(45px, 9vw, 60px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: 2px solid rgba(255,215,0,0.5);
+      transition: var(--transition);
+    }
+    
+    .fullscreen-toggle:hover {
+      transform: scale(1.1);
+      border-color: var(--accent);
+      background: rgba(0,0,0,0.9);
+    }
+    
+    .fullscreen-toggle-icon {
+      font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+      color: var(--accent);
+      transition: var(--transition);
+    }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -1499,6 +1532,11 @@
     <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/6d8PFXIpVTRX3M0g7NIBuB?utm_source=generator&start=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
   </div>
 
+  <!-- BOTÓN PANTALLA COMPLETA -->
+  <div class="fullscreen-toggle" id="fullscreenToggle">
+    <div class="fullscreen-toggle-icon">⛶</div>
+  </div>
+
   <!-- BARRA DE NAVEGACIÓN SIMPLIFICADA -->
   <div class="nav-toggle" id="navToggle">
     <div class="nav-toggle-icon">☰</div>
@@ -1509,6 +1547,7 @@
     <button class="nav-menu-item" onclick="previousScreen()">← Anterior</button>
     <button class="nav-menu-item" onclick="nextScreen()">→ Siguiente</button>
     <button class="nav-menu-item" onclick="showUniverseReal()">🌌 Universo Real</button>
+    <button class="nav-menu-item" id="fullscreenMenuItem" onclick="toggleFullscreen()">⛶ Pantalla Completa</button>
   </div>
   
   <div class="nav-overlay" id="navOverlay"></div>
@@ -2874,6 +2913,40 @@ la constelación más brillante, el mejor final.</div>
       originalShowScreen(screenId);
     };
     
+    // PANTALLA COMPLETA
+    const fullscreenToggle = document.getElementById('fullscreenToggle');
+    const fullscreenMenuItem = document.getElementById('fullscreenMenuItem');
+    
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        // Entrar en pantalla completa
+        if (document.documentElement.requestFullscreen) {
+          document.documentElement.requestFullscreen();
+        } else if (document.documentElement.webkitRequestFullscreen) {
+          document.documentElement.webkitRequestFullscreen();
+        } else if (document.documentElement.msRequestFullscreen) {
+          document.documentElement.msRequestFullscreen();
+        }
+        document.body.classList.add('fullscreen');
+        fullscreenToggle.querySelector('.fullscreen-toggle-icon').textContent = '⛶';
+        fullscreenMenuItem.textContent = '⛶ Salir de Pantalla Completa';
+      } else {
+        // Salir de pantalla completa
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) {
+          document.msExitFullscreen();
+        }
+        document.body.classList.remove('fullscreen');
+        fullscreenToggle.querySelector('.fullscreen-toggle-icon').textContent = '⛶';
+        fullscreenMenuItem.textContent = '⛶ Pantalla Completa';
+      }
+    }
+    
+    fullscreenToggle.addEventListener('click', toggleFullscreen);
+    
     // Eventos de teclado para navegación
     document.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowLeft') {
@@ -2882,6 +2955,9 @@ la constelación más brillante, el mejor final.</div>
         nextScreen();
       } else if (e.key === 'Home' || e.key === 'Escape') {
         goHome();
+      } else if (e.key === 'F11') {
+        e.preventDefault();
+        toggleFullscreen();
       }
     });
   </script>
