@@ -215,7 +215,7 @@
       left: 100%;
     }
     
-    /* PANTALLA DEL UNIVERSO MAGY - MEJORADA */
+    /* PANTALLA DEL UNIVERSO */
     .universe-screen {
       background: transparent;
       text-align: center;
@@ -884,7 +884,7 @@
       text-shadow: 0 0 30px rgba(255,215,0,0.8);
       font-family: 'Dancing Script', cursive;
       line-height: 1.2;
-      /* Eliminada la animación de movimiento */
+      /* Sin movimiento */
     }
     
     .final-text {
@@ -907,10 +907,10 @@
       font-family: 'Dancing Script', cursive;
       font-size: clamp(1.6rem, 4.5vw, 2.8rem);
       margin-top: clamp(25px, 5vw, 40px);
-      /* Eliminada la animación de movimiento */
+      /* Sin animación de movimiento */
     }
     
-    /* PANTALLA: UNIVERSO REAL - MEJORADA */
+    /* PANTALLA: UNIVERSO */
     .universe-real-screen {
       background: transparent;
       text-align: center;
@@ -946,7 +946,7 @@
       text-shadow: 0 0 20px rgba(255,215,0,0.8);
       font-family: 'Dancing Script', cursive;
       padding: 10px 20px;
-      /* Eliminada la animación de movimiento */
+      /* Sin animación de movimiento */
     }
     
     .universe-controls {
@@ -1108,7 +1108,7 @@
       visibility: visible;
     }
     
-    /* REPRODUCTOR DE AUDIO PERSONALIZADO - ELEGANTE */
+    /* REPRODUCTOR DE AUDIO */
     .audio-player {
       position: fixed;
       bottom: 20px;
@@ -1687,7 +1687,7 @@
     </div>
   </div>
 
-  <!-- BARRA DE NAVEGACIÓN SIMPLIFICADA -->
+  <!-- BARRA DE NAVEGACIÓN -->
   <div class="nav-toggle" id="navToggle">
     <div class="nav-toggle-icon">☰</div>
   </div>
@@ -1696,7 +1696,7 @@
     <button class="nav-menu-item" onclick="goHome()">🏠 Inicio</button>
     <button class="nav-menu-item" onclick="previousScreen()">← Anterior</button>
     <button class="nav-menu-item" onclick="nextScreen()">→ Siguiente</button>
-    <button class="nav-menu-item" onclick="showUniverseReal()">🌌 Universo Real</button>
+    <button class="nav-menu-item" onclick="showUniverseReal()">🌌 Magia</button>
     <button class="nav-menu-item" id="fullscreenMenuItem" onclick="toggleFullscreen()">⛶ Pantalla Completa</button>
   </div>
   
@@ -1715,7 +1715,7 @@
   <div id="universeScreen" class="screen">
     <div class="stars-background"></div>
     <div class="universe-content">
-      <h1 class="cosmic-title">🌌 Génesis de Magy 🌌</h1>
+      <h1 class="cosmic-title">🌌 Génesis de Magy</h1>
       <div class="universe-poem">
         Antes del tiempo, antes del verbo primero,<br>
         solo existía el eco de tu nombre verdadero.<br>
@@ -1740,11 +1740,11 @@
 
   <!-- PANTALLA DE CONSTELACIONES -->
   <div id="constellationScreen" class="screen">
-    <h1 class="constellation-title">✨ Las Constelaciones de Wilmagy ✨</h1>
+    <h1 class="constellation-title">✨ Las Constelaciones de Wilmagy</h1>
     
     <div class="constellation-grid">
       <div class="constellation-card">
-        <div class="constellation-icon">💪</div>
+        <div class="constellation-icon">🌱</div>
         <div class="constellation-card-title">Constelación de la Fuerza</div>
         <div class="constellation-description">
           Como el roble inquebrantable, anclada en tierra que ha sido azotada por el viento. 
@@ -1762,8 +1762,8 @@
       </div>
       
       <div class="constellation-card">
-        <div class="constellation-icon">🔥</div>
-        <div class="constellation-card-title">Constelación de la Sinceridad</div>
+        <div class="constellation-icon">🤍</div>
+        <div class="constellation-card-title">Constelación de su Sinceridad</div>
         <div class="constellation-description">
           Directa, clara como el mediodía. Tu sinceridad corta cualquier falsedad 
           con la elegancia de una guerrera que no cree portar armadura.
@@ -1771,7 +1771,7 @@
       </div>
       
       <div class="constellation-card">
-        <div class="constellation-icon">📚</div>
+        <div class="constellation-icon">🔮</div>
         <div class="constellation-card-title">Constelación del Misterio</div>
         <div class="constellation-description">
           Un libro escrito en idioma antiguo y sagrado, con capítulos que prefieres 
@@ -1780,11 +1780,11 @@
       </div>
       
       <div class="constellation-card">
-        <div class="constellation-icon">🌟</div>
+        <div class="constellation-icon">🌙</div>
         <div class="constellation-card-title">Constelación de la Luz</div>
         <div class="constellation-description">
           La LUZ que no teme a la OSCURIDAD porque sabe que es en la noche 
-          donde las estrellas brillan con más fuerza. Eres luz pura.
+          donde las estrellas brillan con más fuerza.
         </div>
       </div>
       
@@ -1991,7 +1991,7 @@ la constelación más brillante, el mejor final.</div>
     </button>
   </div>
 
-  <!-- NUEVA PANTALLA: UNIVERSO MEJORADO -->
+  <!-- NUEVA PANTALLA: UNIVERSO -->
   <div id="universeRealScreen" class="screen universe-real-screen">
     <div class="universe-canvas-container">
       <canvas id="universeCanvas" class="universe-canvas"></canvas>
@@ -2107,7 +2107,7 @@ la constelación más brillante, el mejor final.</div>
     const volumeSlider = document.getElementById('volumeSlider');
     const volumeLevel = document.getElementById('volumeLevel');
     
-    // Inicialmente el reproductor está minimizado
+    // Inicialmente reproductor minimizado
     audioPlayer.classList.add('minimized');
     audioToggle.textContent = '+';
     
@@ -2406,7 +2406,7 @@ la constelación más brillante, el mejor final.</div>
       });
     });
     
-    // SISTEMA DE UNIVERSO MEJORADO
+    // SISTEMA DE UNIVERSO
     let universeAnimationId = null;
     let universeObjects = {};
     let showOrbits = true;
@@ -2519,7 +2519,7 @@ la constelación más brillante, el mejor final.</div>
         galaxies: []
       };
       
-      // Crear sol (estrella central) - MEJORADO: Sin efecto de pulsación
+      // Crear sol (estrella central): Sin efecto de pulsación
       universeObjects.sun = {
         x: 0,
         y: 0,
@@ -2542,7 +2542,7 @@ la constelación más brillante, el mejor final.</div>
         });
       }
       
-      // Crear planetas con características más realistas
+      // Crear planetas con características realistas
       const planetData = [
         { name: 'Corazón', color: '#FF6B6B', radius: 12, distance: 120, speed: 0.0003, hasRings: false },
         { name: 'Risa', color: '#FFA07A', radius: 16, distance: 190, speed: 0.00025, hasRings: true, ringColor: '#FFB6C1' },
@@ -2602,7 +2602,7 @@ la constelación más brillante, el mejor final.</div>
         }
       }
       
-      // Crear estrellas de fondo más realistas
+      // Crear estrellas de fondo realistas
       for (let i = 0; i < 1200; i++) {
         const distance = 500 + Math.random() * 2000;
         const angle1 = Math.random() * Math.PI * 2;
@@ -2622,7 +2622,7 @@ la constelación más brillante, el mejor final.</div>
         });
       }
       
-      // Crear nebulosas más realistas
+      // Crear nebulosas realistas
       for (let i = 0; i < 8; i++) {
         const nebula = {
           x: (Math.random() - 0.5) * 2500,
@@ -2670,7 +2670,7 @@ la constelación más brillante, el mejor final.</div>
         });
       }
       
-      // Crear cometas más realistas
+      // Crear cometas realistas
       for (let i = 0; i < 6; i++) {
         universeObjects.comets.push({
           x: (Math.random() - 0.5) * 2500,
@@ -3054,7 +3054,7 @@ la constelación más brillante, el mejor final.</div>
         }
       }
       
-      // Dibujar sol - MEJORADO: Sin efecto de pulsación
+      // Dibujar sol: Sin efecto de pulsación
       const sunPos = projectPoint(sun.x, sun.y, sun.z, canvas);
       if (sunPos.visible) {
         const radius = sun.radius * sunPos.scale;
@@ -3205,3 +3205,4 @@ la constelación más brillante, el mejor final.</div>
   </script>
 </body>
 </html>
+
