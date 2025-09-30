@@ -884,6 +884,7 @@
       text-shadow: 0 0 30px rgba(255,215,0,0.8);
       font-family: 'Dancing Script', cursive;
       line-height: 1.2;
+      /* Eliminada la animación de movimiento */
     }
     
     .final-text {
@@ -906,6 +907,7 @@
       font-family: 'Dancing Script', cursive;
       font-size: clamp(1.6rem, 4.5vw, 2.8rem);
       margin-top: clamp(25px, 5vw, 40px);
+      /* Eliminada la animación de movimiento */
     }
     
     /* PANTALLA: UNIVERSO REAL - MEJORADA */
@@ -944,6 +946,7 @@
       text-shadow: 0 0 20px rgba(255,215,0,0.8);
       font-family: 'Dancing Script', cursive;
       padding: 10px 20px;
+      /* Eliminada la animación de movimiento */
     }
     
     .universe-controls {
@@ -955,8 +958,7 @@
       display: flex;
       justify-content: center;
       gap: 15px;
-      transition: transform 0.5s ease, opacity 0.5s ease;
-      padding: 10px;
+      transition: transform 0.5s ease;
     }
     
     .universe-controls.hidden {
@@ -988,10 +990,10 @@
       position: absolute;
       bottom: 85px;
       right: 20px;
-      width: 50px;
-      height: 50px;
-      background: linear-gradient(145deg, #ff69b4, #ffa500);
-      border: 2px solid rgba(255,215,0,0.8);
+      width: 40px;
+      height: 40px;
+      background: rgba(0,0,0,0.7);
+      border: 2px solid rgba(255,215,0,0.5);
       border-radius: 50%;
       cursor: pointer;
       z-index: 4;
@@ -1000,19 +1002,16 @@
       justify-content: center;
       transition: var(--transition);
       backdrop-filter: blur(10px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     }
     
     .toggle-controls-button:hover {
       background: rgba(255,215,0,0.3);
       transform: scale(1.1);
-      box-shadow: 0 8px 20px rgba(255,215,0,0.4);
     }
     
     .toggle-controls-icon {
-      color: white;
-      font-size: 1.5rem;
-      font-weight: bold;
+      color: var(--accent);
+      font-size: 1.2rem;
       transition: transform 0.3s ease;
     }
     
@@ -1109,8 +1108,8 @@
       visibility: visible;
     }
     
-    /* REPRODUCTOR DE SPOTIFY - MEJORADO Y RESPONSIVO */
-    .spotify-player {
+    /* REPRODUCTOR DE YOUTUBE - MEJORADO Y RESPONSIVO */
+    .youtube-player {
       position: fixed;
       bottom: 20px;
       right: 20px;
@@ -1127,29 +1126,29 @@
       border: 2px solid rgba(255,215,0,0.5);
     }
     
-    .spotify-player:hover {
+    .youtube-player:hover {
       opacity: 1;
       transform: translateY(-5px);
       box-shadow: 0 15px 40px rgba(0,0,0,0.7);
     }
     
-    .spotify-player.minimized {
+    .youtube-player.minimized {
       width: 60px;
       height: 60px;
       border-radius: 50%;
     }
     
-    .spotify-player.minimized iframe {
+    .youtube-player.minimized iframe {
       display: none;
     }
     
-    .spotify-toggle {
+    .youtube-toggle {
       position: absolute;
-      top: -10px;
-      right: -10px;
-      width: 35px;
-      height: 35px;
-      background: linear-gradient(145deg, #1DB954, #1ed760);
+      top: -15px;
+      right: -15px;
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(145deg, #FF0000, #CC0000);
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -1157,29 +1156,28 @@
       cursor: pointer;
       border: 2px solid rgba(255,215,0,0.8);
       z-index: 1001;
-      font-size: 16px;
+      font-size: 18px;
       color: white;
       font-weight: bold;
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       transition: var(--transition);
     }
     
-    .spotify-toggle:hover {
+    .youtube-toggle:hover {
       transform: scale(1.1);
       box-shadow: 0 6px 15px rgba(0,0,0,0.4);
     }
     
-    /* NUEVA PESTAÑA PARA EL REPRODUCTOR - MEJORADA */
-    .spotify-tab {
+    /* NUEVA PESTAÑA PARA EL REPRODUCTOR */
+    .youtube-tab {
       position: fixed;
       bottom: 20px;
       right: 20px;
       width: 60px;
       height: 60px;
-      background: linear-gradient(145deg, #1DB954, #1ed760);
+      background: linear-gradient(145deg, #FF0000, #CC0000);
       border-radius: 50%;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
       cursor: pointer;
@@ -1187,27 +1185,19 @@
       box-shadow: 0 5px 15px rgba(0,0,0,0.3);
       transition: var(--transition);
       border: 2px solid rgba(255,215,0,0.8);
-      overflow: hidden;
     }
     
-    .spotify-tab:hover {
+    .youtube-tab:hover {
       transform: scale(1.1);
       box-shadow: 0 8px 20px rgba(0,0,0,0.4);
     }
     
-    .spotify-tab-icon {
+    .youtube-tab-icon {
       font-size: 24px;
       color: white;
-      margin-bottom: 2px;
     }
     
-    .spotify-tab-text {
-      font-size: 10px;
-      color: white;
-      font-weight: bold;
-    }
-    
-    .spotify-tab.hidden {
+    .youtube-tab.hidden {
       display: none;
     }
     
@@ -1277,38 +1267,40 @@
         gap: 10px;
       }
       
-      .spotify-player {
+      .youtube-player {
         width: 90vw;
         right: 5vw;
         bottom: 10px;
       }
       
-      .spotify-toggle {
-        width: 30px;
-        height: 30px;
-        font-size: 14px;
+      .youtube-toggle {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+        top: -10px;
+        right: -10px;
       }
       
-      .spotify-tab {
-        width: 55px;
-        height: 55px;
+      .youtube-tab {
+        width: 50px;
+        height: 50px;
         bottom: 15px;
         right: 15px;
       }
       
-      .spotify-tab-icon {
+      .youtube-tab-icon {
         font-size: 20px;
       }
       
       .toggle-controls-button {
-        width: 45px;
-        height: 45px;
+        width: 35px;
+        height: 35px;
         bottom: 75px;
         right: 15px;
       }
       
       .toggle-controls-icon {
-        font-size: 1.2rem;
+        font-size: 1rem;
       }
     }
     
@@ -1381,22 +1373,22 @@
         font-size: 1rem;
       }
       
-      .spotify-player {
+      .youtube-player {
         width: 90vw;
         right: 5vw;
         bottom: 10px;
       }
       
-      .spotify-tab {
-        width: 60px;
-        height: 60px;
+      .youtube-tab {
+        width: 55px;
+        height: 55px;
         bottom: 15px;
         right: 15px;
       }
       
       .toggle-controls-button {
-        width: 50px;
-        height: 50px;
+        width: 40px;
+        height: 40px;
         bottom: 80px;
         right: 15px;
       }
@@ -1497,17 +1489,18 @@
       overflow-y: auto;
     }
     
-    /* CORRECCIÓN ESPACIO VACÍO EN PANTALLA COMPLETA */
+    /* CORRECCIÓN PARA PANTALLA COMPLETA DEL UNIVERSO */
     body.fullscreen .universe-real-screen {
       height: 100vh;
+      overflow: hidden;
     }
     
-    body.fullscreen .universe-real-screen .universe-canvas-container {
+    body.fullscreen .universe-canvas-container {
       height: 100vh;
     }
     
-    body.fullscreen .universe-real-screen .universe-controls.hidden + .toggle-controls-button {
-      bottom: 20px;
+    body.fullscreen .universe-canvas {
+      height: 100vh;
     }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
@@ -1519,16 +1512,15 @@
   <!-- PARTÍCULAS CÓSMICAS -->
   <div class="cosmic-particles"></div>
 
-  <!-- NUEVA PESTAÑA PARA EL REPRODUCTOR - MEJORADA -->
-  <div class="spotify-tab" id="spotifyTab">
-    <div class="spotify-tab-icon">🎵</div>
-    <div class="spotify-tab-text">Música</div>
+  <!-- NUEVA PESTAÑA PARA EL REPRODUCTOR -->
+  <div class="youtube-tab" id="youtubeTab">
+    <div class="youtube-tab-icon">▶️</div>
   </div>
 
-  <!-- REPRODUCTOR DE SPOTIFY MEJORADO -->
-  <div class="spotify-player minimized" id="spotifyPlayer">
-    <div class="spotify-toggle" id="spotifyToggle">−</div>
-    <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/6d8PFXIpVTRX3M0g7NIBuB?utm_source=generator&start=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+  <!-- REPRODUCTOR DE YOUTUBE MEJORADO -->
+  <div class="youtube-player minimized" id="youtubePlayer">
+    <div class="youtube-toggle" id="youtubeToggle">−</div>
+    <iframe width="100%" height="200" src="https://www.youtube.com/embed/l3qd-3po3xU?si=nHbegRqu5gqRC6da" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
   </div>
 
   <!-- BARRA DE NAVEGACIÓN SIMPLIFICADA -->
@@ -1843,7 +1835,7 @@ la constelación más brillante, el mejor final.</div>
     
     <h1 class="universe-title">✨ Este universo eres tú ✨</h1>
     
-    <!-- BOTÓN PARA OCULTAR/MOSTRAR CONTROLES - MEJORADO -->
+    <!-- BOTÓN PARA OCULTAR/MOSTRAR CONTROLES -->
     <div class="toggle-controls-button" id="toggleControlsButton">
       <div class="toggle-controls-icon">▼</div>
     </div>
@@ -1931,64 +1923,33 @@ la constelación más brillante, el mejor final.</div>
       }
     }
     
-    // Control de Spotify - MEJORADO
-    const spotifyPlayer = document.getElementById('spotifyPlayer');
-    const spotifyToggle = document.getElementById('spotifyToggle');
-    const spotifyTab = document.getElementById('spotifyTab');
+    // Control de YouTube - MEJORADO
+    const youtubePlayer = document.getElementById('youtubePlayer');
+    const youtubeToggle = document.getElementById('youtubeToggle');
+    const youtubeTab = document.getElementById('youtubeTab');
     
     // Inicialmente el reproductor está minimizado
-    spotifyPlayer.classList.add('minimized');
-    spotifyToggle.textContent = '+';
+    youtubePlayer.classList.add('minimized');
+    youtubeToggle.textContent = '+';
     
-    spotifyToggle.addEventListener('click', function(e) {
+    youtubeToggle.addEventListener('click', function(e) {
       e.stopPropagation();
-      spotifyPlayer.classList.toggle('minimized');
-      spotifyToggle.textContent = spotifyPlayer.classList.contains('minimized') ? '+' : '−';
+      youtubePlayer.classList.toggle('minimized');
+      youtubeToggle.textContent = youtubePlayer.classList.contains('minimized') ? '+' : '−';
       
       // Ocultar/mostrar la pestaña
-      if (spotifyPlayer.classList.contains('minimized')) {
-        spotifyTab.classList.remove('hidden');
+      if (youtubePlayer.classList.contains('minimized')) {
+        youtubeTab.classList.remove('hidden');
       } else {
-        spotifyTab.classList.add('hidden');
-      }
-      
-      // En móviles, reproducir música cuando se abre el reproductor
-      if (!spotifyPlayer.classList.contains('minimized')) {
-        // Forzar la reproducción en móviles
-        const iframe = spotifyPlayer.querySelector('iframe');
-        if (iframe) {
-          // Esta es una solución para móviles - forzar la reproducción desde el inicio
-          const newSrc = iframe.src.replace(/(\?|&)start=\d+/, '') + '&start=0';
-          iframe.src = newSrc;
-          
-          // En dispositivos móviles, forzar la reproducción automática
-          setTimeout(() => {
-            // Intentar reproducir mediante un clic simulado
-            iframe.contentWindow.postMessage('{"command":"play"}', '*');
-          }, 1000);
-        }
+        youtubeTab.classList.add('hidden');
       }
     });
     
-    // Control de la pestaña de Spotify - MEJORADO
-    spotifyTab.addEventListener('click', function() {
-      spotifyPlayer.classList.remove('minimized');
-      spotifyToggle.textContent = '−';
-      spotifyTab.classList.add('hidden');
-      
-      // En móviles, reproducir música cuando se abre el reproductor
-      const iframe = spotifyPlayer.querySelector('iframe');
-      if (iframe) {
-        // Esta es una solución para móviles - forzar la reproducción desde el inicio
-        const newSrc = iframe.src.replace(/(\?|&)start=\d+/, '') + '&start=0';
-        iframe.src = newSrc;
-        
-        // En dispositivos móviles, forzar la reproducción automática
-        setTimeout(() => {
-          // Intentar reproducir mediante un clic simulado
-          iframe.contentWindow.postMessage('{"command":"play"}', '*');
-        }, 1000);
-      }
+    // Control de la pestaña de YouTube
+    youtubeTab.addEventListener('click', function() {
+      youtubePlayer.classList.remove('minimized');
+      youtubeToggle.textContent = '−';
+      youtubeTab.classList.add('hidden');
     });
     
     // Reproducir efectos de sonido
@@ -2200,20 +2161,13 @@ la constelación más brillante, el mejor final.</div>
     let isDragging = false;
     let lastMouseX, lastMouseY;
     
-    // Control para ocultar/mostrar controles del universo - MEJORADO
+    // Control para ocultar/mostrar controles del universo
     const toggleControlsButton = document.getElementById('toggleControlsButton');
     const universeControls = document.getElementById('universeControls');
     
     toggleControlsButton.addEventListener('click', function() {
       universeControls.classList.toggle('hidden');
       toggleControlsButton.classList.toggle('hidden');
-      
-      // Ajustar la posición del botón cuando se ocultan los controles
-      if (universeControls.classList.contains('hidden')) {
-        toggleControlsButton.style.bottom = '20px';
-      } else {
-        toggleControlsButton.style.bottom = '85px';
-      }
     });
     
     function initUniverse() {
