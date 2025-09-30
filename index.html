@@ -1108,47 +1108,47 @@
       visibility: visible;
     }
     
-    /* REPRODUCTOR DE YOUTUBE - MEJORADO Y RESPONSIVO */
-    .youtube-player {
+    /* REPRODUCTOR DE AUDIO PERSONALIZADO - ELEGANTE */
+    .audio-player {
       position: fixed;
       bottom: 20px;
       right: 20px;
       z-index: 1000;
-      width: 300px;
+      width: 320px;
       max-width: 90vw;
-      border-radius: 12px;
+      border-radius: 15px;
       overflow: hidden;
       box-shadow: 0 10px 30px rgba(0,0,0,0.5);
       transition: var(--transition);
       opacity: 0.95;
       background: rgba(0,0,0,0.8);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(15px);
       border: 2px solid rgba(255,215,0,0.5);
     }
     
-    .youtube-player:hover {
+    .audio-player:hover {
       opacity: 1;
       transform: translateY(-5px);
       box-shadow: 0 15px 40px rgba(0,0,0,0.7);
     }
     
-    .youtube-player.minimized {
+    .audio-player.minimized {
       width: 60px;
       height: 60px;
       border-radius: 50%;
     }
     
-    .youtube-player.minimized iframe {
+    .audio-player.minimized .player-content {
       display: none;
     }
     
-    .youtube-toggle {
+    .audio-toggle {
       position: absolute;
       top: -15px;
       right: -15px;
       width: 40px;
       height: 40px;
-      background: linear-gradient(145deg, #FF0000, #CC0000);
+      background: linear-gradient(145deg, #ff69b4, #ffa500);
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -1163,19 +1163,153 @@
       transition: var(--transition);
     }
     
-    .youtube-toggle:hover {
+    .audio-toggle:hover {
       transform: scale(1.1);
       box-shadow: 0 6px 15px rgba(0,0,0,0.4);
     }
     
-    /* NUEVA PESTAÑA PARA EL REPRODUCTOR */
-    .youtube-tab {
+    .player-content {
+      padding: 20px;
+    }
+    
+    .song-info {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    
+    .song-icon {
+      font-size: 24px;
+      margin-right: 12px;
+      color: var(--accent);
+    }
+    
+    .song-details {
+      flex: 1;
+    }
+    
+    .song-title {
+      font-size: 16px;
+      font-weight: bold;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+    
+    .song-artist {
+      font-size: 12px;
+      color: rgba(255,255,255,0.7);
+    }
+    
+    .progress-container {
+      width: 100%;
+      height: 6px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 3px;
+      margin: 15px 0;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, #ff69b4, #ffa500, #ffd700);
+      border-radius: 3px;
+      width: 0%;
+      transition: width 0.1s linear;
+      position: relative;
+    }
+    
+    .progress-bar::after {
+      content: '';
+      position: absolute;
+      top: -2px;
+      right: -6px;
+      width: 10px;
+      height: 10px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 0 5px rgba(255,215,0,0.8);
+    }
+    
+    .time-display {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 15px;
+    }
+    
+    .player-controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .control-btn {
+      background: rgba(255,255,255,0.1);
+      border: 2px solid rgba(255,215,0,0.3);
+      color: var(--text-light);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 16px;
+    }
+    
+    .control-btn:hover {
+      background: rgba(255,215,0,0.3);
+      transform: scale(1.1);
+    }
+    
+    .play-btn {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(145deg, #ff69b4, #ffa500);
+      font-size: 20px;
+    }
+    
+    .volume-container {
+      display: flex;
+      align-items: center;
+      margin-top: 15px;
+      gap: 10px;
+    }
+    
+    .volume-icon {
+      font-size: 16px;
+      color: rgba(255,255,255,0.7);
+    }
+    
+    .volume-slider {
+      flex: 1;
+      height: 4px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 2px;
+      cursor: pointer;
+      position: relative;
+    }
+    
+    .volume-level {
+      height: 100%;
+      background: linear-gradient(90deg, #ff69b4, #ffa500);
+      border-radius: 2px;
+      width: 80%;
+    }
+    
+    /* PESTAÑA PARA EL REPRODUCTOR */
+    .audio-tab {
       position: fixed;
       bottom: 20px;
       right: 20px;
       width: 60px;
       height: 60px;
-      background: linear-gradient(145deg, #FF0000, #CC0000);
+      background: linear-gradient(145deg, #ff69b4, #ffa500);
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -1187,17 +1321,17 @@
       border: 2px solid rgba(255,215,0,0.8);
     }
     
-    .youtube-tab:hover {
+    .audio-tab:hover {
       transform: scale(1.1);
       box-shadow: 0 8px 20px rgba(0,0,0,0.4);
     }
     
-    .youtube-tab-icon {
+    .audio-tab-icon {
       font-size: 24px;
       color: white;
     }
     
-    .youtube-tab.hidden {
+    .audio-tab.hidden {
       display: none;
     }
     
@@ -1267,13 +1401,13 @@
         gap: 10px;
       }
       
-      .youtube-player {
+      .audio-player {
         width: 90vw;
         right: 5vw;
         bottom: 10px;
       }
       
-      .youtube-toggle {
+      .audio-toggle {
         width: 35px;
         height: 35px;
         font-size: 16px;
@@ -1281,14 +1415,14 @@
         right: -10px;
       }
       
-      .youtube-tab {
+      .audio-tab {
         width: 50px;
         height: 50px;
         bottom: 15px;
         right: 15px;
       }
       
-      .youtube-tab-icon {
+      .audio-tab-icon {
         font-size: 20px;
       }
       
@@ -1373,13 +1507,13 @@
         font-size: 1rem;
       }
       
-      .youtube-player {
+      .audio-player {
         width: 90vw;
         right: 5vw;
         bottom: 10px;
       }
       
-      .youtube-tab {
+      .audio-tab {
         width: 55px;
         height: 55px;
         bottom: 15px;
@@ -1512,15 +1646,45 @@
   <!-- PARTÍCULAS CÓSMICAS -->
   <div class="cosmic-particles"></div>
 
-  <!-- NUEVA PESTAÑA PARA EL REPRODUCTOR -->
-  <div class="youtube-tab" id="youtubeTab">
-    <div class="youtube-tab-icon">▶️</div>
+  <!-- PESTAÑA PARA EL REPRODUCTOR -->
+  <div class="audio-tab" id="audioTab">
+    <div class="audio-tab-icon">🎵</div>
   </div>
 
-  <!-- REPRODUCTOR DE YOUTUBE MEJORADO -->
-  <div class="youtube-player minimized" id="youtubePlayer">
-    <div class="youtube-toggle" id="youtubeToggle">−</div>
-    <iframe width="100%" height="200" src="https://www.youtube.com/embed/l3qd-3po3xU?si=nHbegRqu5gqRC6da" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  <!-- REPRODUCTOR DE AUDIO PERSONALIZADO -->
+  <div class="audio-player minimized" id="audioPlayer">
+    <div class="audio-toggle" id="audioToggle">−</div>
+    <div class="player-content">
+      <div class="song-info">
+        <div class="song-icon">🎵</div>
+        <div class="song-details">
+          <div class="song-title">Universo Paralelo</div>
+          <div class="song-artist">Nahuel Pennisi</div>
+        </div>
+      </div>
+      
+      <div class="progress-container" id="progressContainer">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+      
+      <div class="time-display">
+        <span id="currentTime">0:00</span>
+        <span id="duration">0:00</span>
+      </div>
+      
+      <div class="player-controls">
+        <button class="control-btn" id="rewindBtn">⏪</button>
+        <button class="control-btn play-btn" id="playPauseBtn">▶️</button>
+        <button class="control-btn" id="forwardBtn">⏩</button>
+      </div>
+      
+      <div class="volume-container">
+        <div class="volume-icon">🔊</div>
+        <div class="volume-slider" id="volumeSlider">
+          <div class="volume-level" id="volumeLevel"></div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- BARRA DE NAVEGACIÓN SIMPLIFICADA -->
@@ -1856,6 +2020,11 @@ la constelación más brillante, el mejor final.</div>
     <source src="https://assets.mixkit.co/sfx/preview/mixkit-magic-sparkle-sound-3091.mp3" type="audio/mpeg">
   </audio>
 
+  <!-- AUDIO PRINCIPAL -->
+  <audio id="mainAudio" preload="metadata">
+    <source src="NahuelPennisi-UniversoParalelo.mp3" type="audio/mpeg">
+  </audio>
+
   <script>
     // Sistema de navegación mejorado
     const screens = [
@@ -1923,34 +2092,121 @@ la constelación más brillante, el mejor final.</div>
       }
     }
     
-    // Control de YouTube - MEJORADO
-    const youtubePlayer = document.getElementById('youtubePlayer');
-    const youtubeToggle = document.getElementById('youtubeToggle');
-    const youtubeTab = document.getElementById('youtubeTab');
+    // CONTROL DEL REPRODUCTOR DE AUDIO PERSONALIZADO
+    const audioPlayer = document.getElementById('audioPlayer');
+    const audioToggle = document.getElementById('audioToggle');
+    const audioTab = document.getElementById('audioTab');
+    const mainAudio = document.getElementById('mainAudio');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const rewindBtn = document.getElementById('rewindBtn');
+    const forwardBtn = document.getElementById('forwardBtn');
+    const progressBar = document.getElementById('progressBar');
+    const progressContainer = document.getElementById('progressContainer');
+    const currentTimeEl = document.getElementById('currentTime');
+    const durationEl = document.getElementById('duration');
+    const volumeSlider = document.getElementById('volumeSlider');
+    const volumeLevel = document.getElementById('volumeLevel');
     
     // Inicialmente el reproductor está minimizado
-    youtubePlayer.classList.add('minimized');
-    youtubeToggle.textContent = '+';
+    audioPlayer.classList.add('minimized');
+    audioToggle.textContent = '+';
     
-    youtubeToggle.addEventListener('click', function(e) {
+    // Control de minimizar/maximizar
+    audioToggle.addEventListener('click', function(e) {
       e.stopPropagation();
-      youtubePlayer.classList.toggle('minimized');
-      youtubeToggle.textContent = youtubePlayer.classList.contains('minimized') ? '+' : '−';
+      audioPlayer.classList.toggle('minimized');
+      audioToggle.textContent = audioPlayer.classList.contains('minimized') ? '+' : '−';
       
       // Ocultar/mostrar la pestaña
-      if (youtubePlayer.classList.contains('minimized')) {
-        youtubeTab.classList.remove('hidden');
+      if (audioPlayer.classList.contains('minimized')) {
+        audioTab.classList.remove('hidden');
       } else {
-        youtubeTab.classList.add('hidden');
+        audioTab.classList.add('hidden');
       }
     });
     
-    // Control de la pestaña de YouTube
-    youtubeTab.addEventListener('click', function() {
-      youtubePlayer.classList.remove('minimized');
-      youtubeToggle.textContent = '−';
-      youtubeTab.classList.add('hidden');
+    // Control de la pestaña de audio
+    audioTab.addEventListener('click', function() {
+      audioPlayer.classList.remove('minimized');
+      audioToggle.textContent = '−';
+      audioTab.classList.add('hidden');
     });
+    
+    // Formatear tiempo en minutos:segundos
+    function formatTime(seconds) {
+      const mins = Math.floor(seconds / 60);
+      const secs = Math.floor(seconds % 60);
+      return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+    }
+    
+    // Actualizar barra de progreso
+    function updateProgress() {
+      const { duration, currentTime } = mainAudio;
+      const progressPercent = (currentTime / duration) * 100;
+      progressBar.style.width = `${progressPercent}%`;
+      currentTimeEl.textContent = formatTime(currentTime);
+    }
+    
+    // Establecer progreso al hacer clic en la barra
+    function setProgress(e) {
+      const width = this.clientWidth;
+      const clickX = e.offsetX;
+      const duration = mainAudio.duration;
+      
+      mainAudio.currentTime = (clickX / width) * duration;
+    }
+    
+    // Control de volumen
+    function setVolume(e) {
+      const width = this.clientWidth;
+      const clickX = e.offsetX;
+      const volume = clickX / width;
+      
+      mainAudio.volume = volume;
+      volumeLevel.style.width = `${volume * 100}%`;
+    }
+    
+    // Control de reproducción/pausa
+    function togglePlayPause() {
+      if (mainAudio.paused) {
+        mainAudio.play();
+        playPauseBtn.textContent = '⏸️';
+      } else {
+        mainAudio.pause();
+        playPauseBtn.textContent = '▶️';
+      }
+    }
+    
+    // Retroceder 10 segundos
+    function rewind() {
+      mainAudio.currentTime = Math.max(0, mainAudio.currentTime - 10);
+    }
+    
+    // Adelantar 10 segundos
+    function forward() {
+      mainAudio.currentTime = Math.min(mainAudio.duration, mainAudio.currentTime + 10);
+    }
+    
+    // Eventos del reproductor
+    mainAudio.addEventListener('loadedmetadata', () => {
+      durationEl.textContent = formatTime(mainAudio.duration);
+    });
+    
+    mainAudio.addEventListener('timeupdate', updateProgress);
+    mainAudio.addEventListener('ended', () => {
+      playPauseBtn.textContent = '▶️';
+      progressBar.style.width = '0%';
+    });
+    
+    playPauseBtn.addEventListener('click', togglePlayPause);
+    rewindBtn.addEventListener('click', rewind);
+    forwardBtn.addEventListener('click', forward);
+    progressContainer.addEventListener('click', setProgress);
+    volumeSlider.addEventListener('click', setVolume);
+    
+    // Inicializar volumen
+    mainAudio.volume = 0.8;
+    volumeLevel.style.width = '80%';
     
     // Reproducir efectos de sonido
     function playSound(sound) {
