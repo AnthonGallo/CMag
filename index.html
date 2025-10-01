@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>✨ Este universo eres tú ✨</title>
   <style>
-    /* RESET Y VARIABLES */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -29,7 +28,6 @@
       --section-spacing: clamp(30px, 6vw, 60px);
     }
     
-    /* ESTILOS GENERALES */
     body {
       font-family: 'Arial', sans-serif;
       margin: 0;
@@ -43,7 +41,6 @@
       line-height: 1.6;
     }
     
-    /* FONDO DEL UNIVERSO */
     .universe-background {
       position: fixed;
       top: 0;
@@ -54,7 +51,6 @@
       background: radial-gradient(ellipse at center, #0a0e2a 0%, #000000 70%);
     }
     
-    /* PARTÍCULAS CÓSMICAS */
     .cosmic-particles {
       position: fixed;
       top: 0;
@@ -83,7 +79,6 @@
       100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
     }
     
-    /* SISTEMA DE PANTALLAS */
     .screen {
       min-height: 100vh;
       padding: var(--container-padding);
@@ -113,7 +108,6 @@
       100% { opacity: 1; transform: translateY(0); }
     }
     
-    /* PANTALLA DE BIENVENIDA */
     .welcome-screen {
       text-align: center;
       background: rgba(0, 0, 0, 0.5);
@@ -215,7 +209,6 @@
       left: 100%;
     }
     
-    /* PANTALLA DEL UNIVERSO */
     .universe-screen {
       background: transparent;
       text-align: center;
@@ -364,7 +357,6 @@
       left: 100%;
     }
     
-    /* GALERÍA DE CONSTELACIONES */
     .constellation-screen {
       background: transparent;
       padding: var(--section-spacing);
@@ -460,7 +452,6 @@
       opacity: 0.9;
     }
     
-    /* FOTO - PARTE CENTRAL */
     .photo-screen {
       background: transparent;
       text-align: center;
@@ -553,7 +544,6 @@
       padding: 0 15px;
     }
     
-    /* ESCRITOS ESPECIALES */
     .writings-screen {
       background: transparent;
       padding: var(--section-spacing);
@@ -634,7 +624,6 @@
       color: #20b2aa;
     }
     
-    /* RECUERDOS VIRTUALES - 4 ELEMENTOS */
     .memories-screen {
       background: transparent;
       padding: var(--section-spacing);
@@ -742,7 +731,6 @@
       line-height: 1.6;
     }
     
-    /* MENSAJES INTERACTIVOS */
     .messages-screen {
       background: transparent;
       padding: var(--section-spacing);
@@ -841,7 +829,6 @@
       left: 100%;
     }
     
-    /* PANTALLA FINAL */
     .final-screen {
       background: transparent;
       text-align: center;
@@ -884,7 +871,6 @@
       text-shadow: 0 0 30px rgba(255,215,0,0.8);
       font-family: 'Dancing Script', cursive;
       line-height: 1.2;
-      /* Sin movimiento */
     }
     
     .final-text {
@@ -907,10 +893,8 @@
       font-family: 'Dancing Script', cursive;
       font-size: clamp(1.6rem, 4.5vw, 2.8rem);
       margin-top: clamp(25px, 5vw, 40px);
-      /* Sin animación de movimiento */
     }
     
-    /* PANTALLA: UNIVERSO */
     .universe-real-screen {
       background: transparent;
       text-align: center;
@@ -946,7 +930,6 @@
       text-shadow: 0 0 20px rgba(255,215,0,0.8);
       font-family: 'Dancing Script', cursive;
       padding: 10px 20px;
-      /* Sin animación de movimiento */
     }
     
     .universe-controls {
@@ -985,7 +968,6 @@
       transform: translateY(-3px);
     }
     
-    /* BOTÓN PARA OCULTAR/MOSTRAR CONTROLES */
     .toggle-controls-button {
       position: absolute;
       bottom: 85px;
@@ -1019,7 +1001,6 @@
       transform: rotate(180deg);
     }
     
-    /* BARRA DE NAVEGACIÓN */
     .nav-toggle {
       position: fixed;
       top: clamp(15px, 3vw, 25px);
@@ -1108,7 +1089,6 @@
       visibility: visible;
     }
     
-    /* REPRODUCTOR DE AUDIO */
     .audio-player {
       position: fixed;
       bottom: 20px;
@@ -1302,7 +1282,6 @@
       width: 80%;
     }
     
-    /* PESTAÑA PARA EL REPRODUCTOR */
     .audio-tab {
       position: fixed;
       bottom: 20px;
@@ -1335,7 +1314,6 @@
       display: none;
     }
     
-    /* EFECTOS ESPECIALES */
     @keyframes messageAppear {
       0% { opacity: 0; transform: translateY(10px); }
       100% { opacity: 1; transform: translateY(0); }
@@ -1346,9 +1324,6 @@
       100% { opacity: 1; }
     }
     
-    /* RESPONSIVIDAD */
-    
-    /* MÓVILES PEQUEÑOS (hasta 480px) */
     @media (max-width: 480px) {
       .screen {
         padding: 12px;
@@ -1438,7 +1413,6 @@
       }
     }
     
-    /* MÓVILES (hasta 768px) */
     @media (max-width: 768px) {
       .screen {
         padding: 15px;
@@ -1528,7 +1502,6 @@
       }
     }
     
-    /* TABLETS (769px a 1024px) */
     @media (min-width: 769px) and (max-width: 1024px) {
       .constellation-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -1549,14 +1522,12 @@
       }
     }
     
-    /* ESCRITORIOS PEQUEÑOS (1025px a 1200px) */
     @media (min-width: 1025px) and (max-width: 1200px) {
       .constellation-grid {
         grid-template-columns: repeat(3, 1fr);
       }
     }
     
-    /* ESCRITORIOS GRANDES (más de 1200px) */
     @media (min-width: 1201px) {
       .constellation-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -1564,7 +1535,6 @@
       }
     }
     
-    /* ORIENTACIÓN */
     @media (max-height: 500px) and (orientation: landscape) {
       .screen {
         padding-top: 80px;
@@ -1588,7 +1558,6 @@
       }
     }
     
-    /* EFECTO DE TEXTO MÁGICO */
     .magic-text {
       background: linear-gradient(45deg, #ff69b4, #ffa500, #ffd700, #20b2aa, #9370db);
       -webkit-background-clip: text;
@@ -1604,7 +1573,6 @@
       100% { background-position: 0% 50%; }
     }
     
-    /* ACCESIBILIDAD */
     @media (prefers-reduced-motion: reduce) {
       * {
         animation-duration: 0.01ms !important;
@@ -1613,7 +1581,6 @@
       }
     }
     
-    /* MODO PANTALLA COMPLETA */
     body.fullscreen {
       overflow: auto;
     }
@@ -1623,7 +1590,6 @@
       overflow-y: auto;
     }
     
-    /* CORRECCIÓN PARA PANTALLA COMPLETA DEL UNIVERSO */
     body.fullscreen .universe-real-screen {
       height: 100vh;
       overflow: hidden;
@@ -1640,18 +1606,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- FONDO DEL UNIVERSO -->
   <div class="universe-background"></div>
 
-  <!-- PARTÍCULAS CÓSMICAS -->
   <div class="cosmic-particles"></div>
 
-  <!-- PESTAÑA PARA EL REPRODUCTOR -->
   <div class="audio-tab" id="audioTab">
     <div class="audio-tab-icon">🎵</div>
   </div>
 
-  <!-- REPRODUCTOR DE AUDIO PERSONALIZADO -->
   <div class="audio-player minimized" id="audioPlayer">
     <div class="audio-toggle" id="audioToggle">−</div>
     <div class="player-content">
@@ -1687,7 +1649,6 @@
     </div>
   </div>
 
-  <!-- BARRA DE NAVEGACIÓN -->
   <div class="nav-toggle" id="navToggle">
     <div class="nav-toggle-icon">☰</div>
   </div>
@@ -1702,7 +1663,6 @@
   
   <div class="nav-overlay" id="navOverlay"></div>
 
-  <!-- PANTALLA DE BIENVENIDA -->
   <div id="welcomeScreen" class="screen active">
     <h1 class="welcome-title">✨ Para Wilmagy ✨</h1>
     <p class="subtitle">Este universo completo contenido en una persona extraordinaria</p>
@@ -1711,7 +1671,6 @@
     </button>
   </div>
 
-  <!-- PANTALLA DEL UNIVERSO MAGY - MEJORADA -->
   <div id="universeScreen" class="screen">
     <div class="stars-background"></div>
     <div class="universe-content">
@@ -1738,7 +1697,6 @@
     </div>
   </div>
 
-  <!-- PANTALLA DE CONSTELACIONES -->
   <div id="constellationScreen" class="screen">
     <h1 class="constellation-title">✨ Las Constelaciones de Wilmagy</h1>
     
@@ -1803,13 +1761,11 @@
     </button>
   </div>
 
-  <!-- PANTALLA DE FOTO MÁGICA -->
   <div id="photoScreen" class="screen">
     <h1 class="photo-title">✨ La Esencia del Universo ✨</h1>
     
     <div class="magic-photo-container">
       <div class="photo-frame">
-        <!-- FOTO -->
         <img src="https://lh3.googleusercontent.com/pw/AP1GczMTfFFt2eteZxm7qXWkKN6dy901WEXaBTOe5IHjKAu_Z-bxTVWnDZNOtbKzuvIHMX-LtgeLHh_XaOD8zNuWQkbAcXpc20mYqeRbGnTAvysixGBtf7wKeAyE-kWLe1nRqcrdfBloCWevdZA4wK52R--25A=w904-h508-s-no-gm" 
              alt="Wilmagy - La Esencia del Universo" 
              class="magic-photo">
@@ -1837,7 +1793,6 @@
     </button>
   </div>
 
-  <!-- PANTALLA DE ESCRITOS -->
   <div id="writingsScreen" class="screen">
     <div class="writings-container">
       <h1 class="writings-title">📜 Desde lo que inspiras 📜</h1>
@@ -1905,7 +1860,6 @@ la constelación más brillante, el mejor final.</div>
     </div>
   </div>
 
-  <!-- RECUERDOS -->
   <div id="memoriesScreen" class="screen">
     <div class="memories-container">
       <h1 class="memories-title">🕰️ Línea del Tiempo Especial</h1>
@@ -1938,7 +1892,6 @@ la constelación más brillante, el mejor final.</div>
     </div>
   </div>
 
-  <!-- PANTALLA DE MENSAJES INTERACTIVOS - MEJORADA -->
   <div id="messagesScreen" class="screen">
     <h1 class="messages-title">💌 Mensajes Especiales para Ti 💌</h1>
     
@@ -1960,7 +1913,6 @@ la constelación más brillante, el mejor final.</div>
     </button>
   </div>
 
-  <!-- PANTALLA FINAL - MEJORADA -->
   <div id="finalScreen" class="screen">
     <div class="final-content">
       <h1 class="final-title">✨ Desde lo más profundo te digo.. ✨</h1>
@@ -1991,7 +1943,6 @@ la constelación más brillante, el mejor final.</div>
     </button>
   </div>
 
-  <!-- NUEVA PANTALLA: UNIVERSO -->
   <div id="universeRealScreen" class="screen universe-real-screen">
     <div class="universe-canvas-container">
       <canvas id="universeCanvas" class="universe-canvas"></canvas>
@@ -1999,7 +1950,6 @@ la constelación más brillante, el mejor final.</div>
     
     <h1 class="universe-title">✨ Este universo eres tú ✨</h1>
     
-    <!-- BOTÓN PARA OCULTAR/MOSTRAR CONTROLES -->
     <div class="toggle-controls-button" id="toggleControlsButton">
       <div class="toggle-controls-icon">▼</div>
     </div>
@@ -2011,7 +1961,6 @@ la constelación más brillante, el mejor final.</div>
     </div>
   </div>
 
-  <!-- EFECTOS DE SONIDO -->
   <audio id="clickSound" preload="auto">
     <source src="https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3" type="audio/mpeg">
   </audio>
@@ -2020,13 +1969,11 @@ la constelación más brillante, el mejor final.</div>
     <source src="https://assets.mixkit.co/sfx/preview/mixkit-magic-sparkle-sound-3091.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- AUDIO PRINCIPAL -->
   <audio id="mainAudio" preload="metadata">
     <source src="NahuelPennisi-UniversoParalelo.mp3" type="audio/mpeg">
   </audio>
 
   <script>
-    // Sistema de navegación mejorado
     const screens = [
       'welcomeScreen', 'universeScreen', 'constellationScreen', 
       'photoScreen', 'writingsScreen', 'memoriesScreen', 
@@ -2036,7 +1983,6 @@ la constelación más brillante, el mejor final.</div>
     const clickSound = document.getElementById('clickSound');
     const sparkleSound = document.getElementById('sparkleSound');
     
-    // Control de navegación
     const navToggle = document.getElementById('navToggle');
     const navMenu = document.getElementById('navMenu');
     const navOverlay = document.getElementById('navOverlay');
@@ -2048,7 +1994,6 @@ la constelación más brillante, el mejor final.</div>
       navMenu.classList.toggle('active');
       navOverlay.classList.toggle('active');
       
-      // Cambiar ícono del botón
       const icon = navToggle.querySelector('.nav-toggle-icon');
       if (navMenu.classList.contains('active')) {
         icon.textContent = '✕';
@@ -2057,7 +2002,6 @@ la constelación más brillante, el mejor final.</div>
       }
     }
     
-    // Crear partículas cósmicas mejoradas
     function createCosmicParticles() {
       const container = document.querySelector('.cosmic-particles');
       setInterval(() => {
@@ -2075,7 +2019,6 @@ la constelación más brillante, el mejor final.</div>
     
     createCosmicParticles();
     
-    // Crear estrellas en el fondo del universo
     function createStars() {
       const starsContainer = document.querySelector('.stars-background');
       if (starsContainer) {
@@ -2092,7 +2035,6 @@ la constelación más brillante, el mejor final.</div>
       }
     }
     
-    // CONTROL DEL REPRODUCTOR DE AUDIO PERSONALIZADO
     const audioPlayer = document.getElementById('audioPlayer');
     const audioToggle = document.getElementById('audioToggle');
     const audioTab = document.getElementById('audioTab');
@@ -2107,17 +2049,14 @@ la constelación más brillante, el mejor final.</div>
     const volumeSlider = document.getElementById('volumeSlider');
     const volumeLevel = document.getElementById('volumeLevel');
     
-    // Inicialmente reproductor minimizado
     audioPlayer.classList.add('minimized');
     audioToggle.textContent = '+';
     
-    // Control de minimizar/maximizar
     audioToggle.addEventListener('click', function(e) {
       e.stopPropagation();
       audioPlayer.classList.toggle('minimized');
       audioToggle.textContent = audioPlayer.classList.contains('minimized') ? '+' : '−';
       
-      // Ocultar/mostrar la pestaña
       if (audioPlayer.classList.contains('minimized')) {
         audioTab.classList.remove('hidden');
       } else {
@@ -2125,21 +2064,18 @@ la constelación más brillante, el mejor final.</div>
       }
     });
     
-    // Control de la pestaña de audio
     audioTab.addEventListener('click', function() {
       audioPlayer.classList.remove('minimized');
       audioToggle.textContent = '−';
       audioTab.classList.add('hidden');
     });
     
-    // Formatear tiempo en minutos:segundos
     function formatTime(seconds) {
       const mins = Math.floor(seconds / 60);
       const secs = Math.floor(seconds % 60);
       return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
     }
     
-    // Actualizar barra de progreso
     function updateProgress() {
       const { duration, currentTime } = mainAudio;
       const progressPercent = (currentTime / duration) * 100;
@@ -2147,7 +2083,6 @@ la constelación más brillante, el mejor final.</div>
       currentTimeEl.textContent = formatTime(currentTime);
     }
     
-    // Establecer progreso al hacer clic en la barra
     function setProgress(e) {
       const width = this.clientWidth;
       const clickX = e.offsetX;
@@ -2156,7 +2091,6 @@ la constelación más brillante, el mejor final.</div>
       mainAudio.currentTime = (clickX / width) * duration;
     }
     
-    // Control de volumen
     function setVolume(e) {
       const width = this.clientWidth;
       const clickX = e.offsetX;
@@ -2166,7 +2100,6 @@ la constelación más brillante, el mejor final.</div>
       volumeLevel.style.width = `${volume * 100}%`;
     }
     
-    // Control de reproducción/pausa
     function togglePlayPause() {
       if (mainAudio.paused) {
         mainAudio.play();
@@ -2177,17 +2110,14 @@ la constelación más brillante, el mejor final.</div>
       }
     }
     
-    // Retroceder 10 segundos
     function rewind() {
       mainAudio.currentTime = Math.max(0, mainAudio.currentTime - 10);
     }
     
-    // Adelantar 10 segundos
     function forward() {
       mainAudio.currentTime = Math.min(mainAudio.duration, mainAudio.currentTime + 10);
     }
     
-    // Eventos del reproductor
     mainAudio.addEventListener('loadedmetadata', () => {
       durationEl.textContent = formatTime(mainAudio.duration);
     });
@@ -2204,21 +2134,17 @@ la constelación más brillante, el mejor final.</div>
     progressContainer.addEventListener('click', setProgress);
     volumeSlider.addEventListener('click', setVolume);
     
-    // Inicializar volumen
     mainAudio.volume = 0.8;
     volumeLevel.style.width = '80%';
     
-    // Reproducir efectos de sonido
     function playSound(sound) {
       sound.currentTime = 0;
       sound.play().catch(e => console.log("Error reproduciendo sonido: ", e));
     }
     
-    // Funciones de navegación mejoradas
     function showScreen(screenId) {
       playSound(clickSound);
       
-      // Cerrar menú de navegación si está abierto
       if (navMenu.classList.contains('active')) {
         toggleNav();
       }
@@ -2231,7 +2157,6 @@ la constelación más brillante, el mejor final.</div>
         document.getElementById(screenId).classList.add('active');
         currentScreen = screens.indexOf(screenId);
         
-        // Efectos especiales según la pantalla
         if (screenId === 'universeScreen') {
           setTimeout(createStars, 100);
         }
@@ -2244,7 +2169,6 @@ la constelación más brillante, el mejor final.</div>
           initUniverse();
         }
         
-        // Scroll suave hacia la parte superior
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }, 300);
     }
@@ -2300,11 +2224,6 @@ la constelación más brillante, el mejor final.</div>
       currentScreen = 0;
     }
     
-    function restartJourney() {
-      goHome();
-    }
-    
-    // Sistema de mensajes interactivos
     const messages = [
       {
         icon: "💪",
@@ -2335,9 +2254,7 @@ la constelación más brillante, el mejor final.</div>
     
     function showMessage(index, button) {
       playSound(clickSound);
-      // Remover active de todos los botones
       document.querySelectorAll('.message-button').forEach(btn => btn.classList.remove('active'));
-      // Agregar active al botón seleccionado
       button.classList.add('active');
       
       const message = messages[index];
@@ -2356,7 +2273,6 @@ la constelación más brillante, el mejor final.</div>
       }, 300);
     }
     
-    // Efectos de interacción adicionales
     document.querySelectorAll('.constellation-card').forEach(card => {
       card.addEventListener('click', () => {
         playSound(clickSound);
@@ -2367,7 +2283,6 @@ la constelación más brillante, el mejor final.</div>
       });
     });
     
-    // Efecto especial en la foto
     const photoFrame = document.querySelector('.photo-frame');
     if (photoFrame) {
       photoFrame.addEventListener('click', () => {
@@ -2384,7 +2299,6 @@ la constelación más brillante, el mejor final.</div>
       });
     }
     
-    // Efectos en la línea de tiempo
     document.querySelectorAll('.memory-item').forEach(item => {
       item.addEventListener('click', () => {
         playSound(clickSound);
@@ -2395,7 +2309,6 @@ la constelación más brillante, el mejor final.</div>
       });
     });
     
-    // Efectos en las tarjetas de escritos
     document.querySelectorAll('.writing-card').forEach(card => {
       card.addEventListener('click', () => {
         playSound(clickSound);
@@ -2406,7 +2319,6 @@ la constelación más brillante, el mejor final.</div>
       });
     });
     
-    // SISTEMA DE UNIVERSO
     let universeAnimationId = null;
     let universeObjects = {};
     let showOrbits = true;
@@ -2417,7 +2329,6 @@ la constelación más brillante, el mejor final.</div>
     let isDragging = false;
     let lastMouseX, lastMouseY;
     
-    // Control para ocultar/mostrar controles del universo
     const toggleControlsButton = document.getElementById('toggleControlsButton');
     const universeControls = document.getElementById('universeControls');
     
@@ -2435,7 +2346,6 @@ la constelación más brillante, el mejor final.</div>
       const canvas = document.getElementById('universeCanvas');
       const ctx = canvas.getContext('2d');
       
-      // Ajustar tamaño del canvas
       function resizeCanvas() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
@@ -2444,7 +2354,6 @@ la constelación más brillante, el mejor final.</div>
       resizeCanvas();
       window.addEventListener('resize', resizeCanvas);
       
-      // Eventos de ratón para rotar la cámara
       canvas.addEventListener('mousedown', (e) => {
         isDragging = true;
         lastMouseX = e.clientX;
@@ -2472,7 +2381,6 @@ la constelación más brillante, el mejor final.</div>
         isDragging = false;
       });
       
-      // Eventos táctiles para dispositivos móviles
       canvas.addEventListener('touchstart', (e) => {
         if (e.touches.length === 1) {
           isDragging = true;
@@ -2500,15 +2408,11 @@ la constelación más brillante, el mejor final.</div>
         isDragging = false;
       });
       
-      // Crear universo inicial
       createEnchantedUniverse(canvas, ctx);
-      
-      // Iniciar animación
       animateUniverse(canvas, ctx);
     }
     
     function createEnchantedUniverse(canvas, ctx) {
-      // Limpiar objetos anteriores
       universeObjects = {
         stars: [],
         planets: [],
@@ -2519,20 +2423,18 @@ la constelación más brillante, el mejor final.</div>
         galaxies: []
       };
       
-      // Crear sol (estrella central): Sin efecto de pulsación
       universeObjects.sun = {
         x: 0,
         y: 0,
         z: 0,
-        radius: window.innerWidth < 768 ? 50 : 70, // Más pequeño en móviles
+        radius: window.innerWidth < 768 ? 50 : 70,
         color: '#FFD700',
         glow: true,
         glowColor: 'rgba(255, 215, 0, 0.4)',
-        glowRadius: window.innerWidth < 768 ? 120 : 180, // Más pequeño en móviles
+        glowRadius: window.innerWidth < 768 ? 120 : 180,
         surfaceDetail: []
       };
       
-      // Detalles de superficie del sol
       for (let i = 0; i < 30; i++) {
         universeObjects.sun.surfaceDetail.push({
           x: Math.random() * 2 - 1,
@@ -2542,7 +2444,6 @@ la constelación más brillante, el mejor final.</div>
         });
       }
       
-      // Crear planetas con características realistas
       const planetData = [
         { name: 'Corazón', color: '#FF6B6B', radius: 12, distance: 120, speed: 0.0003, hasRings: false },
         { name: 'Risa', color: '#FFA07A', radius: 16, distance: 190, speed: 0.00025, hasRings: true, ringColor: '#FFB6C1' },
@@ -2576,8 +2477,7 @@ la constelación más brillante, el mejor final.</div>
           surfaceDetail: []
         });
         
-        // Agregar lunas a algunos planetas
-        if (i === 1 || i === 4 || i === 7) { // Risa, Sueños y Belleza tienen lunas
+        if (i === 1 || i === 4 || i === 7) {
           const moonCount = i === 1 ? 2 : (i === 4 ? 1 : 3);
           for (let j = 0; j < moonCount; j++) {
             universeObjects.planets[i].moons.push({
@@ -2590,7 +2490,6 @@ la constelación más brillante, el mejor final.</div>
           }
         }
         
-        // Detalles de superficie de los planetas
         for (let j = 0; j < 15; j++) {
           universeObjects.planets[i].surfaceDetail.push({
             x: Math.random() * 2 - 1,
@@ -2602,7 +2501,6 @@ la constelación más brillante, el mejor final.</div>
         }
       }
       
-      // Crear estrellas de fondo realistas
       for (let i = 0; i < 1200; i++) {
         const distance = 500 + Math.random() * 2000;
         const angle1 = Math.random() * Math.PI * 2;
@@ -2622,7 +2520,6 @@ la constelación más brillante, el mejor final.</div>
         });
       }
       
-      // Crear nebulosas realistas
       for (let i = 0; i < 8; i++) {
         const nebula = {
           x: (Math.random() - 0.5) * 2500,
@@ -2635,7 +2532,6 @@ la constelación más brillante, el mejor final.</div>
           shape: Math.random() > 0.5 ? 'spiral' : 'cloud'
         };
         
-        // Agregar partículas a la nebulosa
         for (let j = 0; j < 70; j++) {
           nebula.particles.push({
             x: (Math.random() - 0.5) * nebula.radius * 2,
@@ -2651,7 +2547,6 @@ la constelación más brillante, el mejor final.</div>
         universeObjects.nebulae.push(nebula);
       }
       
-      // Crear cinturón de asteroides
       for (let i = 0; i < 300; i++) {
         const distance = 350 + Math.random() * 50;
         const angle = Math.random() * Math.PI * 2;
@@ -2670,7 +2565,6 @@ la constelación más brillante, el mejor final.</div>
         });
       }
       
-      // Crear cometas realistas
       for (let i = 0; i < 6; i++) {
         universeObjects.comets.push({
           x: (Math.random() - 0.5) * 2500,
@@ -2686,7 +2580,6 @@ la constelación más brillante, el mejor final.</div>
         });
       }
       
-      // Crear galaxias espirales
       for (let i = 0; i < 4; i++) {
         const galaxy = {
           x: (Math.random() - 0.5) * 3000,
@@ -2698,7 +2591,6 @@ la constelación más brillante, el mejor final.</div>
           rotationSpeed: (Math.random() - 0.5) * 0.0005
         };
         
-        // Agregar estrellas a la galaxia
         for (let j = 0; j < 200; j++) {
           const distance = Math.random() * galaxy.radius;
           const angle = Math.random() * Math.PI * 2;
@@ -2718,18 +2610,15 @@ la constelación más brillante, el mejor final.</div>
       }
     }
     
-    // Función para proyectar un punto 3D a 2D
     function projectPoint(x, y, z, canvas) {
-      const scale = 1000; // Factor de escala para la proyección
-      const distance = 1000; // Distancia de la cámara
+      const scale = 1000;
+      const distance = 1000;
       
-      // Aplicar rotación de la cámara
       const cosX = Math.cos(cameraX);
       const sinX = Math.sin(cameraX);
       const cosY = Math.cos(cameraY);
       const sinY = Math.sin(cameraY);
       
-      // Rotar en X e Y
       let x1 = x;
       let y1 = y * cosX - z * sinX;
       let z1 = y * sinX + z * cosX;
@@ -2740,7 +2629,6 @@ la constelación más brillante, el mejor final.</div>
       
       z2 += distance + cameraZ;
       
-      // Proyección perspectiva
       if (z2 > 0) {
         const factor = scale / z2;
         const screenX = canvas.width / 2 + x2 * factor;
@@ -2754,17 +2642,15 @@ la constelación más brillante, el mejor final.</div>
     }
     
     function animateUniverse(canvas, ctx) {
-      // Limpiar canvas con un fondo espacial más realista
       ctx.fillStyle = 'rgba(5, 10, 20, 0.3)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       
       const { sun, stars, planets, nebulae, comets, asteroids, galaxies } = universeObjects;
       
-      // Dibujar estrellas de fondo (ordenadas por profundidad)
       const sortedStars = [...stars].sort((a, b) => {
         const aPos = projectPoint(a.x, a.y, a.z, canvas);
         const bPos = projectPoint(b.x, b.y, b.z, canvas);
-        return bPos.scale - aPos.scale; // Ordenar por escala (las más lejanas primero)
+        return bPos.scale - aPos.scale;
       });
       
       for (const star of sortedStars) {
@@ -2780,7 +2666,6 @@ la constelación más brillante, el mejor final.</div>
         ctx.fillStyle = star.color.replace(')', `, ${brightness})`).replace('rgb', 'rgba');
         ctx.fill();
         
-        // Efecto de brillo para estrellas grandes
         if (size > 2) {
           const gradient = ctx.createRadialGradient(
             pos.x, pos.y, 0,
@@ -2796,7 +2681,6 @@ la constelación más brillante, el mejor final.</div>
         }
       }
       
-      // Dibujar galaxias
       for (const galaxy of galaxies) {
         galaxy.rotation += galaxy.rotationSpeed;
         
@@ -2823,7 +2707,6 @@ la constelación más brillante, el mejor final.</div>
         }
       }
       
-      // Dibujar nebulosas
       for (const nebula of nebulae) {
         const pos = projectPoint(nebula.x, nebula.y, nebula.z, canvas);
         if (!pos.visible) continue;
@@ -2831,7 +2714,7 @@ la constelación más brillante, el mejor final.</div>
         const pulse = Math.sin(Date.now() * nebula.pulseSpeed) * 0.2 + 0.8;
         const radius = nebula.radius * pos.scale * pulse;
         
-        if (radius > 5) { // Solo dibujar nebulosas suficientemente grandes
+        if (radius > 5) {
           ctx.beginPath();
           ctx.arc(pos.x, pos.y, radius, 0, Math.PI * 2);
           
@@ -2845,7 +2728,6 @@ la constelación más brillante, el mejor final.</div>
           ctx.fillStyle = gradient;
           ctx.fill();
           
-          // Dibujar partículas de la nebulosa
           for (const particle of nebula.particles) {
             const particlePos = projectPoint(
               nebula.x + particle.x, 
@@ -2864,7 +2746,6 @@ la constelación más brillante, el mejor final.</div>
         }
       }
       
-      // Actualizar y dibujar asteroides
       for (const asteroid of asteroids) {
         asteroid.angle += asteroid.speed;
         asteroid.rotation += asteroid.rotationSpeed;
@@ -2885,7 +2766,6 @@ la constelación más brillante, el mejor final.</div>
           ctx.fillStyle = asteroid.color;
           ctx.fill();
           
-          // Detalles de la superficie del asteroide
           ctx.fillStyle = '#8B4513';
           ctx.beginPath();
           ctx.arc(-size/3, -size/3, size/3, 0, Math.PI * 2);
@@ -2895,14 +2775,11 @@ la constelación más brillante, el mejor final.</div>
         }
       }
       
-      // Actualizar y dibujar cometas
       for (const comet of comets) {
-        // Actualizar posición
         comet.x += comet.speedX;
         comet.y += comet.speedY;
         comet.z += comet.speedZ;
         
-        // Rebotar en los bordes del espacio visible
         if (Math.abs(comet.x) > 2500 || Math.abs(comet.y) > 2500 || Math.abs(comet.z) > 2500) {
           comet.x = (Math.random() - 0.5) * 1000;
           comet.y = (Math.random() - 0.5) * 1000;
@@ -2910,11 +2787,9 @@ la constelación más brillante, el mejor final.</div>
           comet.trail = [];
         }
         
-        // Actualizar estela
         comet.trail.unshift({x: comet.x, y: comet.y, z: comet.z});
         if (comet.trail.length > comet.maxTrail) comet.trail.pop();
         
-        // Dibujar estela
         if (comet.trail.length > 1) {
           ctx.strokeStyle = comet.color;
           ctx.lineWidth = 1;
@@ -2934,7 +2809,6 @@ la constelación más brillante, el mejor final.</div>
           }
         }
         
-        // Dibujar cabeza del cometa
         const pos = projectPoint(comet.x, comet.y, comet.z, canvas);
         if (pos.visible) {
           const size = comet.size * pos.scale;
@@ -2955,20 +2829,16 @@ la constelación más brillante, el mejor final.</div>
         }
       }
       
-      // Actualizar y dibujar planetas
       for (const planet of planets) {
-        // Actualizar posición del planeta
         planet.angle += planet.speed;
         planet.x = Math.cos(planet.angle) * planet.orbitRadius;
         planet.z = Math.sin(planet.angle) * planet.orbitRadius;
         
-        // Proyectar posición del planeta
         const pos = projectPoint(planet.x, planet.y, planet.z, canvas);
         if (!pos.visible) continue;
         
         const radius = planet.radius * pos.scale;
         
-        // Dibujar planeta
         ctx.beginPath();
         ctx.arc(pos.x, pos.y, radius, 0, Math.PI * 2);
         
@@ -2983,7 +2853,6 @@ la constelación más brillante, el mejor final.</div>
         ctx.fillStyle = gradient;
         ctx.fill();
         
-        // Detalles de la superficie del planeta
         for (const detail of planet.surfaceDetail) {
           const detailX = pos.x + detail.x * radius * 0.8;
           const detailY = pos.y + detail.y * radius * 0.8;
@@ -2995,7 +2864,6 @@ la constelación más brillante, el mejor final.</div>
           ctx.fill();
         }
         
-        // Brillo del planeta
         if (planet.glow) {
           const glowGradient = ctx.createRadialGradient(
             pos.x, pos.y, 0,
@@ -3010,7 +2878,6 @@ la constelación más brillante, el mejor final.</div>
           ctx.fill();
         }
         
-        // Dibujar anillos si el planeta los tiene
         if (planet.hasRings && pos.scale > 0.1) {
           ctx.strokeStyle = planet.ringColor;
           ctx.lineWidth = 2 * pos.scale;
@@ -3019,7 +2886,6 @@ la constelación más brillante, el mejor final.</div>
           ctx.stroke();
         }
         
-        // Dibujar órbitas si están activas
         if (showOrbits) {
           ctx.strokeStyle = `rgba(255, 255, 255, 0.2)`;
           ctx.lineWidth = 1;
@@ -3028,7 +2894,6 @@ la constelación más brillante, el mejor final.</div>
           ctx.stroke();
         }
         
-        // Dibujar lunas
         for (const moon of planet.moons) {
           moon.angle += moon.speed;
           const moonX = planet.x + Math.cos(moon.angle) * moon.orbitRadius;
@@ -3045,7 +2910,6 @@ la constelación más brillante, el mejor final.</div>
           }
         }
         
-        // Nombre del planeta
         if (showLabels && pos.scale > 0.3) {
           ctx.font = `${12 * pos.scale}px Arial`;
           ctx.fillStyle = 'rgba(255,255,255,0.7)';
@@ -3054,12 +2918,10 @@ la constelación más brillante, el mejor final.</div>
         }
       }
       
-      // Dibujar sol: Sin efecto de pulsación
       const sunPos = projectPoint(sun.x, sun.y, sun.z, canvas);
       if (sunPos.visible) {
         const radius = sun.radius * sunPos.scale;
         
-        // Dibujar sol
         ctx.beginPath();
         ctx.arc(sunPos.x, sunPos.y, radius, 0, Math.PI * 2);
         
@@ -3074,7 +2936,6 @@ la constelación más brillante, el mejor final.</div>
         ctx.fillStyle = sunGradient;
         ctx.fill();
         
-        // Detalles de la superficie del sol
         for (const detail of sun.surfaceDetail) {
           const detailX = sunPos.x + detail.x * radius * 0.9;
           const detailY = sunPos.y + detail.y * radius * 0.9;
@@ -3086,7 +2947,6 @@ la constelación más brillante, el mejor final.</div>
           ctx.fill();
         }
         
-        // Dibujar brillo del sol
         if (sun.glow) {
           const glowGradient = ctx.createRadialGradient(
             sunPos.x, sunPos.y, 0,
@@ -3105,7 +2965,6 @@ la constelación más brillante, el mejor final.</div>
       universeAnimationId = requestAnimationFrame(() => animateUniverse(canvas, ctx));
     }
     
-    // Funciones de control del universo
     function toggleOrbits() {
       showOrbits = !showOrbits;
     }
@@ -3120,7 +2979,6 @@ la constelación más brillante, el mejor final.</div>
       cameraZ = 0;
     }
     
-    // Detener animación cuando se cambia de pantalla
     function stopUniverseAnimation() {
       if (universeAnimationId) {
         cancelAnimationFrame(universeAnimationId);
@@ -3128,23 +2986,19 @@ la constelación más brillante, el mejor final.</div>
       }
     }
     
-    // Modificar la función showScreen para detener la animación cuando se sale del universo
     const originalShowScreen = showScreen;
     showScreen = function(screenId) {
-      // Si estamos saliendo de la pantalla del universo, detener la animación
       if (currentScreen === screens.indexOf('universeRealScreen') && screenId !== 'universeRealScreen') {
         stopUniverseAnimation();
       }
       originalShowScreen(screenId);
     };
     
-    // PANTALLA COMPLETA
     const fullscreenMenuItem = document.getElementById('fullscreenMenuItem');
     let isFullscreen = false;
     
     function toggleFullscreen() {
       if (!isFullscreen) {
-        // Entrar en pantalla completa
         if (document.documentElement.requestFullscreen) {
           document.documentElement.requestFullscreen();
         } else if (document.documentElement.webkitRequestFullscreen) {
@@ -3156,7 +3010,6 @@ la constelación más brillante, el mejor final.</div>
         fullscreenMenuItem.textContent = '⛶ Salir de Pantalla Completa';
         isFullscreen = true;
       } else {
-        // Salir de pantalla completa
         if (document.exitFullscreen) {
           document.exitFullscreen();
         } else if (document.webkitExitFullscreen) {
@@ -3170,7 +3023,6 @@ la constelación más brillante, el mejor final.</div>
       }
     }
     
-    // Detectar cambios en el modo pantalla completa
     document.addEventListener('fullscreenchange', handleFullscreenChange);
     document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
     document.addEventListener('msfullscreenchange', handleFullscreenChange);
@@ -3189,7 +3041,6 @@ la constelación más brillante, el mejor final.</div>
       }
     }
     
-    // Eventos de teclado para navegación
     document.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowLeft') {
         previousScreen();
@@ -3205,4 +3056,3 @@ la constelación más brillante, el mejor final.</div>
   </script>
 </body>
 </html>
-
